@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ProIndexes": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "键": "值",
+        "zkb": "6666"
+      }
+    }
+  }
+}
