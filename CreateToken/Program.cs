@@ -18,7 +18,6 @@ namespace CreateToken
             string Begin = "";
 
             //var ary = new JArray();
-
             //for (int i = 0; i < 2; i++)
             //{
             //    var objj = new JObject
@@ -91,12 +90,6 @@ namespace CreateToken
             //var json = JsonConvert.SerializeObject(obj);
 
             string bob = "";
-
-
-
-
-
-
 
 
             #region  Contains
@@ -180,6 +173,7 @@ namespace CreateToken
             Console.WriteLine(ss);
             //Console.WriteLine(JsonConvert.SerializeObject(obj));
             #endregion
+
             #region Task
             //Console.Out.WriteLine(1);
             //Test().GetAwaiter().GetResult();
