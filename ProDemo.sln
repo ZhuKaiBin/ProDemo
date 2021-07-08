@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebLogging", "WebLogging\We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAuthorization", "WebApplication1\ProAuthorization.csproj", "{1CAF0522-B45A-4B0B-8B78-E3662503D87E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliPay", "AliPay\AliPay.csproj", "{EE4AB4A8-3767-47F6-8345-767223D7D0B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{1CAF0522-B45A-4B0B-8B78-E3662503D87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CAF0522-B45A-4B0B-8B78-E3662503D87E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CAF0522-B45A-4B0B-8B78-E3662503D87E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
