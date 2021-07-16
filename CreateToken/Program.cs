@@ -149,18 +149,18 @@ namespace CreateToken
             //Console.WriteLine("朱的字节数是：" + returnNum("朱") + "");
             #endregion
             #region DateTimeOffset
-            //var timeout = TimeSpan.FromSeconds(180);
-            //var times = DateTimeOffset.UtcNow;
-            //var ass0 = (DateTimeOffset.UtcNow + timeout);
-            //var ass = (DateTimeOffset.UtcNow + timeout).ToUnixTimeSeconds();
-            //var expiry = (DateTimeOffset.UtcNow + timeout).ToUnixTimeSeconds().ToString();
+            var timeout = TimeSpan.FromSeconds(180);
+            var times = DateTimeOffset.UtcNow;
+            var ass0 = (DateTimeOffset.UtcNow + timeout);
+            var ass = (DateTimeOffset.UtcNow + timeout).ToUnixTimeSeconds();
+            var expiry = (DateTimeOffset.UtcNow + timeout).ToUnixTimeSeconds().ToString();
 
-            //var q0 = DateTimeOffset.Now;
-            //var q = DateTimeOffset.Now.Offset;
-            //var q1 = DateTimeOffset.Now.Ticks;
-            //var q2 = DateTimeOffset.UtcNow;
-            //var q3 = DateTimeOffset.MaxValue;
-            //var q4 = DateTimeOffset.MinValue;
+            var q0 = DateTimeOffset.Now;
+            var q = DateTimeOffset.Now.Offset;
+            var q1 = DateTimeOffset.Now.Ticks;
+            var q2 = DateTimeOffset.UtcNow;
+            var q3 = DateTimeOffset.MaxValue;
+            var q4 = DateTimeOffset.MinValue;
 
 
 
@@ -175,9 +175,9 @@ namespace CreateToken
             #endregion
 
             #region Task
-            //Console.Out.WriteLine(1);
-            //Test().GetAwaiter().GetResult();
-            //Console.Out.WriteLine(7);
+            Console.Out.WriteLine(1);
+            Test().GetAwaiter().GetResult();
+            Console.Out.WriteLine(7);
             #endregion
             #region 继承
             //People people = new People();
@@ -189,8 +189,6 @@ namespace CreateToken
             //teacher.ID = 2;
             //teacher.Name = "zhuzhuzhu";
             #endregion
-
-
             //student student = new student();
             //student.Name = "15";
 
