@@ -70,8 +70,12 @@ namespace ProDemo3
 
             arrayList.Sort();
 
+            int[] numm =  { 1, 1, 2, 2, 5, 4, 6 };
 
-            //int i, j = 100;
+            HashSet<int> set = new HashSet<int>(numm);
+            int s = set.ToArray().Length;
+            return s
+            int i, j = 100;
             //Test1(out i);
             //Test2(ref j);
 
