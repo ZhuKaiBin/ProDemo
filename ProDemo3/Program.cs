@@ -30,51 +30,116 @@ namespace ProDemo3
             yield return 3;
         }
 
+
+        class Class1
+        {
+            public void testParams(params int[] arr)
+            {
+                Console.Write("使用Params参数！");
+            }
+            public void testParams(int x, int y)
+            {
+                Console.Write("使用两个整型参数！");
+            }
+
+        }
+
+        public static void Test1(out int v)
+        {
+            v = 100;
+        }
+        public static void Test2(ref int v)
+        {
+        }
+
         static void Main(string[] args)
         {
 
 
-            Thread M = new Thread(delegate ()//线程M
+            Dictionary<int, int> dic = new Dictionary<int, int>();
+            dic.Add(1,5);
+            dic.Add(2,9);
+            //dic.Add(1, 6);
+
+            Hashtable hashtable = new Hashtable();
+            hashtable.Add(1, 5);
+            hashtable.Add(2, 9);
+            hashtable.Add(3, 6);
+
+            ArrayList arrayList = new ArrayList(hashtable.Keys);
+
+            arrayList.Sort();
+
+
+            //int i, j = 100;
+            //Test1(out i);
+            //Test2(ref j);
+
+            //Class1 x = new Class1();
+            //x.testParams(0);
+            //x.testParams(0, 1);
+            //x.testParams(0, 1, 2);
+
+            int[] num1 = { 2 };
+            int[] num2 = { 0 };
+            List<int> lis = new List<int>();
+            lis.AddRange(num1);
+            lis.AddRange(num2);
+            int[] num3 = lis.ToArray();
+            Array.Sort(num3);//变成数组，从小到大排序
+            double med;
+            int len = num3.Length;//元素个数
+            if (len % 2 == 0)
             {
-
-                for (int i = 0; i <= 10000000; i++)
-                {
-                    if (i % 100 == 0)
-                    {
-                        Console.WriteLine("M");////输出结果M
-                    }
-                }
-            });
-
-            Thread S = new Thread(delegate () {  //线程N
-
-                for (int i = 0; i <= 50000000; i++)
-                {
-                    if (i % 100 == 0)
-                    {
-                        Console.WriteLine("S");//输出S
-                    }
-                }
-
-                M.Join();//在这里插入M
-
-                for (int i = 0; i <= 50000000; i++)
-                {
-                    if (i % 100 == 0)
-                    {
-                        Console.WriteLine("A");//输出A
-                    }
-                }
+                int a = num3[len / 2];
+                int b = num3[len / 2 - 1];
+                med = (num3[len / 2] + num3[len / 2 - 1]) / 2d;
+                Console.WriteLine(med);
+            }
+            else
+            {
+                var ss = len / 2;
+                med = num3[len / 2];
+                Console.WriteLine(med);
+            }
+            Console.ReadKey();
 
 
+            //Thread M = new Thread(delegate ()//线程M
+            //{
 
-            });
+            //    for (int i = 0; i <= 10000000; i++)
+            //    {
+            //        if (i % 100 == 0)
+            //        {
+            //            Console.WriteLine("M");////输出结果M
+            //        }
+            //    }
+            //});
+
+            //Thread S = new Thread(delegate () {  //线程N
+
+            //    for (int i = 0; i <= 50000000; i++)
+            //    {
+            //        if (i % 100 == 0)
+            //        {
+            //            Console.WriteLine("S");//输出S
+            //        }
+            //    }
+
+            //    M.Join();//在这里插入M
+
+            //    for (int i = 0; i <= 50000000; i++)
+            //    {
+            //        if (i % 100 == 0)
+            //        {
+            //            Console.WriteLine("A");//输出A
+            //        }
+            //    }
 
 
 
-
-
-
+            //});
 
 
 
