@@ -284,9 +284,6 @@ namespace CreateToken
             string ret2 = func1("bob2");
 
 
-            Func<string, string, string> func2 = (m, n) => m + n;
-            string ret3 = func2("tom", "tom2");
-
            
             Console.ReadKey();
         }
