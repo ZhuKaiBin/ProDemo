@@ -15,6 +15,9 @@ namespace AliPay
             string APP_PRIVATE_KEY = "";
             string ALIPAY_PUBLIC_KEY = "";
             string CHARSET = "";
+
+
+            string zhu = "";
         }
     }
 }
