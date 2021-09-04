@@ -13,8 +13,88 @@ namespace CreateToken
 {
     class Program
     {
+
+        public class Bob
+        {
+            public string name;
+            public int age;
+        }
+        public struct Tony
+        {
+            public string name;
+            public int age;
+        }
+
         static void Main(string[] args)
         {
+
+            string s = "131JS0E5202108021489";
+            string ss = s.Substring(s.Length - 1, 1);
+            if (Convert.ToInt32(s.Substring(s.Length - 1, 1)) % 2 == 0)
+            {
+                string aaa = "偶数";
+            }
+            else
+            {
+                string aaa = "奇数";
+            }
+
+
+
+            //Console.WriteLine($"线程Id是{Thread.CurrentThread.ManagedThreadId},线程名字是：{Thread.CurrentThread.Name}");
+
+
+            //Task.Run(() => { Console.WriteLine($"线程Task.RunId1是{Thread.CurrentThread.ManagedThreadId}"); }).GetAwaiter();
+            //Task.Run(() => { Console.WriteLine($"线程Task.RunId2是{Thread.CurrentThread.ManagedThreadId}"); }).Wait();
+            //Task newtask = new Task(() => { Console.WriteLine($"线程Idnewtask是{Thread.CurrentThread.ManagedThreadId}"); });
+            //newtask.Start();
+            //var newtask2 = new Task(() => { Console.WriteLine($"线程Idnewtask2是{Thread.CurrentThread.ManagedThreadId}"); });
+            //newtask2.Start();
+            #region 值类型与引用类型
+            //string A = "10";
+            //string B = "20";
+
+            //B = A;
+            //A = "40";
+
+            //A = B;//Ａ现在是２０
+            //A = "40";  //这个时候A分配了新的空间    
+
+
+
+            //Bob bob1 = new Bob();
+            //bob1.age = 18;
+            //bob1.name = "zhu";
+
+            //Bob bob2 = bob1;
+
+            //bob1.age = 28;
+            //bob1.name = "zhu2";
+
+            //var name = bob2.name;
+            //var age = bob2.age;
+
+
+            //Tony tony = new Tony();
+            //tony.age = 18;
+            //tony.name = "tony";
+
+            //Tony tony2 = tony;
+
+            //tony.age = 28;
+            //tony.name = "tony2";
+
+            //var name2 = tony2.name;
+            //var age2 = tony2.age;
+
+
+            //int num = 1;
+            //int num2 = num;
+            //num = 3;
+
+            //var s = num2;
+
+            #endregion
             string Begin = "";
 
             //var ary = new JArray();
@@ -169,15 +249,15 @@ namespace CreateToken
             #region CreateSASToken
             string appid = "A9SP5uLCVWXu";
             string appkey = "txE8EiZF3bWH9jh2poZYE3ypR7vzWfEN";
-            string ss = CreateSASToken(appid, appkey, TimeSpan.FromMinutes(120));
-            Console.WriteLine(ss);
+            string sss = CreateSASToken(appid, appkey, TimeSpan.FromMinutes(120));
+            Console.WriteLine(sss);
             //Console.WriteLine(JsonConvert.SerializeObject(obj));
             #endregion
 
             #region Task
-            Console.Out.WriteLine(1);
-            Test().GetAwaiter().GetResult();
-            Console.Out.WriteLine(7);
+            //Console.Out.WriteLine(1);
+            //Test().GetAwaiter().GetResult();
+            //Console.Out.WriteLine(7);
             #endregion
             #region 继承
             //People people = new People();
@@ -195,8 +275,25 @@ namespace CreateToken
 
             // Console.WriteLine(student.Name);
 
+            Func<string, string> func = Getstring;
+            string ret = func("bob");
+            Console.WriteLine(ret);
 
+
+            Func<string, string> func1 = m => m + m;
+            string ret2 = func1("bob2");
+
+
+            Func<string, string, string> func2 = (m, n) => m + n;
+            string ret3 = func2("tom", "tom2");
+
+           
             Console.ReadKey();
+        }
+
+        public static string Getstring(string ss)
+        {
+            return ss;
         }
 
         private static async Task Test()

@@ -74,7 +74,7 @@ namespace ProDemo3
 
             HashSet<int> set = new HashSet<int>(numm);
             int s = set.ToArray().Length;
-            return s
+            
             int i, j = 100;
             //Test1(out i);
             //Test2(ref j);

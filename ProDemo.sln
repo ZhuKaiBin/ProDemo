@@ -35,6 +35,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliPay", "AliPay\AliPay.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{BD329CF7-7DE3-4C37-91CF-4024862AE683}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{001FFAAE-D5E4-470C-B343-EC9D35702630}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
