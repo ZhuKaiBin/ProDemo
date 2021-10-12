@@ -283,7 +283,7 @@ namespace CreateToken
             Func<string, string> func1 = m => m + m;
             string ret2 = func1("bob2");
 
-
+            
            
             Console.ReadKey();
         }
