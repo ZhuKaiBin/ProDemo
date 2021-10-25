@@ -1,0 +1,31 @@
+﻿1：先通过Nugert下载IdentityServer4的安装包
+2：创建静态的配置类：Config
+   两个类：ApiScope和Client
+
+3： 注册服务
+            var builder = services.AddIdentityServer();
+            builder.AddDeveloperSigningCredential();//启动的时候，生成一个临时的秘钥
+            builder.AddInMemoryApiScopes(Config.ApiScopes);
+            builder.AddInMemoryClients(Config.clients);
+4：注册管道
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseIdentityServer();
+6：启动项目 多出一个的文件tempkey.jwk
+   {"alg":"RS256","d":"Nmn7qTQSU58UHm-T2QGKX8JSyBvx6bWCPrTKOz6RoUYQL2nMXNlNjEzA1AKiDE5hb3LOEnyPsQbXCEPf1b0LsKycsnHFgy0n0qMdGM14mDEKujnQbuIPUjKx7sTd0-tnyk-5E3YPmttljAkRf81RB-ZY3q8LUc6EkEwLk_jQtc3gqgV_Qzx_lkmJ3hmizhElaSBMSLsCQ2KDpVLS1xU8wkgmZYwGl4tvw967eNFo2qtXLPm-11iH0lZW9guplHiQshHm-bXmnuoAQoyLJ3Zwx69lfdpjFXfFoxrUW6UCR8DB5LXmA2LXhL5XeVsLOrScEfz4ZVQI1cAik8Hzzie2vQ","dp":"XEAJ1JtgcyrHVRLG3e5VN5R9QPX1JVycB9OxTBO7hdJAvXpx2FqDh9mC2GaZiU9HEqUDvEHza2SznG-MtCoRznk18fwi4UK69F1EIS8Vfr6FjisVuBGS7kD4BEDIOkhb8WGoNnh6Q3KD3TAVL9aj6qzWq9zFsIvBbWFMoUiUZIE","dq":"I9Ac88_gC7wThShNvfwFvjOuBgjwIsyKQvmv0HcHHwsQAZ2G4o4dacS2aGJeUcK2Mhlqa68Jp6XzfSF65bm1-iqHZ1R_5wPFEuDRjWxR1GrZECErrqnpTW8BMC_9AywG0I08wOfEGELx527n5Sd0a7dJK3FjAH0SA4u6I7IOFSc","e":"AQAB","kid":"4FCE80256378624F1C57A3F11FE61A33","kty":"RSA","n":"qrOlT1FARNYNFNcpHp2OLO6X9LXsomJNOlRxLdox0rrLaUySsHRk5S30UaeTRM_ZvZw-8-m5aVSQ7igri9eUO_Ne3y1TyvKxKr3P_MvgQf77Xwl7ALRbqecswfFgPa16OyHZu5ZPMnZa2ER-nq0DaMbq7GFSa0tz8iLGinOQeJG6H8DRnXH-gYGATS0i2-U_Y5nC9e9dcaGWAje6oNF1lW6aR2OHf-rfomu5ibuPrqKK6rQRH5VlNo97HAzHNRSTiaFM1icANvebQo4Ahafj91V-0O8qb182iiv_bb7vD_3dJsVM9rSYFGzmFMI5K3anOnxmqv6P-QMX7dFqOvjh-Q","p":"4XRzD6ExoMtnQQNSVgt8Y_zWqIILQie6Fdb_sTtWZFT9GGSm-gIZYM_VtT7L6ciOroy9HCjHnKQJyVj8EGiIybpkAHplF5OD4ud9PF1kBulvUbl4Fl7OglQRxKqVCBnfjvIxG85dcNj3mKErEr9sxEi4I-2IYBcVUZd3KlwowUc","q":"wdQrS7l4OOo611dwM_XYrpKZOeJSO-3Bn3e9aHoaeGy7EpLGAtqkhOWZJk2lTnonTDTHmNx9YeWjwyIvorzJF-voG3tNDL3EJDvhmpqG8Hm4en9kvBtQWB-ZJtG0bFmYt0D-q84gr14wICbiw0oiMGhJoSEuG0YYEmMwNgqQ4r8","qi":"JddBVU4zksDcaMhN5nV8p6oQsGZgLmHJjZjxr5kdwDNsnCiBKDwbkSlnZWzCqiShS1LbeE9lsV9urKGIpeYc1nJDpR2ATFKVl1M_k7g7gS3U_UbFstk6Mo1FWcEwV1j0AS7ZuFo2ec-8CB5lIZQ5rIwq8Xh4wNOlhaCBFhRfcl0"}
+7：postman  https://localhost:44389/.well-known/openid-configuration
+   postman  https://localhost:xxxxx/connect/token
+    三个参数：clinet_id:sample_client
+              client_secrets:sample_client_secrent
+              grant_type:client_credentials  // 授权类型  客户端资格证书
+    返回的参数：
+           1："access_token":"asfdbjasbfjkasbfbasfby一大串",//JWT 类型的令牌
+           2："expires_in"：3600,
+           3："token_type"："bearer"，
+           4："scope":"sample_api"
+
+8：新创建一个ProIdentityServer4Api 安装jwtbear的安装包：Microsoft.AspNetCore.Authentication.JwtBearer 
+   

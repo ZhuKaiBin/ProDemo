@@ -28,18 +28,6 @@ namespace CreateToken
         static void Main(string[] args)
         {
 
-            string s = "131JS0E5202108021489";
-            string ss = s.Substring(s.Length - 1, 1);
-            if (Convert.ToInt32(s.Substring(s.Length - 1, 1)) % 2 == 0)
-            {
-                string aaa = "偶数";
-            }
-            else
-            {
-                string aaa = "奇数";
-            }
-
-
 
             //Console.WriteLine($"线程Id是{Thread.CurrentThread.ManagedThreadId},线程名字是：{Thread.CurrentThread.Name}");
 
@@ -109,24 +97,7 @@ namespace CreateToken
             //                new JProperty("deliveryNumber","1"),
             //                new JProperty("description1","1"),
             //                new JProperty("description2","1"),
-            //                new JProperty("height","1"),
-            //                new JProperty("length","1"),
-            //                new JProperty("lineNumber","1"),
-            //                new JProperty("locator","1"),
-            //                new JProperty("packQuantity","1"),
-            //                new JProperty("packQuantityPallet","1"),
-            //                new JProperty("packingType","1"),
-            //                new JProperty("pieceQuantity","1"),
-            //                new JProperty("quantity","1"),
-            //                new JProperty("receiveDateTime","1"),
-            //                new JProperty("receiveQuantity","1"),
-            //                new JProperty("sKU","1"),
-            //                new JProperty("salesDateTime","1"),
-            //                new JProperty("salesQuantity","1"),
-            //                new JProperty("serialNumberBegin","1"),
-            //                new JProperty("serialNumberEnd","1"),
-            //                new JProperty("sub","1"),
-            //                new JProperty("weight","1" ),
+            //                new JProperty("height","1"),         
             //                new JProperty("width","1" ),
 
             //              };
@@ -275,13 +246,13 @@ namespace CreateToken
 
             // Console.WriteLine(student.Name);
 
-            Func<string, string> func = Getstring;
-            string ret = func("bob");
-            Console.WriteLine(ret);
+            //Func<string, string> func = Getstring;
+            //string ret = func("bob");
+            //Console.WriteLine(ret);
 
 
-            Func<string, string> func1 = m => m + m;
-            string ret2 = func1("bob2");
+            //Func<string, string> func1 = m => m + m;
+            //string ret2 = func1("bob2");
 
             
            
