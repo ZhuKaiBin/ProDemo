@@ -15,13 +15,45 @@ namespace AliPay
         static void Main(string[] args)
         {
 
+            unsafe
+            {
+                //DateTime是值类型,datetime1 是开辟了一个地址
+                //datetime2 = datetime1  将datetime1赋值给datetime2  datetime2 又开辟了一个新的空间
+                //datetime1 和datetime2  是两个不同的地址内存空间
+                //所以改变了time1的值,是不会改变time2的值
 
-            Func<string> func = () => "委托";
+                //这就是值类型的特点 ：开辟俩地址空间
+                var datetime1 = DateTime.Now;
+                var datetime2 = datetime1;
 
-            Expression<Func<string,string>> func_expression = (s) => s+"委托";
+                DateTime* p1 = &datetime1;
+                DateTime* p2 = &datetime2;
+
+                datetime1 = datetime1.AddDays(3);
+                DateTime* p3 = &datetime1;
+                DateTime* p4 = &datetime2;
 
 
-            Console.WriteLine(func_expression.Compile().Invoke("zhu"));
+
+                int str1 = 100;
+                int str2 = str1;
+
+                int* s1 = &str1;
+                int* s2 = &str2;
+
+                str1 = str1 + 100;
+
+                int* s3 = &str1;
+                int* s4 = &str2;
+
+            };
+
+            //Func<string> func = () => "委托";
+
+            //Expression<Func<string,string>> func_expression = (s) => s+"委托";
+
+
+            //Console.WriteLine(func_expression.Compile().Invoke("zhu"));
 
 
 
@@ -114,7 +146,7 @@ namespace AliPay
             //dog1.WangWang();
             Console.ReadLine();
 
-           
+
         }
         public static void ThreadMethod1(object val)
         {
@@ -201,5 +233,5 @@ namespace AliPay
 
     }
 
-   
+
 }
