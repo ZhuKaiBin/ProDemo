@@ -24,7 +24,7 @@ namespace WebLogging
         public IConfiguration Configuration { get; }
 
         //将服务注册到中 IServiceCollection
-        public void ConfigureServices(IServiceCollection services)//,ILoggingBuilder logging
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             

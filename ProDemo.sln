@@ -15,11 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDemo3", "ProDemo3\ProDem
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebLogger", "WebApi\WebLogger.csproj", "{04F2DD42-8453-48AF-A34F-E6153315123E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplicationCache", "WebApplicationCache\WebApplicationCache.csproj", "{07C64B28-2B8B-4C8A-AF86-D829A24E31FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expression", "ProDemo4\Expression.csproj", "{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDemo4", "ProDemo4\ProDemo4.csproj", "{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProRedis", "ProRedis\ProRedis.csproj", "{7B104D07-068A-4F79-8E57-A2CD563714A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProRedis_Func", "ProRedis\ProRedis_Func.csproj", "{7B104D07-068A-4F79-8E57-A2CD563714A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProIOC", "ProIOC\ProIOC.csproj", "{291E2C28-E1BE-4745-BFC2-DD4403F4982D}"
 EndProject
@@ -27,15 +25,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMyStartUp", "ProNetCore\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMiddleWare", "ProNetCore2\ProMiddleWare.csproj", "{4D0D1A58-CF94-426C-A571-3BE102678900}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebLogging", "WebLogging\WebLogging.csproj", "{0790F46E-079C-4418-9FAA-ED68ADA07FEE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAuthorization", "WebApplication1\ProAuthorization.csproj", "{1CAF0522-B45A-4B0B-8B78-E3662503D87E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliPay", "AliPay\AliPay.csproj", "{EE4AB4A8-3767-47F6-8345-767223D7D0B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliPay_abstract", "AliPay\AliPay_abstract.csproj", "{EE4AB4A8-3767-47F6-8345-767223D7D0B0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{BD329CF7-7DE3-4C37-91CF-4024862AE683}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sub_Func", "ConsoleApp1\Sub_Func.csproj", "{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{001FFAAE-D5E4-470C-B343-EC9D35702630}"
 EndProject
@@ -45,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProException", "ProExceptio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProIdentityServer4", "ProIdentityServer4\ProIdentityServer4.csproj", "{33786A45-E13A-4A09-ADB8-84F136C29475}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProIdentityServerAPI", "ProIdentityServerAPI\ProIdentityServerAPI.csproj", "{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProIdentityServerAPI", "ProIdentityServerAPI\ProIdentityServerAPI.csproj", "{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,10 +73,6 @@ Global
 		{04F2DD42-8453-48AF-A34F-E6153315123E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04F2DD42-8453-48AF-A34F-E6153315123E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04F2DD42-8453-48AF-A34F-E6153315123E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{07C64B28-2B8B-4C8A-AF86-D829A24E31FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{07C64B28-2B8B-4C8A-AF86-D829A24E31FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{07C64B28-2B8B-4C8A-AF86-D829A24E31FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{07C64B28-2B8B-4C8A-AF86-D829A24E31FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -101,10 +93,6 @@ Global
 		{4D0D1A58-CF94-426C-A571-3BE102678900}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D0D1A58-CF94-426C-A571-3BE102678900}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D0D1A58-CF94-426C-A571-3BE102678900}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0790F46E-079C-4418-9FAA-ED68ADA07FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0790F46E-079C-4418-9FAA-ED68ADA07FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0790F46E-079C-4418-9FAA-ED68ADA07FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0790F46E-079C-4418-9FAA-ED68ADA07FEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CAF0522-B45A-4B0B-8B78-E3662503D87E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CAF0522-B45A-4B0B-8B78-E3662503D87E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CAF0522-B45A-4B0B-8B78-E3662503D87E}.Release|Any CPU.ActiveCfg = Release|Any CPU

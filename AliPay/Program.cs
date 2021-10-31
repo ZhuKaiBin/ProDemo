@@ -49,38 +49,9 @@ namespace AliPay
             };
 
             //Func<string> func = () => "委托";
-
+            //Func<string,string> 是传入一个string的参数 (s) 就是参数  返回值是=>后面的
             //Expression<Func<string,string>> func_expression = (s) => s+"委托";
-
-
             //Console.WriteLine(func_expression.Compile().Invoke("zhu"));
-
-
-
-
-
-
-            // Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-            // Console.WriteLine(Thread.CurrentThread.Name);
-            //Console.WriteLine("Hello World!");
-
-            //string s1 = "test";
-            //s1 += "BOB";
-
-            //Console.WriteLine(s1);
-
-            //StringBuilder sb = new StringBuilder();
-            //sb.Append("1");
-            //sb.Append("2");
-
-            //Console.WriteLine(sb.ToString());
-
-            //StringBuilder builder = new StringBuilder(5);
-            //builder.AppendLine("12121");
-
-
-            //Console.WriteLine(builder.ToString());
-
 
 
 
@@ -109,17 +80,18 @@ namespace AliPay
             //Console.WriteLine("{0} {1}", Thread.CurrentThread.ManagedThreadId, threadLocal.Value);
 
             //string timeout = "zhukaib";
+            ////这里是将timeout 看看是否可以转换成int类型, 这里也考察了out的用法 不需要提前声明
             //int.TryParse(timeout, out int i);
             //if (i == 0) i = 3;
             //Console.WriteLine(i);
 
             ////remote master
-            //string expiry = "1631774580";
+            //string expiry = "1635471114";
             //DateTimeOffset ss = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(expiry));
-            //DateTimeOffset time = DateTimeOffset.UtcNow.AddMinutes(120);
+            //DateTimeOffset time = DateTimeOffset.Now;
             //if (ss < time)
             //{
-            //    string ssss = "";
+
             //}
 
 
@@ -141,9 +113,12 @@ namespace AliPay
 
 
 
-            //IDog dog1 = new IDog();
-            //dog1.Run();
-            //dog1.WangWang();
+            IDog dog1 = new IDog();
+            dog1.color = "黑色2";
+            dog1.Run();
+            dog1.WangWang();
+            Console.WriteLine(dog1.color.ToString());
+
             Console.ReadLine();
 
 
@@ -161,6 +136,11 @@ namespace AliPay
 
 
 
+        //抽象就好比是总公司定义几个规则,而且也设定了几个方法(不用abstract修饰)，子公司要继承abstract修饰的方法
+        //对于总公司设定的方法 可用可不用
+
+        //抽象admin   抽象里可以有方法体
+        //抽象类里可以有非抽象的的方法   但是抽象方法必须要在抽象类中
         public abstract class admin
         {
             public abstract void Run();
@@ -173,10 +153,13 @@ namespace AliPay
             public abstract void Fly();
         }
 
+        //接口admin  接口中不能有方法体
         public interface Iadmin
         {
             void Run();
             void Fly();
+
+            string color { set; get; }
         }
 
         public class IDog : Iadmin
@@ -195,8 +178,24 @@ namespace AliPay
             {
                 Console.WriteLine("Dog Can WangWang");
             }
-        }
 
+            private string _color;
+            public string color
+            {
+                get { return _color; }
+                set
+                {
+                    if (value == "黑色")
+                    {
+                        _color = "bob";
+                    }
+                    else
+                    {
+                        _color = "6666666";
+                    }
+                }
+            }
+        }
 
         public class Dog : admin
         {
@@ -232,6 +231,4 @@ namespace AliPay
         }
 
     }
-
-
 }

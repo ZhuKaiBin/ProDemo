@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml;
@@ -8,68 +9,40 @@ namespace ProTask
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
+            DateTime dt1 = DateTime.Now;
+            Console.WriteLine(Thread.CurrentThread.ManagedThreadId + "sssssssssssssssssssssssss" + "：" + Thread.CurrentThread.IsThreadPoolThread);
+            await AsyncMethod();
 
-            string num = "";
-            for (int i=0;i<10;i++)
-            {
-               
-                if (i == 5)
-                {
-                    continue;
-                }
-                else
-                {
-                    num = num + i.ToString();
-                }  
+            DateTime dt2 = DateTime.Now;
+            TimeSpan ts = dt1 - dt2;
+            double t = ts.TotalMilliseconds;
 
-            }
+            Console.WriteLine(+Thread.CurrentThread.ManagedThreadId + "耗时" + t);
+            Console.ReadKey();
 
-            //var task = Task.Run(() => { Console.WriteLine("task：" + Thread.CurrentThread.ManagedThreadId); });
-
-            //task.Wait();
-            //var task2 = new Task(() => { Console.WriteLine("task2：" + Thread.CurrentThread.ManagedThreadId); });
-            //task2.Start();
-
-
-            //var factory = Task<int>.Factory.StartNew(getint); ;
-            //var ss = factory.Result;
-            //var s = factory.GetAwaiter().GetResult();
-
-            //int para = 10088;
-            //var tasknum = Task<int>.Run(() => { return getint(para); }).Result;
-
-
-            //Func<string, string,string> func = (m, n) => m + n;
-
-            //func("bob", "zhu");
-
-
-
-            XmlDocument xd = new XmlDocument();
-            xd.LoadXml("<Person><name> 诸葛亮 </name></Person>");
-            var element = xd.DocumentElement.ToString();
-
-            string s = xd.DocumentElement.InnerXml;
-
-
-            var bob = name.bob;
-            int tomnum = (int)name.tom;
-
-
-        Console.ReadKey();
         }
 
-        enum name
-        {
-            bob,
-            tom
-        };
-        public static int getint(int para)
-    {
-        return para;
-    }
 
-}
+        public static async Task AsyncMethod()
+        {
+
+            Console.WriteLine("aaaaaaaaaaaaaaaaaaaaaaaaaaaa" + Thread.CurrentThread.ManagedThreadId + "：" + Thread.CurrentThread.IsThreadPoolThread);
+            await Task.Run(() =>
+            {
+
+                for (int i = 0; i < 5; i++)
+                {
+                    HttpClient client = new HttpClient();
+                    Console.WriteLine(client.GetAsync("https://www.baidu.com/?tn=80035161_1_dg").Result);
+
+                }
+                Console.WriteLine("ccccccccccccccccccccccccccc" + Thread.CurrentThread.ManagedThreadId + "：" + Thread.CurrentThread.IsThreadPoolThread);
+            });
+
+            Console.WriteLine("xxxxxxxxxxxxxxxxxxx" + Thread.CurrentThread.ManagedThreadId + "：" + Thread.CurrentThread.IsThreadPoolThread);
+        }
+
+    }
 }

@@ -15,64 +15,74 @@ namespace ProIndexes
         {
 
 
-            var builder = new HostBuilder();
-            var environment = Environment.GetEnvironmentVariable("zkb");
+
+            IndexClass indexClass = new IndexClass();
+            Random random = new Random();
+
+            for (int i = 0; i < 5; i++)
+            {
+                indexClass[i] = random.Next(1, 12);
+            }
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine($"输出的元素,{indexClass[i]}");
+            }
+            Console.ReadKey();
+
+
+          //  var builder = new HostBuilder();
+          //  var environment = Environment.GetEnvironmentVariable("zkb");
+
+          //  var config = new ConfigurationBuilder()
+          //                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+          //              //.AddEnvironmentVariables()
+          //              .Build();
+          //  Configuration = config.GetSection("ConnectionStrings:xxx");
+
+
+          //  builder.ConfigureAppConfiguration((h, services) =>
+          //  {
+          //      Configuration = h.Configuration;
+
+          //      var zz = h.HostingEnvironment;
+          //      services.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+          //  });
+
+          //string  str= Configuration.GetConnectionString("xxx");
+
+
+          //  var builder1 = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+          //  var configuration = builder1.Build();
+          //  string baseUrl = configuration.GetSection("ConnectionStrings:xxx").Value;
+
+
+          //  builder.ConfigureServices((h, services) =>
+          //  {
+          //      Configuration = h.Configuration;
+          //      services.AddOptions();
+
+          //      string aaaa = h.Configuration.GetConnectionString("xxx");
+          //      services.AddSingleton(Configuration);
+
+          //  });
+ //var s = Configuration.GetConnectionString("xxx");
+
+ //           var host = builder.Build();
+ //           using (host)
+ //           {
+ //               host.Run();
+ //           }
+            string ss = "";
 
            
 
-
-
-
-
-            var config = new ConfigurationBuilder()
-                          .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                        //.AddEnvironmentVariables()
-                        .Build();
-            Configuration = config.GetSection("ConnectionStrings:xxx");
-
-
-            builder.ConfigureAppConfiguration((h, services) =>
-            {
-                Configuration = h.Configuration;
-
-                var zz = h.HostingEnvironment;
-                services.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-            });
-
-          string  str= Configuration.GetConnectionString("xxx");
-
-
-            var builder1 = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-            var configuration = builder1.Build();
-            string baseUrl = configuration.GetSection("ConnectionStrings:xxx").Value;
-
-
-            builder.ConfigureServices((h, services) =>
-            {
-                Configuration = h.Configuration;
-                services.AddOptions();
-
-                string aaaa = h.Configuration.GetConnectionString("xxx");
-                services.AddSingleton(Configuration);
-
-            });
-
-            string ss = "";
-
-            var s = Configuration.GetConnectionString("xxx");
-
-            var host = builder.Build();
-            using (host)
-            {
-                host.Run();
-            }
-
             Console.WriteLine("666" + Configuration.GetConnectionString("xxx"));
 
-            //Person breakingbad = new Person();
-            ////使用索引器设置值
-            //breakingbad[3] = "谢耳朵";
-            //breakingbad[4] = "潘妮";
+            Person breakingbad = new Person();
+            //使用索引器设置值
+            breakingbad[3] = "谢耳朵";
+            breakingbad[4] = "潘妮";
 
             ////使用索引器获得值
             //for (int i = 0; i < 5; i++)
@@ -93,22 +103,17 @@ namespace ProIndexes
             //System.Console.ReadKey();
 
 
-
-
-
-
-
-            //var randomNumbers = Enumerable.Range(0, 100).OrderBy(x => Guid.NewGuid());
+            var randomNumbers = Enumerable.Range(0, 100).OrderBy(x => Guid.NewGuid());
             //int num=  randomNumbers.Count();
-            //Dictionary<string, string> dic1 = new Dictionary<string, string>
-            //        {
-            //           { "access_token","1"},
-            //           { "app_key","1" },
-            //           { "method","1" },
-            //           { "timestamp","1" },
-            //           { "v","1" },
-            //         };
-            //string s1=  string.Join("", dic1.OrderBy(p => p.Key).Select(p => $"{p.Key}{p.Value}"));
+            Dictionary<string, string> dic1 = new Dictionary<string, string>
+                    {
+                       { "access_token","1"},
+                       { "app_key","1" },
+                       { "method","1" },
+                       { "timestamp","1" },
+                       { "v","1" },
+                     };
+            string s1 = string.Join("", dic1.OrderBy(p => p.Key).Select(p => $"{p.Key}{p.Value}"));
             //string ss = string.Join("", dic1);
             //string.Join(",", dic1.OrderBy(p => p.Key).Select(p => p.Value));
 
@@ -138,45 +143,45 @@ namespace ProIndexes
             //};
             //action(6,5);
 
-            //Student[] stu = new Student[3];
-            //stu[0] = new Student()
-            //{
-            //    Id = 203,
-            //    Name = "Tony Stark",
-            //    Gender = "Male"
-            //};
-            //stu[1] = new Student()
-            //{
-            //    Id = 205,
-            //    Name = "Hulk",
-            //    Gender = "Male"
-            //};
-            //stu[2] = new Student()
-            //{
-            //    Id = 210,
-            //    Name = "Black Widow",
-            //    Gender = "Female"
-            //};
+            Student[] stu = new Student[3];
+            stu[0] = new Student()
+            {
+                Id = 203,
+                Name = "Tony Stark",
+                Gender = "Male"
+            };
+            stu[1] = new Student()
+            {
+                Id = 205,
+                Name = "Hulk",
+                Gender = "Male"
+            };
+            stu[2] = new Student()
+            {
+                Id = 210,
+                Name = "Black Widow",
+                Gender = "Female"
+            };
 
-            ////将数组转成List
-            //List<Student> stulist=stu.ToList<Student>();
-            //foreach (Student student in stulist)
-            //{
-            //    Console.WriteLine("Id = " + student.Id + " " + " Name = " + student.Name + " " + " Gender = " + student.Gender);
-            //}
-            //var list= stulist.Select(p => p.Id == 210).FirstOrDefault();
-            ////将list转成数组
-            //Student[] toarray = stulist.ToArray<Student>();
-            //foreach (Student student in toarray)
-            //{
-            //    Console.WriteLine("Id = " + student.Id + " " + " Name = " + student.Name + " " + " Gender = " + student.Gender);
-            //}
-            ////将数组转成Dictionary
-            //Dictionary<int, Student> StudentDictionary = toarray.ToDictionary(key => key.Id, Studentobj => Studentobj);
-            //foreach (KeyValuePair<int, Student> student in StudentDictionary)
-            //{
-            //    Console.WriteLine("Id = " + student.Key + " " + " Name = " + student.Value.Name + " " + " Gender = " + student.Value.Gender);
-            //}
+            //将数组转成List
+            List<Student> stulist = stu.ToList<Student>();
+            foreach (Student student in stulist)
+            {
+                Console.WriteLine("Id = " + student.Id + " " + " Name = " + student.Name + " " + " Gender = " + student.Gender);
+            }
+            var list = stulist.Select(p => p.Id == 210).FirstOrDefault();
+            //将list转成数组
+            Student[] toarray = stulist.ToArray<Student>();
+            foreach (Student student in toarray)
+            {
+                Console.WriteLine("Id = " + student.Id + " " + " Name = " + student.Name + " " + " Gender = " + student.Gender);
+            }
+            //将数组转成Dictionary
+            Dictionary<int, Student> StudentDictionary = toarray.ToDictionary(key => key.Id, Studentobj => Studentobj);
+            foreach (KeyValuePair<int, Student> student in StudentDictionary)
+            {
+                Console.WriteLine("Id = " + student.Key + " " + " Name = " + student.Value.Name + " " + " Gender = " + student.Value.Gender);
+            }
 
         }
     }
@@ -212,6 +217,32 @@ namespace ProIndexes
         {
             get { return name[num]; }
             set { name[num] = value; }
+        }
+    }
+
+
+    public interface ISOmeInterface
+    {
+        int this[int index] { set; get; }
+    }
+
+
+    public class IndexClass : ISOmeInterface
+    {
+
+        private int[] ary = new int[5];
+        public int this[int index]
+        {
+            get { return ary[index]; }
+            set
+            {
+                if (value > 5)
+                    ary[index] = 0;
+                else
+                {
+                    ary[index] = value;
+                }
+            }
         }
     }
 }
