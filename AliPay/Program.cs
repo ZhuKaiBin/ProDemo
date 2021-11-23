@@ -14,7 +14,7 @@ namespace AliPay
         static ThreadLocal<string> local;
         static void Main(string[] args)
         {
-
+            string bob = "";
             unsafe
             {
                 //DateTime是值类型,datetime1 是开辟了一个地址
