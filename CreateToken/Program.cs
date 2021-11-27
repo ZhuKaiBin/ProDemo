@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -11,8 +14,10 @@ using System.Web;
 
 namespace CreateToken
 {
+
     class Program
     {
+        public static IConfiguration configuration;
 
         public class Bob
         {
@@ -27,6 +32,24 @@ namespace CreateToken
 
         static void Main(string[] args)
         {
+            HostBuilder host = new HostBuilder();
+
+            host.ConfigureServices((host, services) =>
+            {
+                configuration = host.Configuration;
+                services.AddOptions();
+
+                configuration.GetConnectionString("");
+            });
+
+
+            host.ConfigureLogging((LoggingServices) => { LoggingServices.Services.AddLogging(); });
+            host.ConfigureLogging((host, LoggingServices) =>
+            {
+                host.Configuration.GetSection("");
+                LoggingServices.Services.AddLogging();
+            });
+
 
 
             //Console.WriteLine($"线程Id是{Thread.CurrentThread.ManagedThreadId},线程名字是：{Thread.CurrentThread.Name}");
@@ -221,7 +244,7 @@ namespace CreateToken
             string appid = "A9SP5uLCVWXu";
             string appkey = "txE8EiZF3bWH9jh2poZYE3ypR7vzWfEN";
             string sss = CreateSASToken(appid, appkey, TimeSpan.FromMinutes(120));
-            Console.WriteLine(sss); 
+            Console.WriteLine(sss);
             //Console.WriteLine(JsonConvert.SerializeObject(obj));
             #endregion
 
@@ -254,8 +277,8 @@ namespace CreateToken
             //Func<string, string> func1 = m => m + m;
             //string ret2 = func1("bob2");
 
-            
-           
+
+
             Console.ReadKey();
         }
 

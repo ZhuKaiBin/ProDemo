@@ -6,47 +6,93 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AliPay
 {
     class Program
     {
+
+        private readonly static object obj = new object();
         static ThreadLocal<string> local;
+
+        public class Birld
+        { 
+            public string Eat { set; get; }
+            public void Fly()
+            { }
+        }
+
+        public class A : Birld
+        {
+            public void Run()
+            { 
+            
+            }
+        }
+
+
+
+
+
         static void Main(string[] args)
         {
+            var num = Convert.ToDecimal("0.0008");
+            var s1 = decimal.Round(num, 2);//这个Round(数字,小数点后几位),2就是后2位 0.0008==》0.02
+            var s2 = decimal.Round(num, 3);//3就是后三位 0.0008==》0.001  因为第四位是8，四舍五入一下
+            var s3 = decimal.Round(num, 1);//1就是后一位,0.0008======>0.0
 
-            unsafe
-            {
-                //DateTime是值类型,datetime1 是开辟了一个地址
-                //datetime2 = datetime1  将datetime1赋值给datetime2  datetime2 又开辟了一个新的空间
-                //datetime1 和datetime2  是两个不同的地址内存空间
-                //所以改变了time1的值,是不会改变time2的值
+            int v = (int)decimal.Round(Convert.ToDecimal("1.0"), 0);
 
-                //这就是值类型的特点 ：开辟俩地址空间
-                var datetime1 = DateTime.Now;
-                var datetime2 = datetime1;
-
-                DateTime* p1 = &datetime1;
-                DateTime* p2 = &datetime2;
-
-                datetime1 = datetime1.AddDays(3);
-                DateTime* p3 = &datetime1;
-                DateTime* p4 = &datetime2;
+            Console.WriteLine(DateTime.Now);
+            Console.WriteLine(TimeZoneInfo.Local);
+            Console.WriteLine(TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
 
 
+            DateTime Chtime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
+            Console.WriteLine(Chtime);
+            var time= new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
+            Console.WriteLine(time);
+            #region
 
-                int str1 = 100;
-                int str2 = str1;
 
-                int* s1 = &str1;
-                int* s2 = &str2;
+            A a = new A();
+            a.Fly();
 
-                str1 = str1 + 100;
+            string qqq = "";
 
-                int* s3 = &str1;
-                int* s4 = &str2;
+            //unsafe
+            //{
+            //DateTime是值类型,datetime1 是开辟了一个地址
+            //datetime2 = datetime1  将datetime1赋值给datetime2  datetime2 又开辟了一个新的空间
+            //datetime1 和datetime2  是两个不同的地址内存空间
+            //所以改变了time1的值,是不会改变time2的值
 
-            };
+            //这就是值类型的特点 ：开辟俩地址空间
+            //var datetime1 = DateTime.Now;
+            //var datetime2 = datetime1;
+
+            //DateTime* p1 = &datetime1;
+            //DateTime* p2 = &datetime2;
+
+            //datetime1 = datetime1.AddDays(3);
+            //DateTime* p3 = &datetime1;
+            //DateTime* p4 = &datetime2;
+
+
+
+            //int str1 = 100;
+            //int str2 = str1;
+
+            //int* s1 = &str1;
+            //int* s2 = &str2;
+
+            //str1 = str1 + 100;
+
+            //int* s3 = &str1;
+            //int* s4 = &str2;
+
+            //};
 
             //Func<string> func = () => "委托";
             //Func<string,string> 是传入一个string的参数 (s) 就是参数  返回值是=>后面的
@@ -113,16 +159,32 @@ namespace AliPay
 
 
 
-            IDog dog1 = new IDog();
-            dog1.color = "黑色2";
-            dog1.Run();
-            dog1.WangWang();
-            Console.WriteLine(dog1.color.ToString());
-
+            //IDog dog1 = new IDog();
+            //dog1.color = "黑色2";
+            //dog1.Run();
+            //dog1.WangWang();
+            //Console.WriteLine(dog1.color.ToString());
+#endregion
             Console.ReadLine();
 
 
         }
+
+        public static void test1()
+        {
+            Thread t = new Thread(()=> {
+
+                lock (obj)
+                {
+                    Console.WriteLine("1212121");
+                    Thread.Sleep(500);
+                }
+            });
+        }
+
+
+
+
         public static void ThreadMethod1(object val)
         {
             for (int i = 0; i <= 50; i++)

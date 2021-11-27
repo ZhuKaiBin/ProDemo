@@ -8,7 +8,23 @@ namespace ProDemo4
         static void Main(string[] args)
         {
 
-           
+            //Console.WriteLine("i={0}", i);
+            //Console.WriteLine("j={0}", new Program().j);
+            //Console.Read();
+
+            //Console.Write(Bob.bob_num);
+            //Bob b2 = new Bob();
+
+            int a = 8;
+            int b = a;
+
+            a = 5;
+
+
+
+            //Console.Write(Bob.bob_num);//结果为2，首先，类被加载，所有的静态成员被创建在静态存储区，i=0,接着调用了类的成员，这时候静态构造函数就会被调用，i=2
+            //Bob b = new Bob();
+            //Console.Write(Bob.bob_num);
             //IndexClass indexClass = new IndexClass();
             //Random random = new Random();
 
@@ -23,6 +39,22 @@ namespace ProDemo4
             //}
             //Console.ReadKey();
             #region Expression
+
+            LambdaFun("BeiJing 2013", s =>
+            {
+                if (s.Contains("2013"))
+                {
+                    s = s.Replace("2013", "2014");
+                }
+                return s;
+            });
+
+            static void LambdaFun(string str, Func<string, string> func)
+            {
+                Console.WriteLine(func(str));
+            }
+            Console.ReadKey();
+
 
             //#region 无参数
             Func<string> func = () => { return "委托"; };
@@ -112,9 +144,64 @@ namespace ProDemo4
 
 
             #endregion
-#endregion
+
 
         }
+
+
+
+        public class Bob2
+        {
+            public string name;
+            public int id;
+        }
+
+
+        public static void LambdaFun(string str, Func<string, string> func)
+        {
+            Console.WriteLine(func(str));
+        }
+
+
+
+        static int i = getNum();
+        int j = getNum();
+
+        static int num = 1;
+
+        static int getNum()
+        {
+            return num;
+        }
+
+        public  class Bob
+        {
+            //如果一个类 既有静态构造函数 又有非静态构造函数
+            //那么程序先执行静态构造函数,再执行非静态构造函数
+
+            public static int bob_num = 666;
+            static Bob()
+            {
+                bob_num = 888;
+                Console.Write("静态构造函数被执行");
+            }
+
+
+            public Bob()
+            {
+                bob_num = 10000;
+                Console.Write("实例构造方法被调用");
+            }
+                
+        }
+
+
+
+
+
+
+
+
 
 
         public interface ISOmeInterface
