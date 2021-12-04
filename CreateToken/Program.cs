@@ -30,8 +30,72 @@ namespace CreateToken
             public int age;
         }
 
+        public class Fly
+        {
+            public  void Flys()
+            { 
+              
+            }
+        }
+
+        public class EAT
+        {
+            public void eat()
+            { 
+            
+            }
+        }
+
+
+        public class Birld : EAT
+        {
+            
+        }
+
+             
+
+
+
         static void Main(string[] args)
         {
+
+
+
+            var qq = new JObject()
+                                                     {
+                                                      new JProperty("SKU","" ),
+                                                      new JProperty("SN", "")
+                                                     };
+
+
+
+
+            JObject obj = new JObject {
+                               new JProperty("SKU","" ),
+                                                      new JProperty("SN", "")
+                };
+
+
+            var json1 = JsonConvert.SerializeObject(qq);
+            var json = JsonConvert.SerializeObject(obj);
+
+
+            DateTimeOffset sdate = DateTimeOffset.UtcNow;
+            DateTimeOffset sdate2 = DateTimeOffset.Now;
+
+            var utility= HttpUtility.UrlEncode("http://localhost:37667/api/v1.0/Order/PutOrder");
+            var num = HttpUtility.UrlDecode(utility);
+            TimeSpan span = new TimeSpan(12, 00, 00);
+
+            TimeSpan span2 = new TimeSpan(13, 00, 00);
+
+            var s = span2 - span;
+
+
+            Birld birld = new Birld();
+            birld.eat();
+
+
             HostBuilder host = new HostBuilder();
 
             host.ConfigureServices((host, services) =>

@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ACC_MINIEHUBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="hubV2_DNTripMB">
+          <Key>
+            <PropertyRef Name="DELIVERY_NUMBER" />
+            <PropertyRef Name="TRIP_NUMBER" />
+          </Key>
+          <Property Name="DELIVERY_NUMBER" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TRIP_NUMBER" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CARRIERS_ALL" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TO_CITY" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SO_TYPE" Type="nvarchar" MaxLength="10" />
+          <Property Name="CARRIER_EFFECTIVE_TIME_1" Type="nvarchar" MaxLength="10" />
+          <Property Name="CREATE_DATETIME" Type="datetime" Nullable="false" />
+          <Property Name="CREATE_USERNAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FTP_STATUS" Type="int" Nullable="false" />
+          <Property Name="EXPRESS_NUMBER" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="SODETAIL">
+          <Key>
+            <PropertyRef Name="PK_SODETAIL" />
+          </Key>
+          <Property Name="PK_SODETAIL" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PK_SOHEAD" Type="int" Nullable="false" />
+          <Property Name="LINENUMBER" Type="int" Nullable="false" />
+          <Property Name="LINENUM" Type="nvarchar" MaxLength="10" />
+          <Property Name="DELIVERY_DETAIL_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="SO_LINE_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="PART_NO" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="QUANTITY" Type="int" Nullable="false" />
+          <Property Name="SALES_QUANTITY" Type="int" />
+          <Property Name="SALES_DATE" Type="datetime" />
+          <Property Name="LAST_MODIFY_DATE" Type="datetime" />
+          <Property Name="REMARK" Type="nvarchar" MaxLength="80" />
+          <Property Name="S_L" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SOHEAD">
+          <Key>
+            <PropertyRef Name="PK_SOHEAD" />
+          </Key>
+          <Property Name="PK_SOHEAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SONUMBER" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CARRIER" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CARRIER_TYPE" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CARRIER_EFFECTIVE_TIME" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="ACCOUNT_NAME" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ACCOUNT_NAME_SHORT" Type="nvarchar" MaxLength="20" />
+          <Property Name="ACCOUNT_NAME_CODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="MEMO" Type="nvarchar" MaxLength="75" />
+          <Property Name="COMPANY_NAME" Type="nvarchar" MaxLength="35" Nullable="false" />
+          <Property Name="CUSTOMER_CONTACTPERSON" Type="nvarchar" MaxLength="50" />
+          <Property Name="CUSTOMER_ADDRESS" Type="nvarchar" MaxLength="75" Nullable="false" />
+          <Property Name="CUSTOMER_TEL" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DELIVERY_DATE" Type="datetime" Nullable="false" />
+          <Property Name="ORIGIN_ORDER_NUMBER" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CUSTOMER_NAME" Type="nvarchar" MaxLength="26" Nullable="false" />
+          <Property Name="CUSTOMER_CODE" Type="nvarchar" MaxLength="20" />
+          <Property Name="FAX_NUMBER" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="WAREHOUSETYPE" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="IS_TO_SEND" Type="bit" Nullable="false" />
+          <Property Name="SEND_STATUS" Type="int" Nullable="false" />
+          <Property Name="SEND_DATE" Type="datetime" />
+          <Property Name="PK_SOCOMPANY" Type="int" Nullable="false" />
+          <Property Name="SO_STATUS" Type="int" Nullable="false" />
+          <Property Name="CREATE_DATETIME" Type="datetime" Nullable="false" />
+          <Property Name="TAKE_OVER_DATETIME" Type="datetime" />
+          <Property Name="ISHURRY" Type="bit" Nullable="false" />
+          <Property Name="FROM_CITY_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="FROM_CITY_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="TO_CITY_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="TO_CITY_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="IS_PRINT_SO" Type="bit" Nullable="false" />
+          <Property Name="DO_USER" Type="nvarchar" MaxLength="50" />
+          <Property Name="WAREHOUSE_CODE" Type="nvarchar" MaxLength="10" />
+          <Property Name="EXCEL_STATUS" Type="int" Nullable="false" />
+          <Property Name="EXCEL_DATE" Type="datetime" />
+          <Property Name="IS_BLP" Type="bit" Nullable="false" />
+          <Property Name="DELIVERY_REMARK" Type="nvarchar" MaxLength="75" />
+          <Property Name="SOPACK_QUANTITY" Type="int" />
+          <Property Name="FTP_STATUS" Type="int" Nullable="false" />
+          <Property Name="TRIPPACK_QUANTITY" Type="int" />
+          <Property Name="OU_NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_SODETAIL_SOHEAD">
+          <End Role="SOHEAD" Type="Self.SOHEAD" Multiplicity="1" />
+          <End Role="SODETAIL" Type="Self.SODETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOHEAD">
+              <PropertyRef Name="PK_SOHEAD" />
+            </Principal>
+            <Dependent Role="SODETAIL">
+              <PropertyRef Name="PK_SOHEAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ACC_MINIEHUBModelStoreContainer">
+          <EntitySet Name="hubV2_DNTripMB" EntityType="Self.hubV2_DNTripMB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SODETAIL" EntityType="Self.SODETAIL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SOHEAD" EntityType="Self.SOHEAD" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_SODETAIL_SOHEAD" Association="Self.FK_SODETAIL_SOHEAD">
+            <End Role="SOHEAD" EntitySet="SOHEAD" />
+            <End Role="SODETAIL" EntitySet="SODETAIL" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ACC_MINIEHUBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hubV2_DNTripMB">
+          <Key>
+            <PropertyRef Name="DELIVERY_NUMBER" />
+            <PropertyRef Name="TRIP_NUMBER" />
+          </Key>
+          <Property Name="DELIVERY_NUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TRIP_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CARRIERS_ALL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TO_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SO_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CARRIER_EFFECTIVE_TIME_1" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CREATE_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CREATE_USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FTP_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="EXPRESS_NUMBER" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SODETAIL">
+          <Key>
+            <PropertyRef Name="PK_SODETAIL" />
+          </Key>
+          <Property Name="PK_SODETAIL" Type="Guid" Nullable="false" />
+          <Property Name="PK_SOHEAD" Type="Int32" Nullable="false" />
+          <Property Name="LINENUMBER" Type="Int32" Nullable="false" />
+          <Property Name="LINENUM" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DELIVERY_DETAIL_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SO_LINE_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PART_NO" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="QUANTITY" Type="Int32" Nullable="false" />
+          <Property Name="SALES_QUANTITY" Type="Int32" />
+          <Property Name="SALES_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LAST_MODIFY_DATE" Type="DateTime" Precision="3" />
+          <Property Name="REMARK" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="S_L" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SOHEAD" Relationship="Self.FK_SODETAIL_SOHEAD" FromRole="SODETAIL" ToRole="SOHEAD" />
+        </EntityType>
+        <EntityType Name="SOHEAD">
+          <Key>
+            <PropertyRef Name="PK_SOHEAD" />
+          </Key>
+          <Property Name="PK_SOHEAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SONUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CARRIER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CARRIER_TYPE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CARRIER_EFFECTIVE_TIME" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ACCOUNT_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ACCOUNT_NAME_SHORT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ACCOUNT_NAME_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MEMO" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="COMPANY_NAME" Type="String" MaxLength="35" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUSTOMER_CONTACTPERSON" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CUSTOMER_ADDRESS" Type="String" MaxLength="75" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUSTOMER_TEL" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DELIVERY_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ORIGIN_ORDER_NUMBER" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUSTOMER_NAME" Type="String" MaxLength="26" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CUSTOMER_CODE" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="FAX_NUMBER" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WAREHOUSETYPE" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IS_TO_SEND" Type="Boolean" Nullable="false" />
+          <Property Name="SEND_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="SEND_DATE" Type="DateTime" Precision="3" />
+          <Property Name="PK_SOCOMPANY" Type="Int32" Nullable="false" />
+          <Property Name="SO_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="CREATE_DATETIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TAKE_OVER_DATETIME" Type="DateTime" Precision="3" />
+          <Property Name="ISHURRY" Type="Boolean" Nullable="false" />
+          <Property Name="FROM_CITY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FROM_CITY_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TO_CITY_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TO_CITY_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IS_PRINT_SO" Type="Boolean" Nullable="false" />
+          <Property Name="DO_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WAREHOUSE_CODE" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="EXCEL_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="EXCEL_DATE" Type="DateTime" Precision="3" />
+          <Property Name="IS_BLP" Type="Boolean" Nullable="false" />
+          <Property Name="DELIVERY_REMARK" Type="String" MaxLength="75" FixedLength="false" Unicode="true" />
+          <Property Name="SOPACK_QUANTITY" Type="Int32" />
+          <Property Name="FTP_STATUS" Type="Int32" Nullable="false" />
+          <Property Name="TRIPPACK_QUANTITY" Type="Int32" />
+          <Property Name="OU_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SODETAILs" Relationship="Self.FK_SODETAIL_SOHEAD" FromRole="SOHEAD" ToRole="SODETAIL" />
+        </EntityType>
+        <Association Name="FK_SODETAIL_SOHEAD">
+          <End Role="SOHEAD" Type="Self.SOHEAD" Multiplicity="1" />
+          <End Role="SODETAIL" Type="Self.SODETAIL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SOHEAD">
+              <PropertyRef Name="PK_SOHEAD" />
+            </Principal>
+            <Dependent Role="SODETAIL">
+              <PropertyRef Name="PK_SOHEAD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ACC_MINIEHUBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hubV2_DNTripMB" EntityType="Self.hubV2_DNTripMB" />
+          <EntitySet Name="SODETAILs" EntityType="Self.SODETAIL" />
+          <EntitySet Name="SOHEADs" EntityType="Self.SOHEAD" />
+          <AssociationSet Name="FK_SODETAIL_SOHEAD" Association="Self.FK_SODETAIL_SOHEAD">
+            <End Role="SOHEAD" EntitySet="SOHEADs" />
+            <End Role="SODETAIL" EntitySet="SODETAILs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ACC_MINIEHUBModelStoreContainer" CdmEntityContainer="ACC_MINIEHUBEntities">
+          <EntitySetMapping Name="hubV2_DNTripMB">
+            <EntityTypeMapping TypeName="ACC_MINIEHUBModel.hubV2_DNTripMB">
+              <MappingFragment StoreEntitySet="hubV2_DNTripMB">
+                <ScalarProperty Name="DELIVERY_NUMBER" ColumnName="DELIVERY_NUMBER" />
+                <ScalarProperty Name="TRIP_NUMBER" ColumnName="TRIP_NUMBER" />
+                <ScalarProperty Name="CARRIERS_ALL" ColumnName="CARRIERS_ALL" />
+                <ScalarProperty Name="TO_CITY" ColumnName="TO_CITY" />
+                <ScalarProperty Name="SO_TYPE" ColumnName="SO_TYPE" />
+                <ScalarProperty Name="CARRIER_EFFECTIVE_TIME_1" ColumnName="CARRIER_EFFECTIVE_TIME_1" />
+                <ScalarProperty Name="CREATE_DATETIME" ColumnName="CREATE_DATETIME" />
+                <ScalarProperty Name="CREATE_USERNAME" ColumnName="CREATE_USERNAME" />
+                <ScalarProperty Name="FTP_STATUS" ColumnName="FTP_STATUS" />
+                <ScalarProperty Name="EXPRESS_NUMBER" ColumnName="EXPRESS_NUMBER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SODETAILs">
+            <EntityTypeMapping TypeName="ACC_MINIEHUBModel.SODETAIL">
+              <MappingFragment StoreEntitySet="SODETAIL">
+                <ScalarProperty Name="PK_SODETAIL" ColumnName="PK_SODETAIL" />
+                <ScalarProperty Name="PK_SOHEAD" ColumnName="PK_SOHEAD" />
+                <ScalarProperty Name="LINENUMBER" ColumnName="LINENUMBER" />
+                <ScalarProperty Name="LINENUM" ColumnName="LINENUM" />
+                <ScalarProperty Name="DELIVERY_DETAIL_ID" ColumnName="DELIVERY_DETAIL_ID" />
+                <ScalarProperty Name="SO_LINE_ID" ColumnName="SO_LINE_ID" />
+                <ScalarProperty Name="PART_NO" ColumnName="PART_NO" />
+                <ScalarProperty Name="QUANTITY" ColumnName="QUANTITY" />
+                <ScalarProperty Name="SALES_QUANTITY" ColumnName="SALES_QUANTITY" />
+                <ScalarProperty Name="SALES_DATE" ColumnName="SALES_DATE" />
+                <ScalarProperty Name="LAST_MODIFY_DATE" ColumnName="LAST_MODIFY_DATE" />
+                <ScalarProperty Name="REMARK" ColumnName="REMARK" />
+                <ScalarProperty Name="S_L" ColumnName="S_L" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SOHEADs">
+            <EntityTypeMapping TypeName="ACC_MINIEHUBModel.SOHEAD">
+              <MappingFragment StoreEntitySet="SOHEAD">
+                <ScalarProperty Name="PK_SOHEAD" ColumnName="PK_SOHEAD" />
+                <ScalarProperty Name="SONUMBER" ColumnName="SONUMBER" />
+                <ScalarProperty Name="CARRIER" ColumnName="CARRIER" />
+                <ScalarProperty Name="CARRIER_TYPE" ColumnName="CARRIER_TYPE" />
+                <ScalarProperty Name="CARRIER_EFFECTIVE_TIME" ColumnName="CARRIER_EFFECTIVE_TIME" />
+                <ScalarProperty Name="ACCOUNT_NAME" ColumnName="ACCOUNT_NAME" />
+                <ScalarProperty Name="ACCOUNT_NAME_SHORT" ColumnName="ACCOUNT_NAME_SHORT" />
+                <ScalarProperty Name="ACCOUNT_NAME_CODE" ColumnName="ACCOUNT_NAME_CODE" />
+                <ScalarProperty Name="MEMO" ColumnName="MEMO" />
+                <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+                <ScalarProperty Name="CUSTOMER_CONTACTPERSON" ColumnName="CUSTOMER_CONTACTPERSON" />
+                <ScalarProperty Name="CUSTOMER_ADDRESS" ColumnName="CUSTOMER_ADDRESS" />
+                <ScalarProperty Name="CUSTOMER_TEL" ColumnName="CUSTOMER_TEL" />
+                <ScalarProperty Name="DELIVERY_DATE" ColumnName="DELIVERY_DATE" />
+                <ScalarProperty Name="ORIGIN_ORDER_NUMBER" ColumnName="ORIGIN_ORDER_NUMBER" />
+                <ScalarProperty Name="CUSTOMER_NAME" ColumnName="CUSTOMER_NAME" />
+                <ScalarProperty Name="CUSTOMER_CODE" ColumnName="CUSTOMER_CODE" />
+                <ScalarProperty Name="FAX_NUMBER" ColumnName="FAX_NUMBER" />
+                <ScalarProperty Name="WAREHOUSETYPE" ColumnName="WAREHOUSETYPE" />
+                <ScalarProperty Name="IS_TO_SEND" ColumnName="IS_TO_SEND" />
+                <ScalarProperty Name="SEND_STATUS" ColumnName="SEND_STATUS" />
+                <ScalarProperty Name="SEND_DATE" ColumnName="SEND_DATE" />
+                <ScalarProperty Name="PK_SOCOMPANY" ColumnName="PK_SOCOMPANY" />
+                <ScalarProperty Name="SO_STATUS" ColumnName="SO_STATUS" />
+                <ScalarProperty Name="CREATE_DATETIME" ColumnName="CREATE_DATETIME" />
+                <ScalarProperty Name="TAKE_OVER_DATETIME" ColumnName="TAKE_OVER_DATETIME" />
+                <ScalarProperty Name="ISHURRY" ColumnName="ISHURRY" />
+                <ScalarProperty Name="FROM_CITY_NAME" ColumnName="FROM_CITY_NAME" />
+                <ScalarProperty Name="FROM_CITY_CODE" ColumnName="FROM_CITY_CODE" />
+                <ScalarProperty Name="TO_CITY_NAME" ColumnName="TO_CITY_NAME" />
+                <ScalarProperty Name="TO_CITY_CODE" ColumnName="TO_CITY_CODE" />
+                <ScalarProperty Name="IS_PRINT_SO" ColumnName="IS_PRINT_SO" />
+                <ScalarProperty Name="DO_USER" ColumnName="DO_USER" />
+                <ScalarProperty Name="WAREHOUSE_CODE" ColumnName="WAREHOUSE_CODE" />
+                <ScalarProperty Name="EXCEL_STATUS" ColumnName="EXCEL_STATUS" />
+                <ScalarProperty Name="EXCEL_DATE" ColumnName="EXCEL_DATE" />
+                <ScalarProperty Name="IS_BLP" ColumnName="IS_BLP" />
+                <ScalarProperty Name="DELIVERY_REMARK" ColumnName="DELIVERY_REMARK" />
+                <ScalarProperty Name="SOPACK_QUANTITY" ColumnName="SOPACK_QUANTITY" />
+                <ScalarProperty Name="FTP_STATUS" ColumnName="FTP_STATUS" />
+                <ScalarProperty Name="TRIPPACK_QUANTITY" ColumnName="TRIPPACK_QUANTITY" />
+                <ScalarProperty Name="OU_NAME" ColumnName="OU_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
