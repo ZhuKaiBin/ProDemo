@@ -13,8 +13,7 @@ namespace AliPay
     class Program
     {
 
-        private readonly static object obj = new object();
-        static ThreadLocal<string> local;
+        private readonly static object obj = new object();    
 
         public class Birld
         { 
@@ -94,36 +93,12 @@ namespace AliPay
 
             //};
 
-            //Func<string> func = () => "委托";
-            //Func<string,string> 是传入一个string的参数 (s) 就是参数  返回值是=>后面的
-            //Expression<Func<string,string>> func_expression = (s) => s+"委托";
-            //Console.WriteLine(func_expression.Compile().Invoke("zhu"));
+            Func<string> func = () => "委托";
+            //Func<string, string> 是传入一个string的参数(s) 就是参数 返回值是=>后面的
+            Expression<Func<string, string>> func_expression = (s) => s + "委托";
+            Console.WriteLine(func_expression.Compile().Invoke("zhu"));
 
 
-
-            //创建ThreadLocal并提供默认值
-            //local = new ThreadLocal<string>(() => "hehe");
-
-            ////修改TLS的线程
-            //Thread th = new Thread(() =>
-            //{
-            //    local.Value = "Mgen";
-            //    Display();
-            //});
-
-            //th.Start();
-            //th.Join();
-
-
-            //ThreadLocal<string> threadLocal = new ThreadLocal<string>();
-
-
-            //threadLocal.Value = "zhu";
-            //threadLocal.Value = "666";
-
-
-
-            //Console.WriteLine("{0} {1}", Thread.CurrentThread.ManagedThreadId, threadLocal.Value);
 
             //string timeout = "zhukaib";
             ////这里是将timeout 看看是否可以转换成int类型, 这里也考察了out的用法 不需要提前声明
@@ -140,18 +115,6 @@ namespace AliPay
 
             //}
 
-
-            //ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadMethod1), new object());    //参数可选
-            //Console.WriteLine("Hello~~~ !");
-            //ThreadPool.QueueUserWorkItem(new WaitCallback(ThreadMethod1), new object());    //参数可选
-            //Console.WriteLine("Hello1 !");
-            //Task task = Task.Run(() => { ThreadMethod1(""); });
-
-            //Console.WriteLine("Hello2 !");
-            //var t = new Task(() => { ThreadMethod1(""); });
-            //t.Start();
-            //Console.ReadKey();
-
             //Dog dog = new Dog();
             //dog.BOB();
             //dog.Run();
@@ -164,7 +127,7 @@ namespace AliPay
             //dog1.Run();
             //dog1.WangWang();
             //Console.WriteLine(dog1.color.ToString());
-#endregion
+            #endregion
             Console.ReadLine();
 
 
@@ -182,24 +145,8 @@ namespace AliPay
             });
         }
 
-
-
-
-        public static void ThreadMethod1(object val)
-        {
-            for (int i = 0; i <= 50; i++)
-            {
-                if (i % 10 == 0)
-                {
-                    Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
-                }
-            }
-        }
-
-
-
         //抽象就好比是总公司定义几个规则,而且也设定了几个方法(不用abstract修饰)，子公司要继承abstract修饰的方法
-        //对于总公司设定的方法 可用可不用
+        //对于总公司设定的方法 可用可不用，但是要继承
 
         //抽象admin   抽象里可以有方法体
         //抽象类里可以有非抽象的的方法   但是抽象方法必须要在抽象类中
