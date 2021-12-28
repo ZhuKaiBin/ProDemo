@@ -68,12 +68,12 @@ namespace ProDemo2
             //xd.LoadXml("<Person><name>诸葛亮</name></Person>");
             //Console.WriteLine(xd.DocumentElement.InnerXml);
 
-
-            Class1 x = new Class1();
-            x.testParams(0);
-            x.testParams(0, 1);
-            x.testParams(0, 1, 2);
-
+            #region params
+            //Class1 x = new Class1();
+            //x.testParams(0);
+            //x.testParams(0, 1);
+            //x.testParams(0, 1, 2);
+            #endregion
             Console.ReadKey();
         }
 

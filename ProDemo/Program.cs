@@ -29,7 +29,7 @@ namespace ProDemo
         }
         static void Main(string[] args)
         {
-
+            #region LoggerFactory
             using var loggerFactory = LoggerFactory.Create(builder =>
             {
             //    builder
@@ -41,46 +41,21 @@ namespace ProDemo
             });
             //ILogger logger = loggerFactory.CreateLogger<Program>();
             //logger.LogInformation("Example log message");
-
-
-            var CHTimeZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
-            Console.WriteLine(CHTimeZone);
-            //TimeZoneInfo.Local：得到一个System.TimeZoneInfo表示本地时区的
-            //ConvertTime：将时间从一个时区转换到另一个时区.
-            //1：要转换的日期和时间。2：日期时间的时区。3：要将日期时间转换为的时区。
-            DateTime Chtime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, CHTimeZone);
-            Console.WriteLine(Chtime);
-            //返回一个
-            DateTimeOffset ds = new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
-            Console.WriteLine(ds);
-
-            var obj = new JObject
-                    {
-                        {"head", new JObject
-                                {
-                                        { "TransId", "" },
-                                        { "TransCode", "X1008" }
-                                }
-                        },
-                        {"body", new JObject
-                            {
-                                { "whse", ""},
-                                { "po", new JObject{
-                                    new JProperty("po_number",""),
-                                    new JProperty("receive_date_time",""),
-                                    new JProperty("detail","")
-                                } },
-                            }
-                        }
-                    };
-
-            var json = JsonConvert.SerializeObject(obj);
-
-            string end = "";
-
+            #endregion
+            #region TimeZoneInfo
+            //var CHTimeZone = TimeZoneInfo.FindSystemTimeZoneById("China Standard Time");
+            //Console.WriteLine(CHTimeZone);
+            ////TimeZoneInfo.Local：得到一个System.TimeZoneInfo表示本地时区的
+            ////ConvertTime：将时间从一个时区转换到另一个时区.
+            ////1：要转换的日期和时间。2：日期时间的时区。3：要将日期时间转换为的时区。
+            //DateTime Chtime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, CHTimeZone);
+            //Console.WriteLine(Chtime);
+            ////返回一个
+            //DateTimeOffset ds = new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
+            //Console.WriteLine(ds);
+            #endregion
             //Class2 o = new Class2();
             //o.MethodA();
-
             #region 
             //Dictionary<string, string> dic = new Dictionary<string, string>();
             //dic.Add("aaa", "123");
@@ -98,7 +73,6 @@ namespace ProDemo
             //dic.TryGetValue("bbb", out outStr);
             //Console.WriteLine(outStr + "<br />");
             #endregion
-
             //Base obj = new Sub();
             //obj.Func();
             //Console.ReadKey();
@@ -107,24 +81,25 @@ namespace ProDemo
             //car.price = "";
             //car.type = "";
 
-
+            #region 索引器
             //所谓索引器就是一类特殊的属性，
             //通过它们你就可以像引用数组一样引用自己的类
             //通过索引器可以存取类的实例的数组成员，操作方法和数组相似，一般形式如下：对象名[索引]
             ////表示先创建一个对象IndexClass，再通过索引来引用该对象中的数组元素
-            IndexClass index = new IndexClass();
-            index[0] = "王五";
-            index[1] = "赵四";
-            Console.WriteLine(index[0].ToString());
-            Console.WriteLine(index[1].ToString());
+            //IndexClass index = new IndexClass();
+            //index[0] = "王五";
+            //index[1] = "赵四";
+            //Console.WriteLine(index[0].ToString());
+            //Console.WriteLine(index[1].ToString());
 
             //inters inters = new inters();
             //inters[0] = "bob";
             //Console.WriteLine(inters[0]);
-
+            #endregion
+            #region OUT
             // string zasa= getm("阿里巴巴", out string a);
             //string CEO = a;
-
+            #endregion
             Console.ReadKey();
         }
 

@@ -16,19 +16,20 @@ namespace ProException
             ////事件又触发了委托
             //cat.OnCatCall("猫叫");
 
+            #region Delegate Action Func
+            //NoRetNoPara noRetNoPara = new NoRetNoPara(Method1);
+            //noRetNoPara.Invoke();
 
-            NoRetNoPara noRetNoPara = new NoRetNoPara(Method1);
-            noRetNoPara.Invoke();
+            //Action action = Method1;
+            //action.Invoke();
 
-            Action action = Method1;
-            action.Invoke();
-
-            Action<string> action1 = Method2;
-            action1.Invoke("bob");
+            //Action<string> action1 = Method2;
+            //action1.Invoke("bob");
 
 
-            Func<string, string> func = method3;
-            string ret= func("bobrfun");
+            //Func<string, string> func = method3;
+            //string ret= func("bobrfun");
+            #endregion
             Console.ReadKey();
         }
 

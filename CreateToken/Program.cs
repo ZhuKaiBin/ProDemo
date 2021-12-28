@@ -18,7 +18,6 @@ namespace CreateToken
     class Program
     {
         public static IConfiguration configuration;
-
         public class Bob
         {
             public string name;
@@ -29,7 +28,6 @@ namespace CreateToken
             public string name;
             public int age;
         }
-
         public class Fly
         {
             public  void Flys()
@@ -46,56 +44,24 @@ namespace CreateToken
             }
         }
 
-
         public class Birld : EAT
         {
             
         }
-
-             
-
-
-
         static void Main(string[] args)
         {
-
-
-
-            var qq = new JObject()
-                                                     {
-                                                      new JProperty("SKU","" ),
-                                                      new JProperty("SN", "")
-                                                     };
-
-
-
-
-            JObject obj = new JObject {
-                               new JProperty("SKU","" ),
-                                                      new JProperty("SN", "")
-                };
-
-
-            var json1 = JsonConvert.SerializeObject(qq);
-            var json = JsonConvert.SerializeObject(obj);
-
-
-            DateTimeOffset sdate = DateTimeOffset.UtcNow;
-            DateTimeOffset sdate2 = DateTimeOffset.Now;
-
-            var utility= HttpUtility.UrlEncode("http://localhost:37667/api/v1.0/Order/PutOrder");
-            var num = HttpUtility.UrlDecode(utility);
+            #region HttpUtility.UrlEncode
+            //var utility = HttpUtility.UrlEncode("http://localhost:37667/api/v1.0/Order/PutOrder");
+            //var num = HttpUtility.UrlDecode(utility);
+            #endregion
+            #region TimeSpan
             TimeSpan span = new TimeSpan(12, 00, 00);
 
             TimeSpan span2 = new TimeSpan(13, 00, 00);
 
             var s = span2 - span;
-
-
-            Birld birld = new Birld();
-            birld.eat();
-
-
+            #endregion
+            #region  host 宿主  承载系统HostBuilder
             HostBuilder host = new HostBuilder();
 
             host.ConfigureServices((host, services) =>
@@ -113,11 +79,9 @@ namespace CreateToken
                 host.Configuration.GetSection("");
                 LoggingServices.Services.AddLogging();
             });
-
-
-
+            #endregion
+            #region  Task.Run
             //Console.WriteLine($"线程Id是{Thread.CurrentThread.ManagedThreadId},线程名字是：{Thread.CurrentThread.Name}");
-
 
             //Task.Run(() => { Console.WriteLine($"线程Task.RunId1是{Thread.CurrentThread.ManagedThreadId}"); }).GetAwaiter();
             //Task.Run(() => { Console.WriteLine($"线程Task.RunId2是{Thread.CurrentThread.ManagedThreadId}"); }).Wait();
@@ -125,6 +89,7 @@ namespace CreateToken
             //newtask.Start();
             //var newtask2 = new Task(() => { Console.WriteLine($"线程Idnewtask2是{Thread.CurrentThread.ManagedThreadId}"); });
             //newtask2.Start();
+            #endregion
             #region 值类型与引用类型
             //string A = "10";
             //string B = "20";
@@ -170,8 +135,7 @@ namespace CreateToken
             //var s = num2;
 
             #endregion
-            string Begin = "";
-
+            #region  JObject 和JArry
             //var ary = new JArray();
             //for (int i = 0; i < 2; i++)
             //{
@@ -226,10 +190,7 @@ namespace CreateToken
 
 
             //var json = JsonConvert.SerializeObject(obj);
-
-            string bob = "";
-
-
+            #endregion
             #region  Contains
             //string s = "ECCQ01,ECCQ03";
             //string a = "ECCQ03";
@@ -305,13 +266,12 @@ namespace CreateToken
 
             #endregion
             #region CreateSASToken
-            string appid = "A9SP5uLCVWXu";
-            string appkey = "txE8EiZF3bWH9jh2poZYE3ypR7vzWfEN";
-            string sss = CreateSASToken(appid, appkey, TimeSpan.FromMinutes(120));
-            Console.WriteLine(sss);
+            //string appid = "A9SP5uLCVWXu";
+            //string appkey = "txE8EiZF3bWH9jh2poZYE3ypR7vzWfEN";
+            //string sss = CreateSASToken(appid, appkey, TimeSpan.FromMinutes(120));
+            //Console.WriteLine(sss);
             //Console.WriteLine(JsonConvert.SerializeObject(obj));
             #endregion
-
             #region Task
             //Console.Out.WriteLine(1);
             //Test().GetAwaiter().GetResult();
@@ -327,12 +287,7 @@ namespace CreateToken
             //teacher.ID = 2;
             //teacher.Name = "zhuzhuzhu";
             #endregion
-            //student student = new student();
-            //student.Name = "15";
-
-
-            // Console.WriteLine(student.Name);
-
+            #region Func
             //Func<string, string> func = Getstring;
             //string ret = func("bob");
             //Console.WriteLine(ret);
@@ -340,9 +295,7 @@ namespace CreateToken
 
             //Func<string, string> func1 = m => m + m;
             //string ret2 = func1("bob2");
-
-
-
+            #endregion
             Console.ReadKey();
         }
 

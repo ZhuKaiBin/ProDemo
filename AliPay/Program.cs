@@ -14,7 +14,6 @@ namespace AliPay
     {
 
         private readonly static object obj = new object();
-
         public class Birld
         {
             public string Eat { set; get; }
@@ -46,25 +45,23 @@ namespace AliPay
 
         static void Main(string[] args)
         {
-
-
-            Console.WriteLine($"***************btnAsync_Click Start {Thread.CurrentThread.ManagedThreadId}");
-              Action<string> action = DoSomethingLong;
-                         // 调用委托(同步调用)
-           action.Invoke("btnAsync_Click_1");
-                      // 异步调用委托
-           action.BeginInvoke("btnAsync_Click_2", null, null);
-             Console.WriteLine($"***************btnAsync_Click End    {Thread.CurrentThread.ManagedThreadId}");
-
-
-
+            #region Action
+            //Console.WriteLine($"***************btnAsync_Click Start {Thread.CurrentThread.ManagedThreadId}");
+            //Action<string> action = DoSomethingLong;
+            //// 调用委托(同步调用)
+            //action.Invoke("btnAsync_Click_1");
+            //// 异步调用委托
+            //action.BeginInvoke("btnAsync_Click_2", null, null);
+            //Console.WriteLine($"***************btnAsync_Click End    {Thread.CurrentThread.ManagedThreadId}");
+            #endregion
+            #region decimal.Round
             //var num = Convert.ToDecimal("0.0008");
             //var s1 = decimal.Round(num, 2);//这个Round(数字,小数点后几位),2就是后2位 0.0008==》0.02
             //var s2 = decimal.Round(num, 3);//3就是后三位 0.0008==》0.001  因为第四位是8，四舍五入一下
             //var s3 = decimal.Round(num, 1);//1就是后一位,0.0008======>0.0
-
             //int v = (int)decimal.Round(Convert.ToDecimal("1.0"), 0);
-
+            #endregion
+            #region  时区 TimeZoneInfo
             //Console.WriteLine(DateTime.Now);
             //Console.WriteLine(TimeZoneInfo.Local);
             //Console.WriteLine(TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
@@ -74,14 +71,8 @@ namespace AliPay
             //Console.WriteLine(Chtime);
             //var time = new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
             //Console.WriteLine(time);
-            //#region
-
-
-            //A a = new A();
-            //a.Fly();
-
-            //string qqq = "";
-
+            #endregion
+            #region 查看值类型的地址 unsafe
             //unsafe
             //{
             //DateTime是值类型,datetime1 是开辟了一个地址
@@ -114,21 +105,21 @@ namespace AliPay
             //int* s4 = &str2;
 
             //};
-
+            #endregion
+            #region Func
             //Func<string> func = () => "委托";
             ////Func<string, string> 是传入一个string的参数(s) 就是参数 返回值是=>后面的
             //Expression<Func<string, string>> func_expression = (s) => s + "委托";
             //Console.WriteLine(func_expression.Compile().Invoke("zhu"));
-
-
-
+            #endregion
+            #region int.TryParse
             //string timeout = "zhukaib";
             ////这里是将timeout 看看是否可以转换成int类型, 这里也考察了out的用法 不需要提前声明
             //int.TryParse(timeout, out int i);
             //if (i == 0) i = 3;
             //Console.WriteLine(i);
-
-            ////remote master
+            #endregion
+            #region DateTimeOffset
             //string expiry = "1635471114";
             //DateTimeOffset ss = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(expiry));
             //DateTimeOffset time = DateTimeOffset.Now;
@@ -136,7 +127,8 @@ namespace AliPay
             //{
 
             //}
-
+            #endregion
+            #region IDog 
             //Dog dog = new Dog();
             //dog.BOB();
             //dog.Run();
@@ -149,10 +141,8 @@ namespace AliPay
             //dog1.Run();
             //dog1.WangWang();
             //Console.WriteLine(dog1.color.ToString());
-
+            #endregion
             Console.ReadKey();
-
-
         }
 
         public static void test1()

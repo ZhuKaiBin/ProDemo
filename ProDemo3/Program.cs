@@ -55,60 +55,49 @@ namespace ProDemo3
         static void Main(string[] args)
         {
 
-
-            Dictionary<int, int> dic = new Dictionary<int, int>();
-            dic.Add(1,5);
-            dic.Add(2,9);
-            //dic.Add(1, 6);
-
-            Hashtable hashtable = new Hashtable();
-            hashtable.Add(1, 5);
-            hashtable.Add(2, 9);
-            hashtable.Add(3, 6);
-
-            ArrayList arrayList = new ArrayList(hashtable.Keys);
-
-            arrayList.Sort();
-
-            int[] numm =  { 1, 1, 2, 2, 5, 4, 6 };
-
-            HashSet<int> set = new HashSet<int>(numm);
-            int s = set.ToArray().Length;
-            
+            #region HashSet
+            //int[] numm =  { 1, 1, 2, 2, 5, 4, 6 };
+            //HashSet<int> set = new HashSet<int>(numm);
+            //int s = set.ToArray().Length;
+            #endregion
+            #region out
             int i, j = 100;
             //Test1(out i);
             //Test2(ref j);
-
+            #endregion
+            #region Params
             //Class1 x = new Class1();
             //x.testParams(0);
             //x.testParams(0, 1);
             //x.testParams(0, 1, 2);
+            #endregion
+            #region List
+            //int[] num1 = { 2 };
+            //int[] num2 = { 0 };
+            //List<int> lis = new List<int>();
+            //lis.AddRange(num1);
+            //lis.AddRange(num2);
+            //int[] num3 = lis.ToArray();
+            //Array.Sort(num3);//变成数组，从小到大排序
 
-            int[] num1 = { 2 };
-            int[] num2 = { 0 };
-            List<int> lis = new List<int>();
-            lis.AddRange(num1);
-            lis.AddRange(num2);
-            int[] num3 = lis.ToArray();
-            Array.Sort(num3);//变成数组，从小到大排序
-            double med;
-            int len = num3.Length;//元素个数
-            if (len % 2 == 0)
-            {
-                int a = num3[len / 2];
-                int b = num3[len / 2 - 1];
-                med = (num3[len / 2] + num3[len / 2 - 1]) / 2d;
-                Console.WriteLine(med);
-            }
-            else
-            {
-                var ss = len / 2;
-                med = num3[len / 2];
-                Console.WriteLine(med);
-            }
-            Console.ReadKey();
-
-
+            //double med;
+            //int len = num3.Length;//元素个数
+            //if (len % 2 == 0)
+            //{
+            //    int a = num3[len / 2];
+            //    int b = num3[len / 2 - 1];
+            //    med = (num3[len / 2] + num3[len / 2 - 1]) / 2d;
+            //    Console.WriteLine(med);
+            //}
+            //else
+            //{
+            //    var ss = len / 2;
+            //    med = num3[len / 2];
+            //    Console.WriteLine(med);
+            //}
+            //Console.ReadKey();
+            #endregion
+            #region Thread
             //Thread M = new Thread(delegate ()//线程M
             //{
 
@@ -141,12 +130,9 @@ namespace ProDemo3
             //        }
             //    }
 
-
-
             //});
-
-
-
+            #endregion
+            #region GetEnumerator
             //int[] array = new int[] { 1, 2, 3, 4 };
             //var num = array.GetEnumerator();
 
@@ -162,8 +148,22 @@ namespace ProDemo3
             //{
             //    string c = item.ToString();
             //}
+            #endregion
+            #region Hashtable
 
+            //Dictionary<int, int> dic = new Dictionary<int, int>();
+            //dic.Add(1, 5);
+            //dic.Add(2, 9);
+            ////dic.Add(1, 6);
 
+            //Hashtable hashtable = new Hashtable();
+            //hashtable.Add(1, 5);
+            //hashtable.Add(2, 9);
+            //hashtable.Add(3, 6);
+
+            //ArrayList arrayList = new ArrayList(hashtable.Keys);
+
+            //arrayList.Sort();
 
             //Hashtable ht = new Hashtable();
             //ht.Add(1, "A");
@@ -175,41 +175,27 @@ namespace ProDemo3
             //{
             //    var str = item.Key;
             //}
-
-
-
-            //byte i = 255;//检查是否溢出
-            //checked
-            //{
-            //    i++;//System.OverflowException:“Arithmetic operation resulted in an overflow.”
-            //}
-
-            //unchecked //不检查是否溢出
-            //{
-            //    int var = (int)2147486978 * 2;
-            //}
-
+            #endregion     
+            #region Comparer
             //string firststring = "First String";
             //string secondstring = "Second string";
 
             //Console.WriteLine(Comparer<string>.Default.Compare(obj1, obj2));
 
             //Console.WriteLine(firststring.CompareTo(secondstring));
-
-
-
+            #endregion
             #region  yield return
             //new Program();
             //TestMethod();
             //Console.WriteLine("Hello World!");
             #endregion
-
+            #region enumerableFuc
             // 通过foreach循环迭代此函数
             //foreach (int item in enumerableFuc())
             //{
             //    Console.WriteLine(item);
             //}
-
+            #endregion
             Console.ReadKey();
         }
 
