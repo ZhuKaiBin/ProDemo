@@ -13,10 +13,10 @@ namespace AliPay
     class Program
     {
 
-        private readonly static object obj = new object();    
+        private readonly static object obj = new object();
 
         public class Birld
-        { 
+        {
             public string Eat { set; get; }
             public void Fly()
             { }
@@ -25,40 +25,62 @@ namespace AliPay
         public class A : Birld
         {
             public void Run()
-            { 
-            
+            {
+
             }
         }
 
 
+        private static void DoSomethingLong(string name)
+        {
+            Console.WriteLine($"****************DoSomethingLong {name} Start {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}***************");
+            long lResult = 0;
+            for (int i = 0; i < 1000000000; i++)
+            {
+                lResult += i;
+            }
+            Console.WriteLine($"****************DoSomethingLong {name}   End {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {lResult}***************");
+        }
 
 
 
         static void Main(string[] args)
         {
-            var num = Convert.ToDecimal("0.0008");
-            var s1 = decimal.Round(num, 2);//这个Round(数字,小数点后几位),2就是后2位 0.0008==》0.02
-            var s2 = decimal.Round(num, 3);//3就是后三位 0.0008==》0.001  因为第四位是8，四舍五入一下
-            var s3 = decimal.Round(num, 1);//1就是后一位,0.0008======>0.0
-
-            int v = (int)decimal.Round(Convert.ToDecimal("1.0"), 0);
-
-            Console.WriteLine(DateTime.Now);
-            Console.WriteLine(TimeZoneInfo.Local);
-            Console.WriteLine(TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
 
 
-            DateTime Chtime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
-            Console.WriteLine(Chtime);
-            var time= new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
-            Console.WriteLine(time);
-            #region
+            Console.WriteLine($"***************btnAsync_Click Start {Thread.CurrentThread.ManagedThreadId}");
+              Action<string> action = DoSomethingLong;
+                         // 调用委托(同步调用)
+           action.Invoke("btnAsync_Click_1");
+                      // 异步调用委托
+           action.BeginInvoke("btnAsync_Click_2", null, null);
+             Console.WriteLine($"***************btnAsync_Click End    {Thread.CurrentThread.ManagedThreadId}");
 
 
-            A a = new A();
-            a.Fly();
 
-            string qqq = "";
+            //var num = Convert.ToDecimal("0.0008");
+            //var s1 = decimal.Round(num, 2);//这个Round(数字,小数点后几位),2就是后2位 0.0008==》0.02
+            //var s2 = decimal.Round(num, 3);//3就是后三位 0.0008==》0.001  因为第四位是8，四舍五入一下
+            //var s3 = decimal.Round(num, 1);//1就是后一位,0.0008======>0.0
+
+            //int v = (int)decimal.Round(Convert.ToDecimal("1.0"), 0);
+
+            //Console.WriteLine(DateTime.Now);
+            //Console.WriteLine(TimeZoneInfo.Local);
+            //Console.WriteLine(TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
+
+
+            //DateTime Chtime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
+            //Console.WriteLine(Chtime);
+            //var time = new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
+            //Console.WriteLine(time);
+            //#region
+
+
+            //A a = new A();
+            //a.Fly();
+
+            //string qqq = "";
 
             //unsafe
             //{
@@ -93,10 +115,10 @@ namespace AliPay
 
             //};
 
-            Func<string> func = () => "委托";
-            //Func<string, string> 是传入一个string的参数(s) 就是参数 返回值是=>后面的
-            Expression<Func<string, string>> func_expression = (s) => s + "委托";
-            Console.WriteLine(func_expression.Compile().Invoke("zhu"));
+            //Func<string> func = () => "委托";
+            ////Func<string, string> 是传入一个string的参数(s) 就是参数 返回值是=>后面的
+            //Expression<Func<string, string>> func_expression = (s) => s + "委托";
+            //Console.WriteLine(func_expression.Compile().Invoke("zhu"));
 
 
 
@@ -127,15 +149,16 @@ namespace AliPay
             //dog1.Run();
             //dog1.WangWang();
             //Console.WriteLine(dog1.color.ToString());
-            #endregion
-            Console.ReadLine();
+
+            Console.ReadKey();
 
 
         }
 
         public static void test1()
         {
-            Thread t = new Thread(()=> {
+            Thread t = new Thread(() =>
+            {
 
                 lock (obj)
                 {
