@@ -45,6 +45,22 @@ namespace AliPay
 
         static void Main(string[] args)
         {
+
+            for (int i = 0; i < 5; i++)
+            {
+                
+                Console.WriteLine("Sleep for 2 seconds.");
+                Console.WriteLine($"当前线程的id是：{Thread.CurrentThread.ManagedThreadId}");
+                Thread.CurrentThread.Join(3000);
+                Console.WriteLine($"当前线程的xxxx是：{Thread.CurrentThread.ManagedThreadId}");
+                Thread.Sleep(2000);
+            }
+
+            Console.WriteLine("Main thread exits.");
+
+
+
+
             #region Action
             //Console.WriteLine($"***************btnAsync_Click Start {Thread.CurrentThread.ManagedThreadId}");
             //Action<string> action = DoSomethingLong;
