@@ -6,6 +6,7 @@ namespace ProLock
 {
     class Program
     {
+        //实现单例是要考虑并发问题的，一般情况下，我们都会使用synchronized来保证线程安全。
         static void Main(string[] args)
         {
             //调用
