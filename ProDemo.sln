@@ -49,7 +49,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pro_AzureFunctions", "Pro_A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S3Storage", "S3Storage\S3Storage.csproj", "{7C784C93-6AB5-4342-B916-7E3A0886398E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProLock", "ProLock\ProLock.csproj", "{1DA396B1-5A18-4779-B902-C893FA2DEBB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProLock", "ProLock\ProLock.csproj", "{1DA396B1-5A18-4779-B902-C893FA2DEBB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEqual", "ProEventArgs\ProEqual.csproj", "{50F81B10-EFA0-4983-BCCF-9978EDB91A02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProExpection", "ProExpection\ProExpection.csproj", "{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAbstract_Virtual_Interfance", "ProAbstract_Virtual_Interfance\ProAbstract_Virtual_Interfance.csproj", "{22013F88-FC5F-48B3-AFF7-45C12C2A615C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +159,18 @@ Global
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

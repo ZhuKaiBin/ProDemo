@@ -4,15 +4,44 @@ using System.Threading;
 
 namespace ProLock
 {
+
+  
     class Program
     {
+       
         //实现单例是要考虑并发问题的，一般情况下，我们都会使用synchronized来保证线程安全。
         static void Main(string[] args)
         {
             //调用
-            SingleModel.GetInstance().StartThread();
+            //SingleModel.GetInstance().StartThread();
             Console.WriteLine("Hello World!");
+
+            Action<string> action;
+
+            action = ret;
+            action += ret2;
+            action += ret;
+            action("bob1");
+
+            //action = ret2;
+            //action("bob2");
+            Console.ReadKey();
+
         }
+
+
+
+
+        public static void ret(string x)
+        {
+            Console.WriteLine(x);
+        }
+
+        public static void ret2(string x)
+        {
+            Console.WriteLine("ret2"+x);
+        }
+
     }
 
     #region SingleModel_Class
