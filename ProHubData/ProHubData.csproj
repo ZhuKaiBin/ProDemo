@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Data2\Database1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Database1.cs</LastGenOutput>
+    </None>
+    <None Update="HubData.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HubData.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Data2\Database1.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Database1.tt</DependentUpon>
+    </Compile>
+    <Compile Update="HubData.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HubData.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

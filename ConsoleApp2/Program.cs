@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -58,14 +59,33 @@ namespace ConsoleApp2
 
             //},2);
 
-            Console.WriteLine("\n————— {0} —————", Thread.CurrentThread.ManagedThreadId);
 
-            Program program = new Program();            
-            Thread thread = new Thread(program.ParallelBreak);
-            thread.Start();
-            thread.IsBackground = false;
-            int num= thread.ManagedThreadId;          
-            Console.WriteLine("\n—————num {0} —————", num);
+
+
+
+            //Console.WriteLine("\n————— {0} —————", Thread.CurrentThread.ManagedThreadId);
+
+            //Program program = new Program();            
+            //Thread thread = new Thread(program.ParallelBreak);
+            //thread.Start();
+            //thread.IsBackground = false;
+            //int num= thread.ManagedThreadId;
+            //thread.Join();
+            //Console.WriteLine("\n—————num {0} —————", thread.ManagedThreadId);
+
+            //Console.WriteLine("Main Ending........");
+
+
+            var sleepingThread = new Thread(SleepIndefinitely);
+            sleepingThread.Name = "Sleeping";
+            sleepingThread.Start();
+            Thread.Sleep(10000);
+            sleepingThread.Interrupt();//他中断的是他自己这个耗时的线程
+
+            //sleepingThread.Abort();
+
+
+            Console.WriteLine("Ending.....................");
             Console.ReadKey();
         }
 
@@ -73,6 +93,7 @@ namespace ConsoleApp2
 
         public void ParallelBreak()
         {
+            object obj = new object();
 
             Console.WriteLine("\n————— {0} —————", Thread.CurrentThread.ManagedThreadId);
 
@@ -89,20 +110,32 @@ namespace ConsoleApp2
                 bag.Add(i);
             });
 
-            string num = "";
-            for (int i = 0; i < bag.ToArray().Length; i++)
-            {
-                num = num + bag.ToArray()[i].ToString()+",";
-            }
-
-            Console.WriteLine("Bag xxxxxx is " + num + "\n");
+            Console.WriteLine("Bag xxxxxx is \n");
 
             Console.WriteLine("Bag count is " + bag.Count + ", ");
 
         }
 
 
-
+        private static void SleepIndefinitely()
+        {
+           try
+            {
+                Thread.Sleep(5000);
+                Console.WriteLine("Thread '{0}' BOB CurrentThread.Name.",Thread.CurrentThread.Name);
+            }
+            catch (ThreadInterruptedException)
+            {
+                Console.WriteLine("Thread '{0}' InterruptedException.",
+                                  Thread.CurrentThread.Name);
+            }
+            catch (ThreadAbortException)
+            {
+                Console.WriteLine("Thread '{0}' AbortException.",
+                                  Thread.CurrentThread.Name);
+            }
+           
+        }
 
 
 
