@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAuthorization", "WebAppl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliPay_abstract", "AliPay\AliPay_abstract.csproj", "{EE4AB4A8-3767-47F6-8345-767223D7D0B0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoUniversity", "ContosoUniversity\ContosoUniversity.csproj", "{BD329CF7-7DE3-4C37-91CF-4024862AE683}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sub_Func", "ConsoleApp1\Sub_Func.csproj", "{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{001FFAAE-D5E4-470C-B343-EC9D35702630}"
@@ -51,13 +49,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S3Storage", "S3Storage\S3St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProLock", "ProLock\ProLock.csproj", "{1DA396B1-5A18-4779-B902-C893FA2DEBB9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEqual", "ProEventArgs\ProEqual.csproj", "{50F81B10-EFA0-4983-BCCF-9978EDB91A02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEqual", "ProEventArgs\ProEqual.csproj", "{50F81B10-EFA0-4983-BCCF-9978EDB91A02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProExpection", "ProExpection\ProExpection.csproj", "{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProExpection", "ProExpection\ProExpection.csproj", "{730CFEFF-790E-41B7-A43C-4B231DEBBDFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProAbstract_Virtual_Interfance", "ProAbstract_Virtual_Interfance\ProAbstract_Virtual_Interfance.csproj", "{22013F88-FC5F-48B3-AFF7-45C12C2A615C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAbstract_Virtual_Interfance", "ProAbstract_Virtual_Interfance\ProAbstract_Virtual_Interfance.csproj", "{22013F88-FC5F-48B3-AFF7-45C12C2A615C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProHubData", "ProHubData\ProHubData.csproj", "{73F8E34F-F4FA-4D8C-9D00-D1E56EB38B68}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProThreadResult", "ProThreadResult\ProThreadResult.csproj", "{2DE10180-3C10-4CCC-B61C-99450FD94256}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -117,10 +115,6 @@ Global
 		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE4AB4A8-3767-47F6-8345-767223D7D0B0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD329CF7-7DE3-4C37-91CF-4024862AE683}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C816714-C5AD-45A5-999E-D4C48E3FB9FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -173,10 +167,10 @@ Global
 		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22013F88-FC5F-48B3-AFF7-45C12C2A615C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{73F8E34F-F4FA-4D8C-9D00-D1E56EB38B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{73F8E34F-F4FA-4D8C-9D00-D1E56EB38B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{73F8E34F-F4FA-4D8C-9D00-D1E56EB38B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{73F8E34F-F4FA-4D8C-9D00-D1E56EB38B68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

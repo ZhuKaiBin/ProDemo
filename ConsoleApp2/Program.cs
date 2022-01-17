@@ -79,13 +79,14 @@ namespace ConsoleApp2
             var sleepingThread = new Thread(SleepIndefinitely);
             sleepingThread.Name = "Sleeping";
             sleepingThread.Start();
-            Thread.Sleep(10000);
-            sleepingThread.Interrupt();//他中断的是他自己这个耗时的线程
+            var state= sleepingThread.ThreadState;
+            //Thread.Sleep(10000);
+            //sleepingThread.Interrupt();//他中断的是他自己这个耗时的线程
 
             //sleepingThread.Abort();
 
-
-            Console.WriteLine("Ending.....................");
+        
+            Console.WriteLine($"Ending.............{state}........");
             Console.ReadKey();
         }
 
@@ -121,7 +122,7 @@ namespace ConsoleApp2
         {
            try
             {
-                Thread.Sleep(5000);
+                Thread.Sleep(500);
                 Console.WriteLine("Thread '{0}' BOB CurrentThread.Name.",Thread.CurrentThread.Name);
             }
             catch (ThreadInterruptedException)
