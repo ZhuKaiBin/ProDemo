@@ -29,7 +29,6 @@ namespace AliPay
             }
         }
 
-
         private static void DoSomethingLong(string name)
         {
             Console.WriteLine($"****************DoSomethingLong {name} Start {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}***************");
@@ -41,22 +40,20 @@ namespace AliPay
             Console.WriteLine($"****************DoSomethingLong {name}   End {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {lResult}***************");
         }
 
-
-
         static void Main(string[] args)
         {
 
-            for (int i = 0; i < 5; i++)
-            {
-                
-                Console.WriteLine("Sleep for 2 seconds.");
-                Console.WriteLine($"当前线程的id是：{Thread.CurrentThread.ManagedThreadId}");
-                Thread.CurrentThread.Join(3000);
-                Console.WriteLine($"当前线程的xxxx是：{Thread.CurrentThread.ManagedThreadId}");
-                Thread.Sleep(2000);
-            }
+            //for (int i = 0; i < 5; i++)
+            //{
 
-            Console.WriteLine("Main thread exits.");
+            //    Console.WriteLine("Sleep for 2 seconds.");
+            //    Console.WriteLine($"当前线程的id是：{Thread.CurrentThread.ManagedThreadId}");
+            //    Thread.CurrentThread.Join(3000);
+            //    Console.WriteLine($"当前线程的xxxx是：{Thread.CurrentThread.ManagedThreadId}");
+            //    Thread.Sleep(2000);
+            //}
+
+            //Console.WriteLine("Main thread exits.");
 
 
 
@@ -145,18 +142,18 @@ namespace AliPay
             //}
             #endregion
             #region IDog 
-            //Dog dog = new Dog();
-            //dog.BOB();
-            //dog.Run();
-            //dog.Eat();
+            Dog dog = new Dog();
+            dog.BOB();
+            dog.Run();
+            dog.Eat();
 
 
 
-            //IDog dog1 = new IDog();
-            //dog1.color = "黑色2";
-            //dog1.Run();
-            //dog1.WangWang();
-            //Console.WriteLine(dog1.color.ToString());
+            IDog dog1 = new IDog();
+            dog1.color = "黑色2";
+            dog1.Run();
+            dog1.WangWang();
+            Console.WriteLine(dog1.color.ToString());
             #endregion
             Console.ReadKey();
         }
@@ -187,7 +184,6 @@ namespace AliPay
             {
                 Console.WriteLine("BOB");
             }
-
             public abstract void Fly();
         }
 
@@ -199,7 +195,6 @@ namespace AliPay
 
             string color { set; get; }
         }
-
         public class IDog : Iadmin
         {
             public void Run()
@@ -234,7 +229,6 @@ namespace AliPay
                 }
             }
         }
-
         public class Dog : admin
         {
             public override void Run()
@@ -252,16 +246,12 @@ namespace AliPay
                 throw new NotImplementedException();
             }
         }
-
         public class Bird : admin
         {
             public override void Fly()
             {
                 Console.WriteLine("Bird Can Fly");
             }
-
-
-
             public override void Run()
             {
                 throw new NotImplementedException();

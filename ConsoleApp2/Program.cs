@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ConsoleApp2
 {
@@ -76,19 +79,65 @@ namespace ConsoleApp2
             //Console.WriteLine("Main Ending........");
 
 
-            var sleepingThread = new Thread(SleepIndefinitely);
-            sleepingThread.Name = "Sleeping";
-            sleepingThread.Start();
-            var state= sleepingThread.ThreadState;
+            //var sleepingThread = new Thread(SleepIndefinitely);
+            //sleepingThread.Name = "Sleeping";
+            //sleepingThread.Start();
+            //var state= sleepingThread.ThreadState;
             //Thread.Sleep(10000);
             //sleepingThread.Interrupt();//他中断的是他自己这个耗时的线程
 
             //sleepingThread.Abort();
 
-        
-            Console.WriteLine($"Ending.............{state}........");
+
+            //Console.WriteLine($"Ending.............{state}........");
+
+            //Dog dog = new Dog();
+            //dog.Delegatea += Wake;
+            //dog.Delegatea += Run;
+
+            //dog.Wangwang();
+
+            //var hamc = new HMACSHA256(Encoding.UTF8.GetBytes("123"));
+            //Console.WriteLine(hamc);
+            //var sign = Convert.ToBase64String(hamc.ComputeHash(Encoding.UTF8.GetBytes("zhuzhuzhuzhu")));
+            //Console.WriteLine(sign);
+
+            //Console.WriteLine(HttpUtility.UrlEncode(sign));
+            Console.WriteLine(HttpUtility.UrlEncode("https://fanyi.baidu.com/"));
+            Console.WriteLine(HttpUtility.UrlDecode(HttpUtility.UrlEncode("https://fanyi.baidu.com/")));
+            //Console.WriteLine(HttpUtility.UrlEncode("zhu"));
+            //Console.WriteLine(HttpUtility.UrlEncode("zhu/"));
             Console.ReadKey();
         }
+
+
+
+        public static void Wake()
+        {
+            Console.WriteLine("人醒了");
+        }
+        public static void Run()
+        {
+            Console.WriteLine("猫跑了");
+        }
+
+        public delegate void DelegateA();
+
+        public class Dog
+        { 
+           public event DelegateA Delegatea;
+
+            public void Wangwang()
+            {
+
+                Console.WriteLine("小偷来了");
+
+                Delegatea();
+                Console.WriteLine("小偷跑了");
+            }
+        }
+
+
 
 
 
