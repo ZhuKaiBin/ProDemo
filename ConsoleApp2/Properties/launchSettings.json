@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ConsoleApp2": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "TZ": "1212"
+      }
+    }
+  }
+}

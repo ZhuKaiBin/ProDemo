@@ -66,32 +66,32 @@ namespace ProDemo4
             //这里func2=func  ，func2 是func编译的结果，接住SLPY反编译看下
             #endregion
             #region 有一个参数 y
-            //Expression<Func<string>> func_expre = () => "委托Expression";
+            Expression<Func<string>> func_expre = () => "委托Expression";
             //////func_expre();直接这样,这个表达式是报错的，说明是不是委托
             //Console.WriteLine(func_expre.Compile());//但是编译后返回的是一个Func委托,   System.Func`1[System.String]
             //Console.WriteLine(func_expre.Compile().Invoke());
 
-            //Expression<Action<string>> expression = (name) => Console.WriteLine(name);
+            Expression<Action<string>> expression = (name) => Console.WriteLine(name);
             ////Compile：编译,编译文件
             //expression.Compile().Invoke("bob");
 
-            //Expression<Func<string, string>> eAdd = (y) => y + "委托";
-            //eAdd.Compile().Invoke("bobAdd");
-            //Console.WriteLine(eAdd.Compile().Invoke("bobAdd"));
+            Expression<Func<string, string>> eAdd = (y) => y + "委托";
+            eAdd.Compile().Invoke("bobAdd");
+            Console.WriteLine(eAdd.Compile().Invoke("bobAdd"));
             #endregion
             #region 下面是动态拼接表达式树的芝士
             //Console.WriteLine("********下面是动态拼接表达式树的芝士**********************************");
             ////动态拼接表达式树
-            //Expression<Func<int>> funcExp = () => 5;
+            Expression<Func<int>> funcExp = () => 5;
             //Console.WriteLine($"我是简单的{funcExp.Compile().Invoke()}");
             ////Constant：常量表达式,值不变
-            //ConstantExpression constantExp = Expression.Constant(5, typeof(int));
+            ConstantExpression constantExp = Expression.Constant(5, typeof(int));
             //Expression<Func<int>> funcExp2 = Expression.Lambda<Func<int>>(constantExp, null);
             //funcExp2.Compile().Invoke();
             //Console.WriteLine($"我是动态编出来的{funcExp2.Compile().Invoke()}");
 
             //Console.WriteLine("*********下面是带参数的动态拼接的****************");
-            //Expression<Func<int, int>> fcunExppara = (y) => y + 5;
+            Expression<Func<int, int>> fcunExppara = (y) => y + 5;
             //Console.WriteLine($"我是简单的{fcunExppara.Compile().Invoke(6)}");
             ////ParameterExpression 参数表达式
             //ParameterExpression para1 = Expression.Parameter(typeof(int), "y");//左边

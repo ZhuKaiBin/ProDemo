@@ -63,9 +63,6 @@ namespace ConsoleApp2
             //},2);
 
 
-
-
-
             //Console.WriteLine("\n————— {0} —————", Thread.CurrentThread.ManagedThreadId);
 
             //Program program = new Program();            
@@ -97,21 +94,105 @@ namespace ConsoleApp2
 
             //dog.Wangwang();
 
-            //var hamc = new HMACSHA256(Encoding.UTF8.GetBytes("123"));
-            //Console.WriteLine(hamc);
-            //var sign = Convert.ToBase64String(hamc.ComputeHash(Encoding.UTF8.GetBytes("zhuzhuzhuzhu")));
-            //Console.WriteLine(sign);
+            ////var hamc = new HMACSHA256(Encoding.UTF8.GetBytes("123"));
+            ////Console.WriteLine(hamc);
+            ////var sign = Convert.ToBase64String(hamc.ComputeHash(Encoding.UTF8.GetBytes("zhuzhuzhuzhu")));
+            ////Console.WriteLine(sign);
 
-            //Console.WriteLine(HttpUtility.UrlEncode(sign));
-            Console.WriteLine(HttpUtility.UrlEncode("https://fanyi.baidu.com/"));
-            Console.WriteLine(HttpUtility.UrlDecode(HttpUtility.UrlEncode("https://fanyi.baidu.com/")));
+            ////Console.WriteLine(HttpUtility.UrlEncode(sign));
+            //Console.WriteLine(HttpUtility.UrlEncode("https://fanyi.baidu.com/"));
+            //Console.WriteLine(HttpUtility.UrlDecode(HttpUtility.UrlEncode("https://fanyi.baidu.com/")));
             //Console.WriteLine(HttpUtility.UrlEncode("zhu"));
             //Console.WriteLine(HttpUtility.UrlEncode("zhu/"));
+
+            //int[] nums = new int[] { 1, 9, 3, 5, 6, 9, 4, 5 };
+            //int temp = 0;
+            //for (int i = 0; i < nums.Length - 1; i++)
+            //{
+            //    for (int j = 0; j < nums.Length - 1 - i; j++)
+            //    {
+            //        if (nums[j] > nums[j + 1])
+            //        {
+            //            temp = nums[j + 1];
+            //            nums[j + 1] = nums[j];
+            //            nums[j] = temp;
+            //        }
+            //    }
+            //}
+
+            //string type = "abc";
+            //var typename= type.GetType();
+            //var code= type.GetTypeCode();
+            //var code2 = "123".GetTypeCode();
+
+            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            //int workThread;
+            //int IOThread;
+
+            //{
+            //    ThreadPool.GetMinThreads(out workThread, out IOThread);
+            //    Console.WriteLine(workThread + "\n");
+            //    Console.WriteLine(IOThread);
+            //}
+
+
+            //Task task = Task.Run(() => Console.WriteLine("Hello"))
+            //            .ContinueWith(t => Console.WriteLine("World"));
+
+            //// System.Threading.Tasks.ContinuationTaskFromTask
+            ////Console.WriteLine(task.GetType());
+
+            //Task.Run(() => Console.WriteLine(1))
+            //    .ContinueWith(t => Console.WriteLine(2))
+            //    .ContinueWith(t => Console.WriteLine(3));
+
+            //Func<int> action;
+            //action = returnRet;
+
+            //Task task2 = Task.Run(() => action)
+            //             .ContinueWith(t => Console.WriteLine($"{t.Result()} World"));
+
+
+           
+
+            Strdelegate strdelegate=new   Strdelegate(Wake);
+            strdelegate += Run;
+            strdelegate += Wake;
+            strdelegate += Run;
+            strdelegate += Run;
+            strdelegate();
+
+            
             Console.ReadKey();
         }
 
 
-
+        public static int returnRet()
+        {
+            return 6;
+        }
+        public static int F2(int number)
+        {
+            int a = 1, b = 1;
+            if (number == 1 || number == 2)
+            {
+                return 1;
+            }
+            else
+            {
+                for (int i = 3; i < number + 1; i++)
+                {
+                    int c = a + b;
+                    b = a;
+                    a = c;
+                }
+                return a;
+            }
+        }
+        private static void GreetPeople(string name, Strdelegate MakeGreeting)
+        {
+            MakeGreeting();
+        }
         public static void Wake()
         {
             Console.WriteLine("人醒了");
@@ -122,24 +203,39 @@ namespace ConsoleApp2
         }
 
         public delegate void DelegateA();
-
         public class Dog
-        { 
-           public event DelegateA Delegatea;
-
+        {
+            /// <summary>
+            /// 定义用来作为 "事件封装类型" 的委托，用event关键字来声明事件
+            /// </summary>
+            public event DelegateA Delegatea;
             public void Wangwang()
             {
-
                 Console.WriteLine("小偷来了");
-
                 Delegatea();
                 Console.WriteLine("小偷跑了");
             }
         }
 
 
+        public delegate void Strdelegate();
+        delegate int NumberChanger(int n);
+        static int num = 10;
+        public static int AddNum(int p)
+        {
+            num += p;
+            return num;
+        }
 
-
+        public static int MultNum(int q)
+        {
+            num *= q;
+            return num;
+        }
+        public static int getNum()
+        {
+            return num;
+        }
 
         public void ParallelBreak()
         {
@@ -147,7 +243,7 @@ namespace ConsoleApp2
 
             Console.WriteLine("\n————— {0} —————", Thread.CurrentThread.ManagedThreadId);
 
-            ConcurrentBag<int> bag = new ConcurrentBag<int>();           
+            ConcurrentBag<int> bag = new ConcurrentBag<int>();
 
             Parallel.For(0, 100, (i) =>
             {
@@ -169,10 +265,10 @@ namespace ConsoleApp2
 
         private static void SleepIndefinitely()
         {
-           try
+            try
             {
                 Thread.Sleep(500);
-                Console.WriteLine("Thread '{0}' BOB CurrentThread.Name.",Thread.CurrentThread.Name);
+                Console.WriteLine("Thread '{0}' BOB CurrentThread.Name.", Thread.CurrentThread.Name);
             }
             catch (ThreadInterruptedException)
             {
@@ -184,7 +280,7 @@ namespace ConsoleApp2
                 Console.WriteLine("Thread '{0}' AbortException.",
                                   Thread.CurrentThread.Name);
             }
-           
+
         }
 
 
