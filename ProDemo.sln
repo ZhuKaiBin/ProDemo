@@ -13,8 +13,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProIndexes", "ProIndexes\Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDemo3", "ProDemo3\ProDemo3.csproj", "{C3AA452C-531F-440D-B54D-C1FD7A711ACD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebLogger", "WebApi\WebLogger.csproj", "{04F2DD42-8453-48AF-A34F-E6153315123E}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expression", "ProDemo4\Expression.csproj", "{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProRedis_Func", "ProRedis\ProRedis_Func.csproj", "{7B104D07-068A-4F79-8E57-A2CD563714A9}"
@@ -63,7 +61,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pro_Framework", "Pro_Framew
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pro_Framework.Tests", "Pro_Framework.Tests\Pro_Framework.Tests.csproj", "{083F1FF3-0125-4D4D-8C74-FFD785A01CC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProRabbitMq", "ProRabbitMq\ProRabbitMq.csproj", "{E782856A-E8C2-4BE4-B4BA-7FDE3911F1CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProRabbitMq", "ProRabbitMq\ProRabbitMq.csproj", "{E782856A-E8C2-4BE4-B4BA-7FDE3911F1CA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -91,10 +89,6 @@ Global
 		{C3AA452C-531F-440D-B54D-C1FD7A711ACD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3AA452C-531F-440D-B54D-C1FD7A711ACD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3AA452C-531F-440D-B54D-C1FD7A711ACD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{04F2DD42-8453-48AF-A34F-E6153315123E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{04F2DD42-8453-48AF-A34F-E6153315123E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{04F2DD42-8453-48AF-A34F-E6153315123E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{04F2DD42-8453-48AF-A34F-E6153315123E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
