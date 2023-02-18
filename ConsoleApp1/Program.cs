@@ -7,14 +7,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("顺序表测试开始...");
-
-            Sub sub = new Sub();
-            sub.Func();
+            x x = new x();
+            x.Ret();
             Console.ReadLine();
-          
+
         }
-      
+
         class Base
         {
             public Base()
@@ -30,9 +28,7 @@ namespace ConsoleApp1
 
         class Sub : Base
         {
-            //因为是继承了Base
-            // 进到sub的时候,不是先Sub的构造,而是从Sub的构造，去Base的构造
-            //Base里虚方法 不可以直接被调用,而是要找到重载(Override)它的"实体方法"
+            //Sub是继承了Base,在
 
 
             public Sub()
@@ -40,13 +36,37 @@ namespace ConsoleApp1
                 Func();
             }
 
+            public void SubMethod()
+            {
+                Console.WriteLine("我是SubMethod");
+            }
+
             /// <summary>
             /// Func 是重写的Base里的
             /// </summary>
-            public override void Func()
-            {
-                Console.Write("Sub.Func");
-            }
+            //public override void Func()
+            //{
+            //    Console.Write("Sub.Func");
+            //}
         }
+
+        class x :  IFa, Sub
+        {
+            public x()
+            {
+                this.Func();
+            }
+
+            public void Ret()
+            {
+                Console.WriteLine("我是x里的方法");
+            }
+
+            public 
+        }
+        //就是说子类继承父类,父类又继承爷爷类,
+        //子类会以此访问父类,爷爷类的构造函数
+        //然后再依次的退出来
+        //这就是继承
     }
 }

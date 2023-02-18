@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.IO;
+using System.Diagnostics;
 
 namespace AliPay
 {
@@ -32,59 +33,10 @@ namespace AliPay
         private static void DoSomethingLong(string name)
         {
             Console.WriteLine($"****************DoSomethingLong {name} Start {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}***************");
-            long lResult = 0;
-            for (int i = 0; i < 1000000000; i++)
-            {
-                lResult += i;
-            }
-            Console.WriteLine($"****************DoSomethingLong {name}   End {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")} {lResult}***************");
         }
 
         static void Main(string[] args)
         {
-
-            //for (int i = 0; i < 5; i++)
-            //{
-
-            //    Console.WriteLine("Sleep for 2 seconds.");
-            //    Console.WriteLine($"当前线程的id是：{Thread.CurrentThread.ManagedThreadId}");
-            //    Thread.CurrentThread.Join(3000);
-            //    Console.WriteLine($"当前线程的xxxx是：{Thread.CurrentThread.ManagedThreadId}");
-            //    Thread.Sleep(2000);
-            //}
-
-            //Console.WriteLine("Main thread exits.");
-
-
-
-
-            #region Action
-            //Console.WriteLine($"***************btnAsync_Click Start {Thread.CurrentThread.ManagedThreadId}");
-            //Action<string> action = DoSomethingLong;
-            //// 调用委托(同步调用)
-            //action.Invoke("btnAsync_Click_1");
-            //// 异步调用委托
-            //action.BeginInvoke("btnAsync_Click_2", null, null);
-            //Console.WriteLine($"***************btnAsync_Click End    {Thread.CurrentThread.ManagedThreadId}");
-            #endregion
-            #region decimal.Round
-            //var num = Convert.ToDecimal("0.0008");
-            //var s1 = decimal.Round(num, 2);//这个Round(数字,小数点后几位),2就是后2位 0.0008==》0.02
-            //var s2 = decimal.Round(num, 3);//3就是后三位 0.0008==》0.001  因为第四位是8，四舍五入一下
-            //var s3 = decimal.Round(num, 1);//1就是后一位,0.0008======>0.0
-            //int v = (int)decimal.Round(Convert.ToDecimal("1.0"), 0);
-            #endregion
-            #region  时区 TimeZoneInfo
-            //Console.WriteLine(DateTime.Now);
-            //Console.WriteLine(TimeZoneInfo.Local);
-            //Console.WriteLine(TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
-
-
-            //DateTime Chtime = TimeZoneInfo.ConvertTime(DateTime.Now, TimeZoneInfo.Local, TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
-            //Console.WriteLine(Chtime);
-            //var time = new DateTimeOffset(Chtime, TimeSpan.FromHours(8));
-            //Console.WriteLine(time);
-            #endregion
             #region 查看值类型的地址 unsafe
             //unsafe
             //{
@@ -100,38 +52,35 @@ namespace AliPay
             //DateTime* p1 = &datetime1;
             //DateTime* p2 = &datetime2;
 
+            //var ddd= "1".Equals(1);
+
+
             //datetime1 = datetime1.AddDays(3);
             //DateTime* p3 = &datetime1;
             //DateTime* p4 = &datetime2;
 
+            //person person = new person();
+            //person.name = "ys";
+            //person person2 = new person();
+            //person2.name = "asus";
 
-
-            //int str1 = 100;
-            //int str2 = str1;
-
-            //int* s1 = &str1;
-            //int* s2 = &str2;
-
-            //str1 = str1 + 100;
-
-            //int* s3 = &str1;
-            //int* s4 = &str2;
-
+            //person person3 = person;
+            // bool b= person3.Equals(person);
             //};
             #endregion
+
             #region Func
-            //Func<string> func = () => "委托";
-            ////Func<string, string> 是传入一个string的参数(s) 就是参数 返回值是=>后面的
-            //Expression<Func<string, string>> func_expression = (s) => s + "委托";
-            //Console.WriteLine(func_expression.Compile().Invoke("zhu"));
+            //Func<string, string> 是传入一个string的参数(s) 就是参数 返回值是=>后面的
+            Expression<Func<string, string>> func_expression = (s) => s + "委托";
+            Console.WriteLine(func_expression.Compile().Invoke("zhu"));
+
+            Func<string, string, string> func3 = (string a, string b) => a + b;
+            string ret3 = func3.Invoke("Hell0", "world");
+
+            func3.BeginInvoke("你好", "999", callBack, null);
+
             #endregion
-            #region int.TryParse
-            //string timeout = "zhukaib";
-            ////这里是将timeout 看看是否可以转换成int类型, 这里也考察了out的用法 不需要提前声明
-            //int.TryParse(timeout, out int i);
-            //if (i == 0) i = 3;
-            //Console.WriteLine(i);
-            #endregion
+
             #region DateTimeOffset
             //string expiry = "1635471114";
             //DateTimeOffset ss = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt32(expiry));
@@ -142,33 +91,28 @@ namespace AliPay
             //}
             #endregion
             #region IDog 
-            Dog dog = new Dog();
-            dog.BOB();
-            dog.Run();
-            dog.Eat();
+            //Dog dog = new Dog();
+            //dog.BOB();
+            //dog.Run();
+            //dog.Eat();
 
 
 
-            IDog dog1 = new IDog();
-            dog1.color = "黑色2";
-            dog1.Run();
-            dog1.WangWang();
-            Console.WriteLine(dog1.color.ToString());
+            //IDog dog1 = new IDog();
+            //dog1.color = "黑色2";
+            //dog1.Run();
+            //dog1.WangWang();
+            //Console.WriteLine(dog1.color.ToString());
             #endregion
             Console.ReadKey();
         }
-
-        public static void test1()
+        public static void callBack(IAsyncResult result)
         {
-            Thread t = new Thread(() =>
-            {
+            Console.WriteLine(result.AsyncState.ToString());
 
-                lock (obj)
-                {
-                    Console.WriteLine("1212121");
-                    Thread.Sleep(500);
-                }
-            });
+            Console.WriteLine(result.IsCompleted);
+
+
         }
 
         //抽象就好比是总公司定义几个规则,而且也设定了几个方法(不用abstract修饰)，子公司要继承abstract修饰的方法
@@ -185,6 +129,9 @@ namespace AliPay
                 Console.WriteLine("BOB");
             }
             public abstract void Fly();
+
+            public virtual void get()
+            { }
         }
 
         //接口admin  接口中不能有方法体
@@ -256,6 +203,11 @@ namespace AliPay
             {
                 throw new NotImplementedException();
             }
+        }
+
+        public class person
+        {
+            public string name;
         }
 
     }
