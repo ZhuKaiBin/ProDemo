@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace ConsoleApp2
 {
@@ -62,11 +63,16 @@ namespace ConsoleApp2
                 //sleepingThread.Interrupt();//他中断的是他自己这个耗时的线程
             }
 
-            //var hamc = new HMACSHA256(Encoding.UTF8.GetBytes("123"));
-            //Console.WriteLine(hamc);
-            //var sign = Convert.ToBase64String(hamc.ComputeHash(Encoding.UTF8.GetBytes("zhuzhuzhuzhu")));
-            //Console.WriteLine(sign);
+            MD5 md5 = MD5.Create();   // 默认实现类：Create("System.Security.Cryptography.MD5");         
+            byte[] hashByte = md5.ComputeHash(Encoding.UTF8.GetBytes("boB"));
 
+            Encoding.UTF8.GetString(hashByte);
+
+           
+            Console.WriteLine(ByteArrayToString(hashByte));
+            Console.WriteLine(Encoding.UTF8.GetString(hashByte));
+
+            Console.WriteLine("1.0：MD5默认实现类对明文字符串进行哈希计算后的结果：");
             ////Console.WriteLine(HttpUtility.UrlEncode(sign));
             //Console.WriteLine(HttpUtility.UrlEncode("https://fanyi.baidu.com/"));
             //Console.WriteLine(HttpUtility.UrlDecode(HttpUtility.UrlEncode("https://fanyi.baidu.com/")));
@@ -126,12 +132,28 @@ namespace ConsoleApp2
             }
 
             {
-                ConcurrentBag();
-                Console.WriteLine("11111111111111111111111111111");
-                ListcurrentBag();
+                //ConcurrentBag();
+                //Console.WriteLine("11111111111111111111111111111");
+                //ListcurrentBag();
             }
 
             Console.ReadKey();
+        }
+
+        /// <summary>
+        /// 字节数组转化成16进制字符串
+        /// </summary>
+        /// <param name="arrInput"></param>
+        /// <returns></returns>
+        static string ByteArrayToString(byte[] arrInput)
+        {
+            int i;
+            StringBuilder sOutput = new StringBuilder(arrInput.Length);
+            for (i = 0; i < arrInput.Length - 1; i++)
+            {
+                sOutput.Append(arrInput[i].ToString("X2"));
+            }
+            return sOutput.ToString();
         }
 
         public static void ConcurrentBag()
