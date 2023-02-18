@@ -55,6 +55,7 @@ namespace ConsoleApp2
 
 
                 //这个是master
+                //这个是prodemo3
 
                 //var sleepingThread = new Thread(SleepIndefinitely);
                 //sleepingThread.Name = "Sleeping";
