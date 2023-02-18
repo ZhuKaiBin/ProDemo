@@ -54,7 +54,7 @@ namespace ConsoleApp2
                 //ThreadPool.QueueUserWorkItem(x => Console.WriteLine(x), "54545");
 
 
-
+                //这个是master
 
                 //var sleepingThread = new Thread(SleepIndefinitely);
                 //sleepingThread.Name = "Sleeping";
