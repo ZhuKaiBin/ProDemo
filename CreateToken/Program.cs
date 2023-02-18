@@ -50,10 +50,7 @@ namespace CreateToken
         }
         static void Main(string[] args)
         {
-            #region HttpUtility.UrlEncode
-            //var utility = HttpUtility.UrlEncode("http://localhost:37667/api/v1.0/Order/PutOrder");
-            //var num = HttpUtility.UrlDecode(utility);
-            #endregion
+           
             #region TimeSpan
             TimeSpan span = new TimeSpan(12, 00, 00);
 

@@ -65,74 +65,23 @@ namespace ConsoleApp2
                 //sleepingThread.Interrupt();//他中断的是他自己这个耗时的线程
             }
 
-            MD5 md5 = MD5.Create();   // 默认实现类：Create("System.Security.Cryptography.MD5");         
-            byte[] hashByte = md5.ComputeHash(Encoding.UTF8.GetBytes("boB"));
-
-            Encoding.UTF8.GetString(hashByte);
-
-           
-            Console.WriteLine(ByteArrayToString(hashByte));
-            Console.WriteLine(Encoding.UTF8.GetString(hashByte));
-
-            Console.WriteLine("1.0：MD5默认实现类对明文字符串进行哈希计算后的结果：");
-            ////Console.WriteLine(HttpUtility.UrlEncode(sign));
-            //Console.WriteLine(HttpUtility.UrlEncode("https://fanyi.baidu.com/"));
-            //Console.WriteLine(HttpUtility.UrlDecode(HttpUtility.UrlEncode("https://fanyi.baidu.com/")));
-            //Console.WriteLine(HttpUtility.UrlEncode("zhu"));
-            //Console.WriteLine(HttpUtility.UrlEncode("zhu/"));
-
-            //int[] nums = new int[] { 1, 9, 3, 5, 6, 9, 4, 5 };
-            //int temp = 0;
-            //for (int i = 0; i < nums.Length - 1; i++)
-            //{
-            //    for (int j = 0; j < nums.Length - 1 - i; j++)
-            //    {
-            //        if (nums[j] > nums[j + 1])
-            //        {
-            //            temp = nums[j + 1];
-            //            nums[j + 1] = nums[j];
-            //            nums[j] = temp;
-            //        }
-            //    }
-            //}
-
-            //string type = "abc";
-            //var typename= type.GetType();
-            //var code= type.GetTypeCode();
-            //var code2 = "123".GetTypeCode();
-
-            //var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-            //int workThread;
-            //int IOThread;
-
             {
-                //ThreadPool.GetMinThreads(out int workThread, out int IOThread);
-                //Console.WriteLine(workThread + "\n");
-                //Console.WriteLine(IOThread);
+                //MD5 md5 = MD5.Create();   // 默认实现类：Create("System.Security.Cryptography.MD5");         
+                //byte[] hashByte = md5.ComputeHash(Encoding.UTF8.GetBytes("boB"));
+
+                //Encoding.UTF8.GetString(hashByte);
+
+
+                //Console.WriteLine(ByteArrayToString(hashByte));
+                //Console.WriteLine(Encoding.UTF8.GetString(hashByte));
+
+                //Console.WriteLine("1.0：MD5默认实现类对明文字符串进行哈希计算后的结果：");
+
+                //Console.WriteLine(HttpUtility.UrlEncode("https://fanyi.baidu.com/"));
+                //Console.WriteLine(HttpUtility.UrlDecode(HttpUtility.UrlEncode("https://fanyi.baidu.com/")));
+                //Console.WriteLine(HttpUtility.UrlEncode("zhu"));
+                //Console.WriteLine(HttpUtility.UrlEncode("zhu/"));
             }
-
-            {
-                //Task task = Task.Run(() => Console.WriteLine("Hello"))
-                //            .ContinueWith(t => Console.WriteLine("World"))
-                //            .ContinueWith(x => Console.WriteLine(000000))
-
-                //            ;
-
-                ////// System.Threading.Tasks.ContinuationTaskFromTask
-                //Console.WriteLine(task.GetType());
-
-                //Task.Run(() => Console.WriteLine(1))
-                //    .ContinueWith(t => Console.WriteLine(2))
-                //    .ContinueWith(t => Console.WriteLine(3));
-
-                //Func<int> action;
-                //action = returnRet;
-
-                //Task task2 = Task.Run(() => action)
-                //             .ContinueWith(t => Console.WriteLine($"{t.Result()} World"));
-
-            }
-
             {
                 //ConcurrentBag();
                 //Console.WriteLine("11111111111111111111111111111");
