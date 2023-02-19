@@ -7,64 +7,7 @@ namespace ProDemo4
     {
         static void Main(string[] args)
         {
-            #region Static的知识
-            //Console.WriteLine("i={0}", i);
-            //Console.WriteLine("j={0}", new Program().j);
-            //Console.Read();
 
-            //Console.Write(Bob.bob_num);
-            //Bob b2 = new Bob();
-            //Console.Write(Bob.bob_num);//结果为2，首先，类被加载，所有的静态成员被创建在静态存储区，i=0,接着调用了类的成员，这时候静态构造函数就会被调用，i=2
-            //Bob b = new Bob();
-            //Console.Write(Bob.bob_num);
-
-            #endregion
-            #region 索引
-            //IndexClass indexClass = new IndexClass();
-            //Random random = new Random();
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    indexClass[i] = random.Next(1, 12);
-            //}
-
-            //for (int i = 0; i < 5; i++)
-            //{
-            //    Console.WriteLine($"输出的元素,{indexClass[i]}");
-            //}
-            //Console.ReadKey();
-            #endregion
-            #region Expression
-
-            LambdaFun("BeiJing 2013", s =>
-            {
-                if (s.Contains("2013"))
-                {
-                    s = s.Replace("2013", "2014");
-                }
-                return s;
-            });
-
-            static void LambdaFun(string str, Func<string, string> func)
-            {
-                Console.WriteLine(func(str));
-            }
-            Console.ReadKey();
-
-
-            //#region 无参数
-            Func<string> func = () => { return "委托"; };
-            func();
-            Console.WriteLine(func());
-
-            Func<string> func2 = delegate
-              {
-                  return "委托";
-              };
-
-            func2();
-            //这里func2=func  ，func2 是func编译的结果，接住SLPY反编译看下
-            #endregion
             #region 有一个参数 y
             Expression<Func<string>> func_expre = () => "委托Expression";
             //////func_expre();直接这样,这个表达式是报错的，说明是不是委托
@@ -168,7 +111,7 @@ namespace ProDemo4
             return num;
         }
 
-        public  class Bob
+        public class Bob
         {
             //如果一个类 既有静态构造函数 又有非静态构造函数
             //那么程序先执行静态构造函数,再执行非静态构造函数
@@ -177,49 +120,14 @@ namespace ProDemo4
             static Bob()
             {
                 bob_num = 888;
-                Console.Write("静态构造函数被执行");
+                Console.Write($"静态构造函数{bob_num}被执行\n");
             }
 
 
             public Bob()
             {
                 bob_num = 10000;
-                Console.Write("实例构造方法被调用");
-            }
-                
-        }
-
-
-
-
-
-
-
-
-
-
-        public interface ISOmeInterface
-        {
-            int this[int index] { set; get; }
-        }
-
-
-        public class IndexClass : ISOmeInterface
-        {
-
-            private int[] ary = new int[5];
-            public int this[int index]
-            {
-                get { return ary[index]; }
-                set
-                {
-                    if (value > 5)
-                        ary[index] = 0;
-                    else
-                    {
-                        ary[index] = value;
-                    }
-                }
+                Console.Write($"实例构造方法{bob_num}被调用\n");
             }
         }
     }

@@ -59,7 +59,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pro_Framework.Tests", "Pro_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProRabbitMq", "ProRabbitMq\ProRabbitMq.csproj", "{E782856A-E8C2-4BE4-B4BA-7FDE3911F1CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOP", "AOP\AOP.csproj", "{807D2092-41C1-44BF-9449-14CD1DCD4F30}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOP", "AOP\AOP.csproj", "{807D2092-41C1-44BF-9449-14CD1DCD4F30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProSingletonStatic", "ProSingletonStatic\ProSingletonStatic.csproj", "{48E02B9D-10B0-471E-ACA3-CB592917E20D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +185,10 @@ Global
 		{807D2092-41C1-44BF-9449-14CD1DCD4F30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{807D2092-41C1-44BF-9449-14CD1DCD4F30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{807D2092-41C1-44BF-9449-14CD1DCD4F30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48E02B9D-10B0-471E-ACA3-CB592917E20D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48E02B9D-10B0-471E-ACA3-CB592917E20D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48E02B9D-10B0-471E-ACA3-CB592917E20D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48E02B9D-10B0-471E-ACA3-CB592917E20D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
