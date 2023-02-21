@@ -6,26 +6,6 @@ namespace ProAbstract_Virtual_Interfance
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-
-            //Dog dog = new Dog();
-            //dog.start();
-            //dog.Start2();
-
-
-
-            //Bench bench = new Bench();
-            //bench.Wheel();
-            //bench.BenchCar();
-            //bench.Start();
-
-            Asia asia = new Asia();
-            asia.eat();
-            asia.Walk();
-            Console.WriteLine( asia.Chainese());
-            Console.WriteLine(asia.America());
-
-            Console.ReadKey();
 
         }
 
