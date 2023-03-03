@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Xml;
 
 namespace ProDemo2
@@ -40,9 +42,31 @@ namespace ProDemo2
                 Console.WriteLine("主人醒了");
             }
         }
-
-        static void Main(string[] args)
+        static void Go()
         {
+            Console.WriteLine("Hello from " + Thread.CurrentThread.Name);
+        }
+        static async Task Main(string[] args)
+        {
+            {
+                var task = Task.Run<string>(() => "Hello World!");
+                var result = await task;
+                Console.WriteLine(result);
+            }
+
+            {
+                new TaskFactory().StartNew(() =>
+                {
+                    Console.WriteLine("Hello World!");
+                });
+
+            }
+
+            //Thread.CurrentThread.Name = "main";
+            //Thread worker = new Thread(Go);
+            //worker.Name = "worker";
+            //worker.Start();
+            //Go();
 
             //Cat cat = new Cat();
             //Mouse m = new Mouse();
@@ -74,7 +98,7 @@ namespace ProDemo2
             //x.testParams(0, 1);
             //x.testParams(0, 1, 2);
             #endregion
-            Console.ReadKey();
+           
         }
 
         class Class1

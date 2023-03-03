@@ -20,6 +20,21 @@ namespace CreateToken
         static void Main(string[] args)
         {
 
+            try
+            {
+                throw new Exception("666");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("END");
+            }
+
+            Console.WriteLine(DateTime.Now.Ticks/10000000);
+
             string labels = "";
             string ret=  labels.Split(',')[0];
 
