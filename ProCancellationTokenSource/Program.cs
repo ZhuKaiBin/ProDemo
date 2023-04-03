@@ -9,19 +9,19 @@ namespace ProCancellationTokenSource
         static async Task Main(string[] args)
         {
 
-            static int TaskMethod(string name, int seconds)
-            {
-                Console.WriteLine("Task Method : Task {0} is running on a thread id {1}. Is thread pool thread: {2}",
-                name, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
-                Thread.Sleep(TimeSpan.FromSeconds(seconds));
-                return 42 * seconds;
-            }
-
             {
                 var firstTask = new Task<int>(() => TaskMethod("第一个任务", 3));
                 await firstTask.ContinueWith(t => Console.WriteLine("第一个任务的返回结果为 {0}. Thread id {1}, 是否是线程池线程: {2}", t.Result, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread), TaskContinuationOptions.OnlyOnRanToCompletion);
                 firstTask.Start();
 
+            }
+
+            static int TaskMethod(string name, int seconds)
+            {
+                Console.WriteLine("Task Method : Task {0} is running on a thread id {1}. Is thread pool thread: {2}",
+                "yusong", Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+                Thread.Sleep(TimeSpan.FromSeconds(10000));
+                return 42 * seconds;
             }
 
             {

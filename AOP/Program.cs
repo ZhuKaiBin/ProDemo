@@ -8,25 +8,25 @@ namespace AOP
         static void Main(string[] args)
         {
             var target = new PhoneService("10086", "查询余额");
-            //target.Excute();
+            target.Excute();
             //实现1：AOP 模式：对原有逻辑的一些增强,并不影响到原有的逻辑
-            //var aopTarGet = new PhoneServiveProcess(target);
+            var aopTarGet = new PhoneServiveProcess(target);
             //实现1.2：aopTarGet.Excute();
-            //var log = new PhoneServiveProcess2(aopTarGet);
-            //log.Excute();
+            var log = new PhoneServiveProcess2(aopTarGet);
+            log.Excute();
 
 
-            //引入组件(castle.core)，动态代理
-            var castltAop = new ProxyGenerator();
-            var proxy = castltAop.CreateInterfaceProxyWithTarget<IPhoneService>(target, new NewService1(), new NewService2());
-            proxy.Excute();
+            ////引入组件(castle.core)，动态代理
+            //var castltAop = new ProxyGenerator();
+            //var proxy = castltAop.CreateInterfaceProxyWithTarget<IPhoneService>(target, new NewService1(), new NewService2());
+            //proxy.Excute();
 
             Console.Read();
         }
     }
 
     /// <summary>
-    /// 定义一个接口IPhoneService
+    /// 定义一个接口IPhoneService 基础
     /// </summary>
     public interface IPhoneService
     {
@@ -37,7 +37,7 @@ namespace AOP
     }
 
     /// <summary>
-    /// 实现接口IPhoneService
+    /// 一个功能实现接口IPhoneService
     /// </summary>
     public class PhoneService : IPhoneService
     {
@@ -56,7 +56,7 @@ namespace AOP
         }
     }
 
-    //代理模式
+    //代理模式  额外的功能引入；额外的功能也要继承基类;
     //1.实现目标对象(接口)的标准
     //2.依赖目标对象(就是对原有逻辑的统一增强)
     //3.引入新业务
@@ -81,6 +81,8 @@ namespace AOP
         }
     }
 
+
+
     public class PhoneServiveProcess2 : IPhoneService
     {
         private readonly IPhoneService _target;
@@ -100,6 +102,13 @@ namespace AOP
         }
 
     }
+
+
+
+
+
+
+
 
 
     public class NewService1 : IInterceptor

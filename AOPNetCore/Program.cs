@@ -5,8 +5,7 @@ using Newtonsoft.Json;
 
 
 namespace AOPNetCore
-{
-    //https://www.bilibili.com/video/BV1W14y1c7yt?p=37&spm_id_from=pageDriver&vd_source=b75e521f89833d861c15a89a5ef8cca9
+{   
     class Program
     {
         static void Main(string[] args)
@@ -39,6 +38,8 @@ namespace AOPNetCore
         public string Request { get; }
         public string Response { get; }
     }
+
+
     //这个委托是传入一个参数，返回一个Task
     public delegate Task RequestDelegate(HttpContext context);
     public class ApplicationBuilder

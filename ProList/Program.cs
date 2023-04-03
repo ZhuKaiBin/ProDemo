@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace ProList
 {
@@ -8,46 +10,21 @@ namespace ProList
     {
         static void Main(string[] args)
         {
-            ListBenchmark ListBenchmark = new ListBenchmark();
-            ListBenchmark.Setup();
 
-            ListBenchmark.List_Foreach();
+            var obj = JObject.Parse("{\"access_token\":\"b424f3ce-6fde-4567-9876-e0bceda9d946\",\"token_type\":\"bearer\",\"refresh_token\":\"87fb2465-bb2f-46ec-8546-06d63c7b0087\",\"refresh_token_expires_in\":11544205,\"expires_in\":7199,\"scope\":\"default\",\"public_account_id\":\"4020541464018\",\"business_id\":\"1501948018\"}");
+            var ak = obj.SelectToken("ak", false);
+            var sk = obj.SelectToken("access_token", false);
 
+            var a= ak?.ToString();
+            var s = sk.ToString();
+
+            Console.ReadKey();
         }
+
+        
+
     }
 
 
-    public class ListBenchmark
-    {
-        private List<int> _list = default!;
-
-        // 分别测试10、1千、1万、10万及100万数据时的表现
-        //[Params(10, 1000, 1_0000, 10_0000, 100_0000)]
-        public int Size { get; set; }
-
-        //[GlobalSetup]
-        public void Setup()
-        {
-            // 提前创建好数组
-            _list = new List<int>(5000);
-            for (var i = 0; i < Size; i++)
-            {
-                _list.Add(i);
-            }
-        }
-
-        //public void Foreach_Span()
-        //{
-        //    foreach (var item in CollectionsMarshal.AsSpan(_list))
-        //    {
-        //    }
-        //}
-
-        public void List_Foreach()
-        {
-            _list.ForEach(x => { Console.WriteLine(x); });
-        }
-
-
-    }
+   
 }
