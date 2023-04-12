@@ -8,15 +8,44 @@ namespace ProDES
     {
         static void Main(string[] args)
         {
+
+
+            {
+
+                byte[] data = new byte[] { 0x01, 0x02, 0x03, 0x04 };
+                Memory<byte> memory = new Memory<byte>(data);
+
+                Span<byte> span = memory.Span;
+                byte[] array = memory.ToArray();
+
+            }
+
+            {
+
+                byte[] data = new byte[] { 0x01, 0x02, 0x03, 0x04 };
+                Span<byte> span = data.AsSpan(1, 2);
+
+
+                span[0] = 0x05;
+                span[1] = 0x06;
+
+
+            }
+
+
+
+
+
+
             var ency = DESHelper.Encrypt("{\"name\":\"Asus\",\"age\":\"28\",\"messageId\":\"C0A8A6BA002977369BD39230711D07E3\"}");
 
-            var dec=  DESHelper.Decrypt(ency);
+            var dec=  DESHelper.Decrypt("NT092uXVyFCzZ2iWjaF+/Pf37qvRp3k+Slcan87lrm2mTvUzM8n/bsUwc5d9tDymeJMbHn94lLaKN81fa1CfjLdNDMqbuRGVoakTEeKh/n0ppoLSaXH3yFHL9ggLcIg7RscIB3QMMsV4Lj310dZ3w/3IHcdzM+IldZthzzGcYa+Dtpc7uxLxrujclZ68MLwvoiIhuyBFHjIi1GrHr/aO9pTDBAlKXgV0dCYv/fLLsGSi5BAhbAtEcnEtZ5AMVNB2GsMvhTU8Moo4NqOk3vUw2bCmfzz3/8VdVEZt2qN/wJYG//Sd7BZxmHkDwaZZke3A");
         }
     }
 
     public static class DESHelper
     {
-        private const string KEY = "10086";
+        private const string KEY = "ADFB7CBA0DAB1546";
         //private const string IV = "thisisasampleiv";
 
         // 加密方法

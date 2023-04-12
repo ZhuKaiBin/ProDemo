@@ -79,7 +79,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProCache", "ProCache\ProCac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProJWT", "ProJWT\ProJWT.csproj", "{5E1193CB-8C87-49E0-B709-12274FA977D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProDES", "ProDES\ProDES.csproj", "{1B7487A0-5DB9-4659-912B-D7DE5EC77267}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDES", "ProDES\ProDES.csproj", "{1B7487A0-5DB9-4659-912B-D7DE5EC77267}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDisposable", "ProDisposable\ProDisposable.csproj", "{A94190EC-3CB8-45F4-AD94-F82218048D9C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProSemaphore", "ProSemaphore\ProSemaphore.csproj", "{9AD5078F-0623-44B4-992A-3170563931BF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEventHandler", "ProEventHandler\ProEventHandler.csproj", "{0612568D-621E-4F22-AE55-FF5468FEEABC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProJsonSerializerSettings", "ProJsonSerializerSettings\ProJsonSerializerSettings.csproj", "{571492DF-D0DE-4D64-8F0A-B92726F4F18A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -243,6 +251,22 @@ Global
 		{1B7487A0-5DB9-4659-912B-D7DE5EC77267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B7487A0-5DB9-4659-912B-D7DE5EC77267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B7487A0-5DB9-4659-912B-D7DE5EC77267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A94190EC-3CB8-45F4-AD94-F82218048D9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94190EC-3CB8-45F4-AD94-F82218048D9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94190EC-3CB8-45F4-AD94-F82218048D9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94190EC-3CB8-45F4-AD94-F82218048D9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AD5078F-0623-44B4-992A-3170563931BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AD5078F-0623-44B4-992A-3170563931BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AD5078F-0623-44B4-992A-3170563931BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AD5078F-0623-44B4-992A-3170563931BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0612568D-621E-4F22-AE55-FF5468FEEABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0612568D-621E-4F22-AE55-FF5468FEEABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0612568D-621E-4F22-AE55-FF5468FEEABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0612568D-621E-4F22-AE55-FF5468FEEABC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{571492DF-D0DE-4D64-8F0A-B92726F4F18A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{571492DF-D0DE-4D64-8F0A-B92726F4F18A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{571492DF-D0DE-4D64-8F0A-B92726F4F18A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{571492DF-D0DE-4D64-8F0A-B92726F4F18A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
