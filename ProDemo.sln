@@ -91,7 +91,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProJsonSerializerSettings",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProSpinLock", "ProSpinLock\ProSpinLock.csproj", "{9C263253-69BF-413D-8169-531B19E89877}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProMoq", "ProMoq\ProMoq.csproj", "{D412E5F8-FA98-4522-8B10-C76B29B0867A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMoq", "ProMoq\ProMoq.csproj", "{D412E5F8-FA98-4522-8B10-C76B29B0867A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCloneable", "ProCloneable\ProCloneable.csproj", "{71CDF183-7FE5-4FE6-987F-29AD92412A61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -279,6 +281,10 @@ Global
 		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
