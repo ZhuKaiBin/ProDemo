@@ -48,6 +48,19 @@ namespace ConsoleApp2
         static void Main(string[] args)
         {
 
+            {
+               
+
+            }
+
+
+
+
+
+
+
+
+
             //最后结果的键值对
             Dictionary<string, object> retDic = new Dictionary<string, object>();
             //原始报文

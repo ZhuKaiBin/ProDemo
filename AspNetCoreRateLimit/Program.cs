@@ -16,11 +16,21 @@ namespace CoreRateLimit
             CreateHostBuilder(args).Build().Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        //public static IHostBuilder CreateHostBuilder(string[] args) =>
+        //    Host.CreateDefaultBuilder(args)
+        //        .ConfigureWebHostDefaults(webBuilder =>
+        //        {
+        //            webBuilder.UseStartup<Startup>();
+        //        });
+
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            var iHostBuilder = Host.CreateDefaultBuilder(args);          
+
+            return iHostBuilder.ConfigureWebHostDefaults(x => x.UseStartup<Startup>());
+        }
+
+
+
     }
 }
