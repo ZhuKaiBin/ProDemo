@@ -13,6 +13,8 @@ namespace ProJsonSerializerSettings
             string json = Newtonsoft.Json.JsonConvert.SerializeObject(date);
             Console.WriteLine(json);
 
+
+
             string jsonMicrosoft = JsonConvert.SerializeObject(date, new JsonSerializerSettings
             {
                 DateFormatHandling = DateFormatHandling.MicrosoftDateFormat,
@@ -32,7 +34,7 @@ namespace ProJsonSerializerSettings
 
             IList<DateTime> list = JsonConvert.DeserializeObject<IList<DateTime>>(jsonTime, new JsonSerializerSettings
             {
-                DateFormatString = "yyyy-MM-dd HH:mm:ss"
+                DateFormatString = "yyyy/MM/dd HH:mm:ss"
             });
 
             foreach (DateTime datetime in list)

@@ -17,7 +17,7 @@ namespace ProIdentityServer4
         public void ConfigureServices(IServiceCollection services)
         {
             var builder = services.AddIdentityServer();
-            builder.AddDeveloperSigningCredential();//Æô¶¯µÄÊ±ºò£¬Éú³ÉÒ»¸öÁÙÊ±µÄÃØÔ¿
+            builder.AddDeveloperSigningCredential();//ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ô¿
             builder.AddInMemoryApiScopes(Config.ApiScopes);
             builder.AddInMemoryClients(Config.clients);
 

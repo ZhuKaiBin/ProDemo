@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+﻿
 using System;
 
 namespace ProException
@@ -7,54 +7,18 @@ namespace ProException
     {
         static void Main(string[] args)
         {
-            //Cat cat = new Cat();          
-            //People p = new People();
-            //cat.CatCallEvent += new CatCallEventHandler(p.WakeUp);
+            Cat cat = new Cat();
+            People p = new People();
+            cat.CatCallEvent += new CatCallEventHandler(p.WakeUp);
 
             ////现在调用猫叫这个方法
             ////这个方法里又调用了这个事件
             ////事件又触发了委托
-            //cat.OnCatCall("猫叫");
+            cat.OnCatCall("猫叫");
 
-            #region Delegate Action Func
-            //NoRetNoPara noRetNoPara = new NoRetNoPara(Method1);
-            //noRetNoPara.Invoke();
-
-            //Action action = Method1;
-            //action.Invoke();
-
-            //Action<string> action1 = Method2;
-            //action1.Invoke("bob");
-
-
-            //Func<string, string> func = method3;
-            //string ret= func("bobrfun");
-            #endregion
             Console.ReadKey();
         }
-
-        public static void Method1()
-        {
-            Console.WriteLine("没有参数没有返回值");
-        }
-
-        public static void Method2(string para)
-        {
-            Console.WriteLine($"有参数{para},无返回值");
-        }
-
-        public static string method3(string para)
-        {
-            return para;
-        }
     }
-
-    public delegate void NoRetNoPara();
-
-    public delegate string RetPara(string name);
-
-
-
 
     // 声明事件，首先必须声明该事件的委托类型
     public delegate string CatCallEventHandler(string anme);
@@ -62,7 +26,7 @@ namespace ProException
     {
         //事件要在类里面声明
         // 基于上面的委托定义事件
-        //定义猫叫事件
+        //定义猫叫事件=========>用到委托的地方，就是要声明,不声明就会报错
         public event CatCallEventHandler CatCallEvent;
 
         public void OnCatCall(string msg)

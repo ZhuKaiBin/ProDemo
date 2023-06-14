@@ -67,12 +67,8 @@ namespace ProLock
         private int level = 6;
        
         //obj一定是私有的,静态的只读的
-        private static readonly object obj = new object();      
-
-        public Thread threadone;
-        public Thread threadtwo;
+        private static readonly object obj = new object(); 
         public Queue<int> _queue = new Queue<int>();
-
         public void StartThread()
         { 
          
@@ -84,7 +80,7 @@ namespace ProLock
             //应该避免锁定Public类型,否则被其他代码实例化,而超出代码的控制范围
 
             //lock锁定的必须是引用类型
-            lock (_queue)//lock来锁定queue,一个先执行,再执行另外一个
+            lock (obj)//lock来锁定queue,一个先执行,再执行另外一个
             {
                 _queue.Enqueue(5);
                 Thread.Sleep(1000);

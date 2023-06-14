@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.33328.57
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDemo", "ProDemo\ProDemo.csproj", "{09D6A5A6-06F1-48CC-9CCE-03DFAB8DAD8C}"
 EndProject
@@ -27,15 +27,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAuthorization", "WebAppl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{001FFAAE-D5E4-470C-B343-EC9D35702630}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProTask", "ProTask\ProTask.csproj", "{12C44CD0-CB0E-424B-ADB5-C7A1BAF4F181}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProException", "ProException\ProException.csproj", "{86E1F509-A8B5-466B-9C75-FF8C506C8F5B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProIdentityServer4", "ProIdentityServer4\ProIdentityServer4.csproj", "{33786A45-E13A-4A09-ADB8-84F136C29475}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProIdentityServerAPI", "ProIdentityServerAPI\ProIdentityServerAPI.csproj", "{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProEntityFramework", "ProEntityFramework\ProEntityFramework.csproj", "{F68D0D3A-EB2B-4C72-B4CF-788491437752}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S3Storage", "S3Storage\S3Storage.csproj", "{7C784C93-6AB5-4342-B916-7E3A0886398E}"
 EndProject
@@ -91,9 +83,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProJsonSerializerSettings",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProSpinLock", "ProSpinLock\ProSpinLock.csproj", "{9C263253-69BF-413D-8169-531B19E89877}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProMoq", "ProMoq\ProMoq.csproj", "{D412E5F8-FA98-4522-8B10-C76B29B0867A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProCloneable", "ProCloneable\ProCloneable.csproj", "{71CDF183-7FE5-4FE6-987F-29AD92412A61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProCloneable", "ProCloneable\ProCloneable.csproj", "{71CDF183-7FE5-4FE6-987F-29AD92412A61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -149,26 +139,10 @@ Global
 		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{001FFAAE-D5E4-470C-B343-EC9D35702630}.Release|Any CPU.Build.0 = Release|Any CPU
-		{12C44CD0-CB0E-424B-ADB5-C7A1BAF4F181}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{12C44CD0-CB0E-424B-ADB5-C7A1BAF4F181}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{12C44CD0-CB0E-424B-ADB5-C7A1BAF4F181}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{12C44CD0-CB0E-424B-ADB5-C7A1BAF4F181}.Release|Any CPU.Build.0 = Release|Any CPU
 		{86E1F509-A8B5-466B-9C75-FF8C506C8F5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86E1F509-A8B5-466B-9C75-FF8C506C8F5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86E1F509-A8B5-466B-9C75-FF8C506C8F5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86E1F509-A8B5-466B-9C75-FF8C506C8F5B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33786A45-E13A-4A09-ADB8-84F136C29475}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33786A45-E13A-4A09-ADB8-84F136C29475}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33786A45-E13A-4A09-ADB8-84F136C29475}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33786A45-E13A-4A09-ADB8-84F136C29475}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BEDF258-9489-446E-8CB6-B5FB6FB142E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F68D0D3A-EB2B-4C72-B4CF-788491437752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F68D0D3A-EB2B-4C72-B4CF-788491437752}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F68D0D3A-EB2B-4C72-B4CF-788491437752}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F68D0D3A-EB2B-4C72-B4CF-788491437752}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7C784C93-6AB5-4342-B916-7E3A0886398E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7C784C93-6AB5-4342-B916-7E3A0886398E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C784C93-6AB5-4342-B916-7E3A0886398E}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -277,10 +251,6 @@ Global
 		{9C263253-69BF-413D-8169-531B19E89877}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C263253-69BF-413D-8169-531B19E89877}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C263253-69BF-413D-8169-531B19E89877}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D412E5F8-FA98-4522-8B10-C76B29B0867A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Release|Any CPU.ActiveCfg = Release|Any CPU

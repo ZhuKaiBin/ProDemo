@@ -19,7 +19,7 @@ namespace ProTask
             TimeSpan ts = dt1 - dt2;
             double t = ts.TotalMilliseconds;
 
-            Console.WriteLine(+Thread.CurrentThread.ManagedThreadId + "耗时" + t);
+            Console.WriteLine(Thread.CurrentThread.ManagedThreadId + "耗时" + t);
             Console.ReadKey();
 
         }
