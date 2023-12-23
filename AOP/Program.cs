@@ -9,13 +9,10 @@ namespace AOP
         {
             var target = new PhoneService("10086", "查询余额");
             target.Excute();
+
             //实现1：AOP 模式：对原有逻辑的一些增强,并不影响到原有的逻辑
-            var aopTarGet = new PhoneServiveProcess(target);
-            //实现1.2：aopTarGet.Excute();
-            var log = new PhoneServiveProcess2(aopTarGet);
-            log.Excute();
-
-
+            var aopTarGet = new PhoneServiveAOP(target);
+          
             ////引入组件(castle.core)，动态代理
             //var castltAop = new ProxyGenerator();
             //var proxy = castltAop.CreateInterfaceProxyWithTarget<IPhoneService>(target, new NewService1(), new NewService2());
@@ -56,14 +53,19 @@ namespace AOP
         }
     }
 
-    //代理模式  额外的功能引入；额外的功能也要继承基类;
-    //1.实现目标对象(接口)的标准
-    //2.依赖目标对象(就是对原有逻辑的统一增强)
-    //3.引入新业务
-    public class PhoneServiveProcess : IPhoneService
+
+
+    //共同继承底层类
+    //PhoneServiveAOP 和 实现者
+
+    public class PhoneServiveAOP : IPhoneService
     {
         private readonly IPhoneService _target;
-        public PhoneServiveProcess(IPhoneService target)
+        /// <summary>
+        /// 这个target是制要传入的某个具体的示例
+        /// </summary>
+        /// <param name="target"></param>
+        public PhoneServiveAOP(IPhoneService target)
         {
             _target = target;
         }
@@ -78,58 +80,6 @@ namespace AOP
             Console.WriteLine("this is PreExcute");
             _target.Excute();
             Console.WriteLine("this is AfterExcute");
-        }
-    }
-
-
-
-    public class PhoneServiveProcess2 : IPhoneService
-    {
-        private readonly IPhoneService _target;
-        public PhoneServiveProcess2(IPhoneService target)
-        {
-            _target = target;
-        }
-
-        public string Mobile { get => _target.Mobile; set => _target.Mobile = value; }
-        public string Message { get => _target.Message; set => _target.Message = value; }
-
-        public void Excute()
-        {
-            Console.WriteLine("this is Prelog");
-            _target.Excute();
-            Console.WriteLine("this is Afterlog");
-        }
-
-    }
-
-
-
-
-
-
-
-
-
-    public class NewService1 : IInterceptor
-    {
-        //IInvocation  链接器
-        public void Intercept(IInvocation invocation)
-        {
-            Console.WriteLine("this is PreExcute");
-            invocation.Proceed();
-            Console.WriteLine("this is AfterExcute");
-        }
-    }
-
-    public class NewService2 : IInterceptor
-    {
-        //IInvocation  链接器
-        public void Intercept(IInvocation invocation)
-        {
-            Console.WriteLine("this is Prelog");
-            invocation.Proceed();
-            Console.WriteLine("this is Afterlog");
         }
     }
 }

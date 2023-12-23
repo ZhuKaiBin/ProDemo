@@ -11,6 +11,8 @@ namespace AOPNetCore
         static void Main(string[] args)
         {
             var builder = new ApplicationBuilder();
+
+            //Use这个方法的参数就是传入一个委托Func<RequestDelegate, RequestDelegate>  
             builder.Use(next =>
             {
                 return async context =>
@@ -24,7 +26,6 @@ namespace AOPNetCore
             {
                 return async context =>
                 {
-
                     Console.WriteLine("水已经净化了");
                 };
             });
@@ -42,6 +43,8 @@ namespace AOPNetCore
 
     //这个委托是传入一个参数，返回一个Task
     public delegate Task RequestDelegate(HttpContext context);
+
+    //底层的中间件是怎么运行的，
     public class ApplicationBuilder
     {
         //这个是委托的集合
