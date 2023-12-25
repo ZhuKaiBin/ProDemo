@@ -10,11 +10,8 @@ namespace ArdalisSpecification
     {
         static void Main(string[] args)
         {
-            string id = "";
-            var ret = nameof(id);
-            var guardAgainst = Guard.Against.Default(id, nameof(id));
+           
 
-            Console.WriteLine("Hello, World!");
         }
     }
 
@@ -89,13 +86,15 @@ namespace ArdalisSpecification
         {
             
         }
+
+        public Hero() { }
     }
 
 
     public class HeroService
     {
-        private readonly YourRepository<Hero> _heroRepository;
-        public HeroService(YourRepository<Hero> heroRepository)
+        private readonly IRepository<Hero> _heroRepository;
+        public HeroService(IRepository<Hero> heroRepository)
         {
             _heroRepository = heroRepository;
         }
@@ -182,47 +181,50 @@ namespace ArdalisSpecification
 
 
 
-    public async Task Run()
+    //public async Task Run()
+    //{
+    //    var seedData = new[]
+    //                   {
+    //                    new Hero(
+    //                        name: "Batman",
+    //                        superPower: "Intelligence",
+    //                        isAlive: true,
+    //                        isAvenger: false),
+    //                    new Hero(
+    //                        name: "Iron Man",
+    //                        superPower: "Intelligence",
+    //                        isAlive: true,
+    //                        isAvenger: true)                      
+    //                    };
+
+    //    await heroService.SeedData(seedData);
+
+    //    var captainAmerica = await heroService.Create("Captain America", "Shield", true, true);
+
+    //    var ironMan = await heroService.GetByName("Iron Man");
+
+    //    var alsoIronMan = await heroService.GetById(ironMan.Id);
+
+    //    await heroService.SetIsAlive(ironMan.Id, false);
+
+    //    var shouldOnlyContainBatman = await heroService.GetHeroesFilteredByNameAndSuperPower("Bat", "Intel");
+
+    //    await heroService.Delete(captainAmerica);
+
+    //    var allRemainingHeroes = await heroService.GetHeroesFilteredByNameAndSuperPower("", "");
+
+    //    await heroService.DeleteRange(allRemainingHeroes);
+
+    //}
+
+
+    public interface IRepository<T> : IRepositoryBase<T> where T : class
     {
-        var seedData = new[]
-                       {
-                        new Hero(
-                            name: "Batman",
-                            superPower: "Intelligence",
-                            isAlive: true,
-                            isAvenger: false),
-                        new Hero(
-                            name: "Iron Man",
-                            superPower: "Intelligence",
-                            isAlive: true,
-                            isAvenger: true)                      
-                        };
-
-        await heroService.SeedData(seedData);
-
-        var captainAmerica = await heroService.Create("Captain America", "Shield", true, true);
-
-        var ironMan = await heroService.GetByName("Iron Man");
-
-        var alsoIronMan = await heroService.GetById(ironMan.Id);
-
-        await heroService.SetIsAlive(ironMan.Id, false);
-
-        var shouldOnlyContainBatman = await heroService.GetHeroesFilteredByNameAndSuperPower("Bat", "Intel");
-
-        await heroService.Delete(captainAmerica);
-
-        var allRemainingHeroes = await heroService.GetHeroesFilteredByNameAndSuperPower("", "");
-
-        await heroService.DeleteRange(allRemainingHeroes);
 
     }
 
 
-    public interface YourRepository<T> : IRepositoryBase<T> where T : class
-    {
 
-    }
 
 
 
