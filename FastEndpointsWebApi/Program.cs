@@ -15,10 +15,12 @@ namespace FastEndpointsWebApi
 
             // Add services to the container.
 
+            builder.WebHost.ConfigureKestrel(x => x.Limits.MaxRequestBodySize = 1073741824);
+
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
-            builder.Services.AddFastEndpoints();
+            builder.Services.AddFastEndpoints().AddResponseCaching();
             builder.Services.AddFastEndpointsApiExplorer();
 
             builder.Services.AddSwaggerGen(c =>
@@ -29,6 +31,8 @@ namespace FastEndpointsWebApi
             });
 
             var app = builder.Build();
+            app.UseFastEndpoints();
+            app.UseResponseCaching();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
