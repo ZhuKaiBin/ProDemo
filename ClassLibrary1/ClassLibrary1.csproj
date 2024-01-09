@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="accoremgd">
+      <HintPath>C:\Autodesk\AutoCAD_2019_Simplified_Chinese_Win_64bit_dlm\x64\acad\PF\Root\accoremgd.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Acdbmgd">
+      <HintPath>C:\Autodesk\AutoCAD_2019_Simplified_Chinese_Win_64bit_dlm\x64\acad\PF\Root\acdbmgd.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Acmgd">
+      <HintPath>C:\Autodesk\AutoCAD_2019_Simplified_Chinese_Win_64bit_dlm\x64\acad\PF\Root\acmgd.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
