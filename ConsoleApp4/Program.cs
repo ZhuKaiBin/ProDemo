@@ -1,5 +1,6 @@
-﻿using System.Net;
-using HtmlAgilityPack;
+﻿using Aspose.CAD;
+using Aspose.CAD.FileFormats.Cad;
+using Aspose.CAD.ImageOptions;
 
 
 namespace ConsoleApp4
@@ -8,49 +9,30 @@ namespace ConsoleApp4
     {
         static void Main(string[] args)
         {
+            string dwgFilePath = @"C:\Users\dyzhukb\Desktop\CADDemo\5320db1794en.dxf";
+            string svgFilePath = @"C:\Users\dyzhukb\Desktop\CADDemo";
 
-            string keyword = "销售";
-            string url = "https://www.zhipin.com/web/geek/job?query=%E7%A0%94%E5%8F%91&city=101020100";
-
-            // 创建Web客户端
-            WebClient client = new WebClient();
-            client.Encoding = System.Text.Encoding.UTF8;
-
-            // 下载页面内容
-            string html = client.DownloadString(url);
-
-            // 使用HtmlAgilityPack解析HTML
-            HtmlDocument doc = new HtmlDocument();
-            doc.LoadHtml(html);
-
-            // 获取岗位列表
-            HtmlNodeCollection jobNodes = doc.DocumentNode.SelectNodes("//div[@class='listBox']/ul/li");
-
-            // 遍历岗位列表
-            foreach (HtmlNode jobNode in jobNodes)
+            try
             {
-                // 获取岗位名称
-                string jobTitle = jobNode.SelectSingleNode(".//span[@class='jobName']/a").InnerText.Trim();
+                // 加载 DWG 文件
+                using (var cadImage = (CadImage)Image.Load(dwgFilePath))
+                {
+                    // 设置输出文件格式为 SVG
+                    var options = new CadRasterizationOptions
+                    {
+                        PageWidth = 1600, // 设置输出 SVG 的页面宽度
+                        PageHeight = 1200 // 设置输出 SVG 的页面高度
+                    };
 
-                // 获取公司信息
-                string company = jobNode.SelectSingleNode(".//div[@class='searchResultCompanyname']/a").InnerText.Trim();
+                    // 将 DWG 文件转换为 SVG 文件
+                    cadImage.Save(svgFilePath);
+                }
 
-                // 获取HR联系方式
-                string hrContact = jobNode.SelectSingleNode(".//div[@class='searchResultCompanyname']/span").InnerText.Trim();
-
-                // 获取HR姓氏
-                string hrLastName = hrContact.Split(' ')[0];
-
-                // 获取岗位职责
-                string jobDescription = jobNode.SelectSingleNode(".//p[@class='searchResultJobdescription']").InnerText.Trim();
-
-                // 输出结果
-                Console.WriteLine("岗位名称: " + jobTitle);
-                Console.WriteLine("公司信息: " + company);
-                Console.WriteLine("HR联系方式: " + hrContact);
-                Console.WriteLine("HR姓氏: " + hrLastName);
-                Console.WriteLine("岗位职责: " + jobDescription);
-                Console.WriteLine();
+                System.Console.WriteLine("DWG 文件已成功转换为 SVG 文件。");
+            }
+            catch (System.Exception ex)
+            {
+                System.Console.WriteLine("转换过程中发生错误：" + ex.Message);
             }
         }
     }

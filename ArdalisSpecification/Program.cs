@@ -129,32 +129,32 @@ namespace ArdalisSpecification
             return await _heroRepository.GetByIdAsync(id);
         }
 
-        public async Task<Hero> GetByName(string name)
-        {
-            var spec = new HeroByNameSpec(name);
+        //public async Task<Hero> GetByName(string name)
+        //{
+        //    var spec = new HeroByNameSpec(name);
 
-            return await _heroRepository.FirstOrDefaultAsync(spec);
-        }
+        //    return await _heroRepository.FirstOrDefaultAsync(spec);
+        //}
 
-        public async Task<List<Hero>> GetHeroesFilteredByNameAndSuperPower(string name, string superPower)
-        {
-            var spec = new HeroByNameAndSuperPowerFilterSpec(name, superPower);
+        //public async Task<List<Hero>> GetHeroesFilteredByNameAndSuperPower(string name, string superPower)
+        //{
+        //    var spec = new HeroByNameAndSuperPowerFilterSpec(name, superPower);
 
-            return await _heroRepository.ListAsync(spec);
-        }
+        //    return await _heroRepository.ListAsync(spec);
+        //}
 
-        public async Task<Hero> SetIsAlive(int id, bool isAlive)
-        {
-            var hero = await _heroRepository.GetByIdAsync(id);
+        //public async Task<Hero> SetIsAlive(int id, bool isAlive)
+        //{
+        //    var hero = await _heroRepository.GetByIdAsync(id);
 
-            hero.IsAlive = isAlive;
+        //    hero.IsAlive = isAlive;
 
-            await _heroRepository.UpdateAsync(hero);
+        //    await _heroRepository.UpdateAsync(hero);
 
-            await _heroRepository.SaveChangesAsync();
+        //    await _heroRepository.SaveChangesAsync();
 
-            return hero;
-        }
+        //    return hero;
+        //}
 
         public async Task SeedData(Hero[] heroes)
         {
