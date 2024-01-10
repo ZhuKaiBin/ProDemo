@@ -99,7 +99,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentValidationDemo", "Flu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDataAnnotation", "FluentDataAnnotation\FluentDataAnnotation.csproj", "{B1D6DF79-5751-4171-B578-482F3567837E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConvertApiSVG", "ConvertApiSVG\ConvertApiSVG.csproj", "{5FFD23F5-E071-4563-A619-8CADDF03DEEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConvertApiSVG", "ConvertApiSVG\ConvertApiSVG.csproj", "{5FFD23F5-E071-4563-A619-8CADDF03DEEC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp4", "ConsoleApp4\ConsoleApp4.csproj", "{139D07AA-5A3E-41ED-AE0E-0290992CF9D8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreHuaJIanDao", "NetCoreHuaJIanDao\NetCoreHuaJIanDao.csproj", "{5B212098-E6D5-421D-A746-74EABD4DA3BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -303,6 +307,14 @@ Global
 		{5FFD23F5-E071-4563-A619-8CADDF03DEEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5FFD23F5-E071-4563-A619-8CADDF03DEEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5FFD23F5-E071-4563-A619-8CADDF03DEEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{139D07AA-5A3E-41ED-AE0E-0290992CF9D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{139D07AA-5A3E-41ED-AE0E-0290992CF9D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{139D07AA-5A3E-41ED-AE0E-0290992CF9D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{139D07AA-5A3E-41ED-AE0E-0290992CF9D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B212098-E6D5-421D-A746-74EABD4DA3BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B212098-E6D5-421D-A746-74EABD4DA3BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B212098-E6D5-421D-A746-74EABD4DA3BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B212098-E6D5-421D-A746-74EABD4DA3BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
