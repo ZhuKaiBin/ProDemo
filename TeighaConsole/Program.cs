@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Teigha.Core;
+using Teigha.TD;
+
+namespace TeighaConsole
+{
+    internal class Program
+    {      
+        static void Main(string[] args)
+        {
+
+            OdRxSystemServices _sysSrv = new OdRxSystemServices();
+            OdDbDatabase CurDb = null;
+            CustomServices _hostApp = new CustomServices();
+            TD_Db.odInitialize(_sysSrv);
+            _hostApp = new CustomServices();
+           
+
+            OdDbDatabase db = _hostApp.readFile(@"D:\cad\simple.dwg");
+            CurDb = db;
+
+            OdGsModule pModule = (OdGsModule)Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
+            if (null == pModule)
+            {
+                throw new Exception("TD_SvgExport.tx is missing");
+            }
+
+            ExecuteCommand("svgout 8 6 \n\n.png Helvetica 768 1024 Yes Yes\n", CurDb);
+
+
+        }
+
+        private static void ExecuteCommand(String sCmd, OdDbDatabase CurDb)
+        {
+            OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(ExStringIO.create(sCmd), CurDb);
+            try
+            {
+                OdEdCommandStack pCommands = Globals.odedRegCmds();
+                String s = sCmd.Substring(0, sCmd.IndexOf(" "));
+                if (s.Length == sCmd.Length)
+                {
+                    s = s.ToUpper();
+                    pCommands.executeCommand(s, pExCmdCtx);
+                }
+                else
+                {
+                    ExStringIO m_pMacro = ExStringIO.create(sCmd);
+                    while (!m_pMacro.isEof())
+                    {
+                        try
+                        {
+                            s = pExCmdCtx.userIO().getString("Command:");
+                            s = s.ToUpper();
+                        }
+                        catch (OdEdEmptyInput eEmptyInput)
+                        {
+                        }
+                        pCommands.executeCommand(s, pExCmdCtx);
+                    }
+                }
+            }
+            catch (OdEdEmptyInput eEmptyInput)
+            {
+            }
+            catch (OdEdCancel eCanc)
+            {
+            }
+            catch (OdError err)
+            {
+
+            }
+        }
+
+
+        public class CustomServices : ExHostAppServices
+        {
+            public override string fileDialog(int flags, string dialogCaption, string defExt, string defFilename, string filter)
+            {
+                var defExt1 = defExt;
+                var dialogCaption1 = dialogCaption;
+                var defFilename1 = defFilename;
+                var filter1 = filter;
+                return "";
+            }
+        }
+    }
+}

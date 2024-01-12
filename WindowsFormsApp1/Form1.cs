@@ -31,17 +31,18 @@ namespace WindowsFormsApp1
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //选择文件
-            if (openDwgDialog.ShowDialog() == DialogResult.OK)
-            {
-                var path = openDwgDialog.FileName;
+            //if (openDwgDialog.ShowDialog() == DialogResult.OK)
+            //{
+                //var path = openDwgDialog.FileName;
                 //得到文件路径后,填充本地的OdDb
-                OdDbDatabase db = _hostApp.readFile(path);
+                //OdDbDatabase db = _hostApp.readFile(path);
+                OdDbDatabase db = _hostApp.readFile(@"D:\cad\simple.dwg");
                 CurDb = db;
                 toolStripSeparator1.Visible = true;
                 ExportSVG.Visible = true;
                 printToolStripMenuItem.Enabled = true;
                 printToolStripMenuItem.Visible = true;
-            }
+            //}
         }
 
         private void ExportSVG_Click(object sender, EventArgs e)
