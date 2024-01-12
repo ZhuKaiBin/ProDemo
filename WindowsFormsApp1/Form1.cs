@@ -44,9 +44,6 @@ namespace WindowsFormsApp1
             }
         }
 
-
-
-
         private void ExportSVG_Click(object sender, EventArgs e)
         {
             OdGsModule pModule = (OdGsModule)Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
@@ -55,43 +52,35 @@ namespace WindowsFormsApp1
                 MessageBox.Show("TD_SvgExport.tx is missing");
                 return;
             }
-            ExecuteCommand("svgout 1 6 \n\n.png sans-serif 768 1024 Yes Yes\n", false);
+            ExecuteCommand("svgout 8 6 \n\n.png Helvetica 768 1024 Yes Yes\n");
         }
 
-
-        String rec_command = String.Empty;
-
-
-
-        private void ExecuteCommand(String sCmd, bool bEcho)
+        private void ExecuteCommand(String sCmd)
         {
             OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(ExStringIO.create(sCmd), CurDb);
             try
             {
                 OdEdCommandStack pCommands = Globals.odedRegCmds();
-
+                String s = sCmd.Substring(0, sCmd.IndexOf(" "));
+                if (s.Length == sCmd.Length)
                 {
-                    String s = sCmd.Substring(0, sCmd.IndexOf(" "));
-                    if (s.Length == sCmd.Length)
+                    s = s.ToUpper();
+                    pCommands.executeCommand(s, pExCmdCtx);
+                }
+                else
+                {
+                    ExStringIO m_pMacro = ExStringIO.create(sCmd);
+                    while (!m_pMacro.isEof())
                     {
-                        s = s.ToUpper();
-                        pCommands.executeCommand(s, pExCmdCtx);
-                    }
-                    else
-                    {
-                        ExStringIO m_pMacro = ExStringIO.create(sCmd);
-                        while (!m_pMacro.isEof())
+                        try
                         {
-                            try
-                            {
-                                s = pExCmdCtx.userIO().getString("Command:");
-                                s = s.ToUpper();
-                            }
-                            catch (OdEdEmptyInput eEmptyInput)
-                            {
-                            }
-                            pCommands.executeCommand(s, pExCmdCtx);
+                            s = pExCmdCtx.userIO().getString("Command:");
+                            s = s.ToUpper();
                         }
+                        catch (OdEdEmptyInput eEmptyInput)
+                        {
+                        }
+                        pCommands.executeCommand(s, pExCmdCtx);
                     }
                 }
             }
