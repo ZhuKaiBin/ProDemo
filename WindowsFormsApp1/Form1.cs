@@ -1,7 +1,9 @@
+ï»¿using System;
+using System.Windows.Forms;
 using Teigha.Core;
 using Teigha.TD;
 
-namespace WinFormDemo
+namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
@@ -21,7 +23,7 @@ namespace WinFormDemo
 
 
         /// <summary>
-        /// µ¼³ö¿ò£¬²»¿ÉÉ¾³ı
+        /// å¯¼å‡ºæ¡†ï¼Œä¸å¯åˆ é™¤
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -50,7 +52,7 @@ namespace WinFormDemo
         }
 
         /// <summary>
-        /// Ñ¡ÔñÎÄ¼şºó£¬ÔÙµ¼³ö
+        /// é€‰æ‹©æ–‡ä»¶åï¼Œå†å¯¼å‡º
         /// </summary>
         /// <param name="flag"></param>
         private void UpdateMainMenu(bool flag)
@@ -145,7 +147,7 @@ namespace WinFormDemo
     public class CustomServices : ExHostAppServices
     {
         /// <summary>
-        /// ÖØĞ´·½·¨£¬²»¿ÉÉ¾³ı
+        /// é‡å†™æ–¹æ³•ï¼Œä¸å¯åˆ é™¤
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="dialogCaption"></param>
