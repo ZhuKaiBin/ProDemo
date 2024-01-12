@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
 
         public Form1()
         {
+            //初始化
             #region initialization
             InitializeComponent();
             _sysSrv = new ExSystemServices();
@@ -29,39 +30,20 @@ namespace WindowsFormsApp1
         /// <param name="e"></param>
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            //选择文件
             if (openDwgDialog.ShowDialog() == DialogResult.OK)
             {
-                bool bLoaded = true;
-                try
-                {
-                    OdDbDatabase db = _hostApp.readFile(openDwgDialog.FileName);
-
-                    CurDb = db;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                    bLoaded = false;
-                }
-                if (bLoaded)
-                {
-                    UpdateMainMenu(true);
-
-                }
+                var path = openDwgDialog.FileName;
+                //得到文件路径后,填充本地的OdDb
+                OdDbDatabase db = _hostApp.readFile(path);
+                CurDb = db;
+                toolStripSeparator1.Visible = true;
+                ExportSVG.Visible = true;
+                printToolStripMenuItem.Enabled = true;
+                printToolStripMenuItem.Visible = true;
             }
         }
 
-        /// <summary>
-        /// 选择文件后，再导出
-        /// </summary>
-        /// <param name="flag"></param>
-        private void UpdateMainMenu(bool flag)
-        {
-            toolStripSeparator1.Visible = flag;
-            ExportSVG.Visible = flag;
-            printToolStripMenuItem.Enabled = true;
-            printToolStripMenuItem.Visible = flag;
-        }
 
 
 
@@ -78,23 +60,12 @@ namespace WindowsFormsApp1
 
 
         String rec_command = String.Empty;
-        OdEdBaseIO cmdIO(String strIO)
-        {
-            return ExStringIO.create(strIO);
-        }
-        OdDbCommandContext cmdCtx(String strIO)
-        {
-            return ExDbCommandContext.createObject(cmdIO(strIO), CurDb);
-        }
 
-        public String recentCmdName()
-        {
-            return rec_command;
-        }
+
 
         private void ExecuteCommand(String sCmd, bool bEcho)
         {
-            OdDbCommandContext pExCmdCtx = cmdCtx(sCmd);
+            OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(ExStringIO.create(sCmd), CurDb);
             try
             {
                 OdEdCommandStack pCommands = Globals.odedRegCmds();
@@ -104,7 +75,6 @@ namespace WindowsFormsApp1
                     if (s.Length == sCmd.Length)
                     {
                         s = s.ToUpper();
-
                         pCommands.executeCommand(s, pExCmdCtx);
                     }
                     else
@@ -116,11 +86,9 @@ namespace WindowsFormsApp1
                             {
                                 s = pExCmdCtx.userIO().getString("Command:");
                                 s = s.ToUpper();
-
                             }
                             catch (OdEdEmptyInput eEmptyInput)
                             {
-                                s = recentCmdName();
                             }
                             pCommands.executeCommand(s, pExCmdCtx);
                         }
@@ -139,15 +107,11 @@ namespace WindowsFormsApp1
             }
         }
 
-        private void openDwgDialog_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-
-        }
     }
     public class CustomServices : ExHostAppServices
     {
         /// <summary>
-        /// 重写方法，不可删除
+        /// 将转化好的，选择保存的位置
         /// </summary>
         /// <param name="flags"></param>
         /// <param name="dialogCaption"></param>
