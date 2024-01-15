@@ -1,9 +1,5 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
 using Teigha.Core;
 using Teigha.TD;
 
@@ -16,8 +12,6 @@ namespace TeighaConsole
         static OdDbDatabase CurDb = null;
         static void Main(string[] args)
         {
-
-
             #region 初始化组件
             _sysSrv = new ExSystemServices();
             _hostApp = new CustomServices();
@@ -71,25 +65,19 @@ namespace TeighaConsole
                 }
             }
             catch (OdEdEmptyInput eEmptyInput)
-            {
-            }
+            {}
             catch (OdEdCancel eCanc)
-            {
-            }
+            { }
             catch (OdError err)
-            {
-
-            }
+            { }
         }
 
         public class CustomServices : ExHostAppServices
         {
             public override string fileDialog(int flags, string dialogCaption, string defExt, string defFilename, string filter)
-            {
-                Console.WriteLine(dialogCaption);
+            {              
                 Console.Write("请输入文件名: ");
                 string fileName = Console.ReadLine();
-
                 // 检查文件名是否包含扩展名
                 if (!fileName.EndsWith(defExt))
                 {
@@ -98,7 +86,6 @@ namespace TeighaConsole
 
                 Console.Write("请输入路径地址: ");
                 string pathName = Console.ReadLine();
-
                 var isExist = Directory.Exists(pathName);
                 if (!isExist)
                 {
