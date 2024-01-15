@@ -17,17 +17,19 @@ namespace TeighaConsole
         static void Main(string[] args)
         {
 
-            // 初始化
-            #region initialization
+
+            #region 初始化组件
             _sysSrv = new ExSystemServices();
             _hostApp = new CustomServices();
             TD_Db.odInitialize(_sysSrv);
             #endregion
 
-            string filename = @"D:\cad\simple.dwg";
+            //路径
+            string filename = @"D:\cad\5320db1794en.dxf";
             OdDbDatabase db = _hostApp.readFile(filename);
             CurDb = db;
-            #region
+
+            #region  执行转换逻辑
             OdGsModule pModule = (OdGsModule)Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
             if (null == pModule)
             {
@@ -80,18 +82,8 @@ namespace TeighaConsole
             }
         }
 
-
         public class CustomServices : ExHostAppServices
         {
-            /// <summary>
-            /// 将转化好的，选择保存的位置
-            /// </summary>
-            /// <param name="flags"></param>
-            /// <param name="dialogCaption"></param>
-            /// <param name="defExt"></param>
-            /// <param name="defFilename"></param>
-            /// <param name="filter"></param>
-            /// <returns></returns>
             public override string fileDialog(int flags, string dialogCaption, string defExt, string defFilename, string filter)
             {
                 Console.WriteLine(dialogCaption);
@@ -106,7 +98,14 @@ namespace TeighaConsole
 
                 Console.Write("请输入路径地址: ");
                 string pathName = Console.ReadLine();
-                fileName = pathName + @"\" + fileName;
+
+                var isExist = Directory.Exists(pathName);
+                if (!isExist)
+                {
+                    throw new Exception("路径不存在，请重新输入有效的路径地址");
+                }
+
+                fileName = Path.Combine(pathName, fileName);
                 return fileName;
             }
         }
