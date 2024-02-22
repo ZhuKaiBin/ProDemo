@@ -30,7 +30,7 @@ namespace TeighaConsole
                 throw new Exception("TD_SvgExport.tx is missing");
             }
 
-            ExecuteCommand("svgout 8 6 \n\n.png Helvetica 768 1024 Yes Yes\n", CurDb);
+            ExecuteCommand("svgout 800 600 \n\n.png Helvetica 768 1024 Yes Yes\n", CurDb);
             #endregion
 
         }
