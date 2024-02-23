@@ -117,7 +117,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApp1", "Windows
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TeighaConsole", "TeighaConsole\TeighaConsole.csproj", "{F79E0595-71F3-47EB-9B34-4662FEE5B161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediatRDemo", "MediatRDemo\MediatRDemo.csproj", "{8F2A3CE1-4FCF-460A-B166-2D2531D9003B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediatRDemo", "MediatRDemo\MediatRDemo.csproj", "{8F2A3CE1-4FCF-460A-B166-2D2531D9003B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SerilogDemo", "SerilogDemo\SerilogDemo.csproj", "{0DDE4CB6-5EA6-4218-A6DC-4C4B5E676C92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -357,6 +359,10 @@ Global
 		{8F2A3CE1-4FCF-460A-B166-2D2531D9003B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F2A3CE1-4FCF-460A-B166-2D2531D9003B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F2A3CE1-4FCF-460A-B166-2D2531D9003B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DDE4CB6-5EA6-4218-A6DC-4C4B5E676C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DDE4CB6-5EA6-4218-A6DC-4C4B5E676C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DDE4CB6-5EA6-4218-A6DC-4C4B5E676C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DDE4CB6-5EA6-4218-A6DC-4C4B5E676C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
