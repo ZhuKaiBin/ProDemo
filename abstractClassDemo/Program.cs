@@ -9,32 +9,38 @@ namespace abstractClassDemo
         static void Main(string[] args)
         {
 
-            var ty = typeof(Class1);
-            var infrastructureAssembly = Assembly.GetAssembly(typeof(Class1));
 
 
 
 
-            Man man = new Man
-            {
-                City = "Milwaukee",
-                Date = new DateTimeOffset(2022, 9, 26, 0, 0, 0, TimeSpan.FromHours(-5)),
-                TemperatureCelsius = 15,
-                Summary = "Cool",
-                ManName="男人姓名"
-            };
+
+
+            //var ty = typeof(Class1);
+            //var infrastructureAssembly = Assembly.GetAssembly(typeof(Class1));
 
 
 
-            var json = JsonSerializer.Serialize<Person>(man);
-            Console.WriteLine(json);
+
+            //Man man = new Man
+            //{
+            //    City = "Milwaukee",
+            //    Date = new DateTimeOffset(2022, 9, 26, 0, 0, 0, TimeSpan.FromHours(-5)),
+            //    TemperatureCelsius = 15,
+            //    Summary = "Cool",
+            //    ManName="男人姓名"
+            //};
 
 
-            string jsonSer = "{\"Key\":\"manvalue11\",\"City\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
-            var model = JsonSerializer.Deserialize<Person>(jsonSer);
 
-            string jsonSer2 = "{\"Key\":\"womanvalue\",\"Age\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
-            var model2 = JsonSerializer.Deserialize<Person>(jsonSer2);
+            //var json = JsonSerializer.Serialize<Person>(man);
+            //Console.WriteLine(json);
+
+
+            //string jsonSer = "{\"Key\":\"manvalue11\",\"City\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
+            //var model = JsonSerializer.Deserialize<Person>(jsonSer);
+
+            //string jsonSer2 = "{\"Key\":\"womanvalue\",\"Age\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
+            //var model2 = JsonSerializer.Deserialize<Person>(jsonSer2);
 
 
 
@@ -51,7 +57,7 @@ namespace abstractClassDemo
     [JsonPolymorphic(TypeDiscriminatorPropertyName = "Key")]
     [JsonDerivedType(typeof(Man), typeDiscriminator: "manvalue")]
     [JsonDerivedType(typeof(Woman), typeDiscriminator: "womanvalue")]
-   
+
     public class Person
     {
         public DateTimeOffset Date { get; set; }
@@ -104,7 +110,7 @@ namespace abstractClassDemo
     //    [JsonProperty(PropertyName = "newName")]
     //    public string OriginalName { get; set; }
 
-        
+
     //    public string OldName { get; set; }
     //}
 
@@ -155,6 +161,11 @@ namespace abstractClassDemo
     //        }
     //    }
     //}
+
+
+
+    // 定义一个配电柜部件的抽象类，表示所有配电柜部件都应该具有名称属性
+   
 
 
 }

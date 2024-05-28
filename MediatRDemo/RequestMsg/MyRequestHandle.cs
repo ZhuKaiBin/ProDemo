@@ -28,7 +28,9 @@ namespace MediatRDemo.RequestMsg
 
 
 
-
+    /// <summary>
+    /// Notification,通知
+    /// </summary>
     public class MyNotificationMsg : INotification
     {
         public string MsgType { set; get; }

@@ -19,8 +19,8 @@ namespace MediatRDemo
 
 
             //单个消息的通知
-            var response = mediator.Send(new MyRequest { RequestType = "josn" }).Result;
-            Console.WriteLine(response);
+            //var response = mediator.Send(new MyRequest { RequestType = "josn" }).Result;
+            //Console.WriteLine(response);
 
             //多个消息的通知
             mediator.Publish(new MyNotificationMsg { MsgType="json",Message="中国龙" }).ConfigureAwait(false);
@@ -29,15 +29,6 @@ namespace MediatRDemo
 
 
 
-            //Ajk ajk = new Ajk();
-            //HourseSeller seller=new HourseSeller(ajk);
-            //HorseBuyer buyer=new HorseBuyer(ajk);
-
-
-            //ajk.Buyer = buyer;
-            //ajk.Seller = seller;
-
-            //seller.SendMsg("卖房卖房，我要卖房子");
 
 
         }
