@@ -131,19 +131,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "dynamicDemo", "dynamicDemo\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp6", "ConsoleApp6\ConsoleApp6.csproj", "{0D012270-0B74-4520-B2EA-B6937EF37577}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryDemo", "RepositoryDemo\RepositoryDemo.csproj", "{9569983F-ADD3-4192-8C1F-A07301B1BDED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryDemo", "RepositoryDemo\RepositoryDemo.csproj", "{9569983F-ADD3-4192-8C1F-A07301B1BDED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainEventDispatcher", "DomainEventDispatcher\DomainEventDispatcher.csproj", "{012D98AB-E25B-43A5-8346-2E58241011AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainEventDispatcher", "DomainEventDispatcher\DomainEventDispatcher.csproj", "{012D98AB-E25B-43A5-8346-2E58241011AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainEventDispatcherCommond", "DomainEventDispatcherCommond\DomainEventDispatcherCommond.csproj", "{63ECC3F3-1FF5-4888-83FC-DDBBCFA2B1EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainEventDispatcherCommond", "DomainEventDispatcherCommond\DomainEventDispatcherCommond.csproj", "{63ECC3F3-1FF5-4888-83FC-DDBBCFA2B1EF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainEventDispatcherCreate", "DomainEventDispatcherCreate\DomainEventDispatcherCreate.csproj", "{508E3AEA-3CD9-4EBB-940D-68CCFE1DDB2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainEventDispatcherCreate", "DomainEventDispatcherCreate\DomainEventDispatcherCreate.csproj", "{508E3AEA-3CD9-4EBB-940D-68CCFE1DDB2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly2Demo", "Assembly2Demo\Assembly2Demo.csproj", "{028F01AC-AAFB-4346-AF4A-90FBD6B541A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Assembly2Demo", "Assembly2Demo\Assembly2Demo.csproj", "{028F01AC-AAFB-4346-AF4A-90FBD6B541A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLibrary1", "AssemblyLibrary1\AssemblyLibrary1.csproj", "{8E8B46E6-6B6C-49E3-9EC0-327051F3461D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLibrary1", "AssemblyLibrary1\AssemblyLibrary1.csproj", "{8E8B46E6-6B6C-49E3-9EC0-327051F3461D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssemblyLibrary2", "AssemblyLibrary2\AssemblyLibrary2.csproj", "{5B232D9F-FE2E-4E95-AE98-482321E3170C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AssemblyLibrary2", "AssemblyLibrary2\AssemblyLibrary2.csproj", "{5B232D9F-FE2E-4E95-AE98-482321E3170C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationAppsettings", "ConfigurationAppsettings\ConfigurationAppsettings.csproj", "{29B948BF-27A0-405A-B5E0-B88A7DA25FDC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -435,6 +437,10 @@ Global
 		{5B232D9F-FE2E-4E95-AE98-482321E3170C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B232D9F-FE2E-4E95-AE98-482321E3170C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B232D9F-FE2E-4E95-AE98-482321E3170C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29B948BF-27A0-405A-B5E0-B88A7DA25FDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29B948BF-27A0-405A-B5E0-B88A7DA25FDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29B948BF-27A0-405A-B5E0-B88A7DA25FDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29B948BF-27A0-405A-B5E0-B88A7DA25FDC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

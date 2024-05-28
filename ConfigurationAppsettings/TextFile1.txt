@@ -1,0 +1,18 @@
+﻿set ASPNETCORE_ENVIRONMENT=Development
+dotnet run
+
+
+
+set ASPNETCORE_ENVIRONMENT=Staging
+dotnet run
+
+
+
+
+set ASPNETCORE_ENVIRONMENT=Production
+dotnet run
+
+
+
+set ASPNETCORE_ENVIRONMENT=Development
+dotnet run
