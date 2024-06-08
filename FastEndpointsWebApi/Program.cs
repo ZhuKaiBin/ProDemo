@@ -11,8 +11,9 @@ namespace FastEndpointsWebApi
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
 
+            var builder = WebApplication.CreateBuilder(args);
+            
             // Add services to the container.
 
             builder.WebHost.ConfigureKestrel(x => x.Limits.MaxRequestBodySize = 1073741824);

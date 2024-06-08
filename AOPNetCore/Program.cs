@@ -3,16 +3,45 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-
 namespace AOPNetCore
-{   
-    class Program
+{
+    internal class Program
     {
-        static void Main(string[] args)
+        public interface IMyService
         {
+            void DoSomething();
+        }
+
+        public class MyService : IMyService
+        {
+            public void DoSomething()
+            {
+                Console.WriteLine("Doing something...");
+            }
+        }
+
+        public static void MyGenericMethod<TService>(TService service) where TService : class
+        {
+            // 打印服务内容
+            Console.WriteLine(service);
+        }
+
+        private static void Main(string[] args)
+        {
+            {
+                var nnn = typeof(IMyService);
+            }
+
+            {
+                string service = "Hello, World!";
+
+                // 调用泛型方法，并传递字符串类型作为 TService 参数
+                MyGenericMethod<string>(service);
+            }
+
             var builder = new ApplicationBuilder();
 
-            //Use这个方法的参数就是传入一个委托Func<RequestDelegate, RequestDelegate>  
+            //Use这个方法的参数就是传入一个委托Func<RequestDelegate, RequestDelegate>
             builder.Use(next =>
             {
                 return async context =>
@@ -31,15 +60,15 @@ namespace AOPNetCore
             });
 
             var app = builder.Build();
-             app(new HttpContext());
+            app(new HttpContext());
         }
     }
+
     public class HttpContext
     {
         public string Request { get; }
         public string Response { get; }
     }
-
 
     //这个委托是传入一个参数，返回一个Task
     public delegate Task RequestDelegate(HttpContext context);
@@ -69,5 +98,4 @@ namespace AOPNetCore
             return app;
         }
     }
-
 }
