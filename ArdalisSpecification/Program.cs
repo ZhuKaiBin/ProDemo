@@ -4,14 +4,41 @@ using Ardalis.Specification;
 namespace ArdalisSpecification
 {
 
+    public class Store
+    {
+        public int Id { get; private set; }
+        public string Name { get; private set; }
+        public string Address { get; private set; }
 
+        public int CustomerId { get; private set; }
+
+        public Store(string name, string address)
+        {
+            Guard.Against.NullOrEmpty(name, nameof(name));
+
+            this.Name = name;
+            this.Address = address;
+        }
+    }
 
     internal class Program
     {
         static void Main(string[] args)
         {
-           
 
+            var sdsd = new Store("","1111");
+
+
+            var sd = nameof(Store);
+            var sd2 = nameof(Get);
+            var sd3 = nameof(Type);
+
+            Example.GetEnvironment("DEV");
+        }
+
+        public static string Get()
+        {
+            return "";
         }
     }
 
@@ -82,9 +109,9 @@ namespace ArdalisSpecification
 
     public class Hero
     {
-        public Hero(string a,string b,bool c,bool d)
+        public Hero(string a, string b, bool c, bool d)
         {
-            
+
         }
 
         public Hero() { }

@@ -21,13 +21,7 @@ namespace WindowsFormsApp1
             TD_Db.odInitialize(_sysSrv);
             #endregion
         }
-
-
-        /// <summary>
-        /// 导出框，不可删除
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+      
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //选择文件
@@ -122,7 +116,5 @@ namespace WindowsFormsApp1
             }
             return String.Empty;
         }
-
-
     }
 }

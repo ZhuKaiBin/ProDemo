@@ -1,0 +1,48 @@
+﻿set ASPNETCORE_ENVIRONMENT=Development
+dotnet run
+
+
+
+//如果不存在Staging的配置文件，那么会读取appsettings.json下的数据
+set ASPNETCORE_ENVIRONMENT=Staging
+dotnet run
+
+
+
+
+set ASPNETCORE_ENVIRONMENT=Production
+dotnet run
+
+
+
+set ASPNETCORE_ENVIRONMENT=Development
+dotnet run
+
+
+
+
+
+
+
+
+
+在这个项目中，没有设置MY_APP_ENVIRONMENT的环境变量是什么，
+
+
+可以把项目发布后，在可执行文件bat里设置这个项目的环境变量是什么
+
+注：把【start-app.bat】文件和【ConfigurationAppsettings.exe】文件放在同一个目录下
+
+
+@echo off
+rem Set the environment variable
+set MY_APP_ENVIRONMENT=Production
+
+rem Optionally, display the environment variable to verify
+echo Environment: %MY_APP_ENVIRONMENT%
+
+rem Start the console application
+start ConfigurationAppsettings.exe
+
+rem Wait for the user to press a key before closing the command window (optional)
+pause
