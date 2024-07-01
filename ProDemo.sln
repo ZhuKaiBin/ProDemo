@@ -111,7 +111,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExpressionTests", "Expressi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProDecmialCompareToEqual", "ProDecmialCompareToEqual\ProDecmialCompareToEqual.csproj", "{CF58DB9B-0D87-4F03-B389-6BA9A12ED225}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectAndDynamic", "ObjectAndDynamic\ObjectAndDynamic.csproj", "{C7B8E10C-7EEB-4744-8608-9FDB2F2B52D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppAOPDemo", "WebAppAOPDemo\WebAppAOPDemo.csproj", "{A8F12501-3540-4F40-BA55-D5633B649435}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -335,10 +335,10 @@ Global
 		{CF58DB9B-0D87-4F03-B389-6BA9A12ED225}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF58DB9B-0D87-4F03-B389-6BA9A12ED225}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF58DB9B-0D87-4F03-B389-6BA9A12ED225}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7B8E10C-7EEB-4744-8608-9FDB2F2B52D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7B8E10C-7EEB-4744-8608-9FDB2F2B52D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7B8E10C-7EEB-4744-8608-9FDB2F2B52D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7B8E10C-7EEB-4744-8608-9FDB2F2B52D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F12501-3540-4F40-BA55-D5633B649435}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F12501-3540-4F40-BA55-D5633B649435}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F12501-3540-4F40-BA55-D5633B649435}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F12501-3540-4F40-BA55-D5633B649435}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
