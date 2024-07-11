@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace ProDemo4
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-
             #region 有一个参数 y
+
             Expression<Func<string>> func_expre = () => "委托Expression";
             //////func_expre();直接这样,这个表达式是报错的，说明是不是委托
             //Console.WriteLine(func_expre.Compile());//但是编译后返回的是一个Func委托,   System.Func`1[System.String]
@@ -21,8 +23,11 @@ namespace ProDemo4
             Expression<Func<string, string>> eAdd = (y) => y + "委托";
             eAdd.Compile().Invoke("bobAdd");
             Console.WriteLine(eAdd.Compile().Invoke("bobAdd"));
-            #endregion
+
+            #endregion 有一个参数 y
+
             #region 下面是动态拼接表达式树的芝士
+
             //Console.WriteLine("********下面是动态拼接表达式树的芝士**********************************");
             ////动态拼接表达式树
             Expression<Func<int>> funcExp = () => 5;
@@ -70,22 +75,52 @@ namespace ProDemo4
             //expEnd.Compile().Invoke(5, 6);
             //Console.WriteLine($"我是动态编出来的{expEnd.Compile().Invoke(5, 6)}");
 
-
             //这里面有几个点
             //1：ConstantExpression  声明静态值
             //2：ParameterExpression 声明参数值
             //3：BinaryExpression    声明表达式
             //4：Expression 可以点出来各种运算符,Add/ Multiply/ Subtract  加减乘除
             //5：ParameterExpression 含参数的表达式
-            //5：Expression.Lambda<>()最后的大合集 
+            //5：Expression.Lambda<>()最后的大合集
             //7：Compile() 编译； Invoke() 调用,援引
             //https://www.bilibili.com/video/BV16v4y1f7Fe?p=2
 
+            #endregion 下面是动态拼接表达式树的芝士
 
-            #endregion
+            {
+                boy XiaoMing = new boy();
+                XiaoMing.speak();                    //调用抽象类man,里面的《非抽象方法》
+                XiaoMing.work();                      //调用派生类boy,里面的 《重写方法》
+
+                XiaoMing.sleep();                     //调用抽象类man里，新加的方法。
+
+                WoMan woMan = new WoMan();
+
+                Type type = typeof(WoMan);
+                Type[] inheritInterfaces = type.GetInterfaces();
+
+                var sd = typeof(Iperson);
+                var sdsdsd = sd.GetInterfaces();
+
+                bool implementsIperson = inheritInterfaces.Contains(typeof(Iperson));
+
+                var method1 = typeof(Iperson).GetType().IsInstanceOfType(woMan);
+                if (method1)
+                {
+                }
+
+                var method2 = woMan.GetType().GetInterface("Iperson");
+                if (method2 != null)
+                {
+                }
+
+                if (woMan is Iperson)
+                {
+                }
+
+                Iperson say = woMan as Iperson;
+            }
         }
-
-
 
         public class Bob2
         {
@@ -93,20 +128,17 @@ namespace ProDemo4
             public int id;
         }
 
-
         public static void LambdaFun(string str, Func<string, string> func)
         {
             Console.WriteLine(func(str));
         }
 
+        private static int i = getNum();
+        private int j = getNum();
 
+        private static int num = 1;
 
-        static int i = getNum();
-        int j = getNum();
-
-        static int num = 1;
-
-        static int getNum()
+        private static int getNum()
         {
             return num;
         }
@@ -117,18 +149,85 @@ namespace ProDemo4
             //那么程序先执行静态构造函数,再执行非静态构造函数
 
             public static int bob_num = 666;
+
             static Bob()
             {
                 bob_num = 888;
                 Console.Write($"静态构造函数{bob_num}被执行\n");
             }
 
-
             public Bob()
             {
                 bob_num = 10000;
                 Console.Write($"实例构造方法{bob_num}被调用\n");
             }
+        }
+
+        public interface Iperson
+        {
+            void speak();
+
+            void eat();
+
+            void work();
+        }
+
+        public abstract class Man : Iperson
+        {
+            public void speak()
+            {
+                Console.WriteLine("111");
+            }
+
+            public void eat()
+            { }
+
+            public virtual void work()
+            {
+                Console.WriteLine("");
+            }
+
+            public void sleep()
+            { Console.WriteLine("不管大人小孩子都需要睡觉"); }  //抽象类中额外加的方法，睡觉。
+        }
+
+        public class boy : Man
+        {
+            public override void work()
+            {
+                Console.WriteLine("小孩子不需要工作");
+            }
+        }
+
+        public class WoMan : Iperson, Iper
+        {
+            public void speak()
+            {
+                Console.WriteLine("111");
+            }
+
+            public void eat()
+            {
+            }
+
+            public virtual void work()
+            {
+                Console.WriteLine("");
+            }
+
+            public void dd()
+            { }
+        }
+
+        public interface Iper
+        {
+            void dd();
+        }
+
+        public class Womann : Iper
+        {
+            public void dd()
+            { }
         }
     }
 }
