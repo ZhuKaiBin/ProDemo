@@ -8,8 +8,66 @@ namespace BenchmarkDotNetDemo
     {
         private static void Main(string[] args)
         {
-            var summary = BenchmarkRunner.Run<MemoryBenchmarkerDemo>();
+            //var summary = BenchmarkRunner.Run<MemoryBenchmarkerDemo>();
+
+            var summary = BenchmarkRunner.Run<AnyDemo>();
         }
+    }
+
+    public class AnyDemo
+    {
+        private int NumberOfItems = 50;
+
+        [Benchmark]
+        public void gg()
+        {
+            List<B> bs = new List<B>();
+            for (int i = 0; i < NumberOfItems; i++)
+            {
+                bs.Add(new B() { Name = "zhu", Age = i });
+            }
+
+            if (bs.Any())
+            {
+                Console.WriteLine("gg");
+            }
+        }
+
+        [Benchmark]
+        public void GG()
+        {
+            List<B> bs = new List<B>();
+            for (int i = 0; i < NumberOfItems; i++)
+            {
+                bs.Add(new B() { Name = "zhu", Age = i });
+            }
+
+            if (bs.Count > 0)
+            {
+                Console.WriteLine("GG");
+            }
+        }
+
+        [Benchmark]
+        public void GGgg()
+        {
+            List<B> bs = new List<B>();
+            for (int i = 0; i < NumberOfItems; i++)
+            {
+                bs.Add(new B() { Name = "zhu", Age = i });
+            }
+
+            if (bs.Count() > 0)
+            {
+                Console.WriteLine("GGgg");
+            }
+        }
+    }
+
+    public class B
+    {
+        public string Name { set; get; }
+        public int Age { set; get; }
     }
 
     public class MemoryBenchmarkerDemo
@@ -47,14 +105,17 @@ namespace BenchmarkDotNetDemo
 
         //### 结果
         //- **Mean（平均值）**：每个方法执行一次的平均时间。
+        //【误差值越小，表示测量结果的精确程度越高】
         //  - `ConcatStringsUsingStringBuilder` 平均耗时 5.180 毫秒。
         //  - `ConcatStringsUsingGenericList` 平均耗时 9.510 毫秒。
 
-        //- **Error（误差）**：99.9% 置信区间的一半，表示结果的精确程度。
+        //- **Error（误差）**：99.9% 置信区间的一半，表示结果的精确程度
+        //【误差值越小，表示测量结果的精确程度越高】。
         //  - `ConcatStringsUsingStringBuilder` 的误差是 0.0918 毫秒。
         //  - `ConcatStringsUsingGenericList` 的误差是 0.1858 毫秒。
 
         //- **StdDev（标准差）**：测量值的标准差，表示结果的离散程度。
+        // 【标准差表示测量值的离散程度，标准差越小，说明测量结果越集中，波动越小。因此，标准差越小越好，表示测量结果的一致性越高】
         //  - `ConcatStringsUsingStringBuilder` 的标准差是 0.1791 毫秒。
         //  - `ConcatStringsUsingGenericList` 的标准差是 0.3255 毫秒。
 
