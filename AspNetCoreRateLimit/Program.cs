@@ -1,11 +1,11 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace CoreRateLimit
 {
@@ -25,12 +25,9 @@ namespace CoreRateLimit
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
-            var iHostBuilder = Host.CreateDefaultBuilder(args);          
+            var iHostBuilder = Host.CreateDefaultBuilder(args);
 
             return iHostBuilder.ConfigureWebHostDefaults(x => x.UseStartup<Startup>());
         }
-
-
-
     }
 }

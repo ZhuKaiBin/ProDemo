@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -7,10 +11,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebLogging
 {
@@ -23,26 +23,31 @@ namespace WebLogging
 
         public IConfiguration Configuration { get; }
 
-        //½«·þÎñ×¢²áµ½ÖÐ IServiceCollection
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½áµ½ï¿½ï¿½ IServiceCollection
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
+
             //logging.AddNLog();
             services.AddLogging();
         }
-        //IApplicationBuilder£º¶¨ÒåÒ»¸öÀà£¬¸ÃÀàÌá¹©ÓÃÓÚÅäÖÃÓ¦ÓÃ³ÌÐòµÄÇëÇó¹ÜµÀµÄ»úÖÆ¡£
-        //IWebHostEnvironment£ºÌá¹©ÓÐ¹ØÓ¦ÓÃ³ÌÐòÕýÔÚÆäÖÐÔËÐÐµÄ web ËÞÖ÷»·¾³µÄÐÅÏ¢¡£
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
+
+        //IApplicationBuilderï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½à£¬ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½Ä»ï¿½ï¿½Æ¡ï¿½
+        //IWebHostEnvironmentï¿½ï¿½ï¿½á¹©ï¿½Ð¹ï¿½Ó¦ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½ web ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            ILoggerFactory loggerFactory
+        )
         {
             if (env.IsDevelopment())
             {
-                //´Ó¹ÜµÀ²¶»ñÍ¬²½ºÍÒì²½ Exception ÊµÀý£¬²¢Éú³É HTML ´íÎóÏìÓ¦
+                //ï¿½Ó¹Üµï¿½ï¿½ï¿½ï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ì²½ Exception Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ HTML ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
                 app.UseDeveloperExceptionPage();
             }
-            //Ìí¼ÓÓÃÓÚ½« HTTP ÇëÇóÖØ¶¨Ïòµ½ HTTPS µÄÖÐ¼ä¼þ¡£
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ HTTP ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ HTTPS ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½
             app.UseHttpsRedirection();
-            //½« Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware ÖÐ¼ä¼þÌí¼Óµ½Ö¸¶¨µÄ IApplicationBuilder ÖÐ¡£
+            //ï¿½ï¿½ Microsoft.AspNetCore.Routing.EndpointRoutingMiddleware ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ IApplicationBuilder ï¿½Ð¡ï¿½
             app.UseRouting();
 
             app.UseAuthorization();

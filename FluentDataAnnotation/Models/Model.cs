@@ -10,12 +10,6 @@ namespace FluentDataAnnotation.Models
         public int MyNumber { get; set; }
     }
 
-
-
-
-
-
-
     //自定义验证
     public static class MyCustomerValidator
     {
@@ -26,6 +20,5 @@ namespace FluentDataAnnotation.Models
                 return result;
             return val % 2 == 0 ? ValidationResult.Success : result;
         }
-    
     }
 }

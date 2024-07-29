@@ -4,10 +4,8 @@
     {
         static void Main(string[] args)
         {
-
             object myObject = "Hello, World!";
             myObject = 42;
-
 
             Console.WriteLine(myObject);
 

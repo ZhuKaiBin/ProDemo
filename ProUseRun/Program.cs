@@ -1,57 +1,62 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 
 namespace ProUseRun
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var basePath = Directory.GetCurrentDirectory();
 
             //1.主要是读取配置参数
-            var host = new HostBuilder();               
+            var host = new HostBuilder();
 
-            var host2 = host.ConfigureAppConfiguration((hostContext, configApp) =>
-                  {
-                      configApp.AddJsonFile("appsettings.json", optional: true);
-                      configApp.AddJsonFile(
-                          $"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json",
-                          optional: true);
-                      configApp.AddEnvironmentVariables(prefix: "PREFIX_");
-                      configApp.AddCommandLine(args);
-                  });
+            var host2 = host.ConfigureAppConfiguration(
+                (hostContext, configApp) =>
+                {
+                    configApp.AddJsonFile("appsettings.json", optional: true);
+                    configApp.AddJsonFile(
+                        $"appsettings.{hostContext.HostingEnvironment.EnvironmentName}.json",
+                        optional: true
+                    );
+                    configApp.AddEnvironmentVariables(prefix: "PREFIX_");
+                    configApp.AddCommandLine(args);
+                }
+            );
             //注入服务
-            var host3 = host2.ConfigureServices((hostContext, services) =>
-                   {
-                       //注册后台普通服务
-                       // services.AddSingleton<IJobTimeService, JobTimeService>();
-                       //注册后台THostedService类型服务
-                       services.AddHostedService<LifetimeEventsHostedService>();
-                       services.AddHostedService<TimedHostedService>();
-                   });
+            var host3 = host2.ConfigureServices(
+                (hostContext, services) =>
+                {
+                    //注册后台普通服务
+                    // services.AddSingleton<IJobTimeService, JobTimeService>();
+                    //注册后台THostedService类型服务
+                    services.AddHostedService<LifetimeEventsHostedService>();
+                    services.AddHostedService<TimedHostedService>();
+                }
+            );
 
-
-            host2.ConfigureLogging((a,b) => {
-
-
-                b.AddConsole();
-
-            });
+            host2.ConfigureLogging(
+                (a, b) =>
+                {
+                    b.AddConsole();
+                }
+            );
 
             //启动日志
-            var host4 = host3.ConfigureLogging((hostContext, configLogging) =>
-              {
-                  configLogging.AddConsole();
-                  configLogging.AddDebug();
-
-              });
+            var host4 = host3.ConfigureLogging(
+                (hostContext, configLogging) =>
+                {
+                    configLogging.AddConsole();
+                    configLogging.AddDebug();
+                }
+            );
 
             //侦听 Ctrl+C 或 SIGTERM 并调用 StopApplication() 来启动关闭进程。 这将解除阻止 RunAsync 和 WaitForShutdownAsync 等扩展。
             var host5 = host4.UseConsoleLifetime();
@@ -67,13 +72,15 @@ namespace ProUseRun
         }
     }
 
-
-    public class LifetimeEventsHostedService : IHostedService//为主机所管理的对象定义方法
+    public class LifetimeEventsHostedService : IHostedService //为主机所管理的对象定义方法
     {
         private readonly ILogger _logger;
-        private readonly IApplicationLifetime _appLifetime;//允许使用者在正常关闭过程中执行清理
+        private readonly IApplicationLifetime _appLifetime; //允许使用者在正常关闭过程中执行清理
 
-        public LifetimeEventsHostedService(ILogger<LifetimeEventsHostedService> logger, IApplicationLifetime appLifetime)
+        public LifetimeEventsHostedService(
+            ILogger<LifetimeEventsHostedService> logger,
+            IApplicationLifetime appLifetime
+        )
         {
             _logger = logger;
             _appLifetime = appLifetime;
@@ -92,6 +99,7 @@ namespace ProUseRun
         {
             return Task.CompletedTask;
         }
+
         private void OnStarted()
         {
             _logger.LogInformation("OnStarted 开始了");
@@ -131,11 +139,11 @@ namespace ProUseRun
         {
             _logger.LogInformation("Timed Background Service is starting 开始了.");
 
-            _timer = new Timer(DoWork, null, TimeSpan.Zero,
-                TimeSpan.FromSeconds(5));
+            _timer = new Timer(DoWork, null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
 
             return Task.CompletedTask;
         }
+
         /// <summary>
         /// 每隔5秒执行一次
         /// </summary>
@@ -159,6 +167,4 @@ namespace ProUseRun
             _timer?.Dispose();
         }
     }
-
-
 }

@@ -8,13 +8,6 @@ namespace abstractClassDemo
     {
         static void Main(string[] args)
         {
-
-
-
-
-
-
-
             //var ty = typeof(Class1);
             //var infrastructureAssembly = Assembly.GetAssembly(typeof(Class1));
 
@@ -41,12 +34,8 @@ namespace abstractClassDemo
 
             //string jsonSer2 = "{\"Key\":\"womanvalue\",\"Age\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
             //var model2 = JsonSerializer.Deserialize<Person>(jsonSer2);
-
-
-
         }
     }
-
 
     //这样的写法就是方便多态，这样在序列化的时候，json就会自动的给具体的类一个特定的key值，指明了你这个json是哪个派生类的
     //然后在反序列话的时候，因为json中有具体的key的值，这样可以反序列化成对应的model
@@ -57,14 +46,12 @@ namespace abstractClassDemo
     [JsonPolymorphic(TypeDiscriminatorPropertyName = "Key")]
     [JsonDerivedType(typeof(Man), typeDiscriminator: "manvalue")]
     [JsonDerivedType(typeof(Woman), typeDiscriminator: "womanvalue")]
-
     public class Person
     {
         public DateTimeOffset Date { get; set; }
         public int TemperatureCelsius { get; set; }
         public string? Summary { get; set; }
     }
-
 
     public class Man : Person
     {
@@ -78,28 +65,19 @@ namespace abstractClassDemo
         public string WomanName { set; get; }
     }
 
-
-
-
-
-
-
-
-
-
     public enum ProtocolEnumDto : ushort
     {
         ModbusRtu = 1,
         ModbusTcp = 2,
         Canopen = 3,
         Dlt645 = 4,
+
         //非通用
         DandikeDk34 = 1001,
         RigolDho4000 = 1002,
         Smacq3313 = 1003,
         SiglentSdg1000x = 1004
     }
-
 
     //public class AbstractLocalDeviceDto
     //{
@@ -120,10 +98,7 @@ namespace abstractClassDemo
 
 
     // 抽象模型基类
-    public abstract class BaseModelDto
-    {
-
-    }
+    public abstract class BaseModelDto { }
 
     // ModelA 对应的 DTO 类
     public class ModelA_dto : BaseModelDto
@@ -165,7 +140,4 @@ namespace abstractClassDemo
 
 
     // 定义一个配电柜部件的抽象类，表示所有配电柜部件都应该具有名称属性
-   
-
-
 }

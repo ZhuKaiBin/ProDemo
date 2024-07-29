@@ -1,11 +1,11 @@
-﻿using Amazon.S3;
-using Amazon.S3.Model;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
+using Amazon.S3;
+using Amazon.S3.Model;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace S3Storage
 {
@@ -27,23 +27,33 @@ namespace S3Storage
             int i = rd.Next(1, 100);
             string aa = i.ToString();
             string Whse = "ECSH01";
-            string ObjectName = $"{Whse}/{DateTimeOffset.Now.Year.ToString()}/{DateTimeOffset.Now.Month.ToString()}/{DateTimeOffset.Now.Day.ToString()}/{aa}";
+            string ObjectName =
+                $"{Whse}/{DateTimeOffset.Now.Year.ToString()}/{DateTimeOffset.Now.Month.ToString()}/{DateTimeOffset.Now.Day.ToString()}/{aa}";
 
+            var obj = new JObject
+            {
+                {
+                    "Head",
+                    new JObject
+                    {
+                        new JProperty("transMessage", ""),
+                        new JProperty("transCode", ""),
+                        new JProperty("transId", ""),
+                        new JProperty("errorCode", "")
+                    }
+                },
+                {
+                    "Body",
+                    new JObject { new JProperty("CreateDateTime", "") }
+                }
+            };
 
-            var obj = new JObject {
-                                          { "Head",new JObject{
-                                                   new JProperty("transMessage", ""),
-                                                   new JProperty("transCode", ""),
-                                                   new JProperty("transId",""),
-                                                   new JProperty("errorCode","")}
-                                          },
-                                          { "Body",new JObject{
-                                                   new JProperty("CreateDateTime","")
-                                                   } }
-                                      };
-
-            await UplaodObjectFromFileAsync(client, "tmstest", ObjectName, JsonConvert.SerializeObject(obj));
-
+            await UplaodObjectFromFileAsync(
+                client,
+                "tmstest",
+                ObjectName,
+                JsonConvert.SerializeObject(obj)
+            );
         }
 
         public static Stream byte2stream(byte[] buffer)
@@ -53,31 +63,35 @@ namespace S3Storage
             //设置stream的position为流的开始
             return stream;
         }
-        public static async Task<MemoryStream> ReadObjectDataAsync(IAmazonS3 client, string bucketName, string keyName)
+
+        public static async Task<MemoryStream> ReadObjectDataAsync(
+            IAmazonS3 client,
+            string bucketName,
+            string keyName
+        )
         {
             string responseBody = string.Empty;
             try
             {
-                var request = new GetObjectRequest
-                {
-                    BucketName = bucketName,
-                    Key = keyName
-                };
+                var request = new GetObjectRequest { BucketName = bucketName, Key = keyName };
                 var ms = new MemoryStream();
                 using (var response = await client.GetObjectAsync(request))
                     await response.ResponseStream.CopyToAsync(ms);
 
                 return ms;
-
             }
             catch (Exception ex)
             {
-
                 throw new Exception($"Error:{ex.Message}");
             }
         }
 
-        private static async Task UplaodObjectFromFileAsync(IAmazonS3 client, string bucketName, string objectName, string ContentBody)
+        private static async Task UplaodObjectFromFileAsync(
+            IAmazonS3 client,
+            string bucketName,
+            string objectName,
+            string ContentBody
+        )
         {
             try
             {
@@ -95,8 +109,5 @@ namespace S3Storage
                 throw new Exception($"Error:{ex.Message}");
             }
         }
-
-
-
     }
 }

@@ -1,38 +1,37 @@
-﻿using Aop.Api;
-using Aop.Api.Request;
-using Aop.Api.Response;
-using System;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.IO;
-using System.Diagnostics;
+using Aop.Api;
+using Aop.Api.Request;
+using Aop.Api.Response;
 
 namespace AliPay
 {
     class Program
     {
+        private static readonly object obj = new object();
 
-        private readonly static object obj = new object();
         public class Birld
         {
             public string Eat { set; get; }
-            public void Fly()
-            { }
+
+            public void Fly() { }
         }
 
         public class A : Birld
         {
-            public void Run()
-            {
-
-            }
+            public void Run() { }
         }
 
         private static void DoSomethingLong(string name)
         {
-            Console.WriteLine($"****************DoSomethingLong {name} Start {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}***************");
+            Console.WriteLine(
+                $"****************DoSomethingLong {name} Start {Thread.CurrentThread.ManagedThreadId.ToString("00")} {DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss.fff")}***************"
+            );
         }
 
         static void Main(string[] args)
@@ -90,7 +89,7 @@ namespace AliPay
 
             //}
             #endregion
-            #region IDog 
+            #region IDog
             //Dog dog = new Dog();
             //dog.BOB();
             //dog.Run();
@@ -106,13 +105,12 @@ namespace AliPay
             #endregion
             Console.ReadKey();
         }
+
         public static void callBack(IAsyncResult result)
         {
             Console.WriteLine(result.AsyncState.ToString());
 
             Console.WriteLine(result.IsCompleted);
-
-
         }
 
         //抽象就好比是总公司定义几个规则,而且也设定了几个方法(不用abstract修饰)，子公司要继承abstract修饰的方法
@@ -128,10 +126,10 @@ namespace AliPay
             {
                 Console.WriteLine("BOB");
             }
+
             public abstract void Fly();
 
-            public virtual void get()
-            { }
+            public virtual void get() { }
         }
 
         //接口admin  接口中不能有方法体
@@ -142,6 +140,7 @@ namespace AliPay
 
             string color { set; get; }
         }
+
         public class IDog : Iadmin
         {
             public void Run()
@@ -176,6 +175,7 @@ namespace AliPay
                 }
             }
         }
+
         public class Dog : admin
         {
             public override void Run()
@@ -193,12 +193,14 @@ namespace AliPay
                 throw new NotImplementedException();
             }
         }
+
         public class Bird : admin
         {
             public override void Fly()
             {
                 Console.WriteLine("Bird Can Fly");
             }
+
             public override void Run()
             {
                 throw new NotImplementedException();
@@ -209,6 +211,5 @@ namespace AliPay
         {
             public string name;
         }
-
     }
 }

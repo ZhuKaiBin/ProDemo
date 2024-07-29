@@ -1,5 +1,5 @@
-﻿using FastEndpoints;
-using System.Text;
+﻿using System.Text;
+using FastEndpoints;
 
 namespace EndpointsFastWebApi.Endpoints
 {
@@ -46,13 +46,14 @@ namespace EndpointsFastWebApi.Endpoints
         }
     }
 
-
-
     public static class EndPointExtensions
     {
-        public static async Task SendCode(this IEndpoint ep, int statusCode, CancellationToken ct = default)
+        public static async Task SendCode(
+            this IEndpoint ep,
+            int statusCode,
+            CancellationToken ct = default
+        )
         {
-
             //IEndpoint这个接口中，封装了HttpContext这个上下文，这样依赖，就可以点出来上下文，可以对上下文信息进行修改
 
 
@@ -60,13 +61,7 @@ namespace EndpointsFastWebApi.Endpoints
             ep.HttpContext.MarkResponseStart(); //don't forget to always do this
             ep.HttpContext.Response.StatusCode = statusCode;
 
-
-
-
             await ep.HttpContext.Response.StartAsync(ct);
-        }    
+        }
     }
-
-    
-         
 }

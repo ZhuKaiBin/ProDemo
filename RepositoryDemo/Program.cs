@@ -6,8 +6,6 @@ namespace RepositoryDemo
     {
         static async Task Main(string[] args)
         {
-           
-
             // 创建订单
             var order = new Order(1, "John Doe");
             order.Create();
@@ -26,14 +24,15 @@ namespace RepositoryDemo
         // 模拟领域事件分发器处理事件的异步方法
         static async Task SimulateDispatchEvents()
         {
-            var eventsToDispatch = new List<object> { new OrderCreatedEvent { OrderId = 2, Timestamp = DateTime.UtcNow } };
+            var eventsToDispatch = new List<object>
+            {
+                new OrderCreatedEvent { OrderId = 2, Timestamp = DateTime.UtcNow }
+            };
 
             var dispatcher = new DomainEventDispatcher();
             await dispatcher.DispatchAndClearEvents(eventsToDispatch);
         }
     }
-
- 
 
     // 领域模型中的订单实体
     public class Order
@@ -66,9 +65,4 @@ namespace RepositoryDemo
     }
 
     // 领域事件分发器接口
-   
-
-
-
-
 }

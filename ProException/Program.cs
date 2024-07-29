@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace ProException
 {
@@ -22,6 +21,7 @@ namespace ProException
 
     // 声明事件，首先必须声明该事件的委托类型
     public delegate string CatCallEventHandler(string anme);
+
     public class Cat
     {
         //事件要在类里面声明
@@ -36,7 +36,6 @@ namespace ProException
         //该事件在生成的时候会调用委托
         //事件是委托的实现，就是说，事件是依附于委托
     }
-
 
     public class People
     {

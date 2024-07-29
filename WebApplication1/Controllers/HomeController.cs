@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
@@ -33,7 +33,12 @@ namespace WebApplication1.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(
+                new ErrorViewModel
+                {
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                }
+            );
         }
 
         //[Authorize(Roles = "SVIP")]
@@ -57,11 +62,13 @@ namespace WebApplication1.Controllers
         {
             return "SVIP";
         }
+
         [Authorize(Policy = "VIP")]
         public string VIP()
         {
             return "VIP";
         }
+
         [Authorize(Policy = "NoVIP")]
         public string NoVIP()
         {

@@ -16,7 +16,6 @@ class Program
             {
                 Console.WriteLine(c);
             }
-
         }
         {
             int[] numbers = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
@@ -31,10 +30,9 @@ class Program
             }
         }
 
-
         Button button = new Button();
-        button.Clicked += OnButtonClicked;  // 注册事件处理程序
-        button.Click();  // 执行单击操作
+        button.Clicked += OnButtonClicked; // 注册事件处理程序
+        button.Click(); // 执行单击操作
     }
 
     static void OnButtonClicked(object sender, EventArgs e)
@@ -45,7 +43,7 @@ class Program
 
 class Button
 {
-    public event EventHandler Clicked;  // 定义事件  EventHandler是有两个参数，但是没有返回值的一个委托
+    public event EventHandler Clicked; // 定义事件  EventHandler是有两个参数，但是没有返回值的一个委托
 
     public void Click()
     {

@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using AspNetCoreRateLimit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -8,10 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CoreRateLimit
 {
@@ -53,12 +53,14 @@ namespace CoreRateLimit
             // context������HttpContext����ʾHTTP����������Ķ���
             // next������ʾ�ܵ��е���һ���м��ί��,���������next�����ʹ�ܵ���·
             // ��Use���Խ�����м��������һ��
-            app.Use(async (context, next) =>
-            {
-                await context.Response.WriteAsync(text: "hello Use1\r\n");
-                // ������һ��ί��
-                await next();
-            });
+            app.Use(
+                async (context, next) =>
+                {
+                    await context.Response.WriteAsync(text: "hello Use1\r\n");
+                    // ������һ��ί��
+                    await next();
+                }
+            );
 
             // Run������Ӧ�ó��������ܵ������һ��RequestDelegateί��
             // ���ڹܵ�����棬�ն��м��

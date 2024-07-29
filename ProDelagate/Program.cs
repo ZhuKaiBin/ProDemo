@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace ProDelagate
 {
@@ -34,13 +34,10 @@ namespace ProDelagate
             Test test = new Test();
             test.print += p1;
 
-
             test.start();
 
             Console.ReadKey();
-
         }
-
 
         static void p1()
         {
@@ -63,6 +60,5 @@ namespace ProDelagate
                 print();
             }
         }
-
     }
 }

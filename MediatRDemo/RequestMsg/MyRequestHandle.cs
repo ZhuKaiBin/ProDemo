@@ -1,14 +1,12 @@
-﻿using MediatR;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MediatR;
 
 namespace MediatRDemo.RequestMsg
 {
-
-    
     public class MyRequestHandle : IRequestHandler<MyRequest, int>
     {
         public Task<int> Handle(MyRequest request, CancellationToken cts)
@@ -17,6 +15,7 @@ namespace MediatRDemo.RequestMsg
             return Task.FromResult(1);
         }
     }
+
     public class MyRequestHandle2 : IRequestHandler<MyRequest, int>
     {
         public Task<int> Handle(MyRequest request, CancellationToken cts)
@@ -25,8 +24,6 @@ namespace MediatRDemo.RequestMsg
             return Task.FromResult(1);
         }
     }
-
-
 
     /// <summary>
     /// Notification,通知
@@ -37,7 +34,6 @@ namespace MediatRDemo.RequestMsg
         public string Message { set; get; }
     }
 
-
     public class MyNotificationHandle : INotificationHandler<MyNotificationMsg>
     {
         public Task Handle(MyNotificationMsg msg, CancellationToken cts)
@@ -46,7 +42,6 @@ namespace MediatRDemo.RequestMsg
             return Task.CompletedTask;
         }
     }
-
 
     public class MyNotificationHandle2 : INotificationHandler<MyNotificationMsg>
     {
@@ -65,9 +60,4 @@ namespace MediatRDemo.RequestMsg
             return Task.CompletedTask;
         }
     }
-
-
-
-
-
 }

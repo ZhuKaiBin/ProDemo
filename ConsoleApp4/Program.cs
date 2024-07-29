@@ -2,7 +2,6 @@
 using Aspose.CAD.FileFormats.Cad;
 using Aspose.CAD.ImageOptions;
 
-
 namespace ConsoleApp4
 {
     internal class Program

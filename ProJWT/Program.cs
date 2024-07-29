@@ -1,30 +1,31 @@
-﻿using Microsoft.IdentityModel.Tokens;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ProJWT
 {
-    class Program
+    internal class Program
     {
+        private static string Jwt_Issuer = "Jwt:Issuer";
 
-        static string Jwt_Issuer = "Jwt:Issuer";
-        static string Jwt_Key = "Jwt:Key11111111111111111111111111111111111111111111111111111111111111111111111111111111";
-        static string Jwt_ExpiresInMinutes = "60";
-        static string Jwt_Audience = "Audience";
+        private static string Jwt_Key =
+            "Jwt:Key11111111111111111111111111111111111111111111111111111111111111111111111111111111";
 
-        static void Main(string[] args)
+        private static string Jwt_ExpiresInMinutes = "60";
+        private static string Jwt_Audience = "Audience";
+
+        private static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            string s = "";
 
             var token = GenerateJwtToken(10086);
 
             var bools = ValidateJwtToken(token);
-
         }
-
 
         private static string GenerateJwtToken(int userId)
         {
@@ -39,7 +40,8 @@ namespace ProJWT
                 audience: Jwt_Audience,
                 claims: new List<Claim> { new Claim(ClaimTypes.NameIdentifier, userId.ToString()) },
                 expires: expiration,
-                signingCredentials: creds);
+                signingCredentials: creds
+            );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
@@ -67,11 +69,19 @@ namespace ProJWT
 
                 JwtSecurityTokenHandler _tokenHandler = new JwtSecurityTokenHandler();
 
-                var principal = _tokenHandler.ValidateToken(token, validationParameters, out validatedToken);
+                var principal = _tokenHandler.ValidateToken(
+                    token,
+                    validationParameters,
+                    out validatedToken
+                );
 
-                var vatoken= ((System.IdentityModel.Tokens.Jwt.JwtSecurityToken)validatedToken).RawData;
+                var vatoken = (
+                    (System.IdentityModel.Tokens.Jwt.JwtSecurityToken)validatedToken
+                ).RawData;
 
-                return token.Equals(((System.IdentityModel.Tokens.Jwt.JwtSecurityToken)validatedToken).RawData);
+                return token.Equals(
+                    ((System.IdentityModel.Tokens.Jwt.JwtSecurityToken)validatedToken).RawData
+                );
             }
             catch
             {

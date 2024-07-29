@@ -1,22 +1,17 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication1.Controllers
 {
-   
     public class AuthorizationController : Controller
     {
-
-        public AuthorizationController()
-        { 
-        
-        }
+        public AuthorizationController() { }
 
         // GET: Authorization
         public ActionResult Index(string Role)
@@ -25,13 +20,13 @@ namespace WebApplication1.Controllers
             //然后Claim组成一个ClaimIdentity 就是组成一个身份证
             var claim = new List<Claim>
             {
-                new Claim(ClaimTypes.Name,value:"张三"),
-                new Claim(type:"Address",value:"北京市"),
-                new Claim(ClaimTypes.Role,Role)
+                new Claim(ClaimTypes.Name, value: "张三"),
+                new Claim(type: "Address", value: "北京市"),
+                new Claim(ClaimTypes.Role, Role)
             };
 
-            var identity = new ClaimsIdentity(claim,authenticationType:"ZSIdentity");
-            HttpContext.SignInAsync(principal:new ClaimsPrincipal(identity));
+            var identity = new ClaimsIdentity(claim, authenticationType: "ZSIdentity");
+            HttpContext.SignInAsync(principal: new ClaimsPrincipal(identity));
             return View();
         }
 

@@ -26,8 +26,6 @@ namespace MediatorDemo
             builder.Services.AddSingleton<IServices>(new Services_A());
             builder.Services.AddSingleton<IServices>(new Services_B());
 
-
-
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,7 +38,6 @@ namespace MediatorDemo
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

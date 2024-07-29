@@ -31,8 +31,6 @@
             SourceType enumMember = SourceType.A;
             string name = EnumHelper.GetNameFromEnum(enumMember);
             Console.WriteLine($"枚举成员 \"{enumMember}\" 对应的字符串是: {name}");
-
-
         }
     }
 
@@ -49,7 +47,8 @@
 
     public class EnumHelper
     {
-        public static TEnum? GetEnumValueFromName<TEnum>(string name) where TEnum : struct, Enum
+        public static TEnum? GetEnumValueFromName<TEnum>(string name)
+            where TEnum : struct, Enum
         {
             if (!typeof(TEnum).IsEnum)
             {
@@ -59,7 +58,8 @@
             foreach (TEnum value in Enum.GetValues(typeof(TEnum)))
             {
                 var field = typeof(TEnum).GetField(value.ToString());
-                var attribute = (SourceNameAttribute)Attribute.GetCustomAttribute(field, typeof(SourceNameAttribute));
+                var attribute = (SourceNameAttribute)
+                    Attribute.GetCustomAttribute(field, typeof(SourceNameAttribute));
                 if (attribute != null && attribute.Name == name)
                 {
                     return value;
@@ -68,10 +68,12 @@
             return null;
         }
 
-        public static string GetNameFromEnum<TEnum>(TEnum value) where TEnum : struct, Enum
+        public static string GetNameFromEnum<TEnum>(TEnum value)
+            where TEnum : struct, Enum
         {
             var field = typeof(TEnum).GetField(value.ToString());
-            var attribute = (SourceNameAttribute)Attribute.GetCustomAttribute(field, typeof(SourceNameAttribute));
+            var attribute = (SourceNameAttribute)
+                Attribute.GetCustomAttribute(field, typeof(SourceNameAttribute));
             if (attribute != null)
             {
                 return attribute.Name;
@@ -87,6 +89,7 @@
     {
         [SourceName("朱")]
         A,
+
         [SourceName("赵")]
         B
     }

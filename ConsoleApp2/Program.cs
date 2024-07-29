@@ -33,7 +33,8 @@ namespace ConsoleApp2
 
                 var ddd = Newtonsoft.Json.JsonConvert.SerializeObject(dd);
 
-                Console.WriteLine(dd); Console.WriteLine(ddd);
+                Console.WriteLine(dd);
+                Console.WriteLine(ddd);
             }
 
             {
@@ -129,11 +130,15 @@ namespace ConsoleApp2
         public static void ConcurrentBag()
         {
             ConcurrentBag<int> conList = new ConcurrentBag<int>();
-            Parallel.For(0, 10000, x =>
-              {
-                  conList.Add(x);
-                  Console.WriteLine(x);
-              });
+            Parallel.For(
+                0,
+                10000,
+                x =>
+                {
+                    conList.Add(x);
+                    Console.WriteLine(x);
+                }
+            );
 
             Console.WriteLine($"当前ConcurrentBag的count是{conList.Count}");
         }
@@ -141,11 +146,15 @@ namespace ConsoleApp2
         public static void ListcurrentBag()
         {
             List<int> conList = new List<int>();
-            Parallel.For(0, 10000, x =>
-            {
-                conList.Add(x);
-                Console.WriteLine(x);
-            });
+            Parallel.For(
+                0,
+                10000,
+                x =>
+                {
+                    conList.Add(x);
+                    Console.WriteLine(x);
+                }
+            );
 
             Console.WriteLine($"当前conList的count是{conList.Count}");
         }
@@ -163,9 +172,7 @@ namespace ConsoleApp2
         public int id;
         public string name;
 
-        public Admin()
-        {
-        }
+        public Admin() { }
 
         public Admin(string n)
         {

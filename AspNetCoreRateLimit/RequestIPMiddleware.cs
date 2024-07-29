@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace CoreRateLimit
 {
@@ -20,13 +20,14 @@ namespace CoreRateLimit
 
         public async Task Invoke(HttpContext context)
         {
-            await context.Response.WriteAsync($"User IP:{context.Connection.RemoteIpAddress.ToString()}\r\n");
+            await context.Response.WriteAsync(
+                $"User IP:{context.Connection.RemoteIpAddress.ToString()}\r\n"
+            );
 
             // 调用管道中的下一个委托
             await _next.Invoke(context);
         }
     }
-
 
     public class RequestMiddleware
     {

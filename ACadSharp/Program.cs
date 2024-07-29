@@ -1,5 +1,4 @@
-﻿
-namespace ACadSharp
+﻿namespace ACadSharp
 {
     internal class Program
     {

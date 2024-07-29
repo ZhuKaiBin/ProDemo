@@ -10,6 +10,7 @@ namespace TeighaConsole
         static CustomServices _hostApp;
         static OdRxSystemServices _sysSrv;
         static OdDbDatabase CurDb = null;
+
         static void Main(string[] args)
         {
             #region 初始化组件
@@ -24,7 +25,8 @@ namespace TeighaConsole
             CurDb = db;
 
             #region  执行转换逻辑
-            OdGsModule pModule = (OdGsModule)Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
+            OdGsModule pModule = (OdGsModule)
+                Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
             if (null == pModule)
             {
                 throw new Exception("TD_SvgExport.tx is missing");
@@ -32,12 +34,14 @@ namespace TeighaConsole
 
             ExecuteCommand("svgout 800 600 \n\n.png Helvetica 768 1024 Yes Yes\n", CurDb);
             #endregion
-
         }
 
         private static void ExecuteCommand(String sCmd, OdDbDatabase CurDb)
         {
-            OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(ExStringIO.create(sCmd), CurDb);
+            OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(
+                ExStringIO.create(sCmd),
+                CurDb
+            );
             try
             {
                 OdEdCommandStack pCommands = Globals.odedRegCmds();
@@ -57,25 +61,26 @@ namespace TeighaConsole
                             s = pExCmdCtx.userIO().getString("Command:");
                             s = s.ToUpper();
                         }
-                        catch (OdEdEmptyInput eEmptyInput)
-                        {
-                        }
+                        catch (OdEdEmptyInput eEmptyInput) { }
                         pCommands.executeCommand(s, pExCmdCtx);
                     }
                 }
             }
-            catch (OdEdEmptyInput eEmptyInput)
-            {}
-            catch (OdEdCancel eCanc)
-            { }
-            catch (OdError err)
-            { }
+            catch (OdEdEmptyInput eEmptyInput) { }
+            catch (OdEdCancel eCanc) { }
+            catch (OdError err) { }
         }
 
         public class CustomServices : ExHostAppServices
         {
-            public override string fileDialog(int flags, string dialogCaption, string defExt, string defFilename, string filter)
-            {              
+            public override string fileDialog(
+                int flags,
+                string dialogCaption,
+                string defExt,
+                string defFilename,
+                string filter
+            )
+            {
                 Console.Write("请输入文件名: ");
                 string fileName = Console.ReadLine();
                 // 检查文件名是否包含扩展名

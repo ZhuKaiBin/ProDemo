@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Builder;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 
 namespace CoreRateLimit
 {
@@ -18,7 +18,6 @@ namespace CoreRateLimit
             // UseMiddleware<T>
             return builder.UseMiddleware<RequestIPMiddleware>();
         }
-
 
         public static IApplicationBuilder UseRequestPara(this IApplicationBuilder builder)
         {

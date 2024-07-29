@@ -7,10 +7,12 @@ namespace ProIOC
 {
     public class TestServiceTemp : ITestServices
     {
+        private int _count;
 
-        private int _count;      
-
-        public int count { get { return _count; } }
+        public int count
+        {
+            get { return _count; }
+        }
 
         public TestServiceTemp()
         {
@@ -18,11 +20,9 @@ namespace ProIOC
             Console.WriteLine("这里是TestServiceTemp的构造函数");
         }
 
-      public  void Add()
+        public void Add()
         {
             _count++;
         }
-
-       
     }
 }

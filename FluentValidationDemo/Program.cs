@@ -17,9 +17,7 @@ namespace FluentValidationDemo
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-
             builder.Services.AddTransient<IValidator<User>, UserValidator>();
-
 
             var app = builder.Build();
 
@@ -33,7 +31,6 @@ namespace FluentValidationDemo
             app.UseHttpsRedirection();
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 

@@ -10,7 +10,10 @@ namespace WebAppAOPDemo.Controllers
         private readonly ILogger<AutoFacAopDemoController> _logger;
         private readonly IUserService _userService;
 
-        public AutoFacAopDemoController(ILogger<AutoFacAopDemoController> logger, IUserService userService)
+        public AutoFacAopDemoController(
+            ILogger<AutoFacAopDemoController> logger,
+            IUserService userService
+        )
         {
             _logger = logger;
             _userService = userService;

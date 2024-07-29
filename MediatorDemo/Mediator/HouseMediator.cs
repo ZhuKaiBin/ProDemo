@@ -9,6 +9,6 @@ namespace MediatorDemo.Mediator
     {
         //声明这个类就是说，抽象出来一个公共的卖房的一个方法
 
-        public abstract void SendHouseMsg(string msg,People people);
+        public abstract void SendHouseMsg(string msg, People people);
     }
 }

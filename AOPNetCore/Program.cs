@@ -20,7 +20,8 @@ namespace AOPNetCore
             }
         }
 
-        public static void MyGenericMethod<TService>(TService service) where TService : class
+        public static void MyGenericMethod<TService>(TService service)
+            where TService : class
         {
             // 打印服务内容
             Console.WriteLine(service);
@@ -77,7 +78,8 @@ namespace AOPNetCore
     public class ApplicationBuilder
     {
         //这个是委托的集合
-        private readonly List<Func<RequestDelegate, RequestDelegate>> _components = new List<Func<RequestDelegate, RequestDelegate>>();
+        private readonly List<Func<RequestDelegate, RequestDelegate>> _components =
+            new List<Func<RequestDelegate, RequestDelegate>>();
 
         public void Use(Func<RequestDelegate, RequestDelegate> middleware)
         {

@@ -27,7 +27,8 @@ namespace ProMoq
         public int Age { get; set; }
     }
 
-    public interface IDataBaseContext<out T> where T : new()
+    public interface IDataBaseContext<out T>
+        where T : new()
     {
         T GetElementById(string id);
         IEnumerable<T> GetAll();
@@ -36,10 +37,10 @@ namespace ProMoq
         IEnumerable<T> GetElementsByDate(DateTime? startDate, DateTime? endDate);
     }
 
-// MyDto为业务层和数据层交互的对象,
-//IDataBaseContext为数据层接口,MyBll为我们的业务逻辑层
+    // MyDto为业务层和数据层交互的对象,
+    //IDataBaseContext为数据层接口,MyBll为我们的业务逻辑层
 
-//我们要测试的是业务逻辑层的代码.这里业务逻辑类并没有无参构造函数, 如果手动创建起来非常麻烦, 里面的坑前面说过.下面看如何使用Moq来模拟一个IDataBaseContext对象
+    //我们要测试的是业务逻辑层的代码.这里业务逻辑类并没有无参构造函数, 如果手动创建起来非常麻烦, 里面的坑前面说过.下面看如何使用Moq来模拟一个IDataBaseContext对象
 
     public class MyBll
     {
@@ -52,11 +53,9 @@ namespace ProMoq
 
         public MyDto GetADto(string id)
         {
-            if (string.IsNullOrWhiteSpace(id)) return null;
+            if (string.IsNullOrWhiteSpace(id))
+                return null;
             return _dataBaseContext.GetElementById(id);
         }
     }
-
-
-
 }

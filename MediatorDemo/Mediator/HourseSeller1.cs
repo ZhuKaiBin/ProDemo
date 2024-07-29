@@ -5,9 +5,8 @@
     /// </summary>
     public class HourseSeller1 : People
     {
-        public HourseSeller1(HouseMediator houseMediator) : base(houseMediator)
-        {
-        }
+        public HourseSeller1(HouseMediator houseMediator)
+            : base(houseMediator) { }
 
         public void GetSellerHouseMsg(string msg)
         {

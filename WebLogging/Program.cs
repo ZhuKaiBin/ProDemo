@@ -1,12 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog.Web;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebLogging
 {
@@ -18,12 +18,12 @@ namespace WebLogging
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-           Host.CreateDefaultBuilder(args)
-               .ConfigureWebHostDefaults(webBuilder =>
-               {
-                   webBuilder.UseStartup<Startup>();
-                   //webBuilder.UseNLog();
-               });
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                    //webBuilder.UseNLog();
+                });
 
         //public static IHostBuilder CreateHostBuilder(string[] args) =>
         //    Host.CreateDefaultBuilder(args)
@@ -31,6 +31,6 @@ namespace WebLogging
         //        {
         //            webBuilder.UseStartup<Startup>();
         //        });
-        //Êó±ê·ÅÔÚUseNLog() »áÏÔÊ¾ÊÇIHostBuilderµÄÍØÕ¹·½·¨IHostBuilder.UseNlog()
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½UseNLog() ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½IHostBuilderï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½IHostBuilder.UseNlog()
     }
 }

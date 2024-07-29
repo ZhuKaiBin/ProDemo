@@ -8,11 +8,9 @@ namespace AssemblyDemo
 {
     public class _11
     {
-
         public string A()
         {
             return "abc";
         }
-
     }
 }

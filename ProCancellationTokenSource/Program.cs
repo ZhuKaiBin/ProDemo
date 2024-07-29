@@ -8,18 +8,29 @@ namespace ProCancellationTokenSource
     {
         static async Task Main(string[] args)
         {
-
             {
                 var firstTask = new Task<int>(() => TaskMethod("第一个任务", 3));
-                await firstTask.ContinueWith(t => Console.WriteLine("第一个任务的返回结果为 {0}. Thread id {1}, 是否是线程池线程: {2}", t.Result, Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread), TaskContinuationOptions.OnlyOnRanToCompletion);
+                await firstTask.ContinueWith(
+                    t =>
+                        Console.WriteLine(
+                            "第一个任务的返回结果为 {0}. Thread id {1}, 是否是线程池线程: {2}",
+                            t.Result,
+                            Thread.CurrentThread.ManagedThreadId,
+                            Thread.CurrentThread.IsThreadPoolThread
+                        ),
+                    TaskContinuationOptions.OnlyOnRanToCompletion
+                );
                 firstTask.Start();
-
             }
 
             static int TaskMethod(string name, int seconds)
             {
-                Console.WriteLine("Task Method : Task {0} is running on a thread id {1}. Is thread pool thread: {2}",
-                "yusong", Thread.CurrentThread.ManagedThreadId, Thread.CurrentThread.IsThreadPoolThread);
+                Console.WriteLine(
+                    "Task Method : Task {0} is running on a thread id {1}. Is thread pool thread: {2}",
+                    "yusong",
+                    Thread.CurrentThread.ManagedThreadId,
+                    Thread.CurrentThread.IsThreadPoolThread
+                );
                 Thread.Sleep(TimeSpan.FromSeconds(10000));
                 return 42 * seconds;
             }
@@ -29,9 +40,6 @@ namespace ProCancellationTokenSource
 
                 var tr = Task.Run(() => { });
                 var tf = Task.Factory.StartNew(() => { }, TaskCreationOptions.LongRunning);
-
-
-
             }
 
             {
@@ -46,7 +54,6 @@ namespace ProCancellationTokenSource
                 //    System.Console.WriteLine($"阻塞取消,执行到了.{Thread.CurrentThread.ManagedThreadId}");
                 //});
                 //System.Console.WriteLine($"执行到了这里{Thread.CurrentThread.ManagedThreadId}");
-
             }
             {
                 //设置3000毫秒(即3秒)后取消
@@ -71,9 +78,7 @@ namespace ProCancellationTokenSource
                 //System.Console.WriteLine("做了点别的,然后取消了.");
             }
 
-
             {
-
                 //CancellationTokenSource cts = new CancellationTokenSource();
 
                 //Task<int> t = new Task<int>(n => sum(cts.Token, 10000), cts.Token);
@@ -83,7 +88,6 @@ namespace ProCancellationTokenSource
 
                 //Console.WriteLine("This sum is:" + t.Result);
             }
-
         }
 
         private static int sum(CancellationToken ct, int i)
@@ -91,7 +95,6 @@ namespace ProCancellationTokenSource
             int sum = 0;
             for (; i > 0; i--)
             {
-
                 if (ct.IsCancellationRequested)
                 {
                     Console.WriteLine("此令牌是否已请求取消66666：" + ct.IsCancellationRequested);
@@ -101,7 +104,10 @@ namespace ProCancellationTokenSource
                 ct.ThrowIfCancellationRequested();
                 Console.WriteLine("此令牌是否是取消状态：" + ct.CanBeCanceled);
                 Console.WriteLine("此令牌是否已请求取消：" + ct.IsCancellationRequested);
-                checked { sum += i; }
+                checked
+                {
+                    sum += i;
+                }
             }
 
             return sum;

@@ -1,12 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProAuthorization
 {
@@ -23,9 +23,13 @@ namespace ProAuthorization
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddAuthentication(defaultScheme:"Cookies")
-                .AddCookie(option=> {
-                    option.LoginPath = new Microsoft.AspNetCore.Http.PathString(value: "/AuthorizationController/Index");
+            services
+                .AddAuthentication(defaultScheme: "Cookies")
+                .AddCookie(option =>
+                {
+                    option.LoginPath = new Microsoft.AspNetCore.Http.PathString(
+                        value: "/AuthorizationController/Index"
+                    );
                 });
         }
 
@@ -44,7 +48,7 @@ namespace ProAuthorization
             app.UseStaticFiles();
 
             app.UseRouting();
-            //使用鉴权
+            //使锟矫硷拷权
             app.UseAuthentication();
             app.UseAuthorization();
 

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProIOC
 {
-  public  interface IConstructor
+    public interface IConstructor
     {
         public ITestServices service { get; }
     }

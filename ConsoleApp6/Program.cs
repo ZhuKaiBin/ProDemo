@@ -1,6 +1,6 @@
-﻿using System.Reflection.Emit;
+﻿using System.Dynamic;
 using System.Reflection;
-using System.Dynamic;
+using System.Reflection.Emit;
 using System.Text.RegularExpressions;
 
 namespace ConsoleApp6
@@ -9,15 +9,9 @@ namespace ConsoleApp6
     {
         static void Main(string[] args)
         {
-
             string A = "ABC_~x+\\+";
             Console.WriteLine(HasSpecialChar(A));
-
-
         }
-
-
-
 
         static bool HasSpecialChar(string str)
         {
@@ -28,10 +22,4 @@ namespace ConsoleApp6
             return Regex.IsMatch(str, @"^[a-zA-Z0-9_*+~]+$");
         }
     }
-
-
-
-
-
-
 }

@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Autofac;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,10 +11,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProIOC
 {
@@ -27,38 +27,40 @@ namespace ProIOC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            /*services.AddTransient<ITestServices, TestServiceTemp>();*///ÕâÀïÃ¿´Îµ÷ÓÃTestServiceTemp,¶¼ÊÇÐÂ´´½¨Ò»¸öTestServiceTempÊµÀý
-            //services.AddSingleton<ITestServices, TestServiceTemp>();//Singleton "µ¥¸öµÄ,µ¥Ò»ÐòÁÐ;µ¥ÀýÄ£Ê½"  Ã¿´Îµ÷ÓÃTestServiceTemp,¶¼ÊÇÍ¬Ò»¸öTestServiceTempÊµÀý
-            //services.AddScoped<ITestServices, TestServiceTemp>();//ÕâÀïÃ¿´Îµ÷ÓÃTestServiceTemp,¶¼ÊÇÐÂ´´½¨Ò»¸öTestServiceTempÊµÀý
+            /*services.AddTransient<ITestServices, TestServiceTemp>();*/
+            //ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Îµï¿½ï¿½ï¿½TestServiceTemp,ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½TestServiceTempÊµï¿½ï¿½
+            //services.AddSingleton<ITestServices, TestServiceTemp>();//Singleton "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½;ï¿½ï¿½ï¿½ï¿½Ä£Ê½"  Ã¿ï¿½Îµï¿½ï¿½ï¿½TestServiceTemp,ï¿½ï¿½ï¿½ï¿½Í¬Ò»ï¿½ï¿½TestServiceTempÊµï¿½ï¿½
+            //services.AddScoped<ITestServices, TestServiceTemp>();//ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½Îµï¿½ï¿½ï¿½TestServiceTemp,ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½ï¿½ï¿½Ò»ï¿½ï¿½TestServiceTempÊµï¿½ï¿½
         }
-        //Ìí¼ÓÒ»¸ö¶ÔÈÝÆ÷µÄÅäÖÃº¯Êý,ÔÙÀ´¶Ôactofac½øÐÐÌí¼Ó
-        public void ConfigureContainer(ContainerBuilder builder)//Autofac.ContainerBuilder
+
+        //ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½actofacï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        public void ConfigureContainer(ContainerBuilder builder) //Autofac.ContainerBuilder
         {
-            //ÕâÊÇÖ»×¢ÈëÁË×é¼þ(Àà)
+            //ï¿½ï¿½ï¿½ï¿½Ö»×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½)
             //builder.RegisterType<TestServiceTemp>();
 
-            //ÕâÊÇ×¢ÈëÁË·þÎñ(½Ó¿Ú)//SingleInstance() ÊÇµ¥ÀýÄ£Ê½//InstancePerLifetimeScope() ×÷ÓÃÓò
+            //ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ë·ï¿½ï¿½ï¿½(ï¿½Ó¿ï¿½)//SingleInstance() ï¿½Çµï¿½ï¿½ï¿½Ä£Ê½//InstancePerLifetimeScope() ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             //builder.RegisterType<TestServiceTemp>().As<ITestServices>().InstancePerLifetimeScope();
             builder.RegisterType<TestServiceTemp>().As<ITestServices>();
 
             //builder.RegisterType<ConstructorTemp>().As<IConstructor>();
             builder.RegisterType<ConstructorTemp>().As<IConstructor>().UsingConstructor();
-            //UsingConstructor¹Ø¼ü×ÖÊÇ¿ÉÒÔÖ¸¶¨¹¹Ôìº¯Êý½øÐÐ×¢²á
-            //¾ÍÊÇËµ£¬Äã×¢²áµÄÒ»¸ö¹¹Ôìº¯ÊýÓÐ´ø²ÎÊýµÄ£¬ÓÐ²»´ø²ÎÊýµÄ£¬
-            //¿ÉÒÔÓÃÕâ¸ö×ÖÖ¸¶¨ÎÞ²ÎÊý£»
-            //Èç¹û¶à¸ö²ÎÊý²»´øÕâ¸ö×Ö¾ÍÊÇÓÐ²ÎÊý
+            //UsingConstructorï¿½Ø¼ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½Ëµï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ìº¯ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Þ²ï¿½ï¿½ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½
 
 
-            //»¹¿ÉÒÔÖ¸¶¨ÌØ¶¨µÄÊµÀýÀ´½øÐÐ×¢Èë
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
             //var Instance = new ConstructorTemp();
             //builder.RegisterInstance(Instance).As<IConstructor>();
 
-            //ºóÃæ»¹ÊÇlamda±í´ïÊ½½øÐÐ×¢Èë
+            //ï¿½ï¿½ï¿½æ»¹ï¿½ï¿½lamdaï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 
-            //RegisterType£º×¢²áÒ»¸öÀà
-            //AS£º½«Àà×¢²áÎª´Ë½Ó¿Ú
-            //SingleInstance() ÊÇµ¥ÀýÄ£Ê½  È«¾ÖÖ»ÓÐÒ»¸ö
-            //InstancePerLifetimeScope() ×÷ÓÃÓò ÔÚÍ¬Ò»¸ö×÷ÓÃÓò,·þÎñÇëÇóÖ»´´½¨Ò»´Î
+            //RegisterTypeï¿½ï¿½×¢ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½
+            //ASï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Îªï¿½Ë½Ó¿ï¿½
+            //SingleInstance() ï¿½Çµï¿½ï¿½ï¿½Ä£Ê½  È«ï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½
+            //InstancePerLifetimeScope() ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Í¬Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

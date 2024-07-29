@@ -1,10 +1,10 @@
-﻿using Ardalis.Specification;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ardalis.Specification;
 
 namespace ArdalisSpecification
 {
@@ -26,33 +26,18 @@ namespace ArdalisSpecification
     {
         private static readonly Environment[] Environments = new Environment[]
         {
-        new()
-        {
-            Name = "DEV",
-            Description = "this application's development environment"
-        },
-        new()
-        {
-            Name = "QA",
-            Description = "this application's QA environment"
-        },
-        new()
-        {
-            Name = "PROD",
-            Description = "this application's production environment"
-        }
+            new() { Name = "DEV", Description = "this application's development environment" },
+            new() { Name = "QA", Description = "this application's QA environment" },
+            new() { Name = "PROD", Description = "this application's production environment" }
         };
 
         public static Environment GetEnvironment(string name)
         {
             var specification = new EnvironmentByNameSpec(name);
 
-            var environment = specification.Evaluate(Environments)
-                .Single();
+            var environment = specification.Evaluate(Environments).Single();
 
             return environment;
         }
     }
-
-   
 }

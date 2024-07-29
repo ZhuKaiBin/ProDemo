@@ -1,6 +1,6 @@
-﻿using ServiceStack.Redis;
-using System;
+﻿using System;
 using System.Text;
+using ServiceStack.Redis;
 
 namespace ProRedis
 {
@@ -8,7 +8,6 @@ namespace ProRedis
     {
         static void Main(string[] args)
         {
-
             //using (RedisClient client = new RedisClient("192.168.3.201", 6379))
             //{
             //    //先清空Redis里的东西
@@ -29,7 +28,5 @@ namespace ProRedis
 
             Console.ReadKey();
         }
-
-       
     }
 }

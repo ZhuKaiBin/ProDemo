@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,12 +11,12 @@ namespace Sha1
     {
         private static Object obj = new object();
         static int location = 0;
+
         static void Main(string[] args)
         {
-
             //int location1 = 2;
             //int values =666666;
-            //int comparand = 1;          
+            //int comparand = 1;
 
             //Interlocked.CompareExchange(ref location1, values, comparand);
 
@@ -34,7 +34,6 @@ namespace Sha1
             }
             Console.WriteLine(location);
 
-
             //Thread thread1 = new Thread(new ThreadStart(ThreadMethod));
             //Thread thread2 = new Thread(new ThreadStart(ThreadMethod));
             //thread1.Start();
@@ -46,7 +45,6 @@ namespace Sha1
 
             Console.ReadKey();
         }
-
 
         static void ThreadMethod()
         {
@@ -61,22 +59,20 @@ namespace Sha1
 
         class CountClass
         {
-           
-            static int safeInstanceCount = 0;//使用原子操作
+            static int safeInstanceCount = 0; //使用原子操作
 
-            static public int SafeInstanceCount
+            public static int SafeInstanceCount
             {
                 get { return safeInstanceCount; }
             }
 
             public CountClass()
             {
-                Console.WriteLine("前"+safeInstanceCount + "\n");
+                Console.WriteLine("前" + safeInstanceCount + "\n");
                 Interlocked.Increment(ref safeInstanceCount);
                 Console.WriteLine("后" + safeInstanceCount + "\n");
             }
         }
-
 
         public static string HashPassword(string input)
         {
@@ -95,10 +91,7 @@ namespace Sha1
                 base64 = Convert.ToBase64String(bytes);
                 base64 = base64.Replace("+", "-").Replace("/", "_");
             }
-            catch
-            {
-
-            }
+            catch { }
             return base64;
         }
 
@@ -112,18 +105,19 @@ namespace Sha1
             return EncodeBase64(Encoding.UTF8, source);
         }
 
-
         public static string PasswordEncryption(string pwd)
         {
             //创建SHA1加密算法对象
             SHA1 sha1 = SHA1.Create();
             //将原始密码转换为字节数组
-            byte[] originalPwd = Encoding.UTF8.GetBytes(pwd); 
-            //执行加密            
+            byte[] originalPwd = Encoding.UTF8.GetBytes(pwd);
+            //执行加密
             byte[] encryPwd = sha1.ComputeHash(originalPwd);
             //将加密后的字节数组转换为大写字符串
-            string ret = string.Join("", encryPwd.Select(b => string.Format("{0:x2}",
-            b)).ToArray());
+            string ret = string.Join(
+                "",
+                encryPwd.Select(b => string.Format("{0:x2}", b)).ToArray()
+            );
 
             return ret;
         }
@@ -142,10 +136,5 @@ namespace Sha1
                 return builder.ToString();
             }
         }
-
-
-
-
-
     }
 }

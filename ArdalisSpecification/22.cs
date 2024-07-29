@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace ArdalisSpecification
 {
-    internal class _22
-    {
-    }
+    internal class _22 { }
 }

@@ -1,6 +1,6 @@
-﻿using MiniExcelLibs;
-using System.Data;
+﻿using System.Data;
 using System.Reflection;
+using MiniExcelLibs;
 
 namespace MiniExcelApp
 {
@@ -16,17 +16,19 @@ namespace MiniExcelApp
         public string Name { get; set; }
     }
 
-
     internal class Program
     {
         static void Main(string[] args)
         {
-
             {
                 var path = "demo.xlsx";
-                var values = new[] { new { A = "Github", B = DateTime.Parse("2021-01-01") }, new { A = "Microsoft", B = DateTime.Parse("2021-02-01") } };
+                var values = new[]
+                {
+                    new { A = "Github", B = DateTime.Parse("2021-01-01") },
+                    new { A = "Microsoft", B = DateTime.Parse("2021-02-01") }
+                };
 
-                // create 
+                // create
                 using (var stream = File.Create(path))
                     stream.SaveAs(values);
 
@@ -36,15 +38,22 @@ namespace MiniExcelApp
                     Console.WriteLine(rows[0].A); //Github
                     Console.WriteLine(rows[0].B); //2021-01-01 12:00:00 AM
                     Console.WriteLine(rows[1].A); //Microsoft
-                    Console.WriteLine(rows[1].B); //2021-02-01 12:00:00 AM		
+                    Console.WriteLine(rows[1].B); //2021-02-01 12:00:00 AM
                 }
-
             }
             {
-
                 var path = "demo444.xlsx";
-                var users = new[] { new { 宽 = 600, 深 = 800 }, new { 宽 = 800, 深 = 800 }, new { 宽 = 600, 深 = 1000 } };
-                var department = new[] { new { ID = "01", Name = "HR" }, new { ID = "02", Name = "IT" } };
+                var users = new[]
+                {
+                    new { 宽 = 600, 深 = 800 },
+                    new { 宽 = 800, 深 = 800 },
+                    new { 宽 = 600, 深 = 1000 }
+                };
+                var department = new[]
+                {
+                    new { ID = "01", Name = "HR" },
+                    new { ID = "02", Name = "IT" }
+                };
                 var sheets = new Dictionary<string, object>
                 {
                     ["users"] = users,
@@ -90,20 +99,18 @@ namespace MiniExcelApp
                 foreach (var sheetName in sheetNames)
                 {
                     //第一个sheet的所有数据
-                    var rows = MiniExcel.Query(path, sheetName: sheetName, startCell: "A1").ToList();
+                    var rows = MiniExcel
+                        .Query(path, sheetName: sheetName, startCell: "A1")
+                        .ToList();
 
+                    var aData = rows.Select(x => x.A).ToList(); //A这一列的所有数据
 
-
-
-                    var aData = rows.Select(x => x.A).ToList();//A这一列的所有数据
-
-                    var bData = rows.Select(x => x.B).ToList();//B这一列所有数据
+                    var bData = rows.Select(x => x.B).ToList(); //B这一列所有数据
 
                     //获取到列
                     var AClo = rows[0].A;
                     var BClo = rows[0].B;
                     var CClo = rows[0].C;
-
 
                     foreach (var item in rows)
                     {
@@ -111,14 +118,12 @@ namespace MiniExcelApp
                         var b = item.B;
                     }
 
-
                     for (var i = 0; i < rows.Count; i++)
                     {
                         Console.WriteLine(rows[i].A + "/" + rows[i].B);
                     }
                 }
             }
-
 
             ////create
             //using (var stream = File.Create(path))
@@ -130,9 +135,9 @@ namespace MiniExcelApp
             //    Console.WriteLine(rows[0].A); //Github
             //    Console.WriteLine(rows[0].B); //2021-01-01 12:00:00 AM
             //    Console.WriteLine(rows[1].A); //Microsoft
-            //    Console.WriteLine(rows[1].B); //2021-02-01 12:00:00 AM		
+            //    Console.WriteLine(rows[1].B); //2021-02-01 12:00:00 AM
             //}
-            #endregion
+                #endregion
             //Dictionary<string, List<object>> sheetData = new Dictionary<string, List<object>>();
 
             //foreach (var sheetName in sheetNames)
@@ -165,11 +170,10 @@ namespace MiniExcelApp
             //    }
             //    Console.WriteLine();
             //}
-
         }
 
-
-        static void ProcessSheet<T>(string path, string sheetName) where T : class, new()
+        static void ProcessSheet<T>(string path, string sheetName)
+            where T : class, new()
         {
             var rows = MiniExcel.Query<T>(path, sheetName: sheetName).ToList();
 
@@ -204,8 +208,8 @@ namespace MiniExcelApp
             }
         }
 
-
-        static List<T> ProcessSheet2<T>(string path, string sheetName) where T : class, new()
+        static List<T> ProcessSheet2<T>(string path, string sheetName)
+            where T : class, new()
         {
             var rows = MiniExcel.Query<T>(path, sheetName: sheetName).ToList();
             return rows.Cast<T>().ToList();

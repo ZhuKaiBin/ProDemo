@@ -23,7 +23,7 @@ namespace EndpointsFastWebApi.Endpoints.FilesPart
                     fileName: "自定义的名称",
                     fileLengthBytes: file.Length,
                     contentType: "image/png"
-                    );
+                );
                 return;
             }
 

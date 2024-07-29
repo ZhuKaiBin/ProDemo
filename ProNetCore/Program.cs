@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -5,10 +9,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProNetCore
 {
@@ -16,82 +16,90 @@ namespace ProNetCore
     {
         public static void Main(string[] args)
         {
-            //ÔÚÄÚ²¿»áÏÈÅäÖÃK8s·þÎñÆ÷ºÍIISÏà¹Ø,ÆäËûÅäÖÃ
+            //ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½K8sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IISï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             IHostBuilder builder = Host.CreateDefaultBuilder(args);
-            //ÆôÓÃÓÃ»§ÅäÖÃµÄ²ÎÊý,ÆäÖÐ°üº¬ÎÒÃÇ×¢²áµÄ·þÎñ/×é¼þÒÔ¼°ÇëÇó´¦Àí¹ÜµÀÏà¹ØÄÚÈÝ
-            builder.ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ÃµÄ²ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ð°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½Ä·ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            builder.ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
 
-            //webhost ÓÃÀ´¼àÌýHttpÇëÇó£¬¾Í»áµ½StartupÀàÖÐ,
-            //ÔÚStartupÀàÖÐÓÐConfigureÕâ¸ö·½·¨À´¿ÉÒÔ´¦Àí£ºHTTPÇëÇó´¦Àí
-            IHost webhost = builder.Build();//×ßµ½ÕâÀïµÄÊ±ºò»áµ½ConfigureServices()Õâ¸ö·½·¨
-            webhost.Run();//RunµÄÊ±ºò»áµ½Configure()·½·¨Àï
+            //webhost ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Httpï¿½ï¿½ï¿½ó£¬¾Í»áµ½Startupï¿½ï¿½ï¿½ï¿½,
+            //ï¿½ï¿½Startupï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Configureï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            IHost webhost = builder.Build(); //ï¿½ßµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½áµ½ConfigureServices()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            webhost.Run(); //Runï¿½ï¿½Ê±ï¿½ï¿½áµ½Configure()ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
             //CreateHostBuilder(args).Build().Run();
 
 
-            //2ÖÖÍÐ¹ÜÄ£Ê½£º1.InProcess(½ø³ÌÄÚ/Ä¬ÈÏ)   2.OutOf(½ø³ÌÍâ)
-            //½ø³ÌÄÚ±È½ø³ÌÍâÌá¹©¸üºÃµÄÐÔÄÜ
-            // ½ø³ÌÄÚÓÐÒ»¸ö·þÎñÆ÷£ºÒªÃ´ÊÇIIS,ÒªÃ´ÊÇK8s
-            // ½ø³ÌÍâÓÐ2¸ö·þÎñÆ÷£ºÒ»¸öÊÇÄÚ²¿·þÎñÆ÷(K8s),Ò»¸öÊÇÍâ²¿·þÎñÆ÷(IIS£¬nginx....)
-            //AspNetCore ÄÚÖÃµÄ·þÎñÆ÷ÊÇK8s 
+            //2ï¿½ï¿½ï¿½Ð¹ï¿½Ä£Ê½ï¿½ï¿½1.InProcess(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½/Ä¬ï¿½ï¿½)   2.OutOf(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ú±È½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÃ´ï¿½ï¿½IIS,ÒªÃ´ï¿½ï¿½K8s
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(K8s),Ò»ï¿½ï¿½ï¿½ï¿½ï¿½â²¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(IISï¿½ï¿½nginx....)
+            //AspNetCore ï¿½ï¿½ï¿½ÃµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½K8s
 
-            //ÔÚµ÷ÊÔµÄÊ±ºò
-            //Èç¹ûÑ¡ÔñIIExpress½øÐÐµ÷ÊÔ£ºµ±Ç°½ø³ÌµÄÃû×Ö¾ÍÊÇIISExpress  ÔÚÈÎÎñ¹ÜÀíÆ÷Àï¾Í»áÕÒµ½Ò»¸öIISEXpress.exeµÄÎÄ¼þ
-            //Èç¹ûÑ¡ÔñÏîÄ¿Ãû³ÆProNetCore½øÐÐµ÷ÊÔ£ºµ±Ç°½ø³ÌµÄÃû×Ö¾ÍÊÇProNetCore
+            //ï¿½Úµï¿½ï¿½Ôµï¿½Ê±ï¿½ï¿½
+            //ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½IIExpressï¿½ï¿½ï¿½Ðµï¿½ï¿½Ô£ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½IISExpress  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½Òµï¿½Ò»ï¿½ï¿½IISEXpress.exeï¿½ï¿½ï¿½Ä¼ï¿½
+            //ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ProNetCoreï¿½ï¿½ï¿½Ðµï¿½ï¿½Ô£ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½Ö¾ï¿½ï¿½ï¿½ProNetCore
 
-            //IISExpressºÍIISµÄÇø±ð£º
-            //1£ºIISExpressÊÇÇáÁ¿¼¶°æ±¾,Õë¶Ô¿ª·¢Ê±ÓÅ»¯µÄÒ»¸ö°æ±¾£¬ÔÚÊµ¼ÊµÄÉú²ú¹ý³ÌÖÐ,ÍùÍùÊ¹ÓÃµÄÊÇIIS
+            //IISExpressï¿½ï¿½IISï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            //1ï¿½ï¿½IISExpressï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ±¾,ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½Ê±ï¿½Å»ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½æ±¾ï¿½ï¿½ï¿½ï¿½Êµï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½ï¿½ï¿½IIS
         }
+
         public class MyStartup
         {
-
-           //Õâ¸ö·½·¨ÊÇ¿ÉÓÐ¿ÉÎÞµÄ¡¢ÓÃÀ´½øÐÐÒÀÀµ×¢ÈëµÄÌí¼Ó
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½Ð¿ï¿½ï¿½ÞµÄ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             public void ConfigureServices(IServiceCollection services)
             {
                 services.AddMvc();
                 services.AddLogging();
             }
-            //ConfigureÀàÊÇÒ»¶¨ÒªµÄ,ÄÄÅÂÀïÃæÊÇ¸ö¿ÕµÄ¡¢ÓÃÀ´½øÐÐ¹ÜµÀ£¬httpÇëÇóµÄ´¦Àí
+
+            //Configureï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Òªï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ÕµÄ¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¹Üµï¿½ï¿½ï¿½httpï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ï¿½
             public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
             {
-                //ConfigureÊÇÓÃÀ´´¦ÀíÖÐ¼ä¼þµÄ·½·¨  ´¦ÀíHttpÇëÇóºÍÏàÓ¦
+                //Configureï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½Httpï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦
 
-                //1£ºÔÚÇëÇóÖ®Ç°ºÍÖ®ºó£¬Ö´ÐÐÒ»Ð©ÏàÓ¦µÄ¹¤×÷
-                //2£ºÒì³£ÖÐ¼ä¼þ,ÈÕÖ¾,Éí·ÝÊÚÈ¨,¼ÇÂ¼ÇëÇó,¾²Ì¬×ÊÔ´ÖÐ¼ä¼þ
-                //3£ºÕâÐ©ÖÐ¼ä¼þ¶¼ÊÇÌØÐÔ¹¦ÄÜµÄ×é¼þ(Àà),µ¥Ò»Ö°Ôð
+                //1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½Ö®ï¿½ï¿½Ö´ï¿½ï¿½Ò»Ð©ï¿½ï¿½Ó¦ï¿½Ä¹ï¿½ï¿½ï¿½
+                //2ï¿½ï¿½ï¿½ì³£ï¿½Ð¼ï¿½ï¿½,ï¿½ï¿½Ö¾,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¨,ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ì¬ï¿½ï¿½Ô´ï¿½Ð¼ï¿½ï¿½
+                //3ï¿½ï¿½ï¿½ï¿½Ð©ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¹ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½),ï¿½ï¿½Ò»Ö°ï¿½ï¿½
 
-                if (env.IsDevelopment())//ÅÐ¶ÏÊÇ·ñÊÇ¿ª·¢ÕßÄ£Ê½
+                if (env.IsDevelopment()) //ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
                 {
-                    //Òì³£ÖÐ¼ä¼þ£¬µ±ÎÒÃÇÊÇ¿ª·¢ÕßÄ£Ê½µÄÇé¿öÏÂ£¬Õâ¸ö×é¼þ¾Í»á±»×¢²áµ½ÇëÇó´¦Àí¹ÜµÀÖÐ
-                    app.UseDeveloperExceptionPage();//Òì³£ÖÐ¼ä¼þ
+                    //ï¿½ì³£ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í»á±»×¢ï¿½áµ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½
+                    app.UseDeveloperExceptionPage(); //ï¿½ì³£ï¿½Ð¼ï¿½ï¿½
                 }
 
                 app.UseRouting();
 
-                
-                //ÎÒÃÇÔÚÃ¿¸öÖÐ¼ä¼þµ±ÖÐ£¬´¦ÀíHttpÇëÇó£¬Ö®Ç°»òÕßÖ®ºó
-                //ÄãÒ²¿ÉÒÔÑ¡ÔñÖÐ¼ä´«µÝ£¬´«µÝµ½ÏÂÒ»¸öÖÐ¼ä¼þ£¬ÄãÒ²¿ÉÒÔ²»´«µÝ
-                //Õâ¸öÊä³öÁË,ÏÂÃæµÄHello World!¾Í²»»áÔÙÊä³öÁË
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Httpï¿½ï¿½ï¿½ï¿½Ö®Ç°ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½
+                //ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½Ð¼ä´«ï¿½Ý£ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Hello World!ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 // app.Run(async context => { await context.Response.WriteAsync("Hello!!!!!"); });
 
-                //ÕâÀï¼ÓÉÏNext ÏÂÃæµÄHello World!»áÊä³öµÄ
-                app.Use(async (context, next) => {
-                    await context.Response.WriteAsync("Hello!!!!!");
-                    await next();
-                });
+                //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Next ï¿½ï¿½ï¿½ï¿½ï¿½Hello World!ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                app.Use(
+                    async (context, next) =>
+                    {
+                        await context.Response.WriteAsync("Hello!!!!!");
+                        await next();
+                    }
+                );
 
-                app.UseRouting();//Â·ÓÉÖÐ¼ä¼þ
-                //ÖÕ½áµãÖÐ¼ä¼þ
+                app.UseRouting(); //Â·ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½
+                //ï¿½Õ½ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½
                 app.UseEndpoints(endpoints =>
                 {
-                    endpoints.MapGet("/", async context =>
-                    {
-                        await context.Response.WriteAsync("Hello World!");
-                    });
+                    endpoints.MapGet(
+                        "/",
+                        async context =>
+                        {
+                            await context.Response.WriteAsync("Hello World!");
+                        }
+                    );
                 });
             }
         }
-
 
         public class Test
         {
@@ -106,10 +114,15 @@ namespace ProNetCore
 
                 app.UseEndpoints(endpoints =>
                 {
-                    endpoints.MapGet("/", async context =>
-                    {
-                        await context.Response.WriteAsync($"ProcessName£º{System.Diagnostics.Process.GetCurrentProcess().ProcessName}");
-                    });
+                    endpoints.MapGet(
+                        "/",
+                        async context =>
+                        {
+                            await context.Response.WriteAsync(
+                                $"ProcessNameï¿½ï¿½{System.Diagnostics.Process.GetCurrentProcess().ProcessName}"
+                            );
+                        }
+                    );
                 });
             }
         }

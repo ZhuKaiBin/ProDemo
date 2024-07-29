@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System.Data;
-using Autofac.Extensions.DependencyInjection;
+﻿using System.Data;
 using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace NetCoreHuaJIanDao
 {
@@ -9,8 +9,6 @@ namespace NetCoreHuaJIanDao
     {
         static void Main(string[] args)
         {
-            
-
             {
                 #region 工厂模式
                 //IServiceCollection collection = new ServiceCollection();
@@ -46,14 +44,9 @@ namespace NetCoreHuaJIanDao
                 //builder.AddTransient<MySqlConnection>();
                 //var container = builder.Builder();
             }
-            {
-              
-            }
-
-
+            { }
 
             Console.ReadLine();
-
         }
     }
 
@@ -83,12 +76,12 @@ namespace NetCoreHuaJIanDao
     //            //通过collection.AddSingleton<A>()将A注册为服务，使得容器可以正确地解析和提供A类型的实例对象，从而解决了构造函数参数的依赖关系。
     //            //通过collection.AddSingleton<A>()将类A注册为服务后，容器会在需要使用A的地方实例化它。
     //            //在调用AddSingleton方法时，容器会将A类型的实例对象创建并缓存起来。这个实例对象会在整个应用程序的生命周期中保持不变，即单例模式。
-    //            //当其他地方需要使用A时，容器会从缓存中获取已经创建好的实例对象，并将其提供给需要的地方。这样就确保了每次使用A都是同一个实例对象，保持了对象的共享和一致性。                
+    //            //当其他地方需要使用A时，容器会从缓存中获取已经创建好的实例对象，并将其提供给需要的地方。这样就确保了每次使用A都是同一个实例对象，保持了对象的共享和一致性。
 
     //            //底层实现的原理是利用了依赖注入容器（如IServiceCollection和IServiceProvider），它们负责管理和提供应用程序中的各种依赖项。
     //            //在调用BuildServiceProvider方法后，容器会根据注册的服务类型和生命周期，创建相应的实例对象，并将其缓存起来。
     //            //[IServiceCollection和IServiceProvider就像是菜谱和厨师一样，是管理菜的]
-    //            //当其他地方需要获取服务实例时，容器会根据类型查找缓存中的实例对象，并提供给请求方。                
+    //            //当其他地方需要获取服务实例时，容器会根据类型查找缓存中的实例对象，并提供给请求方。
     //            //因此，通过将类A注册为单例服务，容器会在需要使用A的地方自动实例化并提供该实例对象，使得依赖关系得到满足。
 
     //        }
@@ -112,7 +105,7 @@ namespace NetCoreHuaJIanDao
     //}
     //public class A
     //{
-       
+
     //}
     #endregion
 

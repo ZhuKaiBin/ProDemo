@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProIOC
 {
@@ -11,13 +11,13 @@ namespace ProIOC
     [ApiController]
     public class AutofacController : ControllerBase
     {
-        
-        public IConstructor _constructor;      
+        public IConstructor _constructor;
+
         public AutofacController(IConstructor constructor)
         {
             _constructor = constructor;
-           
         }
+
         public Tuple<int, int> Get()
         {
             int before = _constructor.service.count;

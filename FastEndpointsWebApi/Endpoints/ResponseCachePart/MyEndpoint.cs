@@ -2,7 +2,7 @@
 
 namespace EndpointsFastWebApi.Endpoints.ResponseCachePart
 {
-    public class MyEndpoint: EndpointWithoutRequest
+    public class MyEndpoint : EndpointWithoutRequest
     {
         public override void Configure()
         {
@@ -13,11 +13,9 @@ namespace EndpointsFastWebApi.Endpoints.ResponseCachePart
 
         public override Task HandleAsync(CancellationToken ct)
         {
-            return SendAsync(new
-            {
-                Message = "this response is cached",
-                Ticks = DateTime.UtcNow.Ticks
-            });
+            return SendAsync(
+                new { Message = "this response is cached", Ticks = DateTime.UtcNow.Ticks }
+            );
         }
     }
 }

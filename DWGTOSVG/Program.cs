@@ -6,10 +6,9 @@ namespace DWGTOSVG
 {
     internal class Program
     {
-       async static  Task Main(string[] args)
+        static async Task Main(string[] args)
         {
             {
-
                 //string From = @"D:\cad\5320db1794en.dxf";
                 //string To = @"D:\cad";
                 //ConvertApi convertApi = new ConvertApi("7a2BOAw4bHQVjzU3");
@@ -34,7 +33,6 @@ namespace DWGTOSVG
                 //image.Save("sample.svg", options);
                 image.Save(SvgFiles);
             }
-
         }
     }
 }

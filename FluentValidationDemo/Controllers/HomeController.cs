@@ -8,7 +8,6 @@ namespace FluentValidationDemo.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-
         [HttpPost]
         public IActionResult Register(User newUser)
         {
@@ -21,7 +20,6 @@ namespace FluentValidationDemo.Controllers
 
             return Ok();
         }
-
 
         [HttpPost]
         public IActionResult RegisterSec(User newUser)

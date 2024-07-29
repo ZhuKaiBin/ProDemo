@@ -14,18 +14,20 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-
             Program program = new Program();
 
             //MydRet("1111", program.ddRet);
 
-            MydRet("1111", () => { return Task.FromResult("带有返回值的"); });
+            MydRet(
+                "1111",
+                () =>
+                {
+                    return Task.FromResult("带有返回值的");
+                }
+            );
 
             Console.ReadKey();
         }
-
-
-
 
         public static async Task MydRet(string a, Func<Task<string>> next)
         {
@@ -36,14 +38,12 @@ namespace ConsoleApp2
             Console.WriteLine($"{ret}........{rett}");
         }
 
-
         public static async Task Myd(string a, Func<Task> next)
         {
             var ret = a;
 
             await next();
         }
-
 
         public async Task dd()
         {
@@ -54,13 +54,5 @@ namespace ConsoleApp2
         {
             return "带有返回值的";
         }
-
     }
-
-
-
-
-
-
-
 }

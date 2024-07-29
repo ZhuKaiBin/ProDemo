@@ -10,13 +10,10 @@ namespace EndpointsFastWebApi.Endpoints.FilesPart
     {
         public override void Configure()
         {
-
             Post("/api/file-upload");
             AllowAnonymous();
             AllowFileUploads(dontAutoBindFormData: true); //turns off buffering
-
         }
-
 
         public override async Task HandleAsync(CancellationToken ct)
         {

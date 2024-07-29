@@ -1,8 +1,8 @@
-﻿using Aspose.CAD.FileFormats.Cad.CadConsts;
-using Aspose.CAD.FileFormats.Cad.CadObjects;
+﻿using Aspose.CAD;
 using Aspose.CAD.FileFormats.Cad;
+using Aspose.CAD.FileFormats.Cad.CadConsts;
+using Aspose.CAD.FileFormats.Cad.CadObjects;
 using Aspose.CAD.ImageOptions;
-using Aspose.CAD;
 
 namespace AsposeDemo
 {
@@ -32,14 +32,18 @@ namespace AsposeDemo
                     }
                 }
 
-                foreach (Aspose.CAD.FileFormats.Cad.CadTables.CadLayerTable layer in cadImage.Layers)
+                foreach (
+                    Aspose.CAD.FileFormats.Cad.CadTables.CadLayerTable layer in cadImage.Layers
+                )
                 {
                     layer.LineWeight = newWidth;
                 }
 
                 CadRasterizationOptions rasterizationOptions = new CadRasterizationOptions();
                 rasterizationOptions.PageHeight = 1000;
-                rasterizationOptions.PageWidth = (int)(rasterizationOptions.PageHeight * cadImage.Width / cadImage.Height);
+                rasterizationOptions.PageWidth = (int)(
+                    rasterizationOptions.PageHeight * cadImage.Width / cadImage.Height
+                );
 
                 rasterizationOptions.DrawType = CadDrawTypeMode.UseObjectColor;
 

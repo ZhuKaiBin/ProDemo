@@ -1,13 +1,13 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using System.Text;
-using MongoDB.Bson;
 using Newtonsoft.Json.Schema;
-using System.Linq;
 
 namespace ProDemo
 {
@@ -20,13 +20,8 @@ namespace ProDemo
         }
     }
 
-
-
-
-
     public abstract class BaseAbstract
     {
-
         public void Execute()
         {
             Before();
@@ -34,10 +29,8 @@ namespace ProDemo
             After();
         }
 
-
         //每个子类必须要重写的自己的逻辑
         public abstract void Excute();
-
 
         public virtual void Before()
         {
@@ -48,12 +41,10 @@ namespace ProDemo
         {
             Console.WriteLine("BaseAbstract中的After");
         }
-
     }
 
     public class DerivedClassA : BaseAbstract
     {
-
         public override void Before()
         {
             Console.WriteLine("DerivedClassA中的Before");
@@ -64,5 +55,4 @@ namespace ProDemo
             Console.WriteLine("DerivedClassA中的Excute");
         }
     }
-
 }

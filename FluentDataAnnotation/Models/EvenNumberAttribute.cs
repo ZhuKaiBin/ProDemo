@@ -2,10 +2,8 @@
 
 namespace FluentDataAnnotation.Models
 {
-
-
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false, Inherited = false)]
-    public class EvenNumberAttribute: ValidationAttribute
+    public class EvenNumberAttribute : ValidationAttribute
     {
         public override bool IsValid(object? input)
         {
@@ -18,9 +16,4 @@ namespace FluentDataAnnotation.Models
             return val % 2 == 0;
         }
     }
-
-
-
-
-    
 }

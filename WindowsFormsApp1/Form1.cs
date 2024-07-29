@@ -21,27 +21,28 @@ namespace WindowsFormsApp1
             TD_Db.odInitialize(_sysSrv);
             #endregion
         }
-      
+
         private void openToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             //选择文件
             //if (openDwgDialog.ShowDialog() == DialogResult.OK)
             //{
-                //var path = openDwgDialog.FileName;
-                //得到文件路径后,填充本地的OdDb
-                //OdDbDatabase db = _hostApp.readFile(path);
-                OdDbDatabase db = _hostApp.readFile(@"D:\cad\simple.dwg");
-                CurDb = db;
-                toolStripSeparator1.Visible = true;
-                ExportSVG.Visible = true;
-                printToolStripMenuItem.Enabled = true;
-                printToolStripMenuItem.Visible = true;
+            //var path = openDwgDialog.FileName;
+            //得到文件路径后,填充本地的OdDb
+            //OdDbDatabase db = _hostApp.readFile(path);
+            OdDbDatabase db = _hostApp.readFile(@"D:\cad\simple.dwg");
+            CurDb = db;
+            toolStripSeparator1.Visible = true;
+            ExportSVG.Visible = true;
+            printToolStripMenuItem.Enabled = true;
+            printToolStripMenuItem.Visible = true;
             //}
         }
 
         private void ExportSVG_Click(object sender, EventArgs e)
         {
-            OdGsModule pModule = (OdGsModule)Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
+            OdGsModule pModule = (OdGsModule)
+                Teigha.Core.Globals.odrxDynamicLinker().loadModule("TD_SvgExport");
             if (null == pModule)
             {
                 MessageBox.Show("TD_SvgExport.tx is missing");
@@ -52,7 +53,10 @@ namespace WindowsFormsApp1
 
         private void ExecuteCommand(String sCmd)
         {
-            OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(ExStringIO.create(sCmd), CurDb);
+            OdDbCommandContext pExCmdCtx = ExDbCommandContext.createObject(
+                ExStringIO.create(sCmd),
+                CurDb
+            );
             try
             {
                 OdEdCommandStack pCommands = Globals.odedRegCmds();
@@ -72,26 +76,17 @@ namespace WindowsFormsApp1
                             s = pExCmdCtx.userIO().getString("Command:");
                             s = s.ToUpper();
                         }
-                        catch (OdEdEmptyInput eEmptyInput)
-                        {
-                        }
+                        catch (OdEdEmptyInput eEmptyInput) { }
                         pCommands.executeCommand(s, pExCmdCtx);
                     }
                 }
             }
-            catch (OdEdEmptyInput eEmptyInput)
-            {
-            }
-            catch (OdEdCancel eCanc)
-            {
-            }
-            catch (OdError err)
-            {
-
-            }
+            catch (OdEdEmptyInput eEmptyInput) { }
+            catch (OdEdCancel eCanc) { }
+            catch (OdError err) { }
         }
-
     }
+
     public class CustomServices : ExHostAppServices
     {
         /// <summary>
@@ -103,7 +98,13 @@ namespace WindowsFormsApp1
         /// <param name="defFilename"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        public override string fileDialog(int flags, string dialogCaption, string defExt, string defFilename, string filter)
+        public override string fileDialog(
+            int flags,
+            string dialogCaption,
+            string defExt,
+            string defFilename,
+            string filter
+        )
         {
             SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = defExt;

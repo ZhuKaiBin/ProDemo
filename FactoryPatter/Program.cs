@@ -7,10 +7,8 @@ namespace FactoryPatter
         static void Main(string[] args)
         {
             Factory factory = new HuaWeiFactory();
-            Phone phone=  factory.createPhone();
+            Phone phone = factory.createPhone();
             phone.print();
-
-
 
             Factory factory2 = new IPhoneFactory();
             Phone phone2 = factory2.createPhone();
@@ -23,8 +21,8 @@ namespace FactoryPatter
     public interface Phone
     {
         void print();
-    
     };
+
     //具体手机 苹果手机
     public class iPhone : Phone
     {
@@ -33,6 +31,7 @@ namespace FactoryPatter
             Console.WriteLine("苹果手机");
         }
     }
+
     //具体手机 华为手机
     public class HuaWeiPhone : Phone
     {
@@ -41,6 +40,7 @@ namespace FactoryPatter
             Console.WriteLine("华为手机");
         }
     }
+
     //具体手机 小米手机
     public class Xiaomi : Phone
     {
@@ -50,7 +50,7 @@ namespace FactoryPatter
         }
     }
 
-   //抽象工厂
+    //抽象工厂
     public interface Factory
     {
         Phone createPhone();
@@ -64,6 +64,7 @@ namespace FactoryPatter
             return new iPhone();
         }
     }
+
     //具体工厂 华为工厂
     public class HuaWeiFactory : Factory
     {
@@ -72,6 +73,7 @@ namespace FactoryPatter
             return new HuaWeiPhone();
         }
     }
+
     //具体工厂 小米工厂
     public class XiaomiFactory : Factory
     {

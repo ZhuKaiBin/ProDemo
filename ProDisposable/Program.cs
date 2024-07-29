@@ -16,7 +16,6 @@ namespace ProDisposable
                 //使用buffer
             }
 
-
             var readerS = new FileReader(@"C:\Users\Prozkb\Desktop\文档\腾讯Mall\GetItem.txt");
             byte[] bufferS = readerS.Read(1024);
             readerS.Dispose();
@@ -30,7 +29,6 @@ namespace ProDisposable
     /// </summary>
     public class FileReader : IDisposable
     {
-
         private FileStream _fileStream;
         private bool _disposed = false;
 
@@ -46,13 +44,11 @@ namespace ProDisposable
             return buffer;
         }
 
-
-
         //当程序离开using的【}】的时候，才会进到这里
         public void Dispose()
         {
             Dispose(true);
-            GC.SuppressFinalize(this);//this-->ProDisposable.FileReader  就是通知垃圾回收器不需要再调用系统的垃圾回收了，我代码里已经回收了
+            GC.SuppressFinalize(this); //this-->ProDisposable.FileReader  就是通知垃圾回收器不需要再调用系统的垃圾回收了，我代码里已经回收了
 
             //在C#中，GC.SuppressFinalize(this)用于通知垃圾回收器，在不需要进行对象终结时不要调用该对象的Finalize方法。
             //也就是说，当我们已经在Dispose方法中主动释放了资源时，就可以使用SuppressFinalize方法告诉垃圾回收器不要调用该对象的Finalize方法。
@@ -63,7 +59,6 @@ namespace ProDisposable
             //此外，在实现Dispose方法时，也应该根据需要在Finalize方法中调用Dispose方法，以确保在对象未被垃圾回收之前资源得到释放。
 
             //可以简单理解为：告诉垃圾回收器，我已经在Dispose方法中手动释放了资源，对象的析构函数（Finalize方法）可以不用调用了，这样可以提高程序性能，避免资源浪费。
-
         }
 
         protected virtual void Dispose(bool disposing)
@@ -89,12 +84,8 @@ namespace ProDisposable
         }
     }
 
-
     public class FileReaders : IDisposable
     {
-        public void Dispose()
-        {
-            
-        }
+        public void Dispose() { }
     }
 }

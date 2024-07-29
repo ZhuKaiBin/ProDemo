@@ -12,10 +12,8 @@ namespace EndpointsFastWebApi.Endpoints.Authorize
             AllowAnonymous();
         }
 
-
         public override async Task HandleAsync(LoginRequest req, CancellationToken ct)
         {
-
             //if (await authService.CredentialsAreValid(req.UserName, req.Password, ct))
             //{
             //    var jwtToken = JWTBearer.CreateToken
@@ -39,6 +37,5 @@ namespace EndpointsFastWebApi.Endpoints.Authorize
 
             //}
         }
-
     }
 }

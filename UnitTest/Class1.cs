@@ -1,6 +1,4 @@
-﻿
-
-namespace UnitTest
+﻿namespace UnitTest
 {
     public class Calculator
     {
@@ -10,11 +8,9 @@ namespace UnitTest
         }
     }
 
-
     public class CalculatorTests
     {
-       
-        public int TestAdd(int a,int b)
+        public int TestAdd(int a, int b)
         {
             // Arrange
             Calculator calculator = new Calculator();
@@ -25,5 +21,4 @@ namespace UnitTest
             return result;
         }
     }
-
 }

@@ -2,13 +2,17 @@
 {
     public class AnJuKe : HouseMediator
     {
-
         private HourseBuyer1 buyer1;
         private HourseSeller1 seller1;
 
-        public HourseBuyer1 Buyer1 { set { buyer1 = value; } }
-        public HourseSeller1 Seller1 { set { seller1 = value; } }
-
+        public HourseBuyer1 Buyer1
+        {
+            set { buyer1 = value; }
+        }
+        public HourseSeller1 Seller1
+        {
+            set { seller1 = value; }
+        }
 
         public override void SendHouseMsg(string msg, People people)
         {

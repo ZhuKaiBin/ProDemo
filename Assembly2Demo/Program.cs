@@ -6,13 +6,13 @@ namespace Assembly2Demo
     {
         static void Main(string[] args)
         {
-
             var builder = WebApplication.CreateBuilder(args);
 
             var dataAccess = Assembly.GetExecutingAssembly();
-            builder.RegisterAssemblyTypes(dataAccess)
-       .Where(t => t.Name.EndsWith("Repository"))
-       .AsImplementedInterfaces();
+            builder
+                .RegisterAssemblyTypes(dataAccess)
+                .Where(t => t.Name.EndsWith("Repository"))
+                .AsImplementedInterfaces();
         }
     }
 }

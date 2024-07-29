@@ -30,10 +30,8 @@ namespace AOP2
         }
     }
 
-
     public class OrderHandleProxy : IOrderHandle
     {
-
         private IOrderHandle _orderHandle;
 
         public OrderHandleProxy(IOrderHandle orderHandle)
@@ -59,7 +57,6 @@ namespace AOP2
         }
     }
 
-
     public class Order
     {
         /// <summary>
@@ -82,5 +79,4 @@ namespace AOP2
         /// </summary>
         public int Price { get; set; }
     }
-
 }

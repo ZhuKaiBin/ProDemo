@@ -8,13 +8,6 @@ namespace ProDemo2
 {
     class Program
     {
-        
-       
-        static async Task Main(string[] args)
-        {
-        }
-       
-
-       
+        static async Task Main(string[] args) { }
     }
 }

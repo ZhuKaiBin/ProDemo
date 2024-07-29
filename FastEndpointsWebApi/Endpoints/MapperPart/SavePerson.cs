@@ -9,7 +9,6 @@ namespace EndpointsFastWebApi.Endpoints.MapperPart
     {
         public override void Configure()
         {
-
             Put("/api/person");
             AllowAnonymous();
         }

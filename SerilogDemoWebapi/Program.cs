@@ -1,5 +1,6 @@
 using Serilog;
 using Serilog.Expressions;
+
 namespace SerilogDemoWebapi
 {
     public class Program
@@ -9,9 +10,7 @@ namespace SerilogDemoWebapi
             // The initial "bootstrap" logger is able to log errors during start-up. It's completely replaced by the
             // logger configured in `UseSerilog()` below, once configuration and dependency-injection have both been
             // set up successfully.
-            Log.Logger = new LoggerConfiguration()
-                .WriteTo.Logger()
-                .CreateBootstrapLogger();
+            Log.Logger = new LoggerConfiguration().WriteTo.Logger().CreateBootstrapLogger();
 
             Log.Information("Starting up!");
 
@@ -34,14 +33,20 @@ namespace SerilogDemoWebapi
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-       Host.CreateDefaultBuilder(args)
-           .UseSerilog((context, services, configuration) => configuration
-               .ReadFrom.Configuration(context.Configuration)
-               .ReadFrom.Services(services)
-               .Enrich.FromLogContext()
-               .WriteTo.Console(new ExpressionTemplate(
-                   // Include trace and span ids when present.
-                   "[{@t:HH:mm:ss} {@l:u3}{#if @tr is not null} ({substring(@tr,0,4)}:{substring(@sp,0,4)}){#end}] {@m}\n{@x}")))
-           .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+            Host.CreateDefaultBuilder(args)
+                .UseSerilog(
+                    (context, services, configuration) =>
+                        configuration
+                            .ReadFrom.Configuration(context.Configuration)
+                            .ReadFrom.Services(services)
+                            .Enrich.FromLogContext()
+                            .WriteTo.Console(
+                                new ExpressionTemplate(
+                                    // Include trace and span ids when present.
+                                    "[{@t:HH:mm:ss} {@l:u3}{#if @tr is not null} ({substring(@tr,0,4)}:{substring(@sp,0,4)}){#end}] {@m}\n{@x}"
+                                )
+                            )
+                )
+                .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
     }
 }

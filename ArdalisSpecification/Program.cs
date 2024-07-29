@@ -3,7 +3,6 @@ using Ardalis.Specification;
 
 namespace ArdalisSpecification
 {
-
     public class Store
     {
         public int Id { get; private set; }
@@ -25,9 +24,7 @@ namespace ArdalisSpecification
     {
         static void Main(string[] args)
         {
-
-            var sdsd = new Store("","1111");
-
+            var sdsd = new Store("", "1111");
 
             var sd = nameof(Store);
             var sd2 = nameof(Get);
@@ -109,18 +106,15 @@ namespace ArdalisSpecification
 
     public class Hero
     {
-        public Hero(string a, string b, bool c, bool d)
-        {
-
-        }
+        public Hero(string a, string b, bool c, bool d) { }
 
         public Hero() { }
     }
 
-
     public class HeroService
     {
         private readonly IRepository<Hero> _heroRepository;
+
         public HeroService(IRepository<Hero> heroRepository)
         {
             _heroRepository = heroRepository;
@@ -206,8 +200,6 @@ namespace ArdalisSpecification
         }
     }
 
-
-
     //public async Task Run()
     //{
     //    var seedData = new[]
@@ -221,7 +213,7 @@ namespace ArdalisSpecification
     //                        name: "Iron Man",
     //                        superPower: "Intelligence",
     //                        isAlive: true,
-    //                        isAvenger: true)                      
+    //                        isAvenger: true)
     //                    };
 
     //    await heroService.SeedData(seedData);
@@ -245,25 +237,8 @@ namespace ArdalisSpecification
     //}
 
 
-    public interface IRepository<T> : IRepositoryBase<T> where T : class
-    {
-
-    }
-
-
-
-
-
+    public interface IRepository<T> : IRepositoryBase<T>
+        where T : class { }
 
     #endregion
-
-
-
-
-
-
-
-
-
-
 }

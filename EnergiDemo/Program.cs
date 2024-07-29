@@ -2,12 +2,12 @@
 
 namespace EnergiDemo
 {
-
     public enum SourceType
     {
         A,
         B
     }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -31,13 +31,7 @@ namespace EnergiDemo
                 Console.WriteLine($"{input} 不是有效的枚举成员值。");
             }
 
-
-
-
-
             var value = "啊是#";
-
-
 
             bool b = new Regex("[@#$*|/()\\[\\]{}'\"\\\\_&#]").IsMatch(value);
 
@@ -65,24 +59,15 @@ namespace EnergiDemo
             //};
 
             B bbbb = new B();
-          
-            
         }
-
     }
 
-
     public abstract class A
-    { 
+    {
         public string name { set; get; }
     }
 
-    public class B : A
-    {
-
-
-    }
-
+    public class B : A { }
 
     public abstract class Component
     {
@@ -100,27 +85,16 @@ namespace EnergiDemo
     }
 
     //骨架
-    public class 骨架 : SizedComponent
-    {
+    public class 骨架 : SizedComponent { }
 
-    }
     //眉头
-    public class 眉头 : SizedComponent
-    {
-
-    }
+    public class 眉头 : SizedComponent { }
 
     //前加强粱
-    public class 前加强粱 : SizedComponent
-    {
-
-    }
+    public class 前加强粱 : SizedComponent { }
 
     //后加强粱
-    public class 后加强粱 : SizedComponent
-    {
-
-    }
+    public class 后加强粱 : SizedComponent { }
 
     public class 后双开门中立柱 : SizedComponent
     {
@@ -131,7 +105,6 @@ namespace EnergiDemo
     {
         public string 进出线方式 { set; get; }
     }
-
 
     public class 后下门板 : SizedComponent
     {

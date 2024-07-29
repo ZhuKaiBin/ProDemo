@@ -5,17 +5,15 @@ namespace EndpointsFastWebApi.Endpoints.MapperPart
 {
     public class MyMapper : Mapper<MyRequest, MyResponse, EntityClass>
     {
-
         public override MyResponse FromEntity(EntityClass e)
         {
-
-            return new MyResponse()
-            {
-                FullName = e.Name
-            };
+            return new MyResponse() { FullName = e.Name };
         }
 
-        public override Task<MyResponse> FromEntityAsync(EntityClass e, CancellationToken ct = default)
+        public override Task<MyResponse> FromEntityAsync(
+            EntityClass e,
+            CancellationToken ct = default
+        )
         {
             return base.FromEntityAsync(e, ct);
         }

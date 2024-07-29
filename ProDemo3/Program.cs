@@ -11,7 +11,6 @@ namespace ProDemo3
     {
         static void Main(string[] args)
         {
-
             #region Thread
             //Thread M = new Thread(delegate ()//线程M
             //{
@@ -51,16 +50,12 @@ namespace ProDemo3
 
 
             #region  yield return
-         
-      
+
+
             Console.WriteLine("Hello World!");
             #endregion
 
             Console.ReadKey();
         }
-
-       
-
-       
     }
 }

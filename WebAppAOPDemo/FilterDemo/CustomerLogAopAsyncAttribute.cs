@@ -10,7 +10,10 @@ namespace WebAppAOPDemo.FilterDemo
         /// <param name="context"></param>
         /// <param name="next">异步回调委托</param>
         /// <returns></returns>
-        public async Task OnActionExecutionAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        public async Task OnActionExecutionAsync(
+            ActionExecutingContext context,
+            ActionExecutionDelegate next
+        )
         {
             Console.WriteLine(context.HttpContext.Request.Path);
             Console.WriteLine(context.HttpContext.Request.Method);

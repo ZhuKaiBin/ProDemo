@@ -1,9 +1,9 @@
-using WebAppAOPDemo.Core;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using Autofac.Extras.DynamicProxy;
-using WebAppAOPDemo.AufofacIntercepter;
 using Microsoft.OpenApi.Models;
+using WebAppAOPDemo.AufofacIntercepter;
+using WebAppAOPDemo.Core;
 
 namespace WebAppAOPDemo
 {
@@ -30,18 +30,25 @@ namespace WebAppAOPDemo
             {
                 //autofac.RegisterType<UserService>().As<IUserService>().InstancePerDependency();
                 //EnableInterfaceInterceptors 启用接口拦截器[Autofac.Extras.DynamicProxy]
-                autofac.RegisterType<UserService>().As<IUserService>().InstancePerDependency().EnableInterfaceInterceptors();
+                autofac
+                    .RegisterType<UserService>()
+                    .As<IUserService>()
+                    .InstancePerDependency()
+                    .EnableInterfaceInterceptors();
                 autofac.RegisterType<AufofacIntercepterDemo>();
             });
 
             builder.Services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "My API",
-                    Version = "v1",
-                    Description = "ASP.NET Core Web API"
-                });
+                c.SwaggerDoc(
+                    "v1",
+                    new OpenApiInfo
+                    {
+                        Title = "My API",
+                        Version = "v1",
+                        Description = "ASP.NET Core Web API"
+                    }
+                );
             });
 
             var app = builder.Build();

@@ -26,7 +26,6 @@ namespace FluentDataAnnotation
 
             app.UseAuthorization();
 
-
             app.MapControllers();
 
             app.Run();

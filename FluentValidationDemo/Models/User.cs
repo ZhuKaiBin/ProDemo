@@ -1,14 +1,14 @@
-﻿using FluentValidation;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using FluentValidation;
 
 namespace FluentValidationDemo.Models
 {
     public class User
-    {      
+    {
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
 
-        public string Password { set; get; }=string.Empty;
+        public string Password { set; get; } = string.Empty;
         public string ComfirmPwd { set; get; } = string.Empty;
     }
 
@@ -22,13 +22,10 @@ namespace FluentValidationDemo.Models
 
             RuleFor(x => x.LastName).NotEmpty();
 
-
             RuleFor(x => x.Password).Must(x => HasValidPassword(x));
 
             RuleFor(x => x.ComfirmPwd).Equal(x => x.Password).WithMessage("两次密码不一样");
         }
-
-
 
         private bool HasValidPassword(string pw)
         {
@@ -37,11 +34,12 @@ namespace FluentValidationDemo.Models
             var digit = new Regex("(\\d)+");
             var symbol = new Regex("(\\W)+");
 
-            return (lowercase.IsMatch(pw) && uppercase.IsMatch(pw) && digit.IsMatch(pw) && symbol.IsMatch(pw));
+            return (
+                lowercase.IsMatch(pw)
+                && uppercase.IsMatch(pw)
+                && digit.IsMatch(pw)
+                && symbol.IsMatch(pw)
+            );
         }
-
     }
-
-
-
 }

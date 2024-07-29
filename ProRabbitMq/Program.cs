@@ -1,7 +1,7 @@
-﻿using RabbitMQ.Client;
-using RabbitMQ.Client.Events;
-using System;
+﻿using System;
 using System.Text;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
 
 namespace ProRabbitMq
 {
@@ -15,10 +15,9 @@ namespace ProRabbitMq
             factory.HostName = "";
             factory.UserName = "";
 
-
-            using (IConnection conn= factory.CreateConnection())
+            using (IConnection conn = factory.CreateConnection())
             {
-                using (IModel channel=conn.CreateModel())
+                using (IModel channel = conn.CreateModel())
                 {
                     channel.QueueDeclare("queuename", false, true, false, null);
 
@@ -26,41 +25,35 @@ namespace ProRabbitMq
 
                     channel.QueueBind("queuename", "exchangename", string.Empty, null);
 
-
-
                     byte[] BYTE = Encoding.UTF8.GetBytes("bob");
 
-                    channel.BasicPublish("exchangenama", string.Empty, basicProperties: null, body: BYTE);
-
+                    channel.BasicPublish(
+                        "exchangenama",
+                        string.Empty,
+                        basicProperties: null,
+                        body: BYTE
+                    );
                 }
             }
-
 
             using (IConnection conn = factory.CreateConnection())
             {
                 using (IModel channel = conn.CreateModel())
                 {
-
                     channel.QueueDeclare("queuename", false, true, false, null);
                     var consumer = new EventingBasicConsumer(channel);
 
-                    channel.BasicConsume("queuename",false,consumer);
+                    channel.BasicConsume("queuename", false, consumer);
 
-
-
-
-                    var p= channel.CreateBasicProperties();
+                    var p = channel.CreateBasicProperties();
                     p.DeliveryMode = 2;
 
-
-
-                    consumer.Received += (model,ea)=> {
+                    consumer.Received += (model, ea) =>
+                    {
                         var body = ea.Body;
                     };
                 }
             }
-
-
         }
 
         private static void Consumer_Received(object sender, BasicDeliverEventArgs e)
@@ -68,8 +61,4 @@ namespace ProRabbitMq
             throw new NotImplementedException();
         }
     }
-
-
-
-    
 }

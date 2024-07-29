@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Mvc;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
 using MediatorDemo.Services;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace MediatorDemo.Controllers
 {
@@ -9,9 +9,9 @@ namespace MediatorDemo.Controllers
     [Route("[controller]")]
     public class HomeController : Controller
     {
-
         private IServices _servicesA;
         private IServices _servicesB;
+
         //public HomeController([Named("ServicesA")] IServices services)
         //{
         //    _services = services;
@@ -22,7 +22,6 @@ namespace MediatorDemo.Controllers
             _servicesA = serviceProvider.GetService<Services_A>();
             _servicesB = serviceProvider.GetService<Services_B>();
         }
-
 
         [HttpGet]
         public IActionResult Index()

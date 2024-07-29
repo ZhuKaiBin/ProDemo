@@ -1,27 +1,22 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace ProNetCore
 {
     public class Startup
     {
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //servicesï¿½ï¿½Microsoft.Extensions.DependencyInjection.ServiceCollection
+        public void ConfigureServices(IServiceCollection services) { }
 
-
-        //ÅäÖÃÈÝÆ÷·þÎñ
-        //services£ºMicrosoft.Extensions.DependencyInjection.ServiceCollection
-        public void ConfigureServices(IServiceCollection services)
-        {
-        }
-
-        
-        //ÅäÖÃHTTPÇëÇó´¦Àí¹ÜµÀµ±ÖÐµÄÒ»Ð©ÅäÖÃ£¬¼ÓÈ¨ÏÞ£¬¼ÓÈÕÖ¾Ö®ÀàµÄ
+        //ï¿½ï¿½ï¿½ï¿½HTTPï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Üµï¿½ï¿½ï¿½ï¿½Ðµï¿½Ò»Ð©ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½È¨ï¿½Þ£ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾Ö®ï¿½ï¿½ï¿½
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -33,10 +28,13 @@ namespace ProNetCore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync($"ÔËÐÐÊ±µÄ»·¾³Ê±,{env.EnvironmentName}");
-                });
+                endpoints.MapGet(
+                    "/",
+                    async context =>
+                    {
+                        await context.Response.WriteAsync($"ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä»ï¿½ï¿½ï¿½Ê±,{env.EnvironmentName}");
+                    }
+                );
             });
         }
     }

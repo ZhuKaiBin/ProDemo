@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualBasic;
-using System;
+﻿using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Microsoft.VisualBasic;
 
 namespace ProDemo4
 {
@@ -89,10 +89,10 @@ namespace ProDemo4
 
             {
                 boy XiaoMing = new boy();
-                XiaoMing.speak();                    //调用抽象类man,里面的《非抽象方法》
-                XiaoMing.work();                      //调用派生类boy,里面的 《重写方法》
+                XiaoMing.speak(); //调用抽象类man,里面的《非抽象方法》
+                XiaoMing.work(); //调用派生类boy,里面的 《重写方法》
 
-                XiaoMing.sleep();                     //调用抽象类man里，新加的方法。
+                XiaoMing.sleep(); //调用抽象类man里，新加的方法。
 
                 WoMan woMan = new WoMan();
 
@@ -105,18 +105,12 @@ namespace ProDemo4
                 bool implementsIperson = inheritInterfaces.Contains(typeof(Iperson));
 
                 var method1 = typeof(Iperson).GetType().IsInstanceOfType(woMan);
-                if (method1)
-                {
-                }
+                if (method1) { }
 
                 var method2 = woMan.GetType().GetInterface("Iperson");
-                if (method2 != null)
-                {
-                }
+                if (method2 != null) { }
 
-                if (woMan is Iperson)
-                {
-                }
+                if (woMan is Iperson) { }
 
                 Iperson say = woMan as Iperson;
             }
@@ -179,8 +173,7 @@ namespace ProDemo4
                 Console.WriteLine("111");
             }
 
-            public void eat()
-            { }
+            public void eat() { }
 
             public virtual void work()
             {
@@ -188,7 +181,9 @@ namespace ProDemo4
             }
 
             public void sleep()
-            { Console.WriteLine("不管大人小孩子都需要睡觉"); }  //抽象类中额外加的方法，睡觉。
+            {
+                Console.WriteLine("不管大人小孩子都需要睡觉");
+            } //抽象类中额外加的方法，睡觉。
         }
 
         public class boy : Man
@@ -206,17 +201,14 @@ namespace ProDemo4
                 Console.WriteLine("111");
             }
 
-            public void eat()
-            {
-            }
+            public void eat() { }
 
             public virtual void work()
             {
                 Console.WriteLine("");
             }
 
-            public void dd()
-            { }
+            public void dd() { }
         }
 
         public interface Iper
@@ -226,8 +218,7 @@ namespace ProDemo4
 
         public class Womann : Iper
         {
-            public void dd()
-            { }
+            public void dd() { }
         }
     }
 }

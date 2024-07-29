@@ -1,13 +1,13 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace WebApplication1
 {
@@ -26,36 +26,44 @@ namespace WebApplication1
             services.AddControllersWithViews();
             services.AddRazorPages();
             //Cookies
-            services.AddAuthentication(defaultScheme: "Cookies")
+            services
+                .AddAuthentication(defaultScheme: "Cookies")
                 .AddCookie(option =>
                 {
-                    option.LoginPath = new Microsoft.AspNetCore.Http.PathString(value: "/Authorization/Index");
+                    option.LoginPath = new Microsoft.AspNetCore.Http.PathString(
+                        value: "/Authorization/Index"
+                    );
                 });
 
-            #region ²ßÂÔ
+            #region ï¿½ï¿½ï¿½ï¿½
             services.AddAuthorization(configure =>
             {
-                //SVIPÊÇ²ßÂÔµÄÃû×Ö
-                configure.AddPolicy(name: "SVIP",
-                    option =>
-                     {
-                         //SVIPÊÇ½ÇÉ«                    
-                         option.RequireRole(roles: "SVIP");//ÓÃ»§µÄ½ÇÉ«±ØÐëÊÇSVIP,²ÅÄÜ·ÃÎÊSVIP Page
-                         //option.RequireRole(roles: "admin");Õâ¸öÒâË¼ÊÇ´«¹ýÀ´µÄ²ßÂÔµÄÖµ±ØÐëÊÇSVIPºÍAdmin
-                     }
-                     );
-                configure.AddPolicy(name: "VIP",
-                     option =>
-                     {
-                         //¾ÍÊÇ½ÇÉ«"SVIP", "VIP" ¶¼¿ÉÒÔ·ÃÎÊ²ßÂÔÎªVIP Page
-                         option.RequireRole("VIP","SVIP");
-                      });
-                configure.AddPolicy(name: "NoVIP",
+                //SVIPï¿½Ç²ï¿½ï¿½Ôµï¿½ï¿½ï¿½ï¿½ï¿½
+                configure.AddPolicy(
+                    name: "SVIP",
                     option =>
                     {
-                        //¾ÍÊÇ½ÇÉ«"NoVIP", "VIP" ¶¼¿ÉÒÔ·ÃÎÊ²ßÂÔÎªNoVIP Page
+                        //SVIPï¿½Ç½ï¿½É«
+                        option.RequireRole(roles: "SVIP"); //ï¿½Ã»ï¿½ï¿½Ä½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SVIP,ï¿½ï¿½ï¿½Ü·ï¿½ï¿½ï¿½SVIP Page
+                        //option.RequireRole(roles: "admin");ï¿½ï¿½ï¿½ï¿½ï¿½Ë¼ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä²ï¿½ï¿½Ôµï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½SVIPï¿½ï¿½Admin
+                    }
+                );
+                configure.AddPolicy(
+                    name: "VIP",
+                    option =>
+                    {
+                        //ï¿½ï¿½ï¿½Ç½ï¿½É«"SVIP", "VIP" ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ÎªVIP Page
+                        option.RequireRole("VIP", "SVIP");
+                    }
+                );
+                configure.AddPolicy(
+                    name: "NoVIP",
+                    option =>
+                    {
+                        //ï¿½ï¿½ï¿½Ç½ï¿½É«"NoVIP", "VIP" ï¿½ï¿½ï¿½ï¿½ï¿½Ô·ï¿½ï¿½Ê²ï¿½ï¿½ï¿½ÎªNoVIP Page
                         option.RequireRole("NoVIP", "VIP", "SVIP");
-                    });
+                    }
+                );
             });
             #endregion
         }
@@ -77,16 +85,17 @@ namespace WebApplication1
             app.UseStaticFiles();
 
             app.UseRouting();
-            //Ê¹ÓÃ¼øÈ¨(Éí·ÝÑéÖ¤)ÊÇÖ¸ÑéÖ¤ÓÃ»§ÊÇ·ñÓµÓÐ·ÃÎÊÏµÍ³µÄÈ¨Àû
+            //Ê¹ï¿½Ã¼ï¿½È¨(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤)ï¿½ï¿½Ö¸ï¿½ï¿½Ö¤ï¿½Ã»ï¿½ï¿½Ç·ï¿½Óµï¿½Ð·ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½È¨ï¿½ï¿½
             app.UseAuthentication();
-            //Ê¹ÓÃÊÚÈ¨
+            //Ê¹ï¿½ï¿½ï¿½ï¿½È¨
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }

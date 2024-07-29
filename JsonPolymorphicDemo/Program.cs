@@ -7,7 +7,6 @@ namespace JsonPolymorphicDemo
     {
         static void Main(string[] args)
         {
-
             Person weather = new Man
             {
                 City = "Milwaukee",
@@ -15,7 +14,6 @@ namespace JsonPolymorphicDemo
                 TemperatureCelsius = 15,
                 Summary = "Cool"
             };
-
 
             var json = JsonSerializer.Serialize<Person>(weather);
             Console.WriteLine(json);
@@ -29,16 +27,15 @@ namespace JsonPolymorphicDemo
              反序列化的时候。只填入基类就行
              */
 
-            string jsonSer = "{\"Key\":\"manvalue\",\"City\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
+            string jsonSer =
+                "{\"Key\":\"manvalue\",\"City\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
             var model = JsonSerializer.Deserialize<Person>(jsonSer);
 
-            string jsonSer2 = "{\"Key\":\"womanvalue\",\"Age\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
+            string jsonSer2 =
+                "{\"Key\":\"womanvalue\",\"Age\":\"Milwaukee\",\"Date\":\"2022-09-26T00:00:00-05:00\",\"TemperatureCelsius\":15,\"Summary\":\"Cool\"}";
             var model2 = JsonSerializer.Deserialize<Person>(jsonSer2);
-
-
         }
     }
-
 
     [JsonPolymorphic(TypeDiscriminatorPropertyName = "Key")]
     [JsonDerivedType(typeof(Man), typeDiscriminator: "manvalue")]
@@ -49,7 +46,6 @@ namespace JsonPolymorphicDemo
         public int TemperatureCelsius { get; set; }
         public string? Summary { get; set; }
     }
-
 
     public class Man : Person
     {

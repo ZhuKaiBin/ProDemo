@@ -8,7 +8,6 @@ namespace FluentDataAnnotation.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
-
         [HttpPost]
         public IActionResult Get(Model model)
         {

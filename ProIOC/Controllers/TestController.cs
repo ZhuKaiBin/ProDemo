@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProIOC.Controllers
 {
@@ -11,7 +11,6 @@ namespace ProIOC.Controllers
     [ApiController]
     public class TestController : ControllerBase
     {
-
         //private ITestServices _service;
         //public TestController(ITestServices services)
         //{
@@ -19,7 +18,7 @@ namespace ProIOC.Controllers
         //}
 
         //public Tuple<int, int> Get([FromServices]ITestServices tservices)
-        //{  
+        //{
         //    int before = tservices.count;
         //    tservices.Add();
         //    int after = tservices.count;
@@ -27,6 +26,7 @@ namespace ProIOC.Controllers
         //}
 
         public TestServiceTemp _services;
+
         public TestController(TestServiceTemp services)
         {
             _services = services;
@@ -39,6 +39,5 @@ namespace ProIOC.Controllers
             int after = _services.count;
             return new Tuple<int, int>(before, after);
         }
-
     }
 }

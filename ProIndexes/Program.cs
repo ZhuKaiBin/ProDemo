@@ -1,21 +1,19 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace ProIndexes
 {
     class Program
     {
         private static IConfiguration Configuration { get; set; }
+
         static void Main(string[] args)
         {
-
-
-
             IndexClass indexClass = new IndexClass();
             Random random = new Random();
 
@@ -30,52 +28,49 @@ namespace ProIndexes
             }
             Console.ReadKey();
 
+            //  var builder = new HostBuilder();
+            //  var environment = Environment.GetEnvironmentVariable("zkb");
 
-          //  var builder = new HostBuilder();
-          //  var environment = Environment.GetEnvironmentVariable("zkb");
-
-          //  var config = new ConfigurationBuilder()
-          //                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-          //              //.AddEnvironmentVariables()
-          //              .Build();
-          //  Configuration = config.GetSection("ConnectionStrings:xxx");
-
-
-          //  builder.ConfigureAppConfiguration((h, services) =>
-          //  {
-          //      Configuration = h.Configuration;
-
-          //      var zz = h.HostingEnvironment;
-          //      services.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-          //  });
-
-          //string  str= Configuration.GetConnectionString("xxx");
+            //  var config = new ConfigurationBuilder()
+            //                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            //              //.AddEnvironmentVariables()
+            //              .Build();
+            //  Configuration = config.GetSection("ConnectionStrings:xxx");
 
 
-          //  var builder1 = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
-          //  var configuration = builder1.Build();
-          //  string baseUrl = configuration.GetSection("ConnectionStrings:xxx").Value;
+            //  builder.ConfigureAppConfiguration((h, services) =>
+            //  {
+            //      Configuration = h.Configuration;
+
+            //      var zz = h.HostingEnvironment;
+            //      services.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+            //  });
+
+            //string  str= Configuration.GetConnectionString("xxx");
 
 
-          //  builder.ConfigureServices((h, services) =>
-          //  {
-          //      Configuration = h.Configuration;
-          //      services.AddOptions();
+            //  var builder1 = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+            //  var configuration = builder1.Build();
+            //  string baseUrl = configuration.GetSection("ConnectionStrings:xxx").Value;
 
-          //      string aaaa = h.Configuration.GetConnectionString("xxx");
-          //      services.AddSingleton(Configuration);
 
-          //  });
- //var s = Configuration.GetConnectionString("xxx");
+            //  builder.ConfigureServices((h, services) =>
+            //  {
+            //      Configuration = h.Configuration;
+            //      services.AddOptions();
 
- //           var host = builder.Build();
- //           using (host)
- //           {
- //               host.Run();
- //           }
+            //      string aaaa = h.Configuration.GetConnectionString("xxx");
+            //      services.AddSingleton(Configuration);
+
+            //  });
+            //var s = Configuration.GetConnectionString("xxx");
+
+            //           var host = builder.Build();
+            //           using (host)
+            //           {
+            //               host.Run();
+            //           }
             string ss = "";
-
-           
 
             Console.WriteLine("666" + Configuration.GetConnectionString("xxx"));
 
@@ -106,13 +101,13 @@ namespace ProIndexes
             var randomNumbers = Enumerable.Range(0, 100).OrderBy(x => Guid.NewGuid());
             //int num=  randomNumbers.Count();
             Dictionary<string, string> dic1 = new Dictionary<string, string>
-                    {
-                       { "access_token","1"},
-                       { "app_key","1" },
-                       { "method","1" },
-                       { "timestamp","1" },
-                       { "v","1" },
-                     };
+            {
+                { "access_token", "1" },
+                { "app_key", "1" },
+                { "method", "1" },
+                { "timestamp", "1" },
+                { "v", "1" },
+            };
             string s1 = string.Join("", dic1.OrderBy(p => p.Key).Select(p => $"{p.Key}{p.Value}"));
             //string ss = string.Join("", dic1);
             //string.Join(",", dic1.OrderBy(p => p.Key).Select(p => p.Value));
@@ -167,25 +162,53 @@ namespace ProIndexes
             List<Student> stulist = stu.ToList<Student>();
             foreach (Student student in stulist)
             {
-                Console.WriteLine("Id = " + student.Id + " " + " Name = " + student.Name + " " + " Gender = " + student.Gender);
+                Console.WriteLine(
+                    "Id = "
+                        + student.Id
+                        + " "
+                        + " Name = "
+                        + student.Name
+                        + " "
+                        + " Gender = "
+                        + student.Gender
+                );
             }
             var list = stulist.Select(p => p.Id == 210).FirstOrDefault();
             //将list转成数组
             Student[] toarray = stulist.ToArray<Student>();
             foreach (Student student in toarray)
             {
-                Console.WriteLine("Id = " + student.Id + " " + " Name = " + student.Name + " " + " Gender = " + student.Gender);
+                Console.WriteLine(
+                    "Id = "
+                        + student.Id
+                        + " "
+                        + " Name = "
+                        + student.Name
+                        + " "
+                        + " Gender = "
+                        + student.Gender
+                );
             }
             //将数组转成Dictionary
-            Dictionary<int, Student> StudentDictionary = toarray.ToDictionary(key => key.Id, Studentobj => Studentobj);
+            Dictionary<int, Student> StudentDictionary = toarray.ToDictionary(
+                key => key.Id,
+                Studentobj => Studentobj
+            );
             foreach (KeyValuePair<int, Student> student in StudentDictionary)
             {
-                Console.WriteLine("Id = " + student.Key + " " + " Name = " + student.Value.Name + " " + " Gender = " + student.Value.Gender);
+                Console.WriteLine(
+                    "Id = "
+                        + student.Key
+                        + " "
+                        + " Name = "
+                        + student.Value.Name
+                        + " "
+                        + " Gender = "
+                        + student.Value.Gender
+                );
             }
-
         }
     }
-
 
     public class Student
     {
@@ -197,19 +220,15 @@ namespace ProIndexes
     public class Person
     {
         private string[] hero = new string[5] { "老白", "小粉", "炸鸡哥", "空姐", "Hank" };
+
         //声明索引
         public string this[int index]
         {
-            get
-            {
-                return hero[index];
-            }
-            set
-            {
-                hero[index] = value;
-            }
+            get { return hero[index]; }
+            set { hero[index] = value; }
         }
     }
+
     public class indexes
     {
         private string[] name = new string[10];
@@ -220,16 +239,13 @@ namespace ProIndexes
         }
     }
 
-
     public interface ISOmeInterface
     {
         int this[int index] { set; get; }
     }
 
-
     public class IndexClass : ISOmeInterface
     {
-
         private int[] ary = new int[5];
         public int this[int index]
         {

@@ -4,11 +4,8 @@ using System.Threading;
 
 namespace ProLock
 {
-
-  
     class Program
     {
-       
         //实现单例是要考虑并发问题的，一般情况下，我们都会使用synchronized来保证线程安全。
         static void Main(string[] args)
         {
@@ -26,11 +23,7 @@ namespace ProLock
             //action = ret2;
             //action("bob2");
             Console.ReadKey();
-
         }
-
-
-
 
         public static void ret(string x)
         {
@@ -39,19 +32,17 @@ namespace ProLock
 
         public static void ret2(string x)
         {
-            Console.WriteLine("ret2"+x);
+            Console.WriteLine("ret2" + x);
         }
-
     }
 
     #region SingleModel_Class
     public class SingleModel
     {
         private static SingleModel _singlemodel;
-        private SingleModel()//私有化构造函数,外界不可以通过new来实例化该类
-        {
-        
-        }
+
+        private SingleModel() //私有化构造函数,外界不可以通过new来实例化该类
+        { }
 
         //声明一个方法,返回的类型是SingleModel
         public static SingleModel GetInstance()
@@ -65,28 +56,25 @@ namespace ProLock
 
         public string name = "Bob";
         private int level = 6;
-       
+
         //obj一定是私有的,静态的只读的
-        private static readonly object obj = new object(); 
+        private static readonly object obj = new object();
         public Queue<int> _queue = new Queue<int>();
-        public void StartThread()
-        { 
-         
-        }
+
+        public void StartThread() { }
 
         public void SS()
         {
-            //Lock关键字可以确保代码块完成运行,而不被其他线程中断 
+            //Lock关键字可以确保代码块完成运行,而不被其他线程中断
             //应该避免锁定Public类型,否则被其他代码实例化,而超出代码的控制范围
 
             //lock锁定的必须是引用类型
-            lock (obj)//lock来锁定queue,一个先执行,再执行另外一个
+            lock (obj) //lock来锁定queue,一个先执行,再执行另外一个
             {
                 _queue.Enqueue(5);
                 Thread.Sleep(1000);
             }
         }
-      
     }
     #endregion
 
@@ -102,14 +90,12 @@ namespace ProLock
     {
         //定义一个静态变量来保存类的实例!!!!==>静态类保存类的实例
         private static Singleton uniqueInstance;
+
         //定义一个标识确保线程同步
         private static readonly object locker = new object();
 
-
         //定义私有的构造函数,那么Singleton类就不可以被外界NEW
-        private Singleton()
-        { 
-        }
+        private Singleton() { }
 
         //定义一个公有方法,提供一个"全局访问点",
         public static Singleton GetInstance()
@@ -118,9 +104,8 @@ namespace ProLock
             //当第二个线程运行到该方法时,首先检测到locker对象为"枷锁"状态
             //该线程就会挂起等待第一个线程解锁
 
-            if (uniqueInstance == null)//加上这个判断，就是双重锁定
+            if (uniqueInstance == null) //加上这个判断，就是双重锁定
             {
-
                 //locker语句执行完后,会对该对象"解锁"
                 lock (locker)
                 {
@@ -135,9 +120,6 @@ namespace ProLock
         }
 
         //然后我们可以声明一些其他的sql连接类的方法，通过GetGetInstance()调用
-
     }
     #endregion
-
-
 }

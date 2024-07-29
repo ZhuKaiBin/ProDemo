@@ -6,8 +6,6 @@ namespace ConfigurationAppsettings
     {
         static void Main(string[] args)
         {
-
-
             //// 读取环境变量
             //var environment = Environment.GetEnvironmentVariable("MY_APP_ENVIRONMENT") ?? "Production";
 
@@ -44,14 +42,17 @@ namespace ConfigurationAppsettings
             // 获取当前环境名称，默认为Production
             var environment = Environment.GetEnvironmentVariable("MY_APP_ENVIRONMENT");
 
-
             Console.WriteLine("=======" + environment);
 
             // 构建配置对象
             var configuration = new ConfigurationBuilder()
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{environment}.json", optional: true, reloadOnChange: true)
+                .AddJsonFile(
+                    $"appsettings.{environment}.json",
+                    optional: true,
+                    reloadOnChange: true
+                )
                 .AddEnvironmentVariables()
                 .Build();
 
@@ -63,7 +64,6 @@ namespace ConfigurationAppsettings
             Console.WriteLine($"Environment: {environment}");
             Console.WriteLine($"Application Name: {applicationName}");
             Console.WriteLine($"Log Level: {logLevel}");
-
 
             Console.ReadKey();
         }

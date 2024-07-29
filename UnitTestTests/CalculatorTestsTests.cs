@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using UnitTest;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using UnitTest;
 
 namespace UnitTest.Tests
 {
@@ -17,7 +17,6 @@ namespace UnitTest.Tests
         [DataRow(200, null)]
         public void TestAddTest(int num1, int num2)
         {
-
             CalculatorTests calculatorTests = new CalculatorTests();
 
             var ret = calculatorTests.TestAdd(num1, num2);

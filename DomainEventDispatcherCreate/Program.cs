@@ -1,13 +1,11 @@
-﻿
-using DomainEventDispatcherCommond;
+﻿using DomainEventDispatcherCommond;
+
 namespace DomainEventDispatcherCreate
 {
     internal class Program
     {
         static async Task Main(string[] args)
         {
-
-
             // 创建订单
             var order = new Order(1, "John Doe");
             order.Create();
@@ -26,7 +24,14 @@ namespace DomainEventDispatcherCreate
         // 模拟领域事件分发器处理事件的异步方法
         static async Task SimulateDispatchEvents()
         {
-            var eventsToDispatch = new List<object> { new DomainEventDispatcherCommond.OrderCreatedEvent { OrderId = 2, Timestamp = DateTime.UtcNow } };
+            var eventsToDispatch = new List<object>
+            {
+                new DomainEventDispatcherCommond.OrderCreatedEvent
+                {
+                    OrderId = 2,
+                    Timestamp = DateTime.UtcNow
+                }
+            };
 
             var dispatcher = new DomainEventDispatcher();
             await dispatcher.DispatchAndClearEvents(eventsToDispatch);

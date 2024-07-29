@@ -1,10 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ProAuthorization.Controllers
 {
@@ -13,10 +13,8 @@ namespace ProAuthorization.Controllers
     [Route("[controller]")]
     public class HomeController : Controller
     {
-        public HomeController()
-        { 
-        
-        }
+        public HomeController() { }
+
         // GET: HomeController
         [HttpGet]
         public ActionResult Index()
