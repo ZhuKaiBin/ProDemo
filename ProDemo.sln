@@ -117,9 +117,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsposeDemo", "AsposeDemo\As
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkDotNetDemo", "BenchmarkDotNetDemo\BenchmarkDotNetDemo.csproj", "{348391B8-DAF1-457C-A8F1-9FAC52E370A7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System_Reflection", "System_Reflection\System_Reflection.csproj", "{172E0716-E2BD-4B96-82C7-C8457BDBD30B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System_Reflection", "System_Reflection\System_Reflection.csproj", "{172E0716-E2BD-4B96-82C7-C8457BDBD30B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System_Reflection_Library", "System_Reflection_Library\System_Reflection_Library.csproj", "{10E7EE05-CEDE-44D8-B9A4-66ADA7A155C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System_Reflection_Library", "System_Reflection_Library\System_Reflection_Library.csproj", "{10E7EE05-CEDE-44D8-B9A4-66ADA7A155C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObserverPattern", "ObserverPattern\ObserverPattern.csproj", "{1BE2FFD8-966D-45BC-94A6-B3968A3C9758}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -363,6 +365,10 @@ Global
 		{10E7EE05-CEDE-44D8-B9A4-66ADA7A155C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10E7EE05-CEDE-44D8-B9A4-66ADA7A155C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10E7EE05-CEDE-44D8-B9A4-66ADA7A155C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BE2FFD8-966D-45BC-94A6-B3968A3C9758}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BE2FFD8-966D-45BC-94A6-B3968A3C9758}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BE2FFD8-966D-45BC-94A6-B3968A3C9758}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BE2FFD8-966D-45BC-94A6-B3968A3C9758}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
