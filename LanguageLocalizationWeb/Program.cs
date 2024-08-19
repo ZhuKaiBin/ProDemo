@@ -19,24 +19,15 @@ namespace LanguageLocalizationWeb
 
             builder.Services.AddControllers();
 
-            builder.Services.Configure<RequestLocalizationOptions>(options =>
-            {
-                var supportedCultures = new[] { "en", "zh", "ja" };
-                options.SetDefaultCulture(supportedCultures[0])
-                       .AddSupportedCultures(supportedCultures)
-                       .AddSupportedUICultures(supportedCultures);
-            });
+            //builder.Services.Configure<RequestLocalizationOptions>(options =>
+            //{
+            //    var supportedCultures = new[] { "en", "zh", "ja" };
+            //    options.SetDefaultCulture(supportedCultures[0])
+            //           .AddSupportedCultures(supportedCultures)
+            //           .AddSupportedUICultures(supportedCultures);
+            //});
 
             var app = builder.Build();
-
-
-            var supportedCultures = new[] { "en", "zh", "ja" };
-            var localizationOptions = new RequestLocalizationOptions()
-                .SetDefaultCulture(supportedCultures[0])
-                .AddSupportedCultures(supportedCultures)
-                .AddSupportedUICultures(supportedCultures);
-
-            app.UseRequestLocalization(localizationOptions);
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

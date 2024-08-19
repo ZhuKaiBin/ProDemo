@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="C-designSwitchgearDesignSoftware" xml:space="preserve">
+    <value>C-design成套设计软件</value>
+  </data>
+  <data name="CreateProject" xml:space="preserve">
+    <value>创建项目</value>
+  </data>
+  <data name="CurrentDataVersion" xml:space="preserve">
+    <value>当前数据版本</value>
+  </data>
+  <data name="HistoryProjects" xml:space="preserve">
+    <value>历史项目</value>
+  </data>
   <data name="HomePage" xml:space="preserve">
     <value>首页</value>
+  </data>
+  <data name="SoftwareVersion" xml:space="preserve">
+    <value>软件版本</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>欢迎</value>
