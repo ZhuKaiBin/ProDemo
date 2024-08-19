@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using System.Globalization;
+using System.Reflection;
 
 namespace LanguageLocalizationWeb.Controllers
 {
@@ -36,6 +37,8 @@ namespace LanguageLocalizationWeb.Controllers
                 var translations = new Dictionary<string, string>();
                 foreach (var entry in _localizer.GetAllStrings(includeParentCultures: true))
                 {
+
+
                     translations.Add(entry.Name, entry.Value);
                 }
 
@@ -52,6 +55,58 @@ namespace LanguageLocalizationWeb.Controllers
                 return BadRequest("不支持该语言");
             }
         }
+
+
+
+
+        [HttpPost("{culture2}")]
+        public IActionResult GetTranslations2(string culture2 = "zh")
+        {
+            // Validate culture code
+            if (!IsValidCulture(culture2))
+            {
+                return BadRequest("不支持该语言");
+            }
+
+
+            var moduleUI = new Dictionary<string, string>();
+            var moduleLogic = new Dictionary<string, string>();
+
+            try
+            {
+                // Set the current culture
+                CultureInfo.CurrentUICulture = new CultureInfo(culture2);
+
+                // Fetch all resource strings
+
+                foreach (var entry in _localizer.GetAllStrings(includeParentCultures: true))
+                {
+
+
+                    if (entry.Name.StartsWith("UI_"))
+                    {
+                        moduleUI.Add(entry.Name.Substring("UI_".Length), entry.Value);
+                    }
+                    else if (entry.Name.StartsWith("logic_"))
+                    {
+                        moduleLogic.Add(entry.Name.Substring("logic_".Length), entry.Value);
+                    }
+                }
+
+                var result = new Dictionary<string, Dictionary<string, string>>
+                                {
+                    { "moduleUI", moduleUI },
+                    { "moduleLogic", moduleLogic }
+                };
+                return Ok(result);
+            }
+            catch (CultureNotFoundException)
+            {
+                return BadRequest("不支持该语言");
+            }
+        }
+
+
 
         // Method to check if the culture is valid
         private bool IsValidCulture(string culture)

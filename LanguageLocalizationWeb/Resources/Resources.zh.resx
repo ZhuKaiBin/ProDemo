@@ -132,8 +132,20 @@
   <data name="HomePage" xml:space="preserve">
     <value>首页</value>
   </data>
+  <data name="logic_CreateProject" xml:space="preserve">
+    <value>创建项目</value>
+  </data>
+  <data name="logic_CreateProject2" xml:space="preserve">
+    <value>创建项目2</value>
+  </data>
   <data name="SoftwareVersion" xml:space="preserve">
     <value>软件版本</value>
+  </data>
+  <data name="UI_Welcome" xml:space="preserve">
+    <value>欢迎</value>
+  </data>
+  <data name="UI_Welcome2" xml:space="preserve">
+    <value>欢迎欢迎2</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>欢迎</value>
