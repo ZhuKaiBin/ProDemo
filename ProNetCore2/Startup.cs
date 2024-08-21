@@ -10,42 +10,79 @@ using Microsoft.Extensions.Hosting;
 
 namespace ProNetCore2
 {
+    //²Î¿¼£ºhttps://code-maze.com/working-with-asp-net-core-middleware/
     public class Startup
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
+
         public void ConfigureServices(IServiceCollection services) { }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("middleware1_In\n");
-            //    await next();
-            //    await context.Response.WriteAsync("middleware1_Out\n");
-            //});
-            //// next()ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸ï¿½ï¿½Ð¼ï¿½ï¿½
-            //app.Use(async (context, next) =>
-            //{
-            //    await context.Response.WriteAsync("middleware2_In\n");
-            //    //await next();//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï½«Next()ï¿½ï¿½×¢ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½Run()ï¿½ï¿½ï¿½Ð¼ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½==ï¿½ï¿½ï¿½ï¿½Ö®Îªï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½
-            //    //middleware1_In ===ï¿½ï¿½middleware2_In ===ï¿½ï¿½middleware2_Out ===ï¿½ï¿½middleware1_Out
-            //    //ï¿½Í²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½middleware3_Inï¿½ï¿½
-            //    await context.Response.WriteAsync("middleware2_Out\n");
-            //});
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("middleware1_In\n");
+                await next();
+                await context.Response.WriteAsync("middleware1_Out\n");
+            });
 
-            ////ï¿½ï¿½Run()(ï¿½ï¿½Â·ï¿½Ð¼ï¿½ï¿½,ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-            //app.Run(async context =>
-            //{
-            //    await context.Response.WriteAsync("middleware3_In\n");
+            //Á½¸ö²ÎÊý usingmapbranch  +  testquerystring
+            app.Map("/usingmapbranch", builder =>
+            {
+                builder.MapWhen(context => context.Request.Query.ContainsKey("testquerystring"), branch =>
+                {
+                    branch.Run(async context =>
+                    {
+                        await context.Response.WriteAsync("1111111\n");
+                    });
+                });
 
-            //});
-            ////middleware1_In
-            ////middleware2_In
-            ////middleware3_In
-            ////middleware2_Out
-            ////middleware1_Out
+                //Äã»¹¿ÉÒÔÔÚÕâÀï´¦ÀíÆäËûÃ»ÓÐ testquerystring µÄÇé¿ö
+                builder.Run(async context =>
+                {
+                    await context.Response.WriteAsync("222222\n");
+                });
+            });
+
+
+            //https£º//localhost£º5000/usingmapbranch
+            app.Map("/usingmapbranch2", builder =>
+            {
+                builder.Use(async (context, next) =>
+                {
+                    await next.Invoke();
+                    //await next.Invoke(); Èç¹ûÕâÀï×¢ÊÍµô£¬Ò²²»»á×ßÏÂÃæµÄrun
+                });
+                builder.Run(async context =>
+                {
+
+                    await context.Response.WriteAsync("33333333.\n");
+                });
+            });
+
+            //https£º//localhost£º5000£¿testquerystring=test
+            app.MapWhen(context => context.Request.Query.ContainsKey("testquerystring"), builder =>
+            {
+                builder.Run(async context =>
+                {
+                    await context.Response.WriteAsync(".\n");
+                });
+            });
+
+
+            app.Use(async (context, next) =>
+            {
+                await context.Response.WriteAsync("middleware666_In\n");
+                await next();
+                await context.Response.WriteAsync("middleware888_Out\n");
+            });
+
+            app.Run(async context =>
+            {
+
+                await context.Response.WriteAsync("middleware3_In\n");
+
+            });
+
         }
     }
 }
