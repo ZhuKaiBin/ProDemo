@@ -133,9 +133,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProRiderWebApplication", "P
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainEventsDemo", "DomainEventsDemo\DomainEventsDemo.csproj", "{22541CFD-79B4-4DC0-B208-6BE0A673C1C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLocalizationConsole", "LanguageLocalizationConsole\LanguageLocalizationConsole.csproj", "{82182D2E-7C27-40DB-8FA1-E98BE63D82D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageLocalizationConsole", "LanguageLocalizationConsole\LanguageLocalizationConsole.csproj", "{82182D2E-7C27-40DB-8FA1-E98BE63D82D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanguageLocalizationWeb", "LanguageLocalizationWeb\LanguageLocalizationWeb.csproj", "{359E3047-9C52-4090-83C7-9110879E7A51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LanguageLocalizationWeb", "LanguageLocalizationWeb\LanguageLocalizationWeb.csproj", "{359E3047-9C52-4090-83C7-9110879E7A51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "deviq", "deviq", "{A1BD563E-949F-43A8-A7C4-A00F0210884A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbstractFactoryDesignPattern", "AbstractFactoryDesignPattern\AbstractFactoryDesignPattern.csproj", "{1ACD2CAB-8E39-405A-B2C0-10ABF52696F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdapterDesignPattern", "AdapterDesignPattern\AdapterDesignPattern.csproj", "{9539F101-C2AF-49B3-8CFA-1E6B92A15C16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecificationPattern", "SpecificationPattern\SpecificationPattern.csproj", "{3FEAF14F-ED5C-43DA-8550-2790AC0F71D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -411,9 +419,26 @@ Global
 		{359E3047-9C52-4090-83C7-9110879E7A51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{359E3047-9C52-4090-83C7-9110879E7A51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{359E3047-9C52-4090-83C7-9110879E7A51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ACD2CAB-8E39-405A-B2C0-10ABF52696F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ACD2CAB-8E39-405A-B2C0-10ABF52696F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ACD2CAB-8E39-405A-B2C0-10ABF52696F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ACD2CAB-8E39-405A-B2C0-10ABF52696F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9539F101-C2AF-49B3-8CFA-1E6B92A15C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9539F101-C2AF-49B3-8CFA-1E6B92A15C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9539F101-C2AF-49B3-8CFA-1E6B92A15C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9539F101-C2AF-49B3-8CFA-1E6B92A15C16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FEAF14F-ED5C-43DA-8550-2790AC0F71D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FEAF14F-ED5C-43DA-8550-2790AC0F71D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FEAF14F-ED5C-43DA-8550-2790AC0F71D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FEAF14F-ED5C-43DA-8550-2790AC0F71D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1ACD2CAB-8E39-405A-B2C0-10ABF52696F5} = {A1BD563E-949F-43A8-A7C4-A00F0210884A}
+		{9539F101-C2AF-49B3-8CFA-1E6B92A15C16} = {A1BD563E-949F-43A8-A7C4-A00F0210884A}
+		{3FEAF14F-ED5C-43DA-8550-2790AC0F71D7} = {A1BD563E-949F-43A8-A7C4-A00F0210884A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1815C20-CFA4-4A9E-93D9-0F7C5158047E}
