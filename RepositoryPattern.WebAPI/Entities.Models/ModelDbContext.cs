@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace RepositoryPattern.WebAPI.Entities.Models
 {
-    public class RepositoryContext : DbContext
+    public class ModelDbContext : DbContext
     {
-        public RepositoryContext(DbContextOptions options)
+        public ModelDbContext(DbContextOptions options)
             : base(options)
         {
         }

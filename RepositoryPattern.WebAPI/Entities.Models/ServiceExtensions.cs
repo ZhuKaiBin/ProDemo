@@ -8,7 +8,7 @@ namespace RepositoryPattern.WebAPI.Entities.Models
         public static void ConfigureMySqlContext(this IServiceCollection services, IConfiguration config)
         {
             var connectionString = config["mysqlconnection:connectionString"];
-            services.AddDbContext<RepositoryContext>(o => o.UseMySQL(connectionString));
+            services.AddDbContext<ModelDbContext>(o => o.UseMySQL(connectionString));
 
             //services.AddDbContext<RepositoryContext>(o => o.UseMySQL(connectionString,
             //  MySqlServerVersion.LatestSupportedServerVersion));

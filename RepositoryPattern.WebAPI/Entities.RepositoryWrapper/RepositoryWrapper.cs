@@ -1,12 +1,13 @@
 ﻿using RepositoryPattern.WebAPI.Entities.Models;
 using RepositoryPattern.WebAPI.Entities.Repository;
+using RepositoryPattern.WebAPI.Entities.Repository.Interfances;
 
 namespace RepositoryPattern.WebAPI.Entities.RepositoryWrapper
 {
     public class RepositoryWrapper : IRepositoryWrapper
     {
 
-        private RepositoryContext _repoContext;
+        private ModelDbContext _repoContext;
         private IOwnerRepository _owner;
         private IAccountRepository _account;
 
@@ -35,7 +36,7 @@ namespace RepositoryPattern.WebAPI.Entities.RepositoryWrapper
         }
 
 
-        public RepositoryWrapper(RepositoryContext repositoryContext)
+        public RepositoryWrapper(ModelDbContext repositoryContext)
         {
             _repoContext = repositoryContext;
         }

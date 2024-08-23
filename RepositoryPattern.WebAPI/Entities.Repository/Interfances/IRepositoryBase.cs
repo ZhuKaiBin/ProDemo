@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace RepositoryPattern.WebAPI.Entities.Repository
+namespace RepositoryPattern.WebAPI.Entities.Repository.Interfances
 {
     public interface IRepositoryBase<T>
     {

@@ -1,4 +1,4 @@
-﻿using RepositoryPattern.WebAPI.Entities.Repository;
+﻿using RepositoryPattern.WebAPI.Entities.Repository.Interfances;
 
 namespace RepositoryPattern.WebAPI.Entities.RepositoryWrapper
 {
