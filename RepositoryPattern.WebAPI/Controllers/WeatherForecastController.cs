@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RepositoryPattern.WebAPI.Entities.RepositoryWrapper;
-
+using RepositoryPattern.WebAPI.Entities.Models;
 namespace RepositoryPattern.WebAPI.Controllers
 {
     [ApiController]
@@ -17,6 +17,15 @@ namespace RepositoryPattern.WebAPI.Controllers
         {
             var domesticAccounts = _repository.Account.FindByCondition(x => x.AccountType.Equals("Domestic"));
             var owners = _repository.Owner.FindAll();
+
+            Owner owner = new Owner()
+            {
+                OwnerId = Guid.NewGuid()
+            };
+
+
+            _repository.Owner.Create(owner);
+
             return new string[] { "value1", "value2" };
         }
     }
