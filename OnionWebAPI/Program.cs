@@ -1,4 +1,4 @@
-using Persistence;
+using Infrastructure;
 
 namespace OnionWebAPI
 {
@@ -15,7 +15,6 @@ namespace OnionWebAPI
 
         private static async Task ApplyMigrations(IServiceProvider serviceProvider)
         {
-
             using (var scope = serviceProvider.CreateScope())
             {
                 var services = scope.ServiceProvider;//提供特定的（服务）和工具

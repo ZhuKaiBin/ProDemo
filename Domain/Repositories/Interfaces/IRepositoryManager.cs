@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Domain.Repositories.Interfaces
+﻿namespace Domain.Repositories.Interfaces
 {
     public interface IRepositoryManager
     {
@@ -12,6 +6,5 @@ namespace Domain.Repositories.Interfaces
         IAccountRepository AccountRepository { get; }
 
         IUnitOfWork UnitOfWork { get; }
-
     }
 }

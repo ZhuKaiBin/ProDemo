@@ -1,11 +1,11 @@
 ﻿using Domain.Repositories.Interfaces;
+using Infrastructure;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using OnionWebAPI.Middleware;
-using Persistence;
-using Persistence.Repositories;
 using Services;
-using Services.Abstractions;
+using Services.Interfances;
 
 namespace OnionWebAPI
 {

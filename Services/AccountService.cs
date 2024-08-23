@@ -1,9 +1,9 @@
-﻿using Contracts;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Domain.Exceptions;
 using Domain.Repositories.Interfaces;
-using Services.Abstractions;
+using Dtos;
 using Mapster;
+using Services.Interfances;
 
 namespace Services
 {
@@ -11,7 +11,11 @@ namespace Services
     {
         private readonly IRepositoryManager _repositoryManager;
 
-        public AccountService(IRepositoryManager repositoryManager) => _repositoryManager = repositoryManager;
+        public AccountService(IRepositoryManager repositoryManager)
+        {
+            _repositoryManager = repositoryManager;
+        }
+
 
         public async Task<IEnumerable<AccountDto>> GetAllByOwnerIdAsync(Guid ownerId, CancellationToken cancellationToken = default)
         {

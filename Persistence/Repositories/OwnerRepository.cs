@@ -1,7 +1,8 @@
 ﻿using Domain.Entities;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-namespace Persistence.Repositories
+
+namespace Infrastructure.Repositories
 {
     internal sealed class OwnerRepository : IOwnerRepository
     {

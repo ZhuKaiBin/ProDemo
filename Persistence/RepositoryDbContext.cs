@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
 
-namespace Persistence
+namespace Infrastructure
 {
     public partial class RepositoryDbContext : DbContext
     {
@@ -19,9 +13,6 @@ namespace Persistence
         public DbSet<Owner> Owners { get; set; }
 
         public DbSet<Account> Accounts { get; set; }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder) =>
-        //    modelBuilder.ApplyConfigurationsFromAssembly(typeof(RepositoryDbContext).Assembly);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

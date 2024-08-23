@@ -1,12 +1,6 @@
-﻿using Domain.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Repositories.Interfaces;
+﻿using Domain.Repositories.Interfaces;
 
-namespace Persistence.Repositories
+namespace Infrastructure.Repositories
 {
     internal sealed class UnitOfWork : IUnitOfWork
     {

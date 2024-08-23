@@ -1,5 +1,5 @@
-﻿using System.Text.Json;
-using Domain.Exceptions;
+﻿using Domain.Exceptions;
+using System.Text.Json;
 
 namespace OnionWebAPI.Middleware
 {

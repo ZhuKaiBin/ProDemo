@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
 using Domain.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage;
-using Persistence;
-using Domain.Entities;
 
-namespace Persistence.Repositories
+namespace Infrastructure.Repositories
 {
     internal sealed class AccountRepository : IAccountRepository
     {

@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Services.Abstractions;
-using Contracts;
+﻿using Dtos;
+using Microsoft.AspNetCore.Mvc;
+using Services.Interfances;
 
 namespace OnionWebAPI.Controllers
 {
