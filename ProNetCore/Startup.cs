@@ -16,7 +16,7 @@ namespace ProNetCore
         //services��Microsoft.Extensions.DependencyInjection.ServiceCollection
         public void ConfigureServices(IServiceCollection services) { }
 
-        //����HTTP�������ܵ����е�һЩ���ã���Ȩ�ޣ�����־֮���
+        //����HTTP�������ܵ����е�һЩ���ã���Ȩ�ޣ�����־֮���?
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())

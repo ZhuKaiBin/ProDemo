@@ -27,10 +27,9 @@ namespace OnionWebAPI
 
             services.AddScoped<IRepositoryManager, RepositoryManager>();
 
-            services.AddDbContextPool<RepositoryDbContext>(builder =>
+            services.AddDbContextPool<EFDbContext>(builder =>
             {
                 var connectionString = Configuration.GetConnectionString("Database");
-
                 builder.UseMySQL("Server=localhost;Port=3306;Database=dev_cdesign2;Uid=root;Pwd=root123456;");
             });
 

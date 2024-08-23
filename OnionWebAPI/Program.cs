@@ -22,7 +22,7 @@ namespace OnionWebAPI
                 try
                 {
                     //指定要这个数据库，来提供服务
-                    var context = services.GetRequiredService<RepositoryDbContext>();
+                    var context = services.GetRequiredService<EFDbContext>();
                     // context.Database.Migrate();
                     context.Database.EnsureCreated();
                     //await SeedData.InitializeAsync(services);

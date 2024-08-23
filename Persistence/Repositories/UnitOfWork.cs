@@ -2,13 +2,18 @@
 
 namespace Infrastructure.Repositories
 {
+    /// <summary>
+    /// 实现Domain层的 功能单元接口，自己在基础层把控【SaveChanges】
+    /// </summary>
     internal sealed class UnitOfWork : IUnitOfWork
     {
-        private readonly RepositoryDbContext _dbContext;
+        private readonly EFDbContext _dbContext;
 
-        public UnitOfWork(RepositoryDbContext dbContext) => _dbContext = dbContext;
+        public UnitOfWork(EFDbContext dbContext) => _dbContext = dbContext;
 
-        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
+        public Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
             _dbContext.SaveChangesAsync(cancellationToken);
+        }
     }
 }

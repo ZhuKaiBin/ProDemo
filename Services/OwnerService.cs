@@ -7,14 +7,18 @@ using Services.Interfances;
 
 namespace Services
 {
+    /// <summary>
+    /// Owner的增删改查
+    /// 构造函数需要IRepositoryManager,这样就与Domain层关联了起来
+    /// </summary>
     internal sealed class OwnerService : IOwnerService
     {
         private readonly IRepositoryManager _repositoryManager;
 
         public OwnerService(IRepositoryManager repositoryManager)
         {
-            _repositoryManager = repositoryManager
-        };
+            _repositoryManager = repositoryManager;
+        }
 
         public async Task<IEnumerable<OwnerDto>> GetAllAsync(CancellationToken cancellationToken = default)
         {

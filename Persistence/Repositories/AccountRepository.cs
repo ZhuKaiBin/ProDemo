@@ -4,11 +4,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories
 {
+    /// <summary>
+    /// 实现Domain层的IAccountRepository，自己按照Domain层设计的规则，自己实现与数据库的交流
+    /// </summary>
     internal sealed class AccountRepository : IAccountRepository
     {
-        private readonly RepositoryDbContext _dbContext;
+        private readonly EFDbContext _dbContext;
 
-        public AccountRepository(RepositoryDbContext dbContext) => _dbContext = dbContext;
+        public AccountRepository(EFDbContext dbContext) => _dbContext = dbContext;
 
         public async Task<IEnumerable<Account>> GetAllByOwnerIdAsync(Guid ownerId, CancellationToken cancellationToken = default) =>
             await _dbContext.Accounts.Where(x => x.OwnerId == ownerId).ToListAsync(cancellationToken);

@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure
 {
-    public partial class RepositoryDbContext : DbContext
+    public partial class EFDbContext : DbContext
     {
-        public RepositoryDbContext(DbContextOptions options)
+        public EFDbContext(DbContextOptions options)
             : base(options)
         {
         }
