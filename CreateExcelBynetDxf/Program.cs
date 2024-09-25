@@ -14,7 +14,7 @@ namespace CreateExcelBynetDxf
             string projectDirectory = Directory.GetParent(runtimeDirectory).Parent.Parent.Parent.FullName;
 
             //新文件的命名
-            string combineDxfName = "Combine333.dxf";
+            string combineDxfName = $"{Guid.NewGuid().ToString()}.dxf";
             string desFilePath = Path.Combine(projectDirectory, "Files", "DxfFilesResult", combineDxfName);
 
 
@@ -23,7 +23,7 @@ namespace CreateExcelBynetDxf
 
             // 表格内容
             string[,] tableContent = {
-            { "Header1", "Header2", "Header3" },
+            { "0123456789abcdefghijk", "Header2", "Header3" },
             { "Row1Col1", "Row1Col2", "Row1Col3" },
             { "Row2Col1", "Row2Col2", "Row2Col3" },
             { "Row3Col1", "Row3Col2", "Row3Col3" }
@@ -31,21 +31,36 @@ namespace CreateExcelBynetDxf
 
             double startX = 0;
             double startY = 0;
-            double cellWidth = 10;
-            double cellHeight = 5;
+            double cellWidth = 15;
+            double cellHeight = 10;
 
-            // 创建文本实体
-            for (int row = 0; row < 4; row++)
+
+            int rowCount = tableContent.GetLength(0); // 获取行数
+            int colCount = tableContent.GetLength(1); // 获取列数
+                                                      // 创建文本实体和边框
+            for (int row = 0; row < tableContent.GetLength(0); row++)
             {
-                for (int col = 0; col < 3; col++)
+                double y = startY - row * cellHeight; // 固定行的 Y 坐标
+
+                for (int col = 0; col < tableContent.GetLength(1); col++)
                 {
                     double x = startX + col * cellWidth;
-                    double y = startY - row * cellHeight;
 
-                    // 添加文本实体，调整 Y 坐标以放置在单元格内
-                    double textY = y - (cellHeight / 2); // 在单元格中居中显示
-                    Text text = new Text(tableContent[row, col], new Vector2(x + 1, textY), 1.0);
-                    dxf.Entities.Add(text);
+                    // 处理文本换行，最大长度设为 10
+                    string[] lines = WrapText(tableContent[row, col], 6);
+
+                    // 添加文本行
+                    for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
+                    {
+
+                        var line = lines.Length;//总共是几行
+                        double yyy = cellHeight / line;
+
+
+                        double textY = y - (cellHeight / 2) + (lineIndex * 1.5); // 确保文本在单元格中居中
+                        Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(x + 1, textY), 1.0); // 设置字体大小为 2.0
+                        dxf.Entities.Add(text);
+                    }
 
                     // 添加单元格边框
                     AddCellBorder(dxf, x, y, cellWidth, cellHeight);
@@ -53,11 +68,28 @@ namespace CreateExcelBynetDxf
             }
 
             // 保存 DXF 文件
-            string dxfFilePath = "output.dxf";
+            string dxfFilePath = "output_with_borders.dxf";
             dxf.Save(desFilePath);
-            Console.WriteLine($"DXF file created at: {dxfFilePath}");
+            Console.WriteLine($"DXF file created at: {desFilePath}");
 
         }
+
+
+        static string[] WrapText(string text, int maxLength)
+        {
+            var lines = new System.Collections.Generic.List<string>();
+
+            // 处理字符串换行
+            for (int i = 0; i < text.Length; i += maxLength)
+            {
+                string line = text.Substring(i, Math.Min(maxLength, text.Length - i));
+                lines.Add(line);
+            }
+
+            return lines.ToArray();
+        }
+
+
 
         static void AddCellBorder(DxfDocument dxf, double x, double y, double width, double height)
         {
