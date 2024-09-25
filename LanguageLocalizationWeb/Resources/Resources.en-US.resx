@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,24 +118,27 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="HomePage" xml:space="preserve">
-    <value>主頁</value>
+    <value>Home Page</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>歡迎</value>
+    <value>Welcome</value>
   </data>
   <data name="C-designSwitchgearDesignSoftware" xml:space="preserve">
-    <value>C-DesignswitchGearDesignsoftware</value>
+    <value>C-designSwitchgearDesignSoftware</value>
   </data>
   <data name="CreateProject" xml:space="preserve">
     <value>CreateProject</value>
   </data>
   <data name="CurrentDataVersion" xml:space="preserve">
-    <value>CurrentDataversion</value>
+    <value>CurrentDataVersion</value>
   </data>
   <data name="HistoryProjects" xml:space="preserve">
-    <value>歷史記錄</value>
+    <value>HistoryProjects</value>
   </data>
   <data name="SoftwareVersion" xml:space="preserve">
-    <value>軟件version</value>
+    <value>SoftwareVersion</value>
+  </data>
+  <data name="Greeting" xml:space="preserve">
+    <value>Hello, {0}! Welcome to our application.</value>
   </data>
 </root>

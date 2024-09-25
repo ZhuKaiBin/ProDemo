@@ -117,25 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="HomePage" xml:space="preserve">
-    <value>Home Page</value>
+  <data name="project_create_CustomerName_Massage" xml:space="preserve">
+    <value>项目名称长度不可超过50</value>
   </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>Welcome</value>
+  <data name="project_create_ProjectName_Massage" xml:space="preserve">
+    <value>项目名称不能为空</value>
   </data>
-  <data name="C-designSwitchgearDesignSoftware" xml:space="preserve">
-    <value>C-designSwitchgearDesignSoftware</value>
+  <data name="project_create_ProjectNumber_Massage" xml:space="preserve">
+    <value>客户名称长度不可超过50</value>
   </data>
-  <data name="CreateProject" xml:space="preserve">
-    <value>CreateProject</value>
+  <data name="project_create_SeriesType_Massage" xml:space="preserve">
+    <value>系列枚举值无效</value>
   </data>
-  <data name="CurrentDataVersion" xml:space="preserve">
-    <value>CurrentDataVersion</value>
+  <data name="String5" xml:space="preserve">
+    <value>项目号长度不可超过50</value>
   </data>
-  <data name="HistoryProjects" xml:space="preserve">
-    <value>HistoryProjects</value>
+  <data name="String6" xml:space="preserve">
+    <value>订单号长度不可超过50</value>
   </data>
-  <data name="SoftwareVersion" xml:space="preserve">
-    <value>SoftwareVersion</value>
+  <data name="String7" xml:space="preserve">
+    <value>备注内容长度不可超过200</value>
   </data>
 </root>
