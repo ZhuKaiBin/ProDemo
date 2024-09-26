@@ -39,7 +39,8 @@ namespace CreateExcelBynetDxf
             int colCount = tableContent.GetLength(1); // 获取列数
 
             // 创建文本样式
-            TextStyle textStyle = new TextStyle("微软雅黑LIGHT.ttf");
+            TextStyle textStyle = new TextStyle("微软雅黑 Light", FontStyle.Regular);
+
             // 创建文本实体和边框
             for (int row = 0; row < tableContent.GetLength(0); row++)
             {
@@ -63,12 +64,12 @@ namespace CreateExcelBynetDxf
                         var zuoBiaoX = x + 1;//x的左边距离
                         var zuoBiaoY = lines.Length > 1 ? textY - frontSize : textY;
 
-                        //Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(zuoBiaoX, zuoBiaoY), frontSize)
-                        //{
-                        //    Style = textStyle
-                        //}; // 设置字体大小为 1.0
+                        Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(zuoBiaoX, zuoBiaoY), frontSize)
+                        {
+                            Style = textStyle,
 
-                        Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(zuoBiaoX, zuoBiaoY), frontSize); // 设置字体大小为 1.0
+                        };
+
                         dxf.Entities.Add(text);
                     }
                     // 添加单元格边框
