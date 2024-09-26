@@ -32,48 +32,49 @@ namespace CreateExcelBynetDxf
 
             double startX = 0;
             double startY = 0;
-            double cellWidth = 15;
-            double cellHeight = 10;
+            double defaultCellWidth = 15;//默认单元格宽度
+            double defaultCellHeight = 10;//默认单元格高度
 
             int rowCount = tableContent.GetLength(0); // 获取行数
             int colCount = tableContent.GetLength(1); // 获取列数
 
             // 创建文本样式
             TextStyle textStyle = new TextStyle("微软雅黑 Light", FontStyle.Regular);
+            var frontHeight = 1.5;//字体的宽度
+            var frontWidthFactor = 0.8;//字体默认宽度是1;设置文本的宽度因子（宽度比例）,控制字体的宽度缩放
 
             // 创建文本实体和边框
-            for (int row = 0; row < tableContent.GetLength(0); row++)
+            for (int row = 0; row < rowCount; row++)
             {
-                double y = startY - row * cellHeight; // 固定行的 Y 坐标
+                double y = startY - row * defaultCellHeight; // 固定行的 Y 坐标
 
-                for (int col = 0; col < tableContent.GetLength(1); col++)
+                for (int col = 0; col < colCount; col++)
                 {
-                    double x = startX + col * cellWidth;
-
+                    double x = startX + col * defaultCellWidth;
                     // 处理文本换行，最大长度设为 10,10个长度就换行
                     string[] lines = WrapText(tableContent[row, col], 10);
-
-                    var frontSize = 1.5;
 
                     // 添加文本行
                     for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
                     {
-                        double textY = y - (cellHeight / 2) + (lineIndex * frontSize); // 确保文本在单元格中居中
-
+                        double textY = y - (defaultCellHeight / 2) + (lineIndex * frontHeight); // 确保文本在单元格中居中
 
                         var zuoBiaoX = x + 1;//x的左边距离
-                        var zuoBiaoY = lines.Length > 1 ? textY - frontSize : textY;
+                        var zuoBiaoY = lines.Length > 1 ? textY - frontHeight : textY;
 
-                        Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(zuoBiaoX, zuoBiaoY), frontSize)
+                        Text text = new Text(lines[lines.Length - 1 - lineIndex],
+                                             new Vector2(zuoBiaoX, zuoBiaoY),
+                                             frontHeight)
                         {
-                            Style = textStyle,
-
+                            Style = textStyle
                         };
+                        text.WidthFactor = frontWidthFactor;
+
 
                         dxf.Entities.Add(text);
                     }
                     // 添加单元格边框
-                    AddCellBorder(dxf, x, y, cellWidth, cellHeight);
+                    AddCellBorder(dxf, x, y, defaultCellWidth, defaultCellHeight);
                 }
             }
 
@@ -97,9 +98,6 @@ namespace CreateExcelBynetDxf
 
             return lines.ToArray();
         }
-
-
-
         static void AddCellBorder(DxfDocument dxf, double x, double y, double width, double height)
         {
             // 绘制矩形边框
