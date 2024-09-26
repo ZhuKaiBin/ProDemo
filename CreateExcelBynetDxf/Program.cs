@@ -1,5 +1,6 @@
 ﻿using netDxf;
 using netDxf.Entities;
+using netDxf.Tables;
 
 
 namespace CreateExcelBynetDxf
@@ -23,10 +24,10 @@ namespace CreateExcelBynetDxf
 
             // 表格内容
             string[,] tableContent = {
-            { "0123456789abcdefghijk", "Header2", "Header3" },
-            { "Row1Col1", "Row1Col2", "Row1Col3" },
-            { "Row2Col1", "Row2Col2", "Row2Col3" },
-            { "Row3Col1", "Row3Col2", "Row3Col3" }
+            { "相似的字体", "保你的项保你的项", "Header3" },
+            { "Row1Col1", "Row1Col2", "目的运行目录中" },
+            { "Row2Col1", "0123456789abcdefghijk", "Row2Col3" },
+            { "0123456789abcdefghijk", "Row3Col2", "Row3Col3" }
         };
 
             double startX = 0;
@@ -34,10 +35,12 @@ namespace CreateExcelBynetDxf
             double cellWidth = 15;
             double cellHeight = 10;
 
-
             int rowCount = tableContent.GetLength(0); // 获取行数
             int colCount = tableContent.GetLength(1); // 获取列数
-                                                      // 创建文本实体和边框
+
+            // 创建文本样式
+            TextStyle textStyle = new TextStyle("微软雅黑LIGHT.ttf");
+            // 创建文本实体和边框
             for (int row = 0; row < tableContent.GetLength(0); row++)
             {
                 double y = startY - row * cellHeight; // 固定行的 Y 坐标
@@ -46,29 +49,34 @@ namespace CreateExcelBynetDxf
                 {
                     double x = startX + col * cellWidth;
 
-                    // 处理文本换行，最大长度设为 10
-                    string[] lines = WrapText(tableContent[row, col], 6);
+                    // 处理文本换行，最大长度设为 10,10个长度就换行
+                    string[] lines = WrapText(tableContent[row, col], 10);
+
+                    var frontSize = 1.5;
 
                     // 添加文本行
                     for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
                     {
-
-                        var line = lines.Length;//总共是几行
-                        double yyy = cellHeight / line;
+                        double textY = y - (cellHeight / 2) + (lineIndex * frontSize); // 确保文本在单元格中居中
 
 
-                        double textY = y - (cellHeight / 2) + (lineIndex * 1.5); // 确保文本在单元格中居中
-                        Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(x + 1, textY), 1.0); // 设置字体大小为 2.0
+                        var zuoBiaoX = x + 1;//x的左边距离
+                        var zuoBiaoY = lines.Length > 1 ? textY - frontSize : textY;
+
+                        //Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(zuoBiaoX, zuoBiaoY), frontSize)
+                        //{
+                        //    Style = textStyle
+                        //}; // 设置字体大小为 1.0
+
+                        Text text = new Text(lines[lines.Length - 1 - lineIndex], new Vector2(zuoBiaoX, zuoBiaoY), frontSize); // 设置字体大小为 1.0
                         dxf.Entities.Add(text);
                     }
-
                     // 添加单元格边框
                     AddCellBorder(dxf, x, y, cellWidth, cellHeight);
                 }
             }
 
             // 保存 DXF 文件
-            string dxfFilePath = "output_with_borders.dxf";
             dxf.Save(desFilePath);
             Console.WriteLine($"DXF file created at: {desFilePath}");
 
