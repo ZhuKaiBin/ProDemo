@@ -24,10 +24,11 @@ namespace CreateExcelBynetDxf
 
             // 表格内容
             string[,] tableContent = {
-            { "相似的字体", "保你的项保你的项", "Header3" },
-            { "Row1Col1", "Row1Col2", "目的运行目录中" },
-            { "Row2Col1", "0123456789abcdefghijk", "Row2Col3" },
-            { "0123456789abcdefghijk", "Row3Col2", "Row3Col3" }
+            { "abcdefghijklmn", "67", "890" },
+            { "asdfgh11op1abchsdfdifh1iod111", "sdfghjkl", "xdftgbh" },
+            { "zxcvb", "hjiopl,", "abcdefghijklmn" },
+            { "0123456789abcdefghijk", "12", "34" },
+            { "122", "12", "您尝试访问的网站类型属于[访问网站/IP站点]已经被上网策略[Deny-All]拒绝访问" }
         };
 
             double startX = 0;
@@ -44,9 +45,48 @@ namespace CreateExcelBynetDxf
             var frontWidthFactor = 0.8;//字体默认宽度是1;设置文本的宽度因子（宽度比例）,控制字体的宽度缩放
 
             // 创建文本实体和边框
+            var realHeight = 0d;
+            var currentY = 0d;
+            Dictionary<int, double> dicSaveY = new Dictionary<int, double>();//用来记录执行完毕后，当前y坐标在哪里
             for (int row = 0; row < rowCount; row++)
             {
-                double y = startY - row * defaultCellHeight; // 固定行的 Y 坐标
+                double y = 0d;
+                if (realHeight > 0)
+                {
+                    var currentYHeight = dicSaveY.Values.Sum();
+
+                    //取出上一步执行后，y的高度是多少
+                    if (dicSaveY.TryGetValue(row - 1, out double preHeight) && preHeight > 0)
+                    {
+
+                    }
+
+                    y = startY - currentYHeight; // 固定行的 Y 坐标
+
+                    //y = startY - row * realHeight; // 固定行的 Y 坐标
+                }
+                else
+                {
+                    y = startY - row * defaultCellHeight; // 固定行的 Y 坐标
+                }
+
+
+                //先排查下当前行中是不是需要多行,多行的话,就是要改变默认的高度的，就要执行实际的高度
+
+                int maxLines = 1; // 记录当前行的最大行数
+                for (int col = 0; col < colCount; col++)
+                {
+                    int lineCount = WrapText(tableContent[row, col], 10).Length;
+                    if (lineCount > maxLines)
+                    {
+                        maxLines = lineCount; // 更新最大行数
+                    }
+                }
+
+                realHeight = maxLines * defaultCellHeight;
+
+
+
 
                 for (int col = 0; col < colCount; col++)
                 {
@@ -57,12 +97,13 @@ namespace CreateExcelBynetDxf
                     // 添加文本行
                     for (int lineIndex = 0; lineIndex < lines.Length; lineIndex++)
                     {
-                        double textY = y - (defaultCellHeight / 2) + (lineIndex * frontHeight); // 确保文本在单元格中居中
 
+                        double textY = y - (realHeight / 2) + (lineIndex * frontHeight); // 确保文本在单元格中居中
                         var zuoBiaoX = x + 1;//x的左边距离
                         var zuoBiaoY = lines.Length > 1 ? textY - frontHeight : textY;
 
-                        Text text = new Text(lines[lines.Length - 1 - lineIndex],
+                        var textContent = lines[lines.Length - 1 - lineIndex];
+                        Text text = new Text(textContent,
                                              new Vector2(zuoBiaoX, zuoBiaoY),
                                              frontHeight)
                         {
@@ -73,9 +114,13 @@ namespace CreateExcelBynetDxf
 
                         dxf.Entities.Add(text);
                     }
+
+
                     // 添加单元格边框
-                    AddCellBorder(dxf, x, y, defaultCellWidth, defaultCellHeight);
+                    AddCellBorder(dxf, x, y, defaultCellWidth, realHeight);
                 }
+
+                dicSaveY.Add(row, realHeight);//存储当期下边框 Y的坐标;如果是(0,0),高度是10，那么Y的坐标其实是(0,-10)
             }
 
             // 保存 DXF 文件

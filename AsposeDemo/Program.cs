@@ -10,7 +10,7 @@ namespace AsposeDemo
     {
         private static void Main(string[] args)
         {
-            string licensePath = @"D:\Aspose\Aspose.CADfor.NET.lic";
+            string licensePath = @"C:\Users\dyzhukb\Desktop\Chint\成套软件设计\Aspose软件\二次授权\Aspose.CADfor.NET.lic";
             License svgLicense = new License();
             svgLicense.SetLicense(licensePath);
 
