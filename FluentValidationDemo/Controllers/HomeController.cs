@@ -8,6 +8,12 @@ namespace FluentValidationDemo.Controllers
     [ApiController]
     public class HomeController : ControllerBase
     {
+        private readonly A _a;
+        public HomeController(A a)
+        {
+            _a = a;
+        }
+
         [HttpPost]
         public IActionResult Register(User newUser)
         {
@@ -18,6 +24,7 @@ namespace FluentValidationDemo.Controllers
                 return BadRequest(validationResult.Errors.First().ErrorMessage);
             }
 
+            _a.print();
             return Ok();
         }
 

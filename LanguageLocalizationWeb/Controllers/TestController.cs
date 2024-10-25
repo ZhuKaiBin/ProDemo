@@ -57,10 +57,8 @@ namespace LanguageLocalizationWeb.Controllers
         }
 
 
-
-
         [HttpPost("{culture2}")]
-        public IActionResult GetTranslations2(string culture2 = "zh")
+        public IActionResult GetTranslations2(string culture2 = "zh-CN")
         {
             // Validate culture code
             if (!IsValidCulture(culture2))
@@ -78,27 +76,31 @@ namespace LanguageLocalizationWeb.Controllers
                 CultureInfo.CurrentUICulture = new CultureInfo(culture2);
 
                 // Fetch all resource strings
+                var translations = new Dictionary<string, string>();
 
-                foreach (var entry in _localizer.GetAllStrings(includeParentCultures: true))
+                var userName = "John Doe";
+                var greetingMessage = _localizer["Greeting", userName];
+
+                var dic = _localizer.GetAllStrings(includeParentCultures: true);
+                foreach (var entry in dic)
                 {
-
-
-                    if (entry.Name.StartsWith("UI_"))
-                    {
-                        moduleUI.Add(entry.Name.Substring("UI_".Length), entry.Value);
-                    }
-                    else if (entry.Name.StartsWith("logic_"))
-                    {
-                        moduleLogic.Add(entry.Name.Substring("logic_".Length), entry.Value);
-                    }
+                    translations.Add(entry.Name, entry.Value);
+                    //if (entry.Name.StartsWith("UI_"))
+                    //{
+                    //    moduleUI.Add(entry.Name.Substring("UI_".Length), entry.Value);
+                    //}
+                    //else if (entry.Name.StartsWith("logic_"))
+                    //{
+                    //    moduleLogic.Add(entry.Name.Substring("logic_".Length), entry.Value);
+                    //}
                 }
 
-                var result = new Dictionary<string, Dictionary<string, string>>
-                                {
-                    { "moduleUI", moduleUI },
-                    { "moduleLogic", moduleLogic }
-                };
-                return Ok(result);
+                //var result = new Dictionary<string, Dictionary<string, string>>
+                //                {
+                //    { "moduleUI", moduleUI },
+                //    { "moduleLogic", moduleLogic }
+                //};
+                return Ok(translations);
             }
             catch (CultureNotFoundException)
             {

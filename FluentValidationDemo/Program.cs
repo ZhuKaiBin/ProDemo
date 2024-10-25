@@ -12,6 +12,17 @@ namespace FluentValidationDemo
 
             // Add services to the container.
 
+
+            //builder.Services.AddScoped<A>(sp =>
+            //{
+            //    return new A("奥克满", "伊拉克");
+            //});
+
+            builder.Services.AddScoped<A>(_ =>
+            {
+                return new A("奥克满", "伊拉克");
+            });
+
             builder.Services.AddControllers().AddFluentValidation();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
@@ -36,5 +47,23 @@ namespace FluentValidationDemo
 
             app.Run();
         }
+    }
+
+    public class A
+    {
+        private string a { get; set; }
+        private string b { get; set; }
+        public A(string a, string b)
+        {
+            this.a = a;
+            this.b = b;
+        }
+
+
+        public void print()
+        {
+            Console.WriteLine($"{a}。。。。{b}");
+        }
+
     }
 }

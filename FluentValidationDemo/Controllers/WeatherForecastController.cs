@@ -21,15 +21,19 @@ namespace FluentValidationDemo.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        private readonly A _a;
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, A a)
         {
             _logger = logger;
+            _a = a;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+
+            _a.print();
+
             return Enumerable
                 .Range(1, 5)
                 .Select(index => new WeatherForecast
