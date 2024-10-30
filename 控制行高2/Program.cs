@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             var numbers = new List<string>
              {
@@ -11,13 +11,25 @@
              };
 
             var result = ProcessNumbers(numbers);
+
             foreach (var line in result)
             {
                 Console.WriteLine(string.Join(", ", line));
             }
+
+            //CheckFullRows(result);
+
+            var missingItems = CheckFullRows2(result);
+            //(1, "6/2", 1)
+            //(7, "6/2", 1)
+
+            foreach (var item in missingItems)
+            {
+                Console.WriteLine($"({item.Item1}, \"{item.Item2}\", {item.Item3})");
+            }
         }
 
-        static List<List<string>> ProcessNumbers(List<string> numbers)
+        private static List<List<string>> ProcessNumbers(List<string> numbers)
         {
             var result = new List<List<string>>();
             int i = 0;
@@ -58,6 +70,70 @@
 
             return result;
         }
+
+        public static void CheckFullRows(List<List<string>> result)
+        {
+            for (int i = 0; i < result.Count; i++)
+            {
+                var row = result[i];
+                var groupedCounts = row
+                    .Where(s => s.Contains("/")) // 只处理带"/"的字符串
+                    .GroupBy(s => s) // 按相同的字符串分组
+                    .ToDictionary(g => g.Key, g => g.Count());
+
+                bool rowIsFull = true;
+
+                foreach (var item in groupedCounts)
+                {
+                    var parts = item.Key.Split('/');
+                    if (parts.Length == 2 && int.TryParse(parts[1], out int requiredCount))
+                    {
+                        int actualCount = item.Value;
+
+                        if (actualCount < requiredCount)
+                        {
+                            Console.WriteLine($"第 {i + 1} 行缺少 {requiredCount - actualCount} 个 \"{item.Key}\"");
+                            rowIsFull = false;
+                        }
+                    }
+                }
+
+                if (rowIsFull)
+                {
+                    Console.WriteLine($"第 {i + 1} 行已满");
+                }
+            }
+        }
+
+        public static List<Tuple<int, string, int>> CheckFullRows2(List<List<string>> result)
+        {
+            var missingItems = new List<Tuple<int, string, int>>();
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                var row = result[i];
+                var groupedCounts = row
+                    .Where(s => s.Contains("/")) // 只处理带"/"的字符串
+                    .GroupBy(s => s) // 按相同的字符串分组
+                    .ToDictionary(g => g.Key, g => g.Count());
+
+                foreach (var item in groupedCounts)
+                {
+                    var parts = item.Key.Split('/');
+                    if (parts.Length == 2 && int.TryParse(parts[1], out int requiredCount))
+                    {
+                        int actualCount = item.Value;
+
+                        if (actualCount < requiredCount)
+                        {
+                            missingItems.Add(Tuple.Create(i + 1, item.Key, requiredCount - actualCount));
+                        }
+                    }
+                }
+            }
+
+            return missingItems;
+        }
     }
 
     public static class StringExtensions
@@ -72,5 +148,4 @@
             return array;
         }
     }
-
 }
