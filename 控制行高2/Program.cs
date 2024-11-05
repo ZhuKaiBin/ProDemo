@@ -2,11 +2,42 @@
 {
     internal class Program
     {
+        public bool CheckString(string input, string target)
+        {
+            // 判断字符串中是否包含 ","
+            if (input.Contains(","))
+            {
+                // 如果包含 ",", 则分割字符串
+                var parts = input.Split(',');
+
+                // 判断分割后的数组中是否包含目标字符串
+                return parts.Contains(target);
+            }
+            else
+            {
+                // 如果不包含 ",", 直接判断字符串是否等于目标字符串
+                return input == target;
+            }
+        }
+
         static void Main()
         {
+
+
+            {
+                string a = "b";
+
+                var b = "a";
+                if (a.Contains(b))
+                {
+                }
+
+            }
+
+
             var numbers = new List<string>
              {
-                 "6/2", "24", "24", "5", "6/2", "6/2", "6/2","6/2","6/2", "6/4", "6/4", "6/4", "6/4",
+                 "6/2", "24", "24", "5", "6/2", "6/2", "6/2","6/2","6/2", "6/4", "6/4", "6/4", "6/4", "6/4","6/4","6/4",
                  "8", "8/3", "8/3","8/3","8/3","5/3","8/3", "9", "5/3", "5/3", "5/3","5/3","5/3", "5/3", "6/3", "6/2", "6/2","23","23"
              };
 
