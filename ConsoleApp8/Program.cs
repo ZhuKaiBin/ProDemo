@@ -1,4 +1,5 @@
-﻿using System.Runtime.ExceptionServices;
+﻿using System;
+using System.Runtime.ExceptionServices;
 
 namespace ConsoleApp8
 {
@@ -47,10 +48,13 @@ namespace ConsoleApp8
     public class PartHierarchy
     {
         public string MaterialCode { get; set; }
-        public string Hierarchy { get; set; }
 
+        public string SubMaterialCode { set; get; }
+        public string Hierarchy { get; set; }
         public bool hasParent { get; set; }
     }
+
+
 
     public class PartHierarchyProcessor
     {
@@ -73,18 +77,39 @@ namespace ConsoleApp8
             }
         }
 
+        private string IncrementVersion(string versionStr)
+        {
+            // 将字符串按 '.' 分割成数组
+            string[] versionParts = versionStr.Split('.');
+
+            // 获取最后一个元素，并将其转换为整数，增加 1
+            int lastPart = int.Parse(versionParts[versionParts.Length - 1]);
+            lastPart++;
+
+            // 更新最后一个元素
+            versionParts[versionParts.Length - 1] = lastPart.ToString();
+
+            // 将数组重新合并成字符串
+            return string.Join(".", versionParts);
+        }
+
+        public List<PartHierarchy> _partHierarchy { set; get; } = new List<PartHierarchy>();
+
         // 递归查找并计算层级
         private List<PartHierarchy> GetPartHierarchy(string materialCode, string parentHierarchy = "1")
         {
             var partHierarchyList = new List<PartHierarchy>();
 
             int index = 1;
-            // 获取所有与当前零部件号相关的子零部件号
+            //分析是不是SubMaterialCode号中的最后一个，例如H，这样的
             var subParts = _testClasses.Where(x => x.MaterialCode == materialCode).ToList();
             if (!subParts.Any())
             {
-                partHierarchyList.Add(new PartHierarchy() { MaterialCode = materialCode, Hierarchy = $"{parentHierarchy}.{index}" });
+                var newLeave = $"{parentHierarchy}.{index}";
+                partHierarchyList.Add(new PartHierarchy() { MaterialCode = materialCode, Hierarchy = newLeave });
+                _partHierarchy.Add(new PartHierarchy() { MaterialCode = materialCode, Hierarchy = newLeave });
             }
+
 
 
 
@@ -93,15 +118,53 @@ namespace ConsoleApp8
                 // 构造当前子零部件的层级
                 string currentHierarchy = $"{parentHierarchy}.{index}";
 
+                //如果这个集合中已经存在了这个C，那么就获取到已经存在的C，对应的层级
+                var hasExistCode = _partHierarchy?.FirstOrDefault(x => x.MaterialCode == subPart.MaterialCode);
+                var MaterialCode = subPart.MaterialCode;
+                var newnewHierarchy = string.Empty;
+                if (hasExistCode != null)
+                {
+                    var many = _testClasses.Where(x => x.MaterialCode == MaterialCode).ToList();
+                    //这样就会找到C的数量是多个，
+                    //那么就找出来另外的一个是什么
+                    var filter = many.Where(x => x.MaterialCode == subPart.MaterialCode && x.SubMaterialCode != subPart.SubMaterialCode).ToList();
+
+                    var sss = _partHierarchy.Where(x => x.MaterialCode == filter.FirstOrDefault()?.SubMaterialCode).ToList();
+                    if (sss.Any())
+                    {
+                        var lastHierarchy = sss.FirstOrDefault().Hierarchy;
+                        newnewHierarchy = IncrementVersion(lastHierarchy);
+                    }
+                    else
+                    {
+                        newnewHierarchy = currentHierarchy;
+                    }
+
+                    MaterialCode = subPart.SubMaterialCode;
+
+                }
+                else
+                {
+                    newnewHierarchy = currentHierarchy;
+                }
+
                 partHierarchyList.Add(new PartHierarchy
                 {
-                    MaterialCode = subPart.MaterialCode,
-                    Hierarchy = currentHierarchy,
+                    MaterialCode = MaterialCode,
+                    Hierarchy = newnewHierarchy,
                     hasParent = true
                 });
 
+
+                var isExist = _partHierarchy.Where(x => x.MaterialCode == subPart.MaterialCode).ToList();
+                if (!isExist.Any())
+                {
+                    _partHierarchy.Add(new PartHierarchy() { MaterialCode = subPart.MaterialCode, Hierarchy = newnewHierarchy });
+
+                }
+
                 // 递归获取该子零部件的子零部件的层级
-                partHierarchyList.AddRange(GetPartHierarchy(subPart.SubMaterialCode, currentHierarchy));
+                partHierarchyList.AddRange(GetPartHierarchy(subPart.SubMaterialCode, newnewHierarchy));
 
                 index++;
             }
@@ -117,12 +180,19 @@ namespace ConsoleApp8
 
             var partHierarchies = new List<PartHierarchy>();
 
-            // 遍历所有零部件号
-            foreach (var part in _testClasses.Select(x => x.MaterialCode).Distinct())
+            foreach (var item in _testClasses)
             {
-                // 获取每个零部件号的层级
-                partHierarchies.AddRange(GetPartHierarchy(part));
+                partHierarchies.AddRange(GetPartHierarchy(item.MaterialCode));
+                partHierarchies.AddRange(GetPartHierarchy(item.SubMaterialCode));
             }
+
+            //// 遍历所有零部件号
+            //var lists = _testClasses.Select(x => x.MaterialCode).Distinct().ToList();
+            //foreach (var part in lists)
+            //{
+            //    // 获取每个零部件号的层级
+            //    partHierarchies.AddRange(GetPartHierarchy(part));
+            //}
 
             // 排序并去重，确保层级按正确顺序排列
             return partHierarchies
