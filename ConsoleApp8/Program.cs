@@ -8,16 +8,17 @@ namespace ConsoleApp8
         {
             // 示例数据
             var testClasses = new List<TestClass>
-        {
-            new TestClass{MaterialCode="DX001", SubMaterialCode="DX0011"},
-            new TestClass{MaterialCode="DX0011", SubMaterialCode="DX00111"},
-            new TestClass{MaterialCode="DX00111", SubMaterialCode="DX001111"},
-            new TestClass{MaterialCode="DX00111", SubMaterialCode="DX002"},
+            {
+                new TestClass{MaterialCode="A", SubMaterialCode="B"},
+                new TestClass{MaterialCode="B", SubMaterialCode="C"},
+                new TestClass{MaterialCode="C", SubMaterialCode="D"},
+                new TestClass{MaterialCode="C", SubMaterialCode="E"},
 
-            new TestClass{MaterialCode="DX002", SubMaterialCode="DX0022"},
-            new TestClass{MaterialCode="DX002", SubMaterialCode="DX00222"},
-            new TestClass{MaterialCode="DX0022", SubMaterialCode="DX00223"}
-        };
+                new TestClass{MaterialCode="E", SubMaterialCode="F"},
+                new TestClass{MaterialCode="E", SubMaterialCode="G"},
+                new TestClass{MaterialCode="F", SubMaterialCode="H"}
+            };
+
 
             var processor = new PartHierarchyProcessor(testClasses);
 
