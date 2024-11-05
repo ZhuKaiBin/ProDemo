@@ -86,13 +86,7 @@ namespace ConsoleApp8
                 partHierarchyList.Add(new PartHierarchy() { MaterialCode = materialCode, Hierarchy = $"{parentHierarchy}.{index}" });
             }
 
-            var isMany = false;
-            var fenChaFirst = string.Empty;
-            if (subParts.Count > 1)
-            {
-                isMany = true;
-                fenChaFirst = $"{parentHierarchy}.1";
-            }
+
 
             foreach (var subPart in subParts)
             {

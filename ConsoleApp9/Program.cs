@@ -23,28 +23,6 @@ namespace ConsoleApp9
             var parentHierarchy = "1";
 
 
-            List<TestClassLeave> testClassLeaves = new List<TestClassLeave>();
-            int index = 1;
-            foreach (var item in testClasses)
-            {
-
-                var materialCode = item.MaterialCode;
-                var subMaterialCode = item.SubMaterialCode;
-
-                string currentHierarchy = $"{parentHierarchy}.{index}";
-
-                testClassLeaves.Add(new TestClassLeave() { MaterialCode = materialCode, leave = currentHierarchy });
-                testClassLeaves.Add(new TestClassLeave() { MaterialCode = subMaterialCode, leave = $"{currentHierarchy}.1" });
-                index++;
-
-                //查看下子零部件号在零部件号中是否存在
-
-                var sd = testClasses.Where(x => x.MaterialCode == subMaterialCode).ToList();
-
-            }
-
-
-
         }
     }
 
