@@ -200,6 +200,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "installTools", "installTool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "对象继承集合转换", "对象继承集合转换\对象继承集合转换.csproj", "{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "获取Action中Item的数据源", "获取Action中Item的数据源\获取Action中Item的数据源.csproj", "{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -856,6 +858,14 @@ Global
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}.Release|x86.Build.0 = Release|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Debug|x86.Build.0 = Debug|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Release|x86.ActiveCfg = Release|Any CPU
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -930,6 +940,7 @@ Global
 		{4AB81110-7261-4509-855E-C2963078AE66} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{6418CC4A-5B5A-47DE-96CC-16199E1BA670} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
+		{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1815C20-CFA4-4A9E-93D9-0F7C5158047E}
