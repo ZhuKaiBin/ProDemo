@@ -1,10 +1,12 @@
-﻿namespace installTools
+﻿using ExtensionsLibrary;
+
+namespace installTools
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            Console.WriteLine("1".ParseInt());
 
             Console.ReadKey();
         }

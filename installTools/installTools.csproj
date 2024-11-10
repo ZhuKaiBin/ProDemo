@@ -7,4 +7,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryFiles3\CommonExtensions\ExtensionsLibrary\ExtensionsLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
