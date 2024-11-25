@@ -1,15 +1,28 @@
 ﻿namespace 控制行高2
 {
+    /// <summary>
+    /// 背景:就是在添加单元的时候，要默认的把上面缺少的补齐,
+    /// 比如，第一行是:6/2,第二行是24，第三行是6/2,那么第三行的6/2，要先把第一行的6/2补齐，再进行第三行；
+    /// 
+    /// 就是说，如果前面有与"自己"相同的，先查看前面相同的是是不是"够数",如果够数，那么就新行新增，如果不够数，那么先补充前面的
+    /// 
+    /// 
+    /// 
+    /// 排序问题:
+    /// 就是顺序打乱后，再重新排序,按照【模数】从小到大排序
+    /// </summary>
     internal class Program
     {
         private static void Main()
         {
             var numbers = new List<string>
              {
-                 "6/2", "24", "24", "5", "6/2", "6/2", "6/2","6/2","6/2", "6/4", "6/4", "6/4", "6/4",
+                 "6/2", "8/3","24", "24", "5", "6/2", "6/2", "6/2","6/2","6/2", "6/4", "6/4", "6/4", "6/4",
                  "8", "8/3", "8/3","8/3","8/3","5/3","8/3", "9", "5/3", "5/3", "5/3","5/3","5/3", "5/3", "6/3", "6/2", "6/2","23","23"
              };
 
+
+            //这个是给所有的进行分组,
             var result = ProcessNumbers(numbers);
 
             foreach (var line in result)
@@ -17,8 +30,9 @@
                 Console.WriteLine(string.Join(", ", line));
             }
 
-            //CheckFullRows(result);
 
+
+            //这个是检查每一行还剩下多少“空余的模数”
             var missingItems = CheckFullRows2(result);
             //(1, "6/2", 1)
             //(7, "6/2", 1)
@@ -69,40 +83,6 @@
             }
 
             return result;
-        }
-
-        public static void CheckFullRows(List<List<string>> result)
-        {
-            for (int i = 0; i < result.Count; i++)
-            {
-                var row = result[i];
-                var groupedCounts = row
-                    .Where(s => s.Contains("/")) // 只处理带"/"的字符串
-                    .GroupBy(s => s) // 按相同的字符串分组
-                    .ToDictionary(g => g.Key, g => g.Count());
-
-                bool rowIsFull = true;
-
-                foreach (var item in groupedCounts)
-                {
-                    var parts = item.Key.Split('/');
-                    if (parts.Length == 2 && int.TryParse(parts[1], out int requiredCount))
-                    {
-                        int actualCount = item.Value;
-
-                        if (actualCount < requiredCount)
-                        {
-                            Console.WriteLine($"第 {i + 1} 行缺少 {requiredCount - actualCount} 个 \"{item.Key}\"");
-                            rowIsFull = false;
-                        }
-                    }
-                }
-
-                if (rowIsFull)
-                {
-                    Console.WriteLine($"第 {i + 1} 行已满");
-                }
-            }
         }
 
         public static List<Tuple<int, string, int>> CheckFullRows2(List<List<string>> result)
