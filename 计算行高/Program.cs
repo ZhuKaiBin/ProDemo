@@ -10,9 +10,9 @@ namespace 计算行高
         public List<string> Values { get; set; } = new List<string>(); // 存储该行的所有字符串值
     }
 
-    class Program
+    internal class Program
     {
-        static void Main()
+        private static void Main()
         {
             var numbers = new List<string>
              {
@@ -27,7 +27,7 @@ namespace 计算行高
             }
         }
 
-        static List<List<string>> ProcessNumbers(List<string> numbers)
+        private static List<List<string>> ProcessNumbers(List<string> numbers)
         {
             var result = new List<List<string>>();
             int i = 0;

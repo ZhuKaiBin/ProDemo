@@ -8,25 +8,20 @@
             List<FuncUnit> funcUnits = new List<FuncUnit>
             {
                 new FuncUnit { Id = 1, Name = "功能单元1", Modulus = "12", SortOrder = 1 },
-                new FuncUnit { Id = 2, Name = "功能单元2", Modulus = "8/2", SortOrder = 2 },
-                new FuncUnit { Id = 3, Name = "功能单元3", Modulus = "8/2", SortOrder = 3 },
-                 new FuncUnit { Id = 3, Name = "功能单元4", Modulus = "8/4", SortOrder = 4 },
+                new FuncUnit { Id = 2, Name = "功能单元2", Modulus = "8/3", SortOrder = 2 },
+
                 //new FuncUnit { Id = 3, Name = "功能单元3", Modulus = "12", SortOrder = 3 }
             };
 
             // 批量新增功能单元
             AddFuncUnits(funcUnits, new List<FuncUnit>
             {
+                new FuncUnit { Name = "新增功能单元1", Modulus = "15" },
                 new FuncUnit { Name = "新增功能单元1", Modulus = "8/2" },
                 new FuncUnit { Name = "新增功能单元2", Modulus = "8/2" },
                 new FuncUnit { Name = "新增功能单元3", Modulus = "8/3" },
-                new FuncUnit { Name = "新增功能单元5", Modulus = "12" },
-                new FuncUnit { Name = "新增功能单元4", Modulus = "8/3" },
-                new FuncUnit { Name = "新增功能单元6", Modulus = "8/3" },
-                new FuncUnit { Name = "新增功能单元7", Modulus = "8/2" },
-                new FuncUnit { Name = "新增功能单元8", Modulus = "8/2" },
-
-                new FuncUnit { Name = "新增功能单元8", Modulus = "8/4" },
+                new FuncUnit { Name = "新增功能单元3", Modulus = "8/3" },
+                new FuncUnit { Name = "新增功能单元3", Modulus = "8/3" },
             });
 
             // 新增功能单元逻辑
@@ -38,9 +33,9 @@
             }
         }
 
-        private static void AddFuncUnits(List<FuncUnit> funcUnits, List<FuncUnit> newUnits)
+        private static void AddFuncUnits(List<FuncUnit> oldFuncUnits, List<FuncUnit> newUnits)
         {
-            int nextId = funcUnits.Any() ? funcUnits.Max(f => f.Id) + 1 : 1;
+            int nextId = oldFuncUnits.Any() ? oldFuncUnits.Max(f => f.Id) + 1 : 1;
 
             foreach (var newUnit in newUnits)
             {
@@ -51,7 +46,7 @@
                     int maxUnitsPerRow = int.Parse(parts[1]);
 
                     // 查找是否存在相同模数的行
-                    var existingUnits = funcUnits
+                    var existingUnits = oldFuncUnits
                         .Where(f => f.Modulus == newUnit.Modulus)
                         .OrderBy(f => f.SortOrder)
                         .ToList();
@@ -65,9 +60,9 @@
                         {
                             // 在最后一个相同模数的行之后插入
                             var lastSameModulusUnit = existingUnits.Last();
-                            int insertIndex = funcUnits.IndexOf(lastSameModulusUnit) + 1;
+                            int insertIndex = oldFuncUnits.IndexOf(lastSameModulusUnit) + 1;
 
-                            funcUnits.Insert(insertIndex, new FuncUnit
+                            oldFuncUnits.Insert(insertIndex, new FuncUnit
                             {
                                 Id = nextId++,
                                 Name = newUnit.Name,
@@ -76,9 +71,9 @@
                             });
 
                             // 更新后续元素的 SortOrder
-                            for (int i = insertIndex + 1; i < funcUnits.Count; i++)
+                            for (int i = insertIndex + 1; i < oldFuncUnits.Count; i++)
                             {
-                                funcUnits[i].SortOrder++;
+                                oldFuncUnits[i].SortOrder++;
                             }
 
                             continue;
@@ -86,22 +81,22 @@
                     }
 
                     // 如果数据库中没有相同模数或行已满，直接新增到最后
-                    funcUnits.Add(new FuncUnit
+                    oldFuncUnits.Add(new FuncUnit
                     {
                         Id = nextId++,
                         Name = newUnit.Name,
                         Modulus = newUnit.Modulus,
-                        SortOrder = funcUnits.Any() ? funcUnits.Max(f => f.SortOrder) + 1 : 1
+                        SortOrder = oldFuncUnits.Any() ? oldFuncUnits.Max(f => f.SortOrder) + 1 : 1
                     });
                 }
                 else // 处理整数模数
                 {
-                    funcUnits.Add(new FuncUnit
+                    oldFuncUnits.Add(new FuncUnit
                     {
                         Id = nextId++,
                         Name = newUnit.Name,
                         Modulus = newUnit.Modulus,
-                        SortOrder = funcUnits.Max(f => f.SortOrder) + 1
+                        SortOrder = oldFuncUnits.Max(f => f.SortOrder) + 1
                     });
                 }
             }
