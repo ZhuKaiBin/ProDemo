@@ -210,9 +210,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionsLibrary", "ClassL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mimiimiexcel", "mimiimiexcel\mimiimiexcel.csproj", "{F1E49980-E473-400F-AC4F-25E96632F894}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "控制行高3", "控制行高3\控制行高3.csproj", "{DB330F05-B113-4FDF-A06A-045D7DBEB539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "控制行高3", "控制行高3\控制行高3.csproj", "{DB330F05-B113-4FDF-A06A-045D7DBEB539}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "添加空闲的模数", "添加空闲的模数\添加空闲的模数.csproj", "{26DAD02E-9D4D-499C-9FC6-F6537006CC45}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "添加空闲的模数", "添加空闲的模数\添加空闲的模数.csproj", "{26DAD02E-9D4D-499C-9FC6-F6537006CC45}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -894,6 +894,22 @@ Global
 		{F1E49980-E473-400F-AC4F-25E96632F894}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1E49980-E473-400F-AC4F-25E96632F894}.Release|x86.ActiveCfg = Release|Any CPU
 		{F1E49980-E473-400F-AC4F-25E96632F894}.Release|x86.Build.0 = Release|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Debug|x86.Build.0 = Debug|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|x86.ActiveCfg = Release|Any CPU
+		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|x86.Build.0 = Release|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Debug|x86.Build.0 = Debug|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Release|x86.ActiveCfg = Release|Any CPU
+		{26DAD02E-9D4D-499C-9FC6-F6537006CC45}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
