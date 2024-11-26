@@ -3,9 +3,15 @@ using System.Collections.Generic;
 
 namespace 计算行高
 {
-    class Program
+    public class Row
     {
+        public int RowNumber { get; set; }
+        public int RowHeight { get; set; } // 行高
+        public List<string> Values { get; set; } = new List<string>(); // 存储该行的所有字符串值
+    }
 
+    internal class Program
+    {
         static void Main()
         {
             var numbers = new List<string>
@@ -47,7 +53,7 @@ namespace 计算行高
 
         }
 
-        static List<List<string>> ProcessNumbers(List<string> numbers)
+        private static List<List<string>> ProcessNumbers(List<string> numbers)
         {
 
             var result = new List<List<string>>();
