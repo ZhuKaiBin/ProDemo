@@ -12,19 +12,25 @@ namespace 计算行高
 
     internal class Program
     {
-        private static void Main()
+        private static unsafe void Main()
         {
+            {
+                int a = 9;
+                int* ptr = &a;  // Using pointer to store address of 'a'
+                Console.WriteLine((IntPtr)ptr);  // Cast pointer to IntPtr to display address
+            }
+
             var numbers = new List<string>
              {
                  "24", "24", "24", "5", "6/2", "6/2", "6/2", "6/4", "6/4", "6/4", "6/4",
                  "8",  "5/3", "5/3", "6/2"
              };
 
-            var result = ProcessNumbers(numbers);
-            foreach (var line in result)
-            {
-                Console.WriteLine(string.Join(", ", line));
-            }
+            //var result = ProcessNumbers(numbers);
+            //foreach (var line in result)
+            //{
+            //    Console.WriteLine(string.Join(", ", line));
+            //}
         }
 
         private static List<List<string>> ProcessNumbers(List<string> numbers)

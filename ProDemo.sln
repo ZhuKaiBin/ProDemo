@@ -208,9 +208,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonExtensions", "ClassLi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExtensionsLibrary", "ClassLibraryFiles3\CommonExtensions\ExtensionsLibrary\ExtensionsLibrary.csproj", "{883F3B16-CB9D-4E5A-901F-D239A56133F5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mimiimiexcel", "mimiimiexcel\mimiimiexcel.csproj", "{F1E49980-E473-400F-AC4F-25E96632F894}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mimiimiexcel", "mimiimiexcel\mimiimiexcel.csproj", "{F1E49980-E473-400F-AC4F-25E96632F894}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "控制行高3", "控制行高3\控制行高3.csproj", "{DB330F05-B113-4FDF-A06A-045D7DBEB539}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "控制行高3", "控制行高3\控制行高3.csproj", "{DB330F05-B113-4FDF-A06A-045D7DBEB539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -900,6 +902,14 @@ Global
 		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|x86.ActiveCfg = Release|Any CPU
 		{DB330F05-B113-4FDF-A06A-045D7DBEB539}.Release|x86.Build.0 = Release|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -972,6 +982,7 @@ Global
 		{6E82A7E1-FF49-4813-98DE-95B6D4E0A689} = {191B8752-3E10-4A69-89BC-65532EFAE51E}
 		{883F3B16-CB9D-4E5A-901F-D239A56133F5} = {191B8752-3E10-4A69-89BC-65532EFAE51E}
 		{F1E49980-E473-400F-AC4F-25E96632F894} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
+		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1815C20-CFA4-4A9E-93D9-0F7C5158047E}
