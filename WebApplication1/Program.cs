@@ -26,7 +26,7 @@ namespace WebApplication1
                               new MySqlServerVersion(new Version(8, 0, 39))); // ÉèÖÃ MySQL °æ±¾ºÅ
             });
 
-            //×¢²áIUserManager
+            //×¢²áIUserManager/ SignManager
             builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<MesDbContext>();
 
             var app = builder.Build();

@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public async Task<IActionResult> Registry(string userName, string email, string pwd)
         {
-            //密码：zxc123456@A
+            //账号:zkb   密码：zxc123456@A
             var newUser = new IdentityUser()
             {
                 UserName = userName,
