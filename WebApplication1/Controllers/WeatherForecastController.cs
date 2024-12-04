@@ -31,6 +31,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
+        [ResponseCache(Duration = 600, Location = ResponseCacheLocation.Client)]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable

@@ -19,6 +19,7 @@ namespace LanguageLocalizationWeb.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
+        [ResponseCache(Duration = 600, Location = ResponseCacheLocation.Client)]
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
