@@ -1,0 +1,6 @@
+@NginxDemo2_HostAddress = http://localhost:5254
+
+GET {{NginxDemo2_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
