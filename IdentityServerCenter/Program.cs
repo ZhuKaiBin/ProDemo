@@ -8,7 +8,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddIdentityServer().AddDeveloperSigningCredential()
                                     .AddInMemoryApiResources(Config.GetResources())
-                                    .AddInMemoryClients(Config.GetClients());
+                                    .AddInMemoryClients(Config.GetClients())
+                                    .AddTestUsers(Config.GetTestUsers());//ÃÌº”≤‚ ‘”√ªß
 
 var app = builder.Build();
 
