@@ -1,0 +1,6 @@
+@SeqLogDemo_HostAddress = http://localhost:5254
+
+GET {{SeqLogDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
