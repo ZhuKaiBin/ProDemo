@@ -230,9 +230,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerThriedConsole
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerCredentialApiClientPwd", "IdentityServerCredentialApiClientPwd\IdentityServerCredentialApiClientPwd.csproj", "{4611D27B-736F-41F5-8BCB-1ECF4B485182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTTP2VersionDemo", "HTTP2VersionDemo\HTTP2VersionDemo.csproj", "{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTP2VersionDemo", "HTTP2VersionDemo\HTTP2VersionDemo.csproj", "{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeqLogDemo", "SeqLogDemo\SeqLogDemo.csproj", "{0C523648-0B11-4CC5-A6AA-892DAC6F155F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeqLogDemo", "SeqLogDemo\SeqLogDemo.csproj", "{0C523648-0B11-4CC5-A6AA-892DAC6F155F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -994,6 +994,22 @@ Global
 		{4611D27B-736F-41F5-8BCB-1ECF4B485182}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4611D27B-736F-41F5-8BCB-1ECF4B485182}.Release|x86.ActiveCfg = Release|Any CPU
 		{4611D27B-736F-41F5-8BCB-1ECF4B485182}.Release|x86.Build.0 = Release|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Debug|x86.Build.0 = Debug|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Release|x86.ActiveCfg = Release|Any CPU
+		{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}.Release|x86.Build.0 = Release|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Debug|x86.Build.0 = Debug|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|x86.ActiveCfg = Release|Any CPU
+		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

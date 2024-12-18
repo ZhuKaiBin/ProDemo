@@ -7,8 +7,9 @@ namespace HTTP2VersionDemo
 {
     internal class Program
     {
-        static readonly HttpClient staticClient = new HttpClient();
-        static async Task Main(string[] args)
+        private static readonly HttpClient staticClient = new HttpClient();
+
+        private static async Task Main(string[] args)
         {
             // 设置服务集合（依赖注入容器）
             var serviceProvider = new ServiceCollection()
@@ -49,14 +50,12 @@ namespace HTTP2VersionDemo
                     var response = await client.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
                     response.EnsureSuccessStatusCode();
                     Console.WriteLine(response.Version);
-
                 }
             }
             catch (HttpRequestException e)
             {
                 Console.WriteLine($"请求失败: {e.Message}");
             }
-
         }
     }
 }
