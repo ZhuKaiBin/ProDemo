@@ -192,8 +192,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "零部件号逻辑", "零�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp8", "ConsoleApp8\ConsoleApp8.csproj", "{9A19A2B8-C456-487A-9C44-FD8B32A1C128}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "installTools", "installTools\installTools.csproj", "{6418CC4A-5B5A-47DE-96CC-16199E1BA670}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "对象继承集合转换", "对象继承集合转换\对象继承集合转换.csproj", "{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "获取Action中Item的数据源", "获取Action中Item的数据源\获取Action中Item的数据源.csproj", "{CC14615B-90AE-4D6B-8B8B-F61C01E8D55F}"
@@ -233,6 +231,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HTTP2VersionDemo", "HTTP2VersionDemo\HTTP2VersionDemo.csproj", "{46ABBEF4-AB65-4C9E-93AC-B09CA578BC08}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeqLogDemo", "SeqLogDemo\SeqLogDemo.csproj", "{0C523648-0B11-4CC5-A6AA-892DAC6F155F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoqMock", "MoqMock\MoqMock.csproj", "{61335D1F-BE7C-44CD-A94E-AC588944C22B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RetryHelper", "nameofDemo\RetryHelper.csproj", "{FC888FBC-7445-441E-9870-5EA378BA05B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -858,14 +860,6 @@ Global
 		{9A19A2B8-C456-487A-9C44-FD8B32A1C128}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9A19A2B8-C456-487A-9C44-FD8B32A1C128}.Release|x86.ActiveCfg = Release|Any CPU
 		{9A19A2B8-C456-487A-9C44-FD8B32A1C128}.Release|x86.Build.0 = Release|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Debug|x86.Build.0 = Debug|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Release|x86.ActiveCfg = Release|Any CPU
-		{6418CC4A-5B5A-47DE-96CC-16199E1BA670}.Release|x86.Build.0 = Release|Any CPU
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1C3BC99-7A70-48FD-B0DE-9530189D55C3}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -1010,6 +1004,22 @@ Global
 		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|x86.ActiveCfg = Release|Any CPU
 		{0C523648-0B11-4CC5-A6AA-892DAC6F155F}.Release|x86.Build.0 = Release|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Debug|x86.Build.0 = Debug|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Release|x86.ActiveCfg = Release|Any CPU
+		{61335D1F-BE7C-44CD-A94E-AC588944C22B}.Release|x86.Build.0 = Release|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Debug|x86.Build.0 = Debug|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Release|x86.ActiveCfg = Release|Any CPU
+		{FC888FBC-7445-441E-9870-5EA378BA05B2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
