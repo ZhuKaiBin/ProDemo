@@ -19,37 +19,52 @@ namespace HTTP2VersionDemo
             // 通过依赖注入获取 IHttpClientFactory 实例
             var httpClientFactory = serviceProvider.GetRequiredService<IHttpClientFactory>();
 
+
+
+
+            // netstat -an | findstr 101.67.61.141
+            // netstat -an | findstr 39.156.66.10
+
             // 发起请求
             try
             {
-                //for (int i = 0; i < 100000000; i++)
-                //{
-                //    using (var newClient = new HttpClient())
-                //    {
-                //        var response = await newClient.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
-                //        response.EnsureSuccessStatusCode();
-                //        Console.WriteLine(response.Version);
-                //    }
-                //}
-
-                //for (int i = 0; i < 100000000; i++)
-                //{
-                //    var response = await staticClient.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
-                //    response.EnsureSuccessStatusCode();
-                //    Console.WriteLine(response.Version);
-                //}
-
-                var client = httpClientFactory.CreateClient();
-
-                for (int i = 0; i < 100000000; i++)
                 {
-                    //var response = await httpClientFactory.CreateClient().GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
-                    //response.EnsureSuccessStatusCode();
-                    //Console.WriteLine(response.Version);
+                    //for (int i = 0; i < 100000000; i++)
+                    //{
+                    //    using (var newClient = new HttpClient())
+                    //    {
+                    //        var response = await newClient.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
+                    //        response.EnsureSuccessStatusCode();
+                    //        Console.WriteLine(response.Version);
+                    //        Console.WriteLine(DateTime.Now);
+                    //    }
+                    //}
+                }
+                {
+                    //staticClient.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                    //for (int i = 0; i < 100000000; i++)
+                    //{
+                    //    var response = await staticClient.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
+                    //    response.EnsureSuccessStatusCode();
+                    //    Console.WriteLine(response.Version);
+                    //    Console.WriteLine(DateTime.Now);
+                    //}
+                }
 
-                    var response = await client.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
-                    response.EnsureSuccessStatusCode();
-                    Console.WriteLine(response.Version);
+                {
+                    var client = httpClientFactory.CreateClient();
+                    client.DefaultRequestHeaders.Add("Connection", "keep-alive");
+                    for (int i = 0; i < 100000000; i++)
+                    {
+                        //var response = await httpClientFactory.CreateClient().GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
+                        //response.EnsureSuccessStatusCode();
+                        //Console.WriteLine(response.Version);
+
+                        var response = await client.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
+                        response.EnsureSuccessStatusCode();
+                        Console.WriteLine(response.Version);
+                        Console.WriteLine(DateTime.Now);
+                    }
                 }
             }
             catch (HttpRequestException e)
