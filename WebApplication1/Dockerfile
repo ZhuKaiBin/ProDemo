@@ -1,25 +1,15 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# 使用 ASP.NET Core 运行时镜像
+FROM mcr.microsoft.com/dotnet/aspnet:8.0
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
-USER app
+# 设置工作目录
 WORKDIR /app
+
+# 暴露应用程序的端口
 EXPOSE 8080
 EXPOSE 8081
 
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
-COPY ["WebApplication1.csproj", "./"]
-RUN dotnet restore "./WebApplication1.csproj"
+# 将所有文件复制到容器中
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "WebApplication1.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
-FROM build AS publish
-ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "WebApplication1.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
+# 设置应用的入口点
 ENTRYPOINT ["dotnet", "WebApplication1.dll"]
