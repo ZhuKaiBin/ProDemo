@@ -238,13 +238,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetryHelper", "nameofDemo\R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCollectionDemo", "ServiceCollectionDemo\ServiceCollectionDemo.csproj", "{53CF3814-F162-4814-A8C4-0E981DD06C9D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "多线程按照顺序执行AutoResetEventDemo", "AutoResetEventDemo\多线程按照顺序执行AutoResetEventDemo.csproj", "{D5B2DE32-7B61-4CAA-87F5-558EAC5AB2FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行AutoResetEventDemo", "AutoResetEventDemo\多线程按照顺序执行AutoResetEventDemo.csproj", "{D5B2DE32-7B61-4CAA-87F5-558EAC5AB2FB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "多线程按照顺序执行await", "多线程按照顺序执行await\多线程按照顺序执行await.csproj", "{C4467D12-0E3C-491F-B9F2-70E4958B8CF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行await", "多线程按照顺序执行await\多线程按照顺序执行await.csproj", "{C4467D12-0E3C-491F-B9F2-70E4958B8CF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "多线程按照顺序执行SemaphoreSlim", "多线程按照顺序执行SemaphoreSlim\多线程按照顺序执行SemaphoreSlim.csproj", "{8A17AE73-1B09-4E81-A6A5-C89F05ABFCCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行SemaphoreSlim", "多线程按照顺序执行SemaphoreSlim\多线程按照顺序执行SemaphoreSlim.csproj", "{8A17AE73-1B09-4E81-A6A5-C89F05ABFCCF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "多线程按照顺序执行CountdownEvent", "多线程按照顺序执行CountdownEvent\多线程按照顺序执行CountdownEvent.csproj", "{B09857B2-FBBE-4409-83DD-802601E5EB90}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行CountdownEvent", "多线程按照顺序执行CountdownEvent\多线程按照顺序执行CountdownEvent.csproj", "{B09857B2-FBBE-4409-83DD-802601E5EB90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "多线程按照顺序执行ManualResetEvent", "多线程按照顺序执行ManualResetEvent\多线程按照顺序执行ManualResetEvent.csproj", "{50BE182E-3A67-40EC-B590-05981B6FAD19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1070,6 +1072,14 @@ Global
 		{B09857B2-FBBE-4409-83DD-802601E5EB90}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B09857B2-FBBE-4409-83DD-802601E5EB90}.Release|x86.ActiveCfg = Release|Any CPU
 		{B09857B2-FBBE-4409-83DD-802601E5EB90}.Release|x86.Build.0 = Release|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Debug|x86.Build.0 = Debug|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Release|x86.ActiveCfg = Release|Any CPU
+		{50BE182E-3A67-40EC-B590-05981B6FAD19}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
