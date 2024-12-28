@@ -46,6 +46,7 @@ namespace HTTP2VersionDemo
                     //{
                     //    var response = await staticClient.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
                     //    response.EnsureSuccessStatusCode();
+                    //    Task.Delay(100);
                     //    Console.WriteLine(response.Version);
                     //    Console.WriteLine(DateTime.Now);
                     //}
@@ -60,8 +61,11 @@ namespace HTTP2VersionDemo
                         //response.EnsureSuccessStatusCode();
                         //Console.WriteLine(response.Version);
 
+                        Task.Delay(100);
+
                         var response = await client.GetAsync("https://c-design.oss-cn-hangzhou.aliyuncs.com/env_staging/graphics/materials/dwg/5048DB1602.dwg");
                         response.EnsureSuccessStatusCode();
+                        var sd = response.Headers.Connection;
                         Console.WriteLine(response.Version);
                         Console.WriteLine(DateTime.Now);
                     }
