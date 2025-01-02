@@ -7,6 +7,10 @@ namespace ServiceCollectionDemo
     {
         static void Main(string[] args)
         {
+           var d=  DateTimeOffset.UtcNow;
+
+
+            var d2= DateTimeOffset.Now;
 
 
             //// 创建一个服务集合（就像餐厅的厨房）
