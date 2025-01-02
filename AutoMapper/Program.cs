@@ -4,7 +4,7 @@ namespace AutoMapperDemo
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             //// 初始化 AutoMapper
             //var configuration = new MapperConfiguration(cfg =>
@@ -28,20 +28,39 @@ namespace AutoMapperDemo
             //Console.WriteLine($"Name: {userDto.Name}, Age: {userDto.Age}");
 
             
-          var nums=  GetNumers(10);
+           var nums=  GetNumers(10);
 
-            foreach(var numer in nums)
+           foreach(var numer in nums)
+           {
+               Console.WriteLine($"number的值是{numer}");
+               if (numer == 3)
+               {
+                   break;
+               }
+           }
+
+
+            await foreach (var item in GetIntsAsync(10))
             {
-                Console.WriteLine($"number的值是{numer}");
-                if (numer == 3)
+                Console.WriteLine($"异步number的值是{item}");
+                if (item == 3)
                 {
                     break;
                 }
             }
-
         }
 
         static IEnumerable<int> GetNumers(int n)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine($"yield的值是{i}");
+                yield return i;
+            }
+        }
+
+
+        static async IAsyncEnumerable<int> GetIntsAsync(int n)
         {
             for (int i = 0; i < n; i++)
             {
