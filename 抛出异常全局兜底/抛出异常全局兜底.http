@@ -1,0 +1,6 @@
+@抛出异常全局兜底_HostAddress = http://localhost:5047
+
+GET {{抛出异常全局兜底_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
