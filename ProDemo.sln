@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluentDataAnnotation", "Flu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsonPolymorphicDemo", "JsonPolymorphicDemo\JsonPolymorphicDemo.csproj", "{7DE0A26D-15A7-4578-BE5B-76D4E3B3C2F8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapper", "AutoMapper\AutoMapper.csproj", "{1F71EF93-0D54-4719-A00E-2548BC02DAE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoMapperDemo", "AutoMapper\AutoMapperDemo.csproj", "{1F71EF93-0D54-4719-A00E-2548BC02DAE1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SVGDemo", "SVGDemo\SVGDemo.csproj", "{E8A266FF-53C6-46D6-9169-A5BFD8D52C73}"
 EndProject
