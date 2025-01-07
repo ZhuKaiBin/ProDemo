@@ -39,13 +39,31 @@
         {
             try
             {
-                throw new Exception("test");
+                Test2();
             }
             catch (Exception ex)
             {
-                throw ex; //会丢失调用链,找不到真正的异常所在
-                //throw; //调用链完整
+                //throw ex; //会丢失调用链,找不到真正的异常所在
+                throw; //调用链完整
                 //System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex).Throw();//调用链更完整，显示了重新抛出异常所在的位置。
+            }
+            //finally
+            //{
+            //    Console.WriteLine("finally");
+            //}
+        }
+
+        private static void Test2()
+        {
+            try
+            {
+                throw new Exception("test2");
+            }
+            catch (Exception ex)
+            {
+                //throw ex; //会丢失调用链,找不到真正的异常所在
+                //throw; //调用链完整
+                System.Runtime.ExceptionServices.ExceptionDispatchInfo.Capture(ex).Throw();//调用链更完整，显示了重新抛出异常所在的位置。
             }
         }
     }
