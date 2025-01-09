@@ -1,4 +1,5 @@
 ﻿using Microsoft.Web.WebView2.Core;
+using System.Net.Http;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,6 +52,11 @@ namespace WebView2Demo
 
                 // 设置 WebView2 的默认配置
                 SetWebView2Settings();
+
+                // 获取Token并传递给WebView2
+                string accessToken = await GetAccessTokenAsync();
+                await webview.CoreWebView2.ExecuteScriptAsync($"window.accessToken = '{accessToken}';");
+
             }
             catch (Exception ex)
             {
@@ -66,10 +72,10 @@ namespace WebView2Demo
         private void LoadWebViewContent()
         {
             //https://localhost:7081/swagger/index.html  是后端项目WebAPIBackend的swagger地址
-            //webview.CoreWebView2.Navigate("https://localhost:7081/swagger/index.html");
+            webview.CoreWebView2.Navigate("https://localhost:7081/swagger/index.html");
 
             //http://localhost:3000/ 是前端项目vue的地址Dist文件中的
-            webview.CoreWebView2.Navigate("http://localhost:3000/");
+            //webview.CoreWebView2.Navigate("http://localhost:3000/");
 
             //#if DEBUG
             //            // 确保 Source 只在 WebView2 初始化后设置
@@ -93,6 +99,35 @@ namespace WebView2Demo
             settings.AreDefaultContextMenusEnabled = false;
             settings.AreDevToolsEnabled = false;
             settings.AreBrowserAcceleratorKeysEnabled = false;
+        }
+
+        private async Task<string> GetAccessTokenAsync()
+        {
+            using (var httpClient = new HttpClient())
+            {
+                try
+                {
+                    // 发起 GET 请求，获取 accessToken
+                    var response = await httpClient.GetAsync("https://localhost:7081/WeatherForecast");
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var json = await response.Content.ReadAsStringAsync();
+                        //var result = JsonConvert.DeserializeObject<AccessTokenResponse>(json);
+                        return json;
+                    }
+                    else
+                    {
+                        MessageBox.Show("获取 AccessToken 失败！");
+                        return string.Empty;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"获取 AccessToken 发生错误: {ex.Message}");
+                    return string.Empty;
+                }
+            }
         }
     }
 
