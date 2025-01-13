@@ -1,0 +1,11 @@
+{
+  "name": "tsdemo1",
+  "version": "1.0.0",
+  "description": "这是一个编写Ts的示例demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

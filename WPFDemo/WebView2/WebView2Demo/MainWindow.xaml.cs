@@ -96,9 +96,12 @@ namespace WebView2Demo
         private void SetWebView2Settings()
         {
             var settings = webview.CoreWebView2.Settings;
-            settings.AreDefaultContextMenusEnabled = false;
-            settings.AreDevToolsEnabled = false;
+            settings.AreDefaultContextMenusEnabled = false;//禁用网页右键功能
+            settings.AreDevToolsEnabled = false;//禁用开发工具，设为true，可通过F12打开开发者调试功能
             settings.AreBrowserAcceleratorKeysEnabled = false;
+
+            // IsZoomControlEnabled：禁用网页的放大缩小功能
+            //IsStatusBarEnabled：禁用网页上加载页面的进度条功能
         }
 
         private async Task<string> GetAccessTokenAsync()

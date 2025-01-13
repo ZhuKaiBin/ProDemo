@@ -1,0 +1,6 @@
+@NSwagDemo_HostAddress = http://localhost:5236
+
+GET {{NSwagDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
