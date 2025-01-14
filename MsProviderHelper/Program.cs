@@ -44,6 +44,12 @@ namespace MsProviderHelper
                 }
 
             }
+
+
+            {
+
+                var s = new Bucket(10, TimeSpan.FromSeconds(1));
+            }
         }
     }
 }
