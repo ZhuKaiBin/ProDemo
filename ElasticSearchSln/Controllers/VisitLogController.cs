@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ElasticSearchSln.Domain;
+using Nest;
 
 namespace ElasticSearchSln.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[Action]")]
     [ApiController]
     public class VisitLogController : ControllerBase
     {
@@ -49,5 +50,29 @@ namespace ElasticSearchSln.Controllers
 
             return Ok("修改成功");
         }
+
+
+        [HttpGet]
+        public async Task<IActionResult> ElasticSearchAPI(int id, string name, int age)
+        {
+            var person = new Person { Id = id, Name = name, Age = age, DateTimeOffset = DateTimeOffset.UtcNow };
+            var settings = new ConnectionSettings(new Uri("http://localhost:9200")).DefaultIndex("prozkb");
+            ElasticClient _client = new ElasticClient(settings);
+            var indexResponse = await _client.IndexDocumentAsync(person);
+
+            return Ok("成功");
+        }
+
+
+        public class Person
+        {
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public int Age { get; set; }
+
+            public DateTimeOffset DateTimeOffset { get; set; }
+
+        }
+
     }
 }

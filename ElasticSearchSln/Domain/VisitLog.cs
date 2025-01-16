@@ -2,6 +2,9 @@
 {
     public class VisitLog
     {
+        /// <summary>
+        /// id
+        /// </summary>
         public string Id { get; set; }
 
         /// <summary>

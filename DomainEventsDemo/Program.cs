@@ -17,9 +17,9 @@
         }
 
 
-        private static void handler(IDomainEvent qw)
+        private static void handler(IDomainEvent domainEvent)
         {
-            switch (qw)
+            switch (domainEvent)
             {
                 case AEvent ae:
                     Console.WriteLine("A后方部队出发");
@@ -35,7 +35,10 @@
     }
 
     // 领域事件接口
+    //领域事件 就像一个【通知单】，它告诉系统“发生了某个重要事件”，比如：“电影票已购买”。
+    //这个通知单可以被其他系统或模块接收到，然后执行相应的动作，比如发送邮件、更新统计数据等。
     public interface IDomainEvent { }
+
 
     public class AEvent : IDomainEvent
     {
