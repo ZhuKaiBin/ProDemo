@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProReferenceEquals", "ProDemo\ProReferenceEquals.csproj", "{09D6A5A6-06F1-48CC-9CCE-03DFAB8DAD8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAbstractSln", "ProDemo\ProAbstractSln.csproj", "{09D6A5A6-06F1-48CC-9CCE-03DFAB8DAD8C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expression", "ProDemo4\Expression.csproj", "{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S3Storage", "S3Storage\S3Storage.csproj", "{7C784C93-6AB5-4342-B916-7E3A0886398E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProLock", "ProLock\ProLock.csproj", "{1DA396B1-5A18-4779-B902-C893FA2DEBB9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEqual", "ProEventArgs\ProEqual.csproj", "{50F81B10-EFA0-4983-BCCF-9978EDB91A02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProThreadResult", "ProThreadResult\ProThreadResult.csproj", "{2DE10180-3C10-4CCC-B61C-99450FD94256}"
 EndProject
@@ -210,7 +208,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "控制行高3", "控制行�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "添加空闲的模数", "添加空闲的模数\添加空闲的模数.csproj", "{26DAD02E-9D4D-499C-9FC6-F6537006CC45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityWebSln", "WebApplication1\IdentityWebSln.csproj", "{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerCenter", "IdentityServerCenter\IdentityServerCenter.csproj", "{E736F8CC-C8FA-4908-BB8C-C059E368866F}"
 EndProject
@@ -232,7 +230,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoqMock", "MoqMock\MoqMock.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetryHelper", "nameofDemo\RetryHelper.csproj", "{FC888FBC-7445-441E-9870-5EA378BA05B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCollectionDemo", "ServiceCollectionDemo\ServiceCollectionDemo.csproj", "{53CF3814-F162-4814-A8C4-0E981DD06C9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCollectionSln", "ServiceCollectionDemo\ServiceCollectionSln.csproj", "{53CF3814-F162-4814-A8C4-0E981DD06C9D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行AutoResetEventDemo", "AutoResetEventDemo\多线程按照顺序执行AutoResetEventDemo.csproj", "{D5B2DE32-7B61-4CAA-87F5-558EAC5AB2FB}"
 EndProject
@@ -246,7 +244,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "字符串是否包含小写", "字符串是否包含小写\字符串是否包含小写.csproj", "{BC09C08B-5AB6-41EE-B039-DCAF6D3AEB9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionServerDemo", "SessionServerDemo\SessionServerDemo.csproj", "{DA202902-0209-44D4-97DC-63BB991A4394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContextSessionServerDemo", "SessionServerDemo\ContextSessionServerDemo.csproj", "{DA202902-0209-44D4-97DC-63BB991A4394}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "抛出异常Demo", "抛出异常Demo\抛出异常Demo.csproj", "{6B90C542-68B4-4812-A220-2185F844BBFF}"
 EndProject
@@ -348,14 +346,6 @@ Global
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|x86.ActiveCfg = Release|Any CPU
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|x86.Build.0 = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|x86.Build.0 = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|x86.ActiveCfg = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|x86.Build.0 = Release|Any CPU
 		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -1255,7 +1245,6 @@ Global
 		{86E1F509-A8B5-466B-9C75-FF8C506C8F5B} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{7C784C93-6AB5-4342-B916-7E3A0886398E} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9} = {C1046519-4E58-48C0-B374-96531C80AAC1}
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{2DE10180-3C10-4CCC-B61C-99450FD94256} = {C1046519-4E58-48C0-B374-96531C80AAC1}
 		{3159AD36-F464-474D-8CBA-C4E1FB1EE61B} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{E782856A-E8C2-4BE4-B4BA-7FDE3911F1CA} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
