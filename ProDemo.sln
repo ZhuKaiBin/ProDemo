@@ -254,10 +254,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventFlowSolution", "EventF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventFlowWebAPI", "EventFlowSolution\EventFlowWebAPI\EventFlowWebAPI.csproj", "{447DCFD0-B026-4A95-BCCF-0E4E33F64211}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetCorePalTemplate", "NetCorePalTemplate", "{B04AD14D-B0C1-44A3-B33F-DA256ED5583E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NewFolder1", "NewFolder1", "{8A969302-979E-4B31-A357-D7E76559A440}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "自己实现一个领域事件Demo", "自己实现一个领域事件Demo", "{D5D726B6-0E37-46B9-B891-FE1E59DB98A6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "领域事件Demo", "领域事件Demo\领域事件Demo.csproj", "{F4C2F2F4-7D49-44E1-89E3-EADB52A0D439}"
@@ -286,9 +282,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearchSln", "Elastic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrozenCollectionSln", "BasicSolution\FrozenCollectionSln\FrozenCollectionSln.csproj", "{63C1E97F-9B24-4DFE-BB5A-26188F90EF65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yieldSln", "BasicSolution\yieldSln\yieldSln.csproj", "{1D7F4E1D-1F2D-4FC9-972D-58BF95365BA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yieldSln", "BasicSolution\yieldSln\yieldSln.csproj", "{1D7F4E1D-1F2D-4FC9-972D-58BF95365BA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainEvent2", "BasicSolution\DomainEvent2\DomainEvent2.csproj", "{7A578341-7FE2-4B8C-9D9B-721F77182789}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainEvent2", "BasicSolution\DomainEvent2\DomainEvent2.csproj", "{7A578341-7FE2-4B8C-9D9B-721F77182789}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
