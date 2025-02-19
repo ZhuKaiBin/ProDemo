@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -46,24 +46,24 @@ namespace CoreRateLimit
                 app.UseDeveloperExceptionPage();
             }
 
-            // ʹ���Զ����м��
+            // 使锟斤拷锟皆讹拷锟斤拷锟叫硷拷锟?
             app.UseRequestIP();
             app.UseRequestPara();
-            // ��Ӧ�ó��������ܵ������һ��Funcί�У����ί����ʵ������ν���м����
-            // context������HttpContext����ʾHTTP����������Ķ���
-            // next������ʾ�ܵ��е���һ���м��ί��,���������next�����ʹ�ܵ���·
-            // ��Use���Խ�����м��������һ��
+            // 锟斤拷应锟矫筹拷锟斤拷锟斤拷锟斤拷锟杰碉拷锟斤拷锟斤拷锟揭伙拷锟紽unc委锟叫ｏ拷锟斤拷锟轿拷锟斤拷锟绞碉拷锟斤拷锟斤拷锟轿斤拷锟斤拷屑锟斤拷锟斤拷
+            // context锟斤拷锟斤拷锟斤拷HttpContext锟斤拷锟斤拷示HTTP锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷亩锟斤拷锟?
+            // next锟斤拷锟斤拷锟斤拷示锟杰碉拷锟叫碉拷锟斤拷一锟斤拷锟叫硷拷锟轿拷锟?锟斤拷锟斤拷锟斤拷锟斤拷锟絥ext锟斤拷锟斤拷锟绞癸拷艿锟斤拷锟铰?
+            // 锟斤拷Use锟斤拷锟皆斤拷锟斤拷锟斤拷屑锟斤拷锟斤拷锟斤拷锟斤拷一锟斤拷
             app.Use(
                 async (context, next) =>
                 {
                     await context.Response.WriteAsync(text: "hello Use1\r\n");
-                    // ������һ��ί��
+                    // 锟斤拷锟斤拷锟斤拷一锟斤拷委锟斤拷
                     await next();
                 }
             );
 
-            // Run������Ӧ�ó��������ܵ������һ��RequestDelegateί��
-            // ���ڹܵ�����棬�ն��м��
+            // Run锟斤拷锟斤拷锟斤拷应锟矫筹拷锟斤拷锟斤拷锟斤拷锟杰碉拷锟斤拷锟斤拷锟揭伙拷锟絉equestDelegate委锟斤拷
+            // 锟斤拷锟节管碉拷锟斤拷锟斤拷妫拷斩锟斤拷屑锟斤拷
             app.Run(async context =>
             {
                 await context.Response.WriteAsync(text: "Hello World1\r\n");

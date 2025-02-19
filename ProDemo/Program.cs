@@ -1,13 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using MongoDB.Bson;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Schema;
 
 namespace ProDemo
 {
@@ -16,13 +7,15 @@ namespace ProDemo
         static void Main(string[] args)
         {
             DerivedClassA aa = new DerivedClassA();
-            aa.Execute();
+
+            //直接调用基类中的定义的方法
+            aa.abstrExecute();
         }
     }
 
     public abstract class BaseAbstract
     {
-        public void Execute()
+        public void abstrExecute()
         {
             Before();
             Excute();

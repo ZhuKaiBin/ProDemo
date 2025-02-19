@@ -1,0 +1,4 @@
+利用Redis的分布式锁
+https://www.cnblogs.com/liyongqiang-cc/p/18655619
+
+先获取锁，再执行对应的业务逻辑

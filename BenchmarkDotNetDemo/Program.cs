@@ -8,9 +8,24 @@ namespace BenchmarkDotNetDemo
     {
         private static void Main(string[] args)
         {
-            //var summary = BenchmarkRunner.Run<MemoryBenchmarkerDemo>();
+            /*
+            代码启动的时候，要改成Release模式，不然会报错；
+            
+            / Validating benchmarks:
+            //    * Assembly BenchmarkDotNetDemo which defines benchmarks is non-optimized
+                  Benchmark was built without optimization enabled (most probably a DEBUG configuration). Please, build it in RELEASE.
+                  If you want to debug the benchmarks, please see https://benchmarkdotnet.org/articles/guides/troubleshooting.html#debugging-benchmarks.
 
-            var summary = BenchmarkRunner.Run<AnyDemo>();
+            醒你当前的基准测试项目（BenchmarkDotNetDemo）没有启用优化。具体来说，它是说：
+            未启用优化：警告中提到的“Benchmark was built without optimization enabled”表示，你当前的基准测试项目可能是以 DEBUG 配置编译的，
+            而在 DEBUG 配置下，编译器不会对代码进行优化，从而影响基准测试的准确性和效率。
+
+             */
+
+
+            var summary = BenchmarkRunner.Run<MemoryBenchmarkerDemo>();
+
+            //var summary = BenchmarkRunner.Run<AnyDemo>();
         }
     }
 
@@ -21,10 +36,10 @@ namespace BenchmarkDotNetDemo
         [Benchmark]
         public void gg()
         {
-            List<B> bs = new List<B>();
+            List<People> bs = new List<People>();
             for (int i = 0; i < NumberOfItems; i++)
             {
-                bs.Add(new B() { Name = "zhu", Age = i });
+                bs.Add(new People() { Name = "zhu", Age = i });
             }
 
             if (bs.Any())
@@ -36,10 +51,10 @@ namespace BenchmarkDotNetDemo
         [Benchmark]
         public void GG()
         {
-            List<B> bs = new List<B>();
+            List<People> bs = new List<People>();
             for (int i = 0; i < NumberOfItems; i++)
             {
-                bs.Add(new B() { Name = "zhu", Age = i });
+                bs.Add(new People() { Name = "zhu", Age = i });
             }
 
             if (bs.Count > 0)
@@ -51,20 +66,20 @@ namespace BenchmarkDotNetDemo
         [Benchmark]
         public void GGgg()
         {
-            List<B> bs = new List<B>();
+            List<People> peoples = new List<People>();
             for (int i = 0; i < NumberOfItems; i++)
             {
-                bs.Add(new B() { Name = "zhu", Age = i });
+                peoples.Add(new People() { Name = "zhu", Age = i });
             }
 
-            if (bs.Count() > 0)
+            if (peoples.Count() > 0)
             {
                 Console.WriteLine("GGgg");
             }
         }
     }
 
-    public class B
+    public class People
     {
         public string Name { set; get; }
         public int Age { set; get; }
@@ -72,7 +87,12 @@ namespace BenchmarkDotNetDemo
 
     public class MemoryBenchmarkerDemo
     {
-        private int NumberOfItems = 1000;
+
+        /*
+         对比list<string> 与 StringBuilder
+         */
+
+        private int NumberOfItems = 10;
 
         [Benchmark]
         public string ConcatStringsUsingStringBuilder()

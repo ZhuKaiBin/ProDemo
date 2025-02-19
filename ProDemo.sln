@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33717.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProReferenceEquals", "ProDemo\ProReferenceEquals.csproj", "{09D6A5A6-06F1-48CC-9CCE-03DFAB8DAD8C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAbstractSln", "ProDemo\ProAbstractSln.csproj", "{09D6A5A6-06F1-48CC-9CCE-03DFAB8DAD8C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Expression", "ProDemo4\Expression.csproj", "{BDE719CC-4C31-4B42-8B85-3F0AA7F013CB}"
 EndProject
@@ -14,8 +14,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S3Storage", "S3Storage\S3Storage.csproj", "{7C784C93-6AB5-4342-B916-7E3A0886398E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProLock", "ProLock\ProLock.csproj", "{1DA396B1-5A18-4779-B902-C893FA2DEBB9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProEqual", "ProEventArgs\ProEqual.csproj", "{50F81B10-EFA0-4983-BCCF-9978EDB91A02}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProThreadResult", "ProThreadResult\ProThreadResult.csproj", "{2DE10180-3C10-4CCC-B61C-99450FD94256}"
 EndProject
@@ -54,8 +52,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProSpinLock", "ProSpinLock\ProSpinLock.csproj", "{9C263253-69BF-413D-8169-531B19E89877}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProCloneable", "ProCloneable\ProCloneable.csproj", "{71CDF183-7FE5-4FE6-987F-29AD92412A61}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProAbstract", "abstractClassDemo\ProAbstract.csproj", "{3A7740CE-F48C-42DB-A112-BA97CE724E3F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FastEndpointsDemo", "FastEndpointsDemo\FastEndpointsDemo.csproj", "{83083AE4-1A80-495D-8671-4FA42195A481}"
 EndProject
@@ -212,9 +208,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "控制行高3", "控制行�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "添加空闲的模数", "添加空闲的模数\添加空闲的模数.csproj", "{26DAD02E-9D4D-499C-9FC6-F6537006CC45}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NginxDemo2", "NginxDemo2\NginxDemo2.csproj", "{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityWebSln", "WebApplication1\IdentityWebSln.csproj", "{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerCenter", "IdentityServerCenter\IdentityServerCenter.csproj", "{E736F8CC-C8FA-4908-BB8C-C059E368866F}"
 EndProject
@@ -236,7 +230,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MoqMock", "MoqMock\MoqMock.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RetryHelper", "nameofDemo\RetryHelper.csproj", "{FC888FBC-7445-441E-9870-5EA378BA05B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCollectionDemo", "ServiceCollectionDemo\ServiceCollectionDemo.csproj", "{53CF3814-F162-4814-A8C4-0E981DD06C9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceCollectionSln", "ServiceCollectionDemo\ServiceCollectionSln.csproj", "{53CF3814-F162-4814-A8C4-0E981DD06C9D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行AutoResetEventDemo", "AutoResetEventDemo\多线程按照顺序执行AutoResetEventDemo.csproj", "{D5B2DE32-7B61-4CAA-87F5-558EAC5AB2FB}"
 EndProject
@@ -250,11 +244,66 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "多线程按照顺序执行
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "字符串是否包含小写", "字符串是否包含小写\字符串是否包含小写.csproj", "{BC09C08B-5AB6-41EE-B039-DCAF6D3AEB9F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SessionServerDemo", "SessionServerDemo\SessionServerDemo.csproj", "{DA202902-0209-44D4-97DC-63BB991A4394}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContextSessionServerDemo", "SessionServerDemo\ContextSessionServerDemo.csproj", "{DA202902-0209-44D4-97DC-63BB991A4394}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "抛出异常Demo", "抛出异常Demo\抛出异常Demo.csproj", "{6B90C542-68B4-4812-A220-2185F844BBFF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "抛出异常全局兜底", "抛出异常全局兜底\抛出异常全局兜底.csproj", "{3927A98B-15DD-4D2C-8E62-29B8E52F4716}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EventFlowSolution", "EventFlowSolution", "{054141BE-C27A-4319-98CA-9AE29C0EA63D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventFlowWebAPI", "EventFlowSolution\EventFlowWebAPI\EventFlowWebAPI.csproj", "{447DCFD0-B026-4A95-BCCF-0E4E33F64211}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "自己实现一个领域事件Demo", "自己实现一个领域事件Demo", "{D5D726B6-0E37-46B9-B891-FE1E59DB98A6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "领域事件Demo", "领域事件Demo\领域事件Demo.csproj", "{F4C2F2F4-7D49-44E1-89E3-EADB52A0D439}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventSourceDemo", "自己实现一个领域事件Demo\事件溯源Demo\EventSourceDemo.csproj", "{C9714E3B-29BC-4259-8037-A5721C146A7A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPFDemo", "WPFDemo", "{DEA705F5-CA07-4852-8502-C48115A0EF54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebView2Demo", "WPFDemo\WebView2\WebView2Demo\WebView2Demo.csproj", "{BB8E62B3-25E7-4881-9C0F-E15E2C515CF9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPIBackend", "WPFDemo\WebAPIBackend\WebAPIBackend.csproj", "{1607059A-6A49-4F3C-8A34-BF151196607E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TsDemo", "TsDemo", "{24C404B4-5E45-4AE5-ADB1-F4C36EB60976}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TsDemo1", "TsDemo1", "{A9EA6298-F186-47E3-AF63-7F85F38C487F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChainOfResponsibility", "ChainOfResponsibility\ChainOfResponsibility.csproj", "{FA932D17-636D-4CD1-9ECE-1EE5A79890C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSwagDemo", "NSwagDemo\NSwagDemo.csproj", "{33ADA4D7-E556-4936-9976-FDE3214B92EC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsProviderHelper", "MsProviderHelper\MsProviderHelper.csproj", "{C6E54464-81C3-404E-B5F9-BCAAF4163977}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PollyDemo", "PollyDemo\PollyDemo.csproj", "{D6A0CC41-7AB3-4839-8E76-49B08B4D1374}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticSearchSln", "ElasticSearchSln\ElasticSearchSln.csproj", "{193EFF6D-2AB8-4518-85F8-51D74DA8114A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FrozenCollectionSln", "BasicSolution\FrozenCollectionSln\FrozenCollectionSln.csproj", "{63C1E97F-9B24-4DFE-BB5A-26188F90EF65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "yieldSln", "BasicSolution\yieldSln\yieldSln.csproj", "{1D7F4E1D-1F2D-4FC9-972D-58BF95365BA9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DomainEvent2", "BasicSolution\DomainEvent2\DomainEvent2.csproj", "{7A578341-7FE2-4B8C-9D9B-721F77182789}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DistributedLock", "DistributedLock", "{191BB89F-793D-4987-A7DB-082AFB5DB6B5}"
+	ProjectSection(SolutionItems) = preProject
+		提要.txt = 提要.txt
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DistributedLockRedis", "DistributedLock\DistributedLockRedis\DistributedLockRedis.csproj", "{0A78EF2D-676E-446A-BD08-44AA2B65001D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VersioningControl", "VersioningControl", "{6062B2EF-C87D-4C38-92A9-D67622FC5CBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VersioningControlSln", "VersioningControl\VersioningControlSln\VersioningControlSln.csproj", "{09FDF032-216B-460D-91D5-E1F54D3F54AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SerialPortSln", "SerialPortSln", "{5ABEE20A-736E-4501-A2E3-FCD4DE957026}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleReadSerialPortSln", "SerialPortSln\SimpleReadSerialPortSln\SimpleReadSerialPortSln.csproj", "{29FAED7A-4027-47A3-81E9-4882CF0D1DE8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dockerPublish", "BasicSolution\dockerPublish\dockerPublish.csproj", "{5399E0B5-0DDC-4266-948D-77ADFED31B36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerPublishWebHttps", "BasicSolution\DockerPublishWebHttps\DockerPublishWebHttps.csproj", "{128051C3-FE0A-4CA8-9185-143F312CBE3D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssertSln", "BasicSolution\AssertSln\AssertSln.csproj", "{5027CD7E-094E-4806-80AD-4ADAF9E6D785}"
 EndProject
@@ -314,14 +363,6 @@ Global
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|x86.ActiveCfg = Release|Any CPU
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9}.Release|x86.Build.0 = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Debug|x86.Build.0 = Debug|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|x86.ActiveCfg = Release|Any CPU
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02}.Release|x86.Build.0 = Release|Any CPU
 		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DE10180-3C10-4CCC-B61C-99450FD94256}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -474,14 +515,6 @@ Global
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Release|x86.ActiveCfg = Release|Any CPU
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61}.Release|x86.Build.0 = Release|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Debug|x86.Build.0 = Debug|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Release|x86.ActiveCfg = Release|Any CPU
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F}.Release|x86.Build.0 = Release|Any CPU
 		{83083AE4-1A80-495D-8671-4FA42195A481}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83083AE4-1A80-495D-8671-4FA42195A481}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83083AE4-1A80-495D-8671-4FA42195A481}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -954,14 +987,6 @@ Global
 		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|x86.ActiveCfg = Release|Any CPU
 		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34}.Release|x86.Build.0 = Release|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Debug|x86.Build.0 = Debug|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Release|x86.ActiveCfg = Release|Any CPU
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218}.Release|x86.Build.0 = Release|Any CPU
 		{E736F8CC-C8FA-4908-BB8C-C059E368866F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E736F8CC-C8FA-4908-BB8C-C059E368866F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E736F8CC-C8FA-4908-BB8C-C059E368866F}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -1122,14 +1147,6 @@ Global
 		{3927A98B-15DD-4D2C-8E62-29B8E52F4716}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3927A98B-15DD-4D2C-8E62-29B8E52F4716}.Release|x86.ActiveCfg = Release|Any CPU
 		{3927A98B-15DD-4D2C-8E62-29B8E52F4716}.Release|x86.Build.0 = Release|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Debug|x86.Build.0 = Debug|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Release|x86.ActiveCfg = Release|Any CPU
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1141,7 +1158,6 @@ Global
 		{86E1F509-A8B5-466B-9C75-FF8C506C8F5B} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{7C784C93-6AB5-4342-B916-7E3A0886398E} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{1DA396B1-5A18-4779-B902-C893FA2DEBB9} = {C1046519-4E58-48C0-B374-96531C80AAC1}
-		{50F81B10-EFA0-4983-BCCF-9978EDB91A02} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{2DE10180-3C10-4CCC-B61C-99450FD94256} = {C1046519-4E58-48C0-B374-96531C80AAC1}
 		{3159AD36-F464-474D-8CBA-C4E1FB1EE61B} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{E782856A-E8C2-4BE4-B4BA-7FDE3911F1CA} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
@@ -1157,7 +1173,6 @@ Global
 		{9AD5078F-0623-44B4-992A-3170563931BF} = {C1046519-4E58-48C0-B374-96531C80AAC1}
 		{9C263253-69BF-413D-8169-531B19E89877} = {C1046519-4E58-48C0-B374-96531C80AAC1}
 		{71CDF183-7FE5-4FE6-987F-29AD92412A61} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
-		{3A7740CE-F48C-42DB-A112-BA97CE724E3F} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{83083AE4-1A80-495D-8671-4FA42195A481} = {6629E00C-CA8D-4F8E-B1B8-3F6B3C2517BA}
 		{67EDA9EC-F613-43A1-9D4B-FCEDB99818A6} = {6629E00C-CA8D-4F8E-B1B8-3F6B3C2517BA}
 		{F524831F-793D-44D8-A595-F95A9DAD6343} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
@@ -1203,10 +1218,8 @@ Global
 		{883F3B16-CB9D-4E5A-901F-D239A56133F5} = {191B8752-3E10-4A69-89BC-65532EFAE51E}
 		{F1E49980-E473-400F-AC4F-25E96632F894} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{DE5E5C02-6C61-4D4D-B5B2-7673B671BA34} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
-		{E0C7D58E-5A5F-44A1-AB04-5BA8F795B218} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{53CF3814-F162-4814-A8C4-0E981DD06C9D} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 		{DA202902-0209-44D4-97DC-63BB991A4394} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
-		{5027CD7E-094E-4806-80AD-4ADAF9E6D785} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1815C20-CFA4-4A9E-93D9-0F7C5158047E}

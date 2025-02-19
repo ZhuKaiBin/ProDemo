@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <PublishAot>true</PublishAot>
+    <!--此属性在发布期间启用本机 AOT 编译-->
+    <IsAotCompatible>true</IsAotCompatible>
+    <!--该属性用于指示库是否与本机 AOT 兼容-->
+    <StripSymbols>false</StripSymbols>
+    <!--调试文件对于在调试器下运行应用程序或检查故障转储是必需的。在类 Unix 平台上，将该属性设置为在本机二进制文件中包含调试信息。包含调试信息会使本机二进制文件更大-->
+    <PlatformTarget>x64</PlatformTarget>
+    <!--目标平台内容是AnyCPU、x86、x64、ARM32、ARM64，一般选择x64/AnyCPU即可，其它平台看场景-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IO.Ports" Version="9.0.2" />
+    <PackageReference Include="System.Management" Version="9.0.2" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,6 @@
+@VersioningControlSln_HostAddress = http://localhost:5291
+
+GET {{VersioningControlSln_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
