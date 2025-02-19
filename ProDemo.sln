@@ -303,6 +303,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleReadSerialPortSln", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dockerPublish", "BasicSolution\dockerPublish\dockerPublish.csproj", "{5399E0B5-0DDC-4266-948D-77ADFED31B36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DockerPublishWebHttps", "BasicSolution\DockerPublishWebHttps\DockerPublishWebHttps.csproj", "{128051C3-FE0A-4CA8-9185-143F312CBE3D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1279,6 +1281,14 @@ Global
 		{5399E0B5-0DDC-4266-948D-77ADFED31B36}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5399E0B5-0DDC-4266-948D-77ADFED31B36}.Release|x86.ActiveCfg = Release|Any CPU
 		{5399E0B5-0DDC-4266-948D-77ADFED31B36}.Release|x86.Build.0 = Release|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Debug|x86.Build.0 = Debug|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Release|x86.ActiveCfg = Release|Any CPU
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1366,6 +1376,7 @@ Global
 		{09FDF032-216B-460D-91D5-E1F54D3F54AB} = {6062B2EF-C87D-4C38-92A9-D67622FC5CBC}
 		{29FAED7A-4027-47A3-81E9-4882CF0D1DE8} = {5ABEE20A-736E-4501-A2E3-FCD4DE957026}
 		{5399E0B5-0DDC-4266-948D-77ADFED31B36} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
+		{128051C3-FE0A-4CA8-9185-143F312CBE3D} = {4B580D44-9E2E-473C-B21E-F65E902C57CC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D1815C20-CFA4-4A9E-93D9-0F7C5158047E}
