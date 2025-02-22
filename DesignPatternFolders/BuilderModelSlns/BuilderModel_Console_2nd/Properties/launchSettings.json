@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "BuilderModel_Console_2nd": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
