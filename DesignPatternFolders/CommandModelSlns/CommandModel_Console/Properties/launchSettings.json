@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CommandModel_Console": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

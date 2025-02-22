@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AdapterModel_Console": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
