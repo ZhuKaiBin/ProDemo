@@ -11,4 +11,8 @@ builder.AddProject<Projects.AspireApp1_Web>("webfrontend")
     .WithReference(apiService)
     .WaitFor(apiService);
 
+builder.AddProject<Projects.SSEDemoSln>("ssedemosln");
+
+builder.AddProject<Projects.WatchDogSlns>("watchdogslns");
+
 builder.Build().Run();
