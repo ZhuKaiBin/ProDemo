@@ -7,6 +7,11 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace ProJWT
 {
+    class Person
+    {
+        public string Name { get; set; }
+        public int Age { get; set; }
+    }
     internal class Program
     {
         private static string Jwt_Issuer = "Jwt:Issuer";
@@ -17,15 +22,34 @@ namespace ProJWT
         private static string Jwt_ExpiresInMinutes = "60";
         private static string Jwt_Audience = "Audience";
 
-        private static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
-            string s = "";
+            Person person = new Person()
+            {
+                Age=20,
+                Name="Tom"
+            };
 
-            var token = GenerateJwtToken(10086);
+            int a = 10;
+            c(person,a);
 
-            var bools = ValidateJwtToken(token);
+            //Console.WriteLine("Hello World!");
+            //string s = "";
+
+            //var token = GenerateJwtToken(10086);
+
+            //var bools = ValidateJwtToken(token);
         }
+
+
+        public static int c(Person r,int a)
+        {
+            r.Age = r.Age - a;
+            a = 100;
+            return a;
+        }
+
+                       
 
         private static string GenerateJwtToken(int userId)
         {
