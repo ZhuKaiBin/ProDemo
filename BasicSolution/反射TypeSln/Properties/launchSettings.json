@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "反射TypeSln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
