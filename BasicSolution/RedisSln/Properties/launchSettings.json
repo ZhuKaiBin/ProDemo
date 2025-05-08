@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "RedisSln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

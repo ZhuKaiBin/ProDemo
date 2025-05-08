@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "NamedPipeClient": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

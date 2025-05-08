@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "JsonPatchSln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

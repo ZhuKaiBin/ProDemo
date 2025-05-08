@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "MessageQueueSlns": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
