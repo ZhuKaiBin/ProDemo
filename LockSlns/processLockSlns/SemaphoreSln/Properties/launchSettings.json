@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SemaphoreSln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

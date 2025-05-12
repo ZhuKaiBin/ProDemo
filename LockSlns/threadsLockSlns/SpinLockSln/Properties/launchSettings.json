@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SpinLockSln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

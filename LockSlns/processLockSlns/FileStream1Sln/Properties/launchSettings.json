@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "FileStream1Sln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

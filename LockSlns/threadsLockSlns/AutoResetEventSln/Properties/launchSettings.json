@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AutoResetEventSln": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}
