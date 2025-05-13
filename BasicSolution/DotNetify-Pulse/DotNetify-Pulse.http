@@ -1,0 +1,6 @@
+@DotNetify_Pulse_HostAddress = http://localhost:5008
+
+GET {{DotNetify_Pulse_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
