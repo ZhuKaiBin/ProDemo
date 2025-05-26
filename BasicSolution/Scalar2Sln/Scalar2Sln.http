@@ -1,0 +1,6 @@
+@Scalar2Sln_HostAddress = http://localhost:5251
+
+GET {{Scalar2Sln_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

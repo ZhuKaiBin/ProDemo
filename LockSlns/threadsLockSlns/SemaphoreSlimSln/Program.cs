@@ -2,15 +2,14 @@
 {
     internal class Program
     {
-        static async Task Main(string[] args) // 改成 async Main
+        static async Task Main(string[] args) 
         {
-            await SemaphoreTest();  // 等待任务全部完成
-            Console.WriteLine("Hello, World!");
+            await SemaphoreTest();  // 等待任务全部完成          
         }
 
         public static async Task SemaphoreTest()
         {
-            var semaphore = new SemaphoreSlim(2);
+            var semaphore = new SemaphoreSlim(5);
             var tasks = new List<Task>();
 
             for (int i = 1; i <= 10; i++)

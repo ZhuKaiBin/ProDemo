@@ -14,6 +14,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\BasicSolution\DotNetify-Pulse\DotNetify-Pulse.csproj" />
     <ProjectReference Include="..\..\..\..\BasicSolution\Knife4jSln\Knife4jSln.csproj" />
+    <ProjectReference Include="..\..\..\..\BasicSolution\Scalar2Sln\Scalar2Sln.csproj" />
+    <ProjectReference Include="..\..\..\..\BasicSolution\ScalarSln\ScalarSln.csproj" />
     <ProjectReference Include="..\..\..\..\BasicSolution\SSEDemo\SSEDemoSln\SSEDemoSln.csproj" />
     <ProjectReference Include="..\..\..\..\BasicSolution\SSEDemo\SSEDemoSln\SSEDemoSln\SSEDemoSln.csproj" />
     <ProjectReference Include="..\..\..\..\BasicSolution\WatchDogDemo\WatchDogSlns\WatchDogSlns\WatchDogSlns.csproj" />

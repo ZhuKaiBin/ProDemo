@@ -1,11 +1,11 @@
-﻿namespace MutexSln
+﻿using System.Runtime.CompilerServices;
+
+namespace MethodImplOptionsSynchronizedSln
 {
     internal class Program
     {
-        static Mutex mutex = new Mutex();
         static int counter = 0;
-
-        static void Main()
+        static void Main(string[] args)
         {
             // 创建两个线程来演示 Mutex 的用法
             Thread t1 = new Thread(Worker);
@@ -21,16 +21,19 @@
             Console.ReadKey();
         }
 
+
+        //对于静态方法，加的锁是 typeof(Program) 类型对象的锁，不是某个实例。
+        //多个线程调用 Worker()，它们会争用 Program 这个类型的锁。
+        [MethodImpl(MethodImplOptions.Synchronized)]
         static void Worker()
         {
-            for (int i = 0; i < 3000; i++)
+            for (int i = 0; i < 3000000; i++)
             {
-                mutex.WaitOne();  // 获取 Mutex 锁
-                counter++;        // 修改共享资源
-                mutex.ReleaseMutex();  // 释放 Mutex 锁
-
-                //counter++;
+                counter++;   
             }
         }
     }
+
+
+    
 }

@@ -19,4 +19,8 @@ builder.AddProject<Projects.DotNetify_Pulse>("dotnetify-pulse");
 
 builder.AddProject<Projects.Knife4jSln>("knife4jsln");
 
+builder.AddProject<Projects.ScalarSln>("scalarsln");
+
+builder.AddProject<Projects.Scalar2Sln>("scalar2sln");
+
 builder.Build().Run();
