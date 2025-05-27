@@ -52,14 +52,17 @@ namespace Scalar2Sln_Domain.ValueObjects
             return From(code);
         }
 
-       //implicit （隐式转换）：
-       //不需要显式转换操作符，编译器自动帮你转换，不会丢失信息，一般是安全的转换。
-       //explicit （显式转换）：
-       //需要你在代码里写转换操作符（强制转换），告诉编译器你知道在做转换，可能会有风险或信息丢失。
+        //implicit （隐式转换）：
+        //不需要显式转换操作符，编译器自动帮你转换，不会丢失信息，一般是安全的转换。
+        //explicit （显式转换）：
+        //需要你在代码里写转换操作符（强制转换），告诉编译器你知道在做转换，可能会有风险或信息丢失。
 
 
 
-
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            yield return Code;
+        }
 
         protected static IEnumerable<Colour> SupportedColours
         {

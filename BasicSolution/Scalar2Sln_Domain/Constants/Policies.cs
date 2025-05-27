@@ -8,7 +8,7 @@ namespace Scalar2Sln_Domain.Constants
 {
     public abstract class Policies
     {
-        public const string CanPuge = nameof(CanPuge);
+        public const string CanPurge = nameof(CanPurge);
         public const string CanPurge2 = "CanPurge2";
 
 

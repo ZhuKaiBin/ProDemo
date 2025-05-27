@@ -27,7 +27,7 @@ namespace Scalar2Sln_Domain.Entities.TodoList
             {
                 if (value && !_done)
                 {
-                    AddDomainEvent(new TodoItemCompletedEvent(this));
+                    //AddDomainEvent(new TodoItemCompletedEvent(this));
                 }
 
                 _done = value;

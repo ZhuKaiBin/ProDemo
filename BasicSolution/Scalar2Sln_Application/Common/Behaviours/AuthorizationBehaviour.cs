@@ -97,6 +97,8 @@ namespace Scalar2Sln_Application.Common.Behaviours
                 }
             }
 
+            return await next();                 
+
         }
 
 
