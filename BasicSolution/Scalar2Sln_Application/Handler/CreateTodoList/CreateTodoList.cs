@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Scalar2Sln_Application.Common.Interfaces;
 using Scalar2Sln_Application.Handler.CreateTodoList;
 using Scalar2Sln_Domain.Entities.TodoList;
 using Scalar2Sln_Domain.Enums;
@@ -30,10 +31,12 @@ namespace Scalar2Sln_Application.Handler.CreateTodoList
 public class CreateTodoListCommandHandler : IRequestHandler<CreateTodoListCommand, int>
 {
     private readonly IApplicationDbContext _context;
+    private readonly IEmailSender _emailSender;
 
-    public CreateTodoListCommandHandler(IApplicationDbContext context)
+    public CreateTodoListCommandHandler(IApplicationDbContext context, IEmailSender emailSender)
     {
         _context = context;
+        _emailSender = emailSender;
     }
 
     public async Task<int> Handle(CreateTodoListCommand request, CancellationToken cancellationToken)
@@ -54,6 +57,8 @@ public class CreateTodoListCommandHandler : IRequestHandler<CreateTodoListComman
 
         _context.TodoLists.Add(entity);
 
+
+        _emailSender.SendEmail("开始发送邮件");
 
         //entity.AddDomainEvent(new TodoListCreatedEvent(entity));
         await _context.SaveChangesAsync(cancellationToken);

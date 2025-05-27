@@ -10,6 +10,7 @@ using Scalar2Sln_Domain.Constants;
 using Scalar2Sln_Infrastructure.Data;
 using Scalar2Sln_Infrastructure.Data.Interceptors;
 using Scalar2Sln_Infrastructure.Identity;
+using Scalar2Sln_Infrastructure.Services;
 
 namespace Scalar2Sln_Infrastructure
 {
@@ -67,6 +68,9 @@ namespace Scalar2Sln_Infrastructure
 
             builder.Services.AddAuthorization(configure =>
             configure.AddPolicy(Policies.CanPurge, policy => policy.RequireRole(Roles.Administrator)));
+
+
+            builder.Services.AddTransient<IEmailSender, EmailSender>();
 
         }
 
