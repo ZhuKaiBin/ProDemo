@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using FluentValidation;
+using CleanArchitecture.Application.Common.Behaviours;
 
 namespace CleanArchitecture.Application
 {

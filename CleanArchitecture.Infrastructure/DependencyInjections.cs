@@ -18,6 +18,10 @@ namespace CleanArchitecture.Infrastructure
             builder.Services.AddSingleton(TimeProvider.System);
 
 
+
+
+
+            builder.Services.AddScoped<IOrderServices, OrderService>();
         }
 
      }

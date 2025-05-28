@@ -1,6 +1,4 @@
-﻿using CleanArchitecture.Domian.Common;
-
-namespace CleanArchitecture.Domian.Entities
+﻿namespace CleanArchitecture.Domian.Entities
 {
     public class ToDoItem: BaseAuditableEntity
     {

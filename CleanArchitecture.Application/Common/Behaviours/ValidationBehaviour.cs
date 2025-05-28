@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Application.Behaviours
+namespace CleanArchitecture.Application.Common.Behaviours
 {
     public class ValidationBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
       where TRequest : notnull
@@ -22,7 +22,7 @@ namespace CleanArchitecture.Application.Behaviours
         {
             if (_validators.Any())
             {
-                var context = new FluentValidation.ValidationContext<TRequest>(request);
+                var context = new ValidationContext<TRequest>(request);
 
                 var validationResults = await Task.WhenAll(
                     _validators.Select(v =>

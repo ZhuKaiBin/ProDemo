@@ -17,7 +17,7 @@ namespace CleanArchitecture.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateToDoItemCommand command)
+        public async Task<IActionResult> Post([FromBody] CreateToDoItemRequestDto command)
         {
             await mediator.Send(command);
             return Created();

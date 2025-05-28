@@ -1,4 +1,4 @@
-using CleanArchitecture.Application;
+ï»¿using CleanArchitecture.Application;
 using CleanArchitecture.Application.Interfaces.Persistence;
 using CleanArchitecture.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -29,8 +29,8 @@ namespace CleanArchitecture
 
             builder.Services.AddDbContext<ToDoDbContext>((serviceProvider, options) =>
             {
-                //ÆôÓÃÀ¹½ØÆ÷
-                var interceptor = serviceProvider.GetRequiredService<ISaveChangesInterceptor>();
+                //å¯ç”¨æ‹¦æˆªå™¨
+                var interceptor = serviceProvider.GetServices<ISaveChangesInterceptor>();
                 options.UseMySQL("Server=localhost;Port=3306;Database=dev_cdesign666;Uid=root;Pwd=root123456;")
                        .AddInterceptors(interceptor);
             });
@@ -39,21 +39,21 @@ namespace CleanArchitecture
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
+            // 1ï¸âƒ£ å¼€å‘ç¯å¢ƒç‰¹æ®Šå¤„ç†
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
 
-                #region ²âÊÔ»·¾³ÏÂ£¬´´½¨·şÎñ³õÊ¼»¯ÖÖ×ÓÊı¾İ
+                #region æµ‹è¯•ç¯å¢ƒä¸‹ï¼Œåˆ›å»ºæœåŠ¡åˆå§‹åŒ–ç§å­æ•°æ®
 
                 using (var scope = app.Services.CreateScope())
                 {
-                    var services = scope.ServiceProvider;//Ìá¹©ÌØ¶¨µÄ£¨·şÎñ£©ºÍ¹¤¾ß
+                    var services = scope.ServiceProvider;//æä¾›ç‰¹å®šçš„ï¼ˆæœåŠ¡ï¼‰å’Œå·¥å…·
 
                     try
                     {
-                        //Ö¸¶¨ÒªÕâ¸öÊı¾İ¿â£¬À´Ìá¹©·şÎñ
+                        //æŒ‡å®šè¦è¿™ä¸ªæ•°æ®åº“ï¼Œæ¥æä¾›æœåŠ¡
                         var context = services.GetRequiredService<ToDoDbContext>();
                         // context.Database.Migrate();
                         context.Database.EnsureCreated();
@@ -62,20 +62,29 @@ namespace CleanArchitecture
                     catch (Exception ex)
                     {
                         var logger = services.GetRequiredService<ILogger<Program>>();
-                        logger.LogError(ex, "³õÊ¼»¯²âÊÔÊı¾İÊ±³ö´í. {exceptionMessage}", ex.Message);
+                        logger.LogError(ex, "åˆå§‹åŒ–æµ‹è¯•æ•°æ®æ—¶å‡ºé”™. {exceptionMessage}", ex.Message);
                     }
                 }
 
-                #endregion ²âÊÔ»·¾³ÏÂ£¬´´½¨·şÎñ³õÊ¼»¯ÖÖ×ÓÊı¾İ
+                #endregion æµ‹è¯•ç¯å¢ƒä¸‹ï¼Œåˆ›å»ºæœåŠ¡åˆå§‹åŒ–ç§å­æ•°æ®
             }
 
+            // 2ï¸âƒ£ âœ… æ”¾åœ¨æ‰€æœ‰ä¸­é—´ä»¶å‰ï¼ˆç”¨äºæ•è·ä»»ä½•å¼‚å¸¸ï¼‰
+            app.UseMiddleware<GlobalExceptionHandlerMiddleware>();
+
+            // 3ï¸âƒ£ å¸¸è§„ ASP.NET Core å†…ç½®ä¸­é—´ä»¶
             app.UseHttpsRedirection();
 
+            // 4ï¸âƒ£ è·Ÿèº«ä»½éªŒè¯ç›¸å…³çš„å¿…é¡»æ”¾å‰é¢
+            app.UseAuthentication(); // å¦‚æœä½ ç”¨åˆ°äº†è®¤è¯çš„è¯
             app.UseAuthorization();
 
-
-            app.MapControllers();
+            // 5ï¸âƒ£ âœ… è¯·æ±‚è€—æ—¶/æ—¥å¿—ç±»ä¸­é—´ä»¶æ”¾åœ¨é åï¼ˆèƒ½è¦†ç›–æ›´å¤šä¸Šä¸‹æ–‡ï¼‰
             app.UseMiddleware<RequestTimingMiddleware>();
+
+            // 6ï¸âƒ£ æ§åˆ¶å™¨è·¯ç”±æ˜ å°„ï¼Œåº”è¯¥é è¿‘æœ€åº•éƒ¨
+            app.MapControllers();
+
             app.Run();
         }
     }
