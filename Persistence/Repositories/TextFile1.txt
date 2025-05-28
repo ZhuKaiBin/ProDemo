@@ -1,0 +1,32 @@
+﻿这个Repositories文件夹中分了三个Repository
+
+看代码可以看出里面的每个的增删改查都是针对同一个表来执行的
+
+OwnerRepository => _dbContext.Owners
+
+AccountRepository => _dbContext.Accounts
+
+
+
+
+
+
+相比较通用仓储模式 CommonRepository<T> : IToDoRepository<T>
+优点：
+少写代码，一次实现，所有实体共享 CRUD。
+统一接口，标准化，适合简单表（ToDo、User、Product 等常规业务表）。
+
+缺点：
+难以处理复杂查询，比如联表、分页、特殊业务逻辑。
+通用性太强，灵活性差，业务聚合难做。
+
+
+专用仓储（OwnerRepository, AccountRepository）
+优点：
+可以封装复杂业务逻辑和查询，语义明确。
+更贴近业务领域（DDD 领域驱动推荐做法）。
+
+缺点：
+重复代码多，基本的增删改查每个仓储都要写一次。
+管理仓储类变多。
+

@@ -99,26 +99,6 @@ namespace TypeSln_2
 
             }
 
-
-
-            {
-                Console.WriteLine("=======================\n");
-
-            }
-
-
-
-            {
-                Console.WriteLine("=======================\n");
-
-            }
-
-
-
-
-
-
-
         }
     }
 }

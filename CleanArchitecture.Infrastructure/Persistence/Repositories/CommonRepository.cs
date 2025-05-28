@@ -7,8 +7,10 @@ namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 
     public class CommonRepository<T> : IToDoRepository<T> where T : class
     {
-        private readonly ToDoDbContext _context;
-        private readonly DbSet<T> _dbSet;
+        private readonly ToDoDbContext _context;//ToDoDbContext 就像是一栋数据库的大房子。
+        private readonly DbSet<T> _dbSet;//DbSet<T> 是这栋房子里的某个房间，专门用来存放某一类数据（比如 ToDoItem）。
+                                         //DbSet<T> _dbSet 这是你在屋子（DbContext）里挑了一个房间出来，用来处理那一类数据。
+                                         //我拿到了这栋房子，然后我根据 T（类型）进到了相应的房间里，去拿东西、放东西。
 
         public CommonRepository(ToDoDbContext context)
         {

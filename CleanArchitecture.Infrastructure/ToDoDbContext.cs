@@ -10,7 +10,7 @@ namespace CleanArchitecture.Infrastructure
 {
     public partial class ToDoDbContext : DbContext
     {
-
+        //就相当于你有一栋房子（ToDoDbContext），里面有1个房间：ToDoItems 房间：专门放待办事项；
         public ToDoDbContext()
         {
         }
