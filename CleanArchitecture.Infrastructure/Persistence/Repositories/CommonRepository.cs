@@ -1,6 +1,8 @@
 ﻿using CleanArchitecture.Domian;
 using Microsoft.EntityFrameworkCore;
-namespace CleanArchitecture.Infrastructure
+using CleanArchitecture.Application.Interfaces.Persistence;
+using System.Linq.Expressions;
+namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 {
 
     public class CommonRepository<T> : IToDoRepository<T> where T : class
@@ -32,46 +34,63 @@ namespace CleanArchitecture.Infrastructure
             }
         }
 
+        // 创建
         public async Task<int> CreateAsync(T entity)
         {
             _dbSet.Add(entity);
             return await SaveChangesWithTransactionAsync(() => _context.SaveChangesAsync());
         }
 
+        // 更新
         public async Task<int> UpdateAsync(T entity)
         {
             _dbSet.Update(entity);
             return await SaveChangesWithTransactionAsync(() => _context.SaveChangesAsync());
         }
 
+        // 查询所有
         public Task<List<T>> GetAllAsync()
         {
             return _dbSet.ToListAsync();
         }
+
+        // 删除
+        public async Task<int> DeleteAsync(T entity)
+        {
+            _dbSet.Remove(entity);
+            return await SaveChangesWithTransactionAsync(() => _context.SaveChangesAsync());
+        }
+
+
+        // 根据Id查询，假设实体有主键名为 Id
+        public async Task<T?> GetByIdAsync(object id)
+        {
+            return await _dbSet.FindAsync(id);
+        }
+
+        // 根据条件查询，返回 IQueryable 方便调用者继续拼接查询条件
+        public IQueryable<T> Query(Expression<Func<T, bool>> predicate)
+        {
+            return _dbSet.Where(predicate);
+        }
+
+        // 批量删除
+        public async Task<int> DeleteRangeAsync(IEnumerable<T> entities)
+        {
+            _dbSet.RemoveRange(entities);
+            return await SaveChangesWithTransactionAsync(() => _context.SaveChangesAsync());
+        }
+
+        // 判断是否存在满足条件的实体
+        public async Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _dbSet.AnyAsync(predicate);
+        }
+
     }
 
 
-    #region 原始 SqlToDoRepository
 
-    //public class SqlToDoRepository : IToDoRepository
-    //{
-    //    private readonly ToDoDbContext _context;
-    //    public SqlToDoRepository(ToDoDbContext context)
-    //    {
-    //        _context = context;
-    //    }
-    //    public Task<int> CreateAsync(ToDoItem item)
-    //    {
-    //        _context.ToDoItems.Add(item);
-    //        return _context.SaveChangesAsync();
-    //    }
-    //    public Task<List<ToDoItem>> GetAllAsync()
-    //    {
-    //        return _context.ToDoItems.ToListAsync();
-    //    }
-    //}
-
-    #endregion
 
 
 

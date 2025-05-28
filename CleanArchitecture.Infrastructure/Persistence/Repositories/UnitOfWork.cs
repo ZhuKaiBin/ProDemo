@@ -1,10 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CleanArchitecture.Application.Interfaces.Persistence;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace CleanArchitecture.Persistence
+namespace CleanArchitecture.Infrastructure.Persistence.Repositories
 {
-    public class UnitOfWork : IUnitOfWork, IDisposable
+    public class UnitOfWork :IUnitOfWork, IDisposable
     {
+
         private readonly DbContext _context;
         private readonly Dictionary<Type, object> _repositories = new Dictionary<Type, object>();
         private IDbContextTransaction _currentTransaction;
@@ -13,6 +15,7 @@ namespace CleanArchitecture.Persistence
         {
             _context = context;
         }
+
 
         public IRepository<T> Repository<T>() where T : class
         {
@@ -25,6 +28,7 @@ namespace CleanArchitecture.Persistence
             _repositories[typeof(T)] = repository;
             return repository;
         }
+
 
         public void SaveChanges()
         {
@@ -55,26 +59,41 @@ namespace CleanArchitecture.Persistence
             try
             {
                 await _context.SaveChangesAsync();
-                await _currentTransaction?.CommitAsync();
+
+                if (_currentTransaction != null)
+                {
+                    await _currentTransaction.CommitAsync();
+                }
             }
             catch
             {
-                await _currentTransaction?.RollbackAsync();
+                if (_currentTransaction != null)
+                {
+                    await _currentTransaction.RollbackAsync();
+                }
                 throw;
             }
             finally
             {
-                await _currentTransaction?.DisposeAsync();
-                _currentTransaction = null;
+                if (_currentTransaction != null)
+                {
+                    await _currentTransaction.DisposeAsync();
+                    _currentTransaction = null;
+                }
             }
         }
 
         public async Task RollbackAsync()
         {
-            await _currentTransaction?.RollbackAsync();
-            await _currentTransaction?.DisposeAsync();
-            _currentTransaction = null;
+            if (_currentTransaction != null)
+            {
+                await _currentTransaction.RollbackAsync();
+                await _currentTransaction.DisposeAsync();
+                _currentTransaction = null;
+            }
         }
-    }
 
+
+
+    }
 }

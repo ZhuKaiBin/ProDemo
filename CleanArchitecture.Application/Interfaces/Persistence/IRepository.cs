@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Persistence
+namespace CleanArchitecture.Application.Interfaces.Persistence
 {
     public interface IRepository<T> where T : class
     {
@@ -13,7 +13,7 @@ namespace CleanArchitecture.Persistence
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);
-        void Save();
-        Task SaveAsync();
+        void SaveChanges();
+        Task SaveChangesAsync();
     }
 }

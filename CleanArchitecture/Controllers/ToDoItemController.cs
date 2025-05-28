@@ -1,5 +1,5 @@
 ﻿
-using CleanArchitecture.Application.Dtos;
+using CleanArchitecture.Application.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 

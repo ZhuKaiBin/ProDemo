@@ -1,8 +1,9 @@
-﻿using MediatR;
+﻿using CleanArchitecture.Domian.Entities;
+using MediatR;
 
-namespace CleanArchitecture.Application.Dtos
+namespace CleanArchitecture.Application.DTOs
 {
-    public class ToDoItemQuery : IRequest<List<Domian.ToDoItem>>
+    public class ToDoItemQuery : IRequest<List<ToDoItem>>
     {
     }
 }

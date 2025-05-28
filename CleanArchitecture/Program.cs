@@ -1,7 +1,8 @@
 using CleanArchitecture.Application;
-using CleanArchitecture.Domian;
-using CleanArchitecture.Infrastructure;
+using CleanArchitecture.Application.Interfaces.Persistence;
+using CleanArchitecture.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 
 namespace CleanArchitecture
 {
@@ -18,12 +19,22 @@ namespace CleanArchitecture
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.AddApplicationServices();
+            builder.AddInfrastructureServices();
+
+
             builder.Services.AddApplicationDependencies();
             builder.Services.AddScoped(typeof(IToDoRepository<>), typeof(CommonRepository<>));
 
 
-            builder.Services.AddDbContext<ToDoDbContext>(options =>
-                   options.UseMySQL("Server=localhost;Port=3306;Database=dev_cdesign2;Uid=root;Pwd=root123456;"));
+            builder.Services.AddDbContext<ToDoDbContext>((serviceProvider, options) =>
+            {
+                //∆Ù”√¿πΩÿ∆˜
+                var interceptor = serviceProvider.GetRequiredService<ISaveChangesInterceptor>();
+                options.UseMySQL("Server=localhost;Port=3306;Database=dev_cdesign666;Uid=root;Pwd=root123456;")
+                       .AddInterceptors(interceptor);
+            });
+
 
 
             var app = builder.Build();
@@ -64,7 +75,7 @@ namespace CleanArchitecture
 
 
             app.MapControllers();
-
+            app.UseMiddleware<RequestTimingMiddleware>();
             app.Run();
         }
     }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanArchitecture.Persistence
+namespace CleanArchitecture.Application.Interfaces.Persistence
 {
-    internal interface IUnitOfWork
+    public interface IUnitOfWork
     {
         IRepository<T> Repository<T>() where T : class;
         void SaveChanges();
