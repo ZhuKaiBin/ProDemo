@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -50,7 +50,8 @@ public class Program
                   new Claim(JwtRegisteredClaimNames.Sub, "user123"),
                   new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                   new Claim(JwtRegisteredClaimNames.Iss, AuthOptions.Issuer),
-                  new Claim(JwtRegisteredClaimNames.Aud, request.Audience)
+                  new Claim(JwtRegisteredClaimNames.Aud, request.Audience),
+                  new Claim(ClaimTypes.Role, "SuperAdmin")  // 👈 添加角色 claim
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(AuthOptions.SecretKey));
