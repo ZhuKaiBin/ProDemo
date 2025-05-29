@@ -97,7 +97,29 @@ namespace Scalar2Sln_Infrastructure.Data
                 // 添加权限为 Claim
                 foreach (var permission in permissions)
                 {
+                    //permission：权限，比如 "CanEditUser"、"ViewReports"
+                    //new Claim(...)：创建一个“声明”，说明“这个角色拥有这个权限”
+                    //AddClaimAsync(...)：把这个声明挂在角色上
                     await _roleManager.AddClaimAsync(role, new Claim(CustomClaimTypes.Permission, permission));
+
+
+                    //🧵 类比解释（通俗比喻）
+                    //想象一下你是一个电影院的工作人员，有不同的“角色”：
+                    //🎟️ 售票员（TicketSeller）
+                    //🍿 卖爆米花的（ConcessionStaff）
+                    //📽️ 放电影的（Projectionist）
+                    //
+                    //每个角色可以拥有不同的“权限”，比如：
+                    //“可以操作售票系统”（Permission: OperateTicketSystem）
+                    //“可以打开收银台”（Permission: AccessCashDrawer）
+                    //“可以启动放映设备”（Permission: StartProjector）
+                    //
+                    //你现在要干什么？
+                    //👉 你要给“售票员”角色，贴上一个权限标签：“他可以操作售票系统”。
+                    //
+                    //那你就这么写：
+                    //await _roleManager.AddClaimAsync(售票员角色, new Claim("Permission", "OperateTicketSystem"));
+
                 }
             }
 
@@ -115,7 +137,8 @@ namespace Scalar2Sln_Infrastructure.Data
             var existingUser = await _userManager.FindByNameAsync(user.UserName);
             if (existingUser == null)
             {
-                var createResult = await _userManager.CreateAsync(user, "Lisi123!");
+                var passWord = "Lisi123!";
+                var createResult = await _userManager.CreateAsync(user, passWord);
                 if (!createResult.Succeeded)
                 {
                     // 输出错误信息

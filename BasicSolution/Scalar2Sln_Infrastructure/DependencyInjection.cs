@@ -15,6 +15,7 @@ using Scalar2Sln_Infrastructure.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.Extensions.Options;
 
 
 namespace Scalar2Sln_Infrastructure
@@ -77,6 +78,8 @@ namespace Scalar2Sln_Infrastructure
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
 
+
+
             builder.Services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -97,18 +100,22 @@ namespace Scalar2Sln_Infrastructure
             });
 
 
-
-            //自动为你定义的每个权限（比如 View、Edit、Delete）创建一个门卫规则（策略 Policy），以后你就可以用这些策略来控制每个接口了。
-            // [Authorize(Policy = "Edit")]
-            // public IActionResult EditUser() => Ok("编辑用户成功");
-            //“必须带有通行证 Permission=Edit 的人，才能进入这个方法。”
+            //Policy = 一个出入口检查器 + 门卫规则
+            //自动为你定义的每个权限（比如 View、Update、Delete）创建一个门卫规则（策略 Policy），以后你就可以用这些策略来控制每个接口了。
+            // [Authorize(Policy = "UPdate")]
+            // public IActionResult UpdateUser() => Ok("编辑用户成功");
+            //“必须带有通行证 Permission = Update 的人，才能进入这个方法。”
             builder.Services.AddAuthorization(ops =>
             {
                 foreach (var permission in Permissions.All)
                 {
+                    //给每一个权限（如 User.Create、User.Delete）都创建一个「通行证策略」，以后用户必须带着这个权限通行证（Claim），才能进入受保护的功能区。
                     ops.AddPolicy(permission, policy => policy.RequireClaim(CustomClaimTypes.Permission, permission));
                 }
             });
+
+            //只有用户带着 Claim：Permission=Create，才放行。
+            //options.AddPolicy("Create", policy => policy.RequireClaim("Permission", "Create"));
 
         }
 

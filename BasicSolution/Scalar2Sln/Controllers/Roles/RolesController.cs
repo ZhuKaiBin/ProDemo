@@ -71,6 +71,34 @@ namespace Scalar2Sln.Controllers.Roles
         }
 
 
+
+        [HttpPost("createRole")]
+        //[Authorize(Roles = "省长,主席")] // 可选：限制只有“省长”或“主席”可以创建角色
+        public async Task<IActionResult> CreateRole([FromBody] CreateRoleDto dto)
+        {
+            if (string.IsNullOrWhiteSpace(dto.RoleName))
+            {
+                return BadRequest("角色名称不能为空。");
+            }
+
+            // 检查是否已存在
+            if (await _roleManager.RoleExistsAsync(dto.RoleName))
+            {
+                return BadRequest($"角色“{dto.RoleName}”已经存在。");
+            }
+
+            var result = await _roleManager.CreateAsync(new IdentityRole(dto.RoleName));
+            //throw new Exception("9090");
+
+            if (result.Succeeded)
+            {
+                return Ok($"角色“{dto.RoleName}”创建成功。");
+            }
+
+            return StatusCode(500, $"角色创建失败：{string.Join(", ", result.Errors.Select(e => e.Description))}");
+        }
+
+
     }
 
     public class AssignRolesDto
@@ -78,4 +106,10 @@ namespace Scalar2Sln.Controllers.Roles
         public string UserName { get; set; }
         public List<string> Roles { get; set; }
     }
+
+    public class CreateRoleDto
+    {
+        public string RoleName { get; set; }
+    }
+
 }

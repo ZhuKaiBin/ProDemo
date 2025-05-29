@@ -19,6 +19,9 @@
     <ProjectReference Include="..\..\..\..\BasicSolution\SSEDemo\SSEDemoSln\SSEDemoSln.csproj" />
     <ProjectReference Include="..\..\..\..\BasicSolution\SSEDemo\SSEDemoSln\SSEDemoSln\SSEDemoSln.csproj" />
     <ProjectReference Include="..\..\..\..\BasicSolution\WatchDogDemo\WatchDogSlns\WatchDogSlns\WatchDogSlns.csproj" />
+    <ProjectReference Include="..\..\..\..\DistributedAuthentication\AuthServer\AuthServer.csproj" />
+    <ProjectReference Include="..\..\..\..\DistributedAuthentication\WebA\WebA.csproj" />
+    <ProjectReference Include="..\..\..\..\DistributedAuthentication\WebB\WebB.csproj" />
     <ProjectReference Include="..\AspireApp1.ApiService\AspireApp1.ApiService.csproj" />
     <ProjectReference Include="..\AspireApp1.Web\AspireApp1.Web.csproj" />
   </ItemGroup>

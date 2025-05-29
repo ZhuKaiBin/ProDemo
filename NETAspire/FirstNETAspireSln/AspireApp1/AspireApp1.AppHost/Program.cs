@@ -23,4 +23,10 @@ builder.AddProject<Projects.ScalarSln>("scalarsln");
 
 builder.AddProject<Projects.Scalar2Sln>("scalar2sln");
 
+builder.AddProject<Projects.AuthServer>("authserver");
+
+builder.AddProject<Projects.WebA>("weba");
+
+builder.AddProject<Projects.WebB>("webb");
+
 builder.Build().Run();
