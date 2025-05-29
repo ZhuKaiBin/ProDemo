@@ -82,5 +82,10 @@ namespace Scalar2Sln_Infrastructure.Identity
 
             return result.ToApplicationResult();
         }
+
+
+
+       
+
     }
 }

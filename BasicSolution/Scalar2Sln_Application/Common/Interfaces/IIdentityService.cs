@@ -21,5 +21,7 @@ namespace Scalar2Sln_Application.Common.Interfaces
 
         Task<Result> DeleteUserAsync(string userId);
 
+
+
     }
 }

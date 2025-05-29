@@ -9,5 +9,8 @@ namespace Scalar2Sln_Infrastructure.Identity
 {
     public class ApplicationUser : IdentityUser
     {
+
+        public string? NickName { set; get; }
+
     }
 }

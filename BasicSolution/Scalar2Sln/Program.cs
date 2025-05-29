@@ -34,6 +34,7 @@ public class Program
 
         builder.AddWebServices();
 
+        
 
 
 
@@ -53,6 +54,8 @@ public class Program
 
         app.UseHttpsRedirection();
 
+        //下面这俩顺序不能变
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapEndpoints();

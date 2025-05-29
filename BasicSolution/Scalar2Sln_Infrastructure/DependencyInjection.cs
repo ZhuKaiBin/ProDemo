@@ -1,5 +1,6 @@
 ﻿using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,10 @@ using Scalar2Sln_Infrastructure.Data;
 using Scalar2Sln_Infrastructure.Data.Interceptors;
 using Scalar2Sln_Infrastructure.Identity;
 using Scalar2Sln_Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 
 namespace Scalar2Sln_Infrastructure
 {
@@ -71,6 +76,39 @@ namespace Scalar2Sln_Infrastructure
 
 
             builder.Services.AddTransient<IEmailSender, EmailSender>();
+
+            builder.Services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = "yourapi",
+                    ValidAudience = "yourapi",
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ThisIsASecretKeyForJwtTokenWhichIsAtLeast32Bytes"))
+                };
+            });
+
+
+
+            //自动为你定义的每个权限（比如 View、Edit、Delete）创建一个门卫规则（策略 Policy），以后你就可以用这些策略来控制每个接口了。
+            // [Authorize(Policy = "Edit")]
+            // public IActionResult EditUser() => Ok("编辑用户成功");
+            //“必须带有通行证 Permission=Edit 的人，才能进入这个方法。”
+            builder.Services.AddAuthorization(ops =>
+            {
+                foreach (var permission in Permissions.All)
+                {
+                    ops.AddPolicy(permission, policy => policy.RequireClaim(CustomClaimTypes.Permission, permission));
+                }
+            });
 
         }
 
