@@ -43,8 +43,8 @@ namespace Scalar2Sln.Controllers
 
         }
 
-
-        [Authorize(Policy = "Permission.View")]
+        [Authorize(Roles = "省长,主席,县长")]
+        //[Authorize(Policy = "Permission.View")]
         [HttpGet("test-view-permission")]
         public IActionResult TestViewPermission()
         {

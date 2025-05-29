@@ -17,9 +17,4 @@
     <ProjectReference Include="..\Scalar2Sln_Infrastructure\Scalar2Sln_Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\Authentications\" />
-    <Folder Include="Controllers\Authorizes\" />
-  </ItemGroup>
-
 </Project>

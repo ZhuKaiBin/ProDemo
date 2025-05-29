@@ -3,6 +3,7 @@ using Scalar2Sln.Infrastructure;
 using Scalar2Sln_Application;
 using Scalar2Sln_Infrastructure;
 using Scalar2Sln_Infrastructure.Data;
+using Scalar2Sln_Infrastructure.Middlewares;
 
 namespace Scalar2Sln;
 
@@ -53,7 +54,7 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
+        app.UseMiddleware<TransactionMiddleware>();
         //下面这俩顺序不能变
         app.UseAuthentication();
         app.UseAuthorization();

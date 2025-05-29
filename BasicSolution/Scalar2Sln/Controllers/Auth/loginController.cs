@@ -3,12 +3,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Scalar2Sln_Infrastructure.Identity;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace Scalar2Sln.Controllers
+namespace Scalar2Sln.Controllers.Auth
 {
     [ApiController]
     [Route("[controller]")]
@@ -18,15 +17,18 @@ namespace Scalar2Sln.Controllers
         private readonly IMediator _mediator;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
 
         public loginController(ILogger<TodoListsController> logger, IMediator mediator
             , UserManager<ApplicationUser> userManager
-            , RoleManager<IdentityRole> roleManager)
+            , RoleManager<IdentityRole> roleManager
+             , SignInManager<ApplicationUser> signInManager)
         {
             _logger = logger;
             _mediator = mediator;
             _roleManager = roleManager;
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
 
@@ -56,6 +58,10 @@ namespace Scalar2Sln.Controllers
                     var roleClaims = await _roleManager.GetClaimsAsync(role);
                     claims.AddRange(roleClaims); // 把角色中的权限 Claim 加进去
                 }
+
+
+                claims.Add(new Claim(ClaimTypes.Role, roleName)); // 添加角色 Claim
+
             }
 
 
@@ -71,6 +77,15 @@ namespace Scalar2Sln.Controllers
             return Ok(new { token = new JwtSecurityTokenHandler().WriteToken(token) });
 
 
+        }
+
+
+        // 退出登录
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok("退出登录成功");
         }
     }
 
