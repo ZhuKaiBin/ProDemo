@@ -2,11 +2,6 @@
 
 namespace AutoMapperDemo
 {
-
-    /*
-     AutoMapper 用法
-     */
-
     internal class Program
     {
         static async Task Main(string[] args)
@@ -16,6 +11,7 @@ namespace AutoMapperDemo
             {
                 cfg.AddProfile<MappingProfile>();  // 添加映射配置
             });
+
 
             // 验证映射配置是否有效
             //configuration.AssertConfigurationIsValid();  // 如果映射无效，抛出异常
@@ -46,13 +42,15 @@ namespace AutoMapperDemo
 
     public class UserDto
     {
-
         public string Name { get; set; }
         public string Age { get; set; }
-
-        public int address { get; set; }
+        public string Address { get; set; }
     }
 
+
+    /// <summary>
+    /// 存储映射的信息
+    /// </summary>
     public class MappingProfile : Profile
     {
         public MappingProfile()
@@ -62,7 +60,13 @@ namespace AutoMapperDemo
         }
     }
 
-    #region 构造函数注入
+
+
+
+
+
+
+    #region 不使用AutoMapper 构造函数注入
     //public class User
     //{
     //    public string Name { get; set; }

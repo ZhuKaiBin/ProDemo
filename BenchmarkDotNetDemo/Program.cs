@@ -34,7 +34,7 @@ namespace BenchmarkDotNetDemo
         private int NumberOfItems = 50;
 
         [Benchmark]
-        public void gg()
+        public void TestAny()
         {
             List<People> bs = new List<People>();
             for (int i = 0; i < NumberOfItems; i++)
@@ -49,7 +49,7 @@ namespace BenchmarkDotNetDemo
         }
 
         [Benchmark]
-        public void GG()
+        public void TestCount()
         {
             List<People> bs = new List<People>();
             for (int i = 0; i < NumberOfItems; i++)
@@ -64,7 +64,7 @@ namespace BenchmarkDotNetDemo
         }
 
         [Benchmark]
-        public void GGgg()
+        public void TestCountFunc()
         {
             List<People> peoples = new List<People>();
             for (int i = 0; i < NumberOfItems; i++)
